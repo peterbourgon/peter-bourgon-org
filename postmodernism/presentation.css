@@ -1,0 +1,38 @@
+/*
+ * impress.js demo.css stuff
+ */
+
+body { margin: 0; font-family: "Courier New", monospace; }
+h1 { font: 900 46px/24px "Lato", "Helvetica Neue", sans-serif; }
+h2 { font: 400 30px/24px "Lato", "Helvetica Neue", sans-serif; }
+h3 { font: 400 italic 20px/20px "Lato", "Helvetica Neue", sans-serif; }
+p { font: 300 16px/24px "Averia Libre", Georgia, serif; }
+
+#c { width: 90%; }
+
+a { text-decoration: none; }
+a:visited { color: #66a; }
+
+.slide {
+    width: 900px;
+}
+
+.slide img {
+    /* border: solid 1px #000; */
+    margin: 0px auto;
+    max-height: 700px;
+    height: auto !important;
+    height: 500px;
+    max-width: 1000px;
+    width: auto !important;
+    width: 700px;
+}
+
+.title h1 { font-size: 80px; }
+
+.visual h1, h2, h3, p { background-color: rgba(255, 255, 255, 0.5); }
+.visual p { padding: 5px; }
+
+.overlay { position:fixed; bottom:10px; right:10px; width:50px; }
+.overlay a { color: #000; font: normal 10px "Helvetica"; text-transform: uppercase; }
+.overlay a.visited { color: #000; }
