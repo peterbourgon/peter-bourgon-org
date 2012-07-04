@@ -2,11 +2,24 @@
  * impress.js demo.css stuff
  */
 
+.impress-enabled .step {
+	opacity: 0;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1; }
+
+
 body { margin: 0; font-family: "Courier New", monospace; }
-h1 { font: 900 46px/24px "Lato", "Helvetica Neue", sans-serif; }
-h2 { font: 400 30px/24px "Lato", "Helvetica Neue", sans-serif; }
-h3 { font: 400 italic 20px/20px "Lato", "Helvetica Neue", sans-serif; }
-p { font: 300 16px/24px "Averia Libre", Georgia, serif; }
+h1 { font: 900 56px/24px "Lato", "Helvetica Neue", sans-serif; }
+h2 { font: 400 40px/24px "Lato", "Helvetica Neue", sans-serif; }
+h3 { font: 400 italic 34px/20px "Lato", "Helvetica Neue", sans-serif; }
+p { font: 300 20px/24px "Averia Libre", Georgia, serif; }
 
 #c { width: 90%; }
 
@@ -28,11 +41,43 @@ a:visited { color: #66a; }
     width: 700px;
 }
 
+.premodern  { }
+.modern     { }
+.postmodern { }
+
+.visual h1, .visual h2, .visual h3, .visual p {
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 15px;
+}
 .title h1 { font-size: 80px; }
 
-.visual h1, h2, h3, p { background-color: rgba(255, 255, 255, 0.5); }
-.visual p { padding: 5px; }
 
-.overlay { position:fixed; bottom:10px; right:10px; width:50px; }
-.overlay a { color: #000; font: normal 10px "Helvetica"; text-transform: uppercase; }
+.visual h1 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.visual h2 {
+	position: absolute;
+	top: 70px;
+	left: 0px;
+}
+
+.visual h3 {
+	position: absolute;
+	top: 135px;
+	left: 0px;
+}
+
+.visual p {
+	width: 75%;
+	position: absolute;
+	bottom: 15px;
+	left: 0px;
+	padding: 10px;
+}
+
+.overlay { position:fixed; bottom:10px; right:10px; width:40px; }
+.overlay a { color: #000; font: bold 12px "Helvetica"; text-transform: uppercase; border: solid 1px; padding: 2px; }
 .overlay a.visited { color: #000; }
