@@ -45,7 +45,7 @@ a:visited { color: #66a; }
 .modern     { }
 .postmodern { }
 
-.visual h1, .visual h2, .visual h3, .visual p {
+.visual h1, .visual h2, .visual h3, .visual p, .table-special {
 	background-color: rgba(255, 255, 255, 0.9);
 	padding: 15px;
 }
@@ -76,6 +76,11 @@ a:visited { color: #66a; }
 	bottom: 15px;
 	left: 0px;
 	padding: 10px;
+}
+
+img {
+	width: 300px;
+	height: auto;
 }
 
 .overlay { position:fixed; bottom:10px; right:10px; width:40px; }
