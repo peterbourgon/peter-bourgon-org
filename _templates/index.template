@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Peter Bourgon</title>
 <link href="http://fonts.googleapis.com/css?family=Averia+Libre:300" rel="stylesheet" type="text/css" />
+<link href="/css/typografie.css" rel="stylesheet" type="text/css" />
 <link href="/css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -25,7 +26,7 @@ SoundCloud <a href="http://soundcloud.com/peterbourgon">peterbourgon</a><br/>
 
 You might be interested in<br/>
 {{#links}} &bull; <a href="{{url}}">{{title}}</a>{{#new}} <span class="new">new!</span>{{/new}}<br/>
-{{/links}}
+{{/links}} 
 </p>
 
 </div>
