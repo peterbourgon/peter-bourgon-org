@@ -1,19 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Peter Bourgon</title>
-<link href="http://fonts.googleapis.com/css?family=Averia+Libre:300" rel="stylesheet" type="text/css">
-<style>
-	body { margin: 0; font-family: "Courier New", monospace; }
-	h1 { font: 300 24px/24px "Averia Libre", Georgia, serif; }
-	p {	font: 300 16px/24px "Averia Libre", Georgia, serif; }
-	#c { width: 66%; min-width: 500px; margin: 0 auto 0 auto; }
-	a { text-decoration: none; }
-	a:visited { color: #66a; }
-	.new { color: #333; background-color: #fff568; padding: 0px 4px 0px 2px; font-style: italic; }
-</style>
+<link href="http://fonts.googleapis.com/css?family=Averia+Libre:300" rel="stylesheet" type="text/css" />
+<link href="/css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="c">
@@ -31,9 +22,10 @@ Twitter <a href="http://twitter.com/peterbourgon">@peterbourgon</a><br/>
 Flickr <a href="http://flickr.com/photos/peterbourgon">peterbourgon</a><br/>
 SoundCloud <a href="http://soundcloud.com/peterbourgon">peterbourgon</a><br/>
 &mdash;<br/>
+
 You might be interested in<br/>
-&bull; <a href="http://bourgon.org">My blog</a><br/>
-&bull; <a href="/postmodernism">Postmodernism</a> <span class="new">new!</span><br/>
+{{#links}} &bull; <a href="{{url}}">{{title}}</a>{{#new}} <span class="new">new!</span>{{/new}}<br/>
+{{/links}}
 </p>
 
 </div>

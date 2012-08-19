@@ -1,0 +1,8 @@
+template: index.template
+links:
+  - title: my blog
+    url: /blog
+  - title: my presentation on Postmodernism
+    url: /postmodernism
+    new: true
+
