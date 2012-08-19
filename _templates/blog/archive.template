@@ -17,11 +17,11 @@
 <div class="clear">&nbsp;</div>
 
 {{#index}}
-<div class="grid_2 left"> <p>{{year}} {{month}} {{day}}</p> </div>
-<div class="grid_6"><p><a href="/{{url}}">{{title}}</a></p> </div>
+<div class="grid_2 left flat"> <p>{{year}} {{month}} {{day}}</p> </div>
+<div class="grid_6 flat"><p><a href="/{{url}}">{{title}}</a></p> </div>
+<div class="clear">&nbsp;</div>
 {{/index}}
 
-<div class="clear">&nbsp;</div>
 </div>
 </body>
 </html>

@@ -2,3 +2,4 @@ body { margin-top:24px; }
 div .left { color:#ccc; text-align:right; min-width:100px; }
 div .footer { border-top:solid 1px #000; text-align:right; margin-top:24px; }
 div .footer p { margin-top:0px; }
+div .flat p { margin-bottom:0px; }

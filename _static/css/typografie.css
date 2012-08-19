@@ -1,5 +1,7 @@
 body { margin: 0; font-family: "Courier New", monospace; }
 h1 { font: 300 24px/24px "Averia Libre", Georgia, serif; }
-p { font: 300 16px/24px "Averia Libre", Georgia, serif; } 
+p { font: 300 16px/24px "Averia Libre", Georgia, serif; }
+ol, ul { font: 300 16px/24px "Averia Libre", Georgia, serif; } 
 a { text-decoration: none; }
 a:visited { color: #66a; }
+pre { margin-left:10px; }
