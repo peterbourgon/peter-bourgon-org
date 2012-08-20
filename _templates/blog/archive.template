@@ -12,13 +12,15 @@
 <div class="container_12">
 
 <div class="grid_2 left">
-<a href="/"><img src="/img/arrow-l.png" width=42 height=42 alt="Back" /></a>
+  <a href="/"><img src="/img/arrow-l.png" width=42 height=42 alt="Back" /></a>
 </div>
+<div class="grid_10">&nbsp;</div>
 <div class="clear">&nbsp;</div>
+<br/>
 
 {{#index}}
-<div class="grid_2 left flat"> <p>{{year}} {{month}} {{day}}</p> </div>
-<div class="grid_6 flat"><p><a href="/{{url}}">{{title}}</a></p> </div>
+<div class="grid_2 left"><span class="flat">{{year}} {{month}} {{day}}</span></div>
+<div class="grid_10"><span class="flat"><a href="/{{url}}">{{title}}</a></span></div>
 <div class="clear">&nbsp;</div>
 {{/index}}
 
