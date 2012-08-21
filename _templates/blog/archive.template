@@ -3,24 +3,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Peter Bourgon's Wild World of Blog</title>
-<link href="http://fonts.googleapis.com/css?family=Averia+Libre:300" rel="stylesheet" type="text/css" />
-<link href="/css/typografie.css" rel="stylesheet" type="text/css" />
-<link href="/css/fluid-grid.css" rel="stylesheet" type="text/css" />
-<link href="/css/blog-entry.css" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Lato:400|Averia+Libre:300" rel="stylesheet" type="text/css" />
+<link href="/css/global.css" rel="stylesheet" type="text/css" />
+<link href="/css/archive.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="container_12">
+<div class="c">
 
-<div class="grid_2 left">
-  <a href="/"><img src="/img/arrow-l.png" width=42 height=42 alt="Back" /></a>
+<div class="hl">
+<span><a href="/">&larr;</a></span>
 </div>
-<div class="grid_10">&nbsp;</div>
+
+<div class="hr">
+<h1>Peter Bourgon <s>blag</s>blog</h1>
+</div>
+
 <div class="clear">&nbsp;</div>
-<br/>
+
+<div class="annoying">&nbsp;</div>
 
 {{#index}}
-<div class="grid_2 left"><span class="flat">{{year}} {{month}} {{day}}</span></div>
-<div class="grid_10"><span class="flat"><a href="/{{url}}">{{title}}</a></span></div>
+<div class="cl"><span>{{year}} {{month}} {{day}}</span></div>
+<div class="cr"><span><a href="/{{url}}">{{title}}</a></span></div>
 <div class="clear">&nbsp;</div>
 {{/index}}
 

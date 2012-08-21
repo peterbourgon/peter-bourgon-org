@@ -1,2 +1,11 @@
-#c { width:66%; min-width:500px; margin:0 auto 0 auto; }
-.new { color:#333; background-color:#fff568; padding:0px 4px 0px 2px; font-style:italic; }
+.new {
+	display: inline;
+	color: #333;
+	background-color:#fff568;
+	padding:0px 4px 0px 2px;
+	font-style:italic;
+}
+
+.cr img {
+	margin: 24px 0;
+}

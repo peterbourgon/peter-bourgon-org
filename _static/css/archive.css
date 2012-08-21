@@ -1,0 +1,8 @@
+.cl span, .cr span {
+	font: 300 16px/24px "Averia Libre", Georgia, serif;
+	display: block;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	margin: 0;
+	padding: 0;
+}
