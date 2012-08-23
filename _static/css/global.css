@@ -6,11 +6,12 @@ h2 { font: 400 20px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 h3 { font: 400 16px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 p, ol, ul { font: 300 16px/24px "Averia Libre", Georgia, serif; }
-tr { min-height:30px; }
-td { margin: 0 20px 0 0; }
 pre { margin-left: 2em; }
 a { text-decoration: none; }
 a:visited { color: #66a; }
+table { border:0; }
+tr { min-height:30px; }
+td { margin: 0 20px 0 0; }
 
 .when { color:#aaa; }
 .disabled { color: #ccc; }

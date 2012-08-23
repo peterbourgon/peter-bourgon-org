@@ -11,7 +11,7 @@
 <h2><a href="/" title="Home">&uarr;</a> <span class="disabled" title="Archive">&larr;</span></h2>
 <h1>Peter Bourgon <s>blag</s>blog</h1>
 
-<table border="0">
+<table>
 {{#index}}
 <tr>
 	<td><p class="flat when">{{year}} {{month}} {{day}}</p></td>
