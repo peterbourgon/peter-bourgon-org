@@ -18,3 +18,11 @@ a:visited { color: #66a; }
 .flat { line-height:16px; margin:0 inherit; }
 
 .c { width: 55%; margin-left: 17%; }
+
+.new {
+	display: inline;
+	color: #333;
+	background-color:#fff568;
+	padding:0px 4px 0px 2px;
+	font-style:italic;
+}
