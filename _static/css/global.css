@@ -1,105 +1,20 @@
-/* Based on Variable Grid System  */
-/* http://www.spry-soft.com/grids */
 
-body { margin: 1em 0; font-family: "Courier New", monospace; }
+body { margin: 4em 0; font-family: "Courier New", monospace; }
 
 h1 { font: 400 24px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 h2 { font: 400 20px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-h3 { font: 400 18px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+h3 { font: 400 16px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 p, ol, ul { font: 300 16px/24px "Averia Libre", Georgia, serif; }
-
-.hl span {
-	font: 400 18px/24px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	display: block;
-	-webkit-margin-before: 0.83em;
-	-webkit-margin-after: 0.83em;
-}
-
-.cl span {
-	color: #ccc;
-	font: 300 16px/24px "Averia Libre", Georgia, serif;
-	display: block;
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
-}
-
+tr { min-height:30px; }
+td { margin: 0 20px 0 0; }
+pre { margin-left: 2em; }
 a { text-decoration: none; }
 a:visited { color: #66a; }
 
-pre { margin-left: 24px; }
+.when { color:#aaa; }
+.disabled { color: #ccc; }
+.end { color:#999; border-top:solid 1px #000; margin-top:4em; width:66%; }
+.flat { line-height:16px; margin:0 inherit; }
 
-/* layout */
-
-.c {
-	width: 92%;
-	margin-left: 4%;
-	margin-right: 4%;
-}
-
-.hl, .hr, .cl, .cr, .f {
-	display:inline;
-	float: left;
-	position: relative;
-	margin-left: 1%;
-	margin-right: 1%;
-}
-
-.hl, .hr { }
-
-.hl, .cl {
-	width: 14%;
-	text-align: right;
-	margin-right: 21px;
-	min-width: 80px;
-}
-
-.hr, .cr {
-	width: 48%;
-	margin-left: 21px;
-}
-
-.f {
-	margin-top: 36px;
-	margin-left: 16%;
-	border-top: solid 1px #000;
-	min-width: 100px;
-}
-
-.f p {
-	margin-top: 0px;
-}
-
-/* clears */
-
-.clear {
-	clear: both;
-	display: block;
-	overflow: hidden;
-	visibility: hidden;
-	width: 0;
-	height: 0;
-}
-
-.clearfix:after {
-	clear: both;
-	content: ' ';
-	display: block;
-	font-size: 0;
-	line-height: 0;
-	visibility: hidden;
-	width: 0;
-	height: 0;
-}
-
-.clearfix {
-	display: inline-block;
-}
-
-* html .clearfix {
-	height: 1%;
-}
-
-.clearfix {
-	display: block;
-}
+.c { width: 55%; margin-left: 17%; }

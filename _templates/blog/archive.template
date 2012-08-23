@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>Peter Bourgon's Wild World of Blog</title>
-<link href="http://fonts.googleapis.com/css?family=Lato:400|Averia+Libre:300" rel="stylesheet" type="text/css" />
-<link href="/css/global.css" rel="stylesheet" type="text/css" />
+<title>Peter Bourgon's Wide World of Blog</title>
+[[meta.template]]
+[[head-links.template]]
 <link href="/css/archive.css" rel="stylesheet" type="text/css" />
+</head>
 </head>
 <body>
 <div class="c">
 
-<div class="hl">
-<span><a href="/">&larr;</a></span>
-</div>
-
-<div class="hr">
+<h2><a href="/" title="Home">&uarr;</a> <span class="disabled" title="Archive">&larr;</span></h2>
 <h1>Peter Bourgon <s>blag</s>blog</h1>
-</div>
 
-<div class="clear">&nbsp;</div>
-
-<div class="annoying">&nbsp;</div>
-
+<table border="0">
 {{#index}}
-<div class="cl"><span>{{year}} {{month}} {{day}}</span></div>
-<div class="cr"><span><a href="/{{url}}">{{title}}</a></span></div>
-<div class="clear">&nbsp;</div>
+<tr>
+	<td><p class="flat when">{{year}} {{month}} {{day}}</p></td>
+	<td><p class="flat"><a href="/{{url}}">{{title}}</a></p></td>
+</tr>
 {{/index}}
+</table>
 
 </div>
 </body>
