@@ -4,6 +4,7 @@
 <title>{{title}}</title>
 [[meta.template]]
 [[head-links.template]]
+[[ga.template]]
 </head>
 <body>
 <div class="c">
