@@ -1,0 +1,117 @@
+/*
+ * impress.js demo.css stuff
+ */
+
+.impress-enabled .step {
+	opacity: 0;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1; }
+
+
+body { margin: 0; font-family: "Courier New", monospace; }
+h1 { font: 900 56px/24px "Lato", "Helvetica Neue", sans-serif; }
+h2 { font: 400 40px/24px "Lato", "Helvetica Neue", sans-serif; }
+h3 { font: 400 italic 34px/20px "Lato", "Helvetica Neue", sans-serif; }
+p { font: 300 20px/24px "Averia Libre", Georgia, serif; }
+
+#c { width: 90%; }
+
+a { text-decoration: none; }
+a:visited { color: #66a; }
+
+.three-quarters { width: 75%; }
+.two-thirds { width: 66%; }
+.half { width: 50%; }
+.quarter { width: 25%; }
+
+.slide {
+    width: 900px;
+}
+
+.slide img {
+    /* border: solid 1px #000; */
+    margin: 0px auto;
+    max-height: 700px;
+    height: auto !important;
+    height: 500px;
+    max-width: 1000px;
+    width: auto !important;
+    width: 700px;
+}
+
+.visual h1, .visual h2, .visual h3, .visual p, .table-special {
+	background-color: rgba(255, 255, 255, 0.9);
+	padding: 15px;
+}
+.title h1 { font-size: 80px; }
+
+
+.visual h1 {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.visual h2 {
+	position: absolute;
+	top: 70px;
+	left: 0px;
+}
+
+.visual h3 {
+	position: absolute;
+	top: 135px;
+	left: 0px;
+}
+
+.visual p {
+	width: 75%;
+	position: absolute;
+	bottom: 15px;
+	left: 0px;
+	padding: 10px;
+}
+
+img {
+	width: 300px;
+	height: auto;
+}
+
+.overlay { position:fixed; bottom:10px; right:10px; width:50px; }
+.overlay a { color: #000; font: bold 12px "Helvetica"; text-transform: uppercase; border: solid 1px; padding: 2px; }
+.overlay a.visited { color: #000; }
+
+
+.code table, tr, td {
+	padding: 10px;
+	vertical-align: top;
+}
+
+.api {
+	font: 300 20px/20px "Averia Libre", Georgia, serif;
+	/* font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; */
+	/* font-size: 12px; */
+	/* background: #fff; */
+	margin: 45px;
+	/* width: 480px; */
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.api thead {
+	border-bottom: 2px solid #333;
+}
+
+.api td {
+	/* color: #669; */
+	/* padding: 9px 8px 0px 8px; */
+	border-bottom: 1px solid #666;
+}
+

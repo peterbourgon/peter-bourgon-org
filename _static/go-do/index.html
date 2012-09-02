@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Go Do</title>
+<link href="http://fonts.googleapis.com/css?family=Lato:400,900|Averia+Libre:300" rel="stylesheet" type="text/css" />
+<link href="presentation.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+</head>
+
+<body class="impress-not-supported">
+
+<div id="c">
+<div id="impress">
+
+<!-- - - - - - -->
+
+<div class="step slide title" data-x="0" data-y="-1000">
+<h1>Go Do</h1>
+<h2>Peter Bourgon</h2>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide title" data-x="1500" data-y="-1000">
+<h1>Software engineering</h1>
+
+<p>
+
+is concerned with <strong>developing</strong> and <strong>maintaining</strong>
+software systems that behave reliably and efficiently, are affordable to develop
+and maintain, and satisfy all the requirements that customers have defined for
+them.
+
+</p>
+<p style="font-style:italic; margin-left:34px;">
+&mdash;<a href="http://computingcareers.acm.org/?page_id=12">ACM</a>
+</p>
+
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide visual" data-x="3000" data-y="-1000">
+<img src="img/placeholder.jpg" />
+
+<p>
+	I think of developing and maintaining as processes.
+	In both cases, I'm looking at the system as it exists now,
+	and comparing that against how the system should exist in the ideal case.
+	And the better I am at what I do, the better I can perform that transformation.
+</p>
+
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="4500" data-y="-1000">
+
+<p>
+	To help us walk the line, we have tools.
+	But impedance mismatches between problem domain and tools is devastating
+	to effectively transforming "existing" to "ideal".
+</p>
+
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide visual" data-x="6000" data-y="-1000">
+
+<img src="img/placeholder.jpg" />
+
+<p>
+	Go has a lot of properties that, combined, make it a really effective
+	tool for a large class of problems. Especially in large-scale, distributed
+	service environments.
+</p>
+
+</div>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="step slide title" data-x="0" data-y="0">
+<h1>Go in 3 minutes</h1>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="1500" data-y="0">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<h1>Syntax</h1>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="3000" data-y="0">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<h1>Types</h1>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="4500" data-y="0">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<h1>Interfaces</h1>
+		<p>
+			Go isn't really object-oriented.
+			Interfaces define behaviors in terms of method-sets.
+			A concrete type that implements the method-set of an interface
+			is said to satisfy that interface.
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="6000" data-y="0">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<h1>Goroutines</h1>
+		<p>
+			The <em>go</em> keyword backgrounds a function call.
+			Goroutines are multiplexed onto operating system threads.
+			They're very lightweight: tens of thousands in a single process
+			is no problem.
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="7500" data-y="0">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<h1>Channels</h1>
+		<p>
+			Communication between goroutines is idiomatically accomplished
+			with channels, which are typed, synchronized, and optionally-
+			bufferd pipes for data.
+		</p>
+		<p style="margin-left:34px;">
+			"Don't communicate by sharing memory;<br/>
+			share memory by communicating."
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="step slide title" data-x="0" data-y="1000">
+<h1>Example 1</h1>
+<h2>Aggregating data from multiple backends</h2>
+<h3>Request/response</h3>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="1500" data-y="1000">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<p>
+			Imagine a service which should provide a simple API to make
+			queries against a social graph.
+		</p>
+
+		<table class="api">
+			<thead><tr>
+				<td>Parameter</td>
+				<td>Description</td>
+			</tr></thead>
+			<tr>
+				<td>who</td>
+				<td>User ID</td>
+			</tr>
+			<tr>
+				<td>what</td>
+				<td>friends<br/>friends-of-friends</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="3000" data-y="1000">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<p>
+			Of course, we will soon want to add more possibilities.
+		</p>
+
+		<table class="api">
+			<thead><tr>
+				<td>Parameter</td>
+				<td>Description</td>
+			</tr></thead>
+			<tr>
+				<td>who</td>
+				<td>user ID</td>
+			</tr>
+			<tr>
+				<td>what</td>
+				<td>friends<br/>friends-of-friends<br/><strong>following-me</strong></td>
+			</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="step slide title" data-x="0" data-y="2000">
+<h1>Example 2</h1>
+<h2>Pipelined data processing</h2>
+<h3>Publish/subscribe</h3>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide visual" data-x="1500" data-y="2000">
+<img src="img/placeholder.jpg" />
+<p>
+	We're subscribing to a message queue, converting messages
+	to enriched data models, and feeding them into a data store.
+</p>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="3000" data-y="2000">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<p>
+			Break each step of the process apart, into simple,
+			synchronous functions. We will manage the motion of data
+			in a separate conceptual layer.
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="4500" data-y="2000">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<p>
+			Using channels to pass ownership of a request
+			between pipeline stages makes the program
+			naturally concurrent.
+
+			It also cleanly separates concerns: business logic,
+			error handling, scaling for performance.
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="6000" data-y="2000">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<p>
+			A failure at any stage of the pipeline can easily trigger
+			a "failed" response to the client and terminate the request.
+			The consequences of the error don't bubble any further into
+			the workflow than they need to.
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="7500" data-y="2000">
+<table>
+<tr>
+	<td>
+		<img src="img/code-editor.jpg" />
+	</td>
+	<td>
+		<p>
+			If a specific backend takes longer to call than the others,
+			we can preserve overall throughput by scaling the actors for
+			that backend independently.
+		</p>
+	</td>
+</tr>
+</table>
+</div>
+
+<!-- - - - - - -->
+
+</div><!--c-->
+</div><!--impress-->
+
+<div class="overlay"><a id="text-button" href="#">Notes</a></div>
+
+<script src="impress.js"></script>
+<script>impress().init();</script>
+<script>
+	$("#text-button").click(function() {
+		$(".visual h1").toggle();
+		$(".visual h2").toggle();
+		$(".visual h3").toggle();
+		$(".visual p").toggle();
+	});
+</script>
+</body>
+</html>
