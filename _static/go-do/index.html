@@ -26,13 +26,12 @@
 <h1>Software engineering</h1>
 
 <p>
-
-is concerned with <strong>developing</strong> and <strong>maintaining</strong>
-software systems that behave reliably and efficiently, are affordable to develop
-and maintain, and satisfy all the requirements that customers have defined for
-them.
-
+	is concerned with <strong>developing</strong> and
+	<strong>maintaining</strong> software systems that behave reliably and
+	efficiently, are affordable to develop and maintain, and satisfy all the
+	requirements that customers have defined for them.
 </p>
+
 <p style="font-style:italic; margin-left:34px;">
 &mdash;<a href="http://computingcareers.acm.org/?page_id=12">ACM</a>
 </p>
@@ -58,13 +57,18 @@ them.
 <div class="step slide" data-x="4500" data-y="-1000">
 
 <p>
-	To help us walk the line, we have tools.
-	But impedance mismatches between problem domain and tools is devastating
-	to effectively transforming "existing" to "ideal".
+	To help us walk the line between "now" and "later", we use tools.
+	<strong>I think Go is a really excellent tool.</strong>
+	It provides a small set of primitives that are orthogonal to each other,
+	and can be easily combined to build solutions to a large class of problems.
+
+	Those solutions tend to be easily decomposable, testable, and maintainable.
 </p>
 
 </div>
 
+<!-- - - - - - -->
+<!-- TODO somehow better transition between ^^^ and vvv -->
 <!-- - - - - - -->
 
 <div class="step slide visual" data-x="6000" data-y="-1000">
@@ -72,9 +76,9 @@ them.
 <img src="img/placeholder.jpg" />
 
 <p>
-	Go has a lot of properties that, combined, make it a really effective
-	tool for a large class of problems. Especially in large-scale, distributed
-	service environments.
+	Because the primitives are so powerful, solving a problem
+	<em>correctly</em>&mdash;ie. <em>ideally</em>&mdash;is possible
+	without leaning heavily on libraries or frameworks.
 </p>
 
 </div>
@@ -87,98 +91,79 @@ them.
 
 <!-- - - - - - -->
 
-<div class="step slide" data-x="1500" data-y="0">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<h1>Syntax</h1>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="1500" data-y="0">
+<img src="img/code-editor.jpg" />
+<h1>Syntax</h1>
+<p>
+	Some basic words about Go syntax here, just to make
+	the subsequent slides more readable.
+	Every CODE EDITOR slide will have an editable-and-runnable
+	program demonstrating the described concepts.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide" data-x="3000" data-y="0">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<h1>Types</h1>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="3000" data-y="0">
+<img src="img/code-editor.jpg" />
+<h1>Types</h1>
+<p>
+	Types are concrete things which may be defined by the user via
+	the 'type' keyword. Commonly structs, but also aliases.
+	Note that 'type' always defines a new (ie. distinct) type,
+	which is not interchangable with the thing it's based on.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide" data-x="4500" data-y="0">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<h1>Interfaces</h1>
-		<p>
-			Go isn't really object-oriented.
-			Interfaces define behaviors in terms of method-sets.
-			A concrete type that implements the method-set of an interface
-			is said to satisfy that interface.
-		</p>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="4500" data-y="0">
+<img src="img/code-editor.jpg" />
+<h1>Interfaces</h1>
+<p>
+	Interfaces specify behavior:
+	"if something can do <em>this</em>, then it can be used <em>here</em>".
+
+	Similar to an abstract class in Java.
+	They operate in the behavior domain, rather than the implementation domain.
+
+	Concrete types which implement all of an interface's methods
+	<em>implement</em> that interface.
+
+	Interfaces are first-class citizens in Go.
+	Most standard-library functions take interfaces as parameters.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide" data-x="6000" data-y="0">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<h1>Goroutines</h1>
-		<p>
-			The <em>go</em> keyword backgrounds a function call.
-			Goroutines are multiplexed onto operating system threads.
-			They're very lightweight: tens of thousands in a single process
-			is no problem.
-		</p>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="6000" data-y="0">
+<img src="img/code-editor.jpg" />
+<h1>Goroutines</h1>
+<p>
+	Goroutines are essentially coroutines,
+	from Tony Hoare's
+	<a href="http://en.wikipedia.org/wiki/Communicating_sequential_processes">
+		Communicating Sequential Processes
+	</a>.
+	Like very lightweight threads; multiplexed onto operating system threads.
+	Launch any function call in a new goroutine with the 'go' keyword.
+	You don't get handles, or any explicit management of goroutines.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide" data-x="7500" data-y="0">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<h1>Channels</h1>
-		<p>
-			Communication between goroutines is idiomatically accomplished
-			with channels, which are typed, synchronized, and optionally-
-			bufferd pipes for data.
-		</p>
-		<p style="margin-left:34px;">
-			"Don't communicate by sharing memory;<br/>
-			share memory by communicating."
-		</p>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="7500" data-y="0">
+<img src="img/code-editor.jpg" />
+<h1>Channels</h1>
+<p>
+	Communication between goroutines is idiomatically accomplished
+	with channels, which are typed, synchronized, and optionally-
+	buffered pipes for data.
+	<br/><br/>
+	"Don't communicate by sharing memory; share memory by communicating."
+</p>
 </div>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -186,72 +171,25 @@ them.
 <div class="step slide title" data-x="0" data-y="1000">
 <h1>Example 1</h1>
 <h2>Aggregating data from multiple backends</h2>
-<h3>Request/response</h3>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide code" data-x="1500" data-y="1000">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<p>
-			Imagine a service which should provide a simple API to make
-			queries against a social graph.
-		</p>
-
-		<table class="api">
-			<thead><tr>
-				<td>Parameter</td>
-				<td>Description</td>
-			</tr></thead>
-			<tr>
-				<td>who</td>
-				<td>User ID</td>
-			</tr>
-			<tr>
-				<td>what</td>
-				<td>friends<br/>friends-of-friends</td>
-			</tr>
-		</table>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="1500" data-y="1000">
+<img src="img/code-editor.jpg" />
+<p>
+	Imagine a service which should provide a simple API to make
+	queries against a social graph.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide code" data-x="3000" data-y="1000">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<p>
-			Of course, we will soon want to add more possibilities.
-		</p>
-
-		<table class="api">
-			<thead><tr>
-				<td>Parameter</td>
-				<td>Description</td>
-			</tr></thead>
-			<tr>
-				<td>who</td>
-				<td>user ID</td>
-			</tr>
-			<tr>
-				<td>what</td>
-				<td>friends<br/>friends-of-friends<br/><strong>following-me</strong></td>
-			</tr>
-		</table>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="3000" data-y="1000">
+<img src="img/code-editor.jpg" />
+<p>
+	Of course, we will soon want to extend the API.
+</p>
 </div>
 
 
@@ -260,7 +198,6 @@ them.
 <div class="step slide title" data-x="0" data-y="2000">
 <h1>Example 2</h1>
 <h2>Pipelined data processing</h2>
-<h3>Publish/subscribe</h3>
 </div>
 
 <!-- - - - - - -->
@@ -275,85 +212,63 @@ them.
 
 <!-- - - - - - -->
 
-<div class="step slide code" data-x="3000" data-y="2000">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<p>
-			Break each step of the process apart, into simple,
-			synchronous functions. We will manage the motion of data
-			in a separate conceptual layer.
-		</p>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="3000" data-y="2000">
+<img src="img/code-editor.jpg" />
+<p>
+	Break each step of the process apart, into simple,
+	synchronous functions. We will manage the motion of data
+	in a separate conceptual layer.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide code" data-x="4500" data-y="2000">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<p>
-			Using channels to pass ownership of a request
-			between pipeline stages makes the program
-			naturally concurrent.
+<div class="step slide visual" data-x="4500" data-y="2000">
+<img src="img/code-editor.jpg" />
+<p>
+	Using channels to pass ownership of a request
+	between pipeline stages makes the program
+	naturally concurrent.
 
-			It also cleanly separates concerns: business logic,
-			error handling, scaling for performance.
-		</p>
-	</td>
-</tr>
-</table>
+	It also cleanly separates concerns: business logic,
+	error handling, scaling for performance.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide code" data-x="6000" data-y="2000">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<p>
-			A failure at any stage of the pipeline can easily trigger
-			a "failed" response to the client and terminate the request.
-			The consequences of the error don't bubble any further into
-			the workflow than they need to.
-		</p>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="6000" data-y="2000">
+<img src="img/code-editor.jpg" />
+<p>
+	A failure at any stage of the pipeline can easily trigger
+	a "failed" response to the client and terminate the request.
+	The consequences of the error don't bubble any further into
+	the workflow than they need to.
+</p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide code" data-x="7500" data-y="2000">
-<table>
-<tr>
-	<td>
-		<img src="img/code-editor.jpg" />
-	</td>
-	<td>
-		<p>
-			If a specific backend takes longer to call than the others,
-			we can preserve overall throughput by scaling the actors for
-			that backend independently.
-		</p>
-	</td>
-</tr>
-</table>
+<div class="step slide visual" data-x="7500" data-y="2000">
+<img src="img/code-editor.jpg" />
+<p>
+	If a specific backend takes longer to call than the others,
+	we can preserve overall throughput by scaling the actors for
+	that backend independently.
+</p>
 </div>
 
-<!-- - - - - - -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<div class="step slide title" data-x="0" data-y="3000">
+<h1>Thanks!</h1>
+<h2>@peterbourgon</h2>
+<a href="http://soundcloud.com">
+	<img src="img/soundcloud.png" alt="SoundCloud" />
+</a>
+</div>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 </div><!--c-->
 </div><!--impress-->
