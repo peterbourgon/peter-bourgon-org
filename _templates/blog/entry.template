@@ -9,7 +9,8 @@
 <body>
 <div class="c">
 
-<h2><a href="/" title="Home">&uarr;</a> <a href="/blog/archive.html" title="Archive">&larr;</a></h2>
+<h2><a href="/" title="Home">Home</a>,
+    <a href="/blog/archive" title="Archive">archive</a>.</h2>
 <h1>{{title}}</h1>
 
 <p class="when">{{year}} {{month}} {{day}}</p>

@@ -9,7 +9,8 @@
 <body>
 <div class="c">
 
-<h2><a href="/" title="Home">&uarr;</a> <span class="disabled" title="Archive">&larr;</span></h2>
+<h2><a href="/" title="Home">Home</a>,
+    <span class="disabled" title="Archive">archive</span>.</h2>
 <h1>Peter Bourgon <s>blag</s>blog</h1>
 
 <table>
