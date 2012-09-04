@@ -178,8 +178,63 @@
 <div class="step slide visual" data-x="1500" data-y="1000">
 <img src="img/code-editor.jpg" />
 <p>
-	Imagine a service which should provide a simple API to make
-	queries against a social graph.
+	Imagine a request/response service which should aggregate results
+	from multiple backends.
+	Mock out a "backend", which takes some time to provide a result.
+	Then, make simple sequential queries over three of them.
+	The results are aggregated and returned to the user.
+	(<a href="http://code.google.com/p/go-tour/source/browse/talks/2012-04-25-NewYorkMeetup/index.html#676">inspiration</a>).
+
+	This is the most naïve way of making a search.
+	Which is a good way to start!
+	<br/><br/>
+
+<pre>
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+type Backend interface {
+	Query(q string) string
+}
+
+type FooBackend string
+func (b FooBackend) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	// TODO why can 'b' satisfy '%s'?
+	return fmt.Sprintf("Foo:%s:%s", b, q)
+}
+
+type BarBackend int
+func (b BarBackend) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	// TODO why can 'b' satisfy '%d'?
+	return fmt.Sprintf("Bar:%d:%s", b, q)
+}
+
+func QueryAll(q string, backends ...Backend) []string {
+	results := []string{}
+	for _, backend := range backends {
+		r := backend.Query(q)
+		results = append(results, r)
+	}
+	return results
+}
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	var b1 FooBackend = "abc"
+	var b2 BarBackend = 123
+	began := time.Now()
+	results := QueryAll("dubstep", b1, b2)
+	fmt.Println(time.Since(began))
+	fmt.Println(results)
+}
+</pre>
 </p>
 </div>
 
@@ -188,10 +243,88 @@
 <div class="step slide visual" data-x="3000" data-y="1000">
 <img src="img/code-editor.jpg" />
 <p>
-	Of course, we will soon want to extend the API.
+	Of course, naïve is not ideal.
+	Why can't both backends be processing queries at the same time?
+	We can make this code concurrent pretty easily.
+	Think in terms of goroutines and channels.
+	Each query can execute in a separate goroutine, and the result fed into
+	a channel.
+	The "calling" goroutine can aggregate the results from that channel.
+	It looks like this.
+	<br/><br/>
+	Note: no explicit synchronization.<br/>
+	Note: no changes to the API. All the asynchronous stuff is handled
+	behind a synchronous API.<br/>
+	Note: no explicit cleanup.<br/>
+	<br/><br/>
+
+<pre>
+func QueryAllConcurrent(q string, backends ...Backend) []string {
+	// query
+	c := make(chan string, len(backends))
+	for _, backend := range backends {
+		// why do I need to pass 'b' explicitly to the function?
+		go func(b Backend) { c <- b.Query(q) }(backend)
+	}
+
+	// aggregate
+	results := []string{}
+	for i := 0; i < cap(c); i++ {
+		results = append(results, <-c)
+	}
+	return results
+}
+</pre>
 </p>
 </div>
 
+<!-- - - - - - -->
+
+<div class="step slide visual" data-x="4500" data-y="1000">
+<img src="img/code-editor.jpg" />
+<p>
+	Still not happy. What if one of the backends goes down, or is slow?
+	We can replicate the backends in different data centers,
+	push the query to all of them, and take the first response.
+	That should bring our averages down, and let us handle failures.
+	<br/><br/>
+
+<pre>
+type BackendGroup []Backend
+
+func (g BackendGroup) QueryAllTakeFirst(q string) string {
+	c := make(chan string, len(g))
+	for _, backend := range g {
+		go func(b Backend) { c <- b.Query(q) }(backend)
+	}
+	return <-c  // what happens to the other results?
+}
+
+func QueryReplicas(q string, groups ...BackendGroup) []string {
+	// query
+	c := make(chan string, len(groups))
+	for _, group := range groups {
+		go func(g BackendGroup) { c <- g.QueryAllTakeFirst(q) }(group)
+	}
+
+	// aggregate
+	results := []string{}
+	for i := 0; i < cap(c); i++ {
+		results = append(results, <-c)
+	}
+	return results
+}
+
+func main() {
+	// ...
+	g1 := BackendGroup{FooBackend("abc"), FooBackend("def")}
+	g2 := BackendGroup{BarBackend(123), BarBackend(456), BarBackend(789)}
+	began := time.Now()
+	results := QueryReplicas("dubstep", g1, g2)
+}
+</pre>
+</p>
+</div>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
