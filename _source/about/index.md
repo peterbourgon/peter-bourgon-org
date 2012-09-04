@@ -13,7 +13,7 @@ in Berlin, Germany, working on search and discovery for
 I'm into well-designed and maintainable code, avoiding pre- and
 over-optimization, and best practices.
 For fun, I do a lot of reading, and when the weather's nice, I'm an avid
-runner. Some good things to read on the internet are, in no particular order,
+runner. Some nice things to read on the internet are, in no particular order,
  [the Atlantic](http://www.theatlantic.com),
  [Salon](http://www.salon.com),
  [the Times](http://www.nytimes.com),
@@ -21,7 +21,7 @@ runner. Some good things to read on the internet are, in no particular order,
  [Gothamist](http://gothamist.com),
  [Hacker News](http://news.ycombinator.com),
  and [Bike Snob](http://bikesnobnyc.blogspot.com).
-Some nice things to read on read trees are, in particular order,
+Some nice things to read on dead trees are, in particular order,
  [Joseph Conrad](http://www.gutenberg.org/browse/authors/c#a125),
  [Fyodor Dostoyevsky](http://www.gutenberg.org/browse/authors/d#a314),
  [David Wallace](http://en.wikipedia.org/wiki/David_Foster_Wallace),
