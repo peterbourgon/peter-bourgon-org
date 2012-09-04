@@ -5,6 +5,9 @@ title: About me!
 <a href="http://www.flickr.com/photos/peterbourgon/4108333661/" title="Untitled by peterbourgon, on Flickr">
 <img src="http://farm3.staticflickr.com/2614/4108333661_7c1fae058c_n.jpg" width="320" height="240" alt="Picture of me" />
 </a>
+<div style="margin: -270px 0 100px 60px;">
+	<span class="blink" style="font-size:150px; color:#fff;">&rarr;</span>
+</div>
 
 I'm Peter, a systems and infrastructure software engineer. I'm currently living
 in Berlin, Germany, working on search and discovery for
@@ -26,3 +29,9 @@ Some nice things to read on dead trees are, in particular order,
  [Fyodor Dostoyevsky](http://www.gutenberg.org/browse/authors/d#a314),
  [David Wallace](http://en.wikipedia.org/wiki/David_Foster_Wallace),
  and [Neal Stephenson](http://www.nealstephenson.com).
+
+<script src="/js/jquery-1.8.1.min.js" language="javascript" type="text/javascript"></script>
+<script src="/js/jquery-blink.js" language="javscript" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+  $(document).ready(function() { $(".blink").blink({delay:730}); });
+</script>
