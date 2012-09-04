@@ -1,5 +1,7 @@
 template: index.template
 links:
+  - title: my "about" page
+    url: /about
   - title: my blog
     url: /blog
   - title: my presentation on Postmodernism
