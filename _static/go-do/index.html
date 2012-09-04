@@ -91,25 +91,74 @@
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="1500" data-y="0">
-<img src="img/code-editor.jpg" />
+<div class="step slide code" data-x="1500" data-y="0">
 <h1>Syntax</h1>
+
+<div><pre>
+package main
+
+import "fmt"
+
+func main() {
+	var s1 string = "Jónsi"
+	s2 := "Jón Þór Birgisson"
+
+	fmt.Printf("%s, or '%s' for short\n", s1, s2)
+}
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+
 <p>
-	Some basic words about Go syntax here, just to make
-	the subsequent slides more readable.
-	Every CODE EDITOR slide will have an editable-and-runnable
-	program demonstrating the described concepts.
+	Every Go source file is a member of a package.
+	"main" implies an executable; everything else implies a library.
+	<br/><br/>
+	Import statements are straightforward.
+	<br/><br/>
+	'func' keyword defines a function.
+	Variables may be explicitly typed (s1) or implicitly typed (s2).
+	Note that this is not duck typing: s2 is syntax sugar for s1.
+	<br/><br/>
+	Printf is a function defined in the 'fmt' package, and is called this way.
 </p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="3000" data-y="0">
-<img src="img/code-editor.jpg" />
+<div class="step slide code" data-x="3000" data-y="0">
 <h1>Types</h1>
+
+<div><pre>
+type Thing struct {
+	Name  string
+	Value int
+}
+
+type Celsius float32
+type Fahrenheit float32
+
+func main() {
+	c := Celsius(0)
+	f := Fahrenheit(32)
+
+	// compiler error
+	if c == f {
+		fmt.Println("It's cold!")
+	}
+}
+</pre></div>
+
 <p>
 	Types are concrete things which may be defined by the user via
-	the 'type' keyword. Commonly structs, but also aliases.
+	the <strong>type</strong> keyword. Commonly structs, but also aliases.
 	Note that 'type' always defines a new (ie. distinct) type,
 	which is not interchangable with the thing it's based on.
 </p>
@@ -117,19 +166,25 @@
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="4500" data-y="0">
-<img src="img/code-editor.jpg" />
+<div class="step slide code" data-x="4500" data-y="0">
 <h1>Interfaces</h1>
+
+<div><pre>
+type Reader interface {
+	Read(n int) ([]byte, error)
+}
+</pre></div>
+
 <p>
 	Interfaces specify behavior:
 	"if something can do <em>this</em>, then it can be used <em>here</em>".
-
+	<br/><br/>
 	Similar to an abstract class in Java.
 	They operate in the behavior domain, rather than the implementation domain.
-
+	<br/><br/>
 	Concrete types which implement all of an interface's methods
 	<em>implement</em> that interface.
-
+	<br/><br/>
 	Interfaces are first-class citizens in Go.
 	Most standard-library functions take interfaces as parameters.
 </p>
@@ -137,9 +192,14 @@
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="6000" data-y="0">
-<img src="img/code-editor.jpg" />
+<div class="step slide code" data-x="6000" data-y="0">
 <h1>Goroutines</h1>
+
+<div><pre>
+doSomething()
+go doSomething()
+</pre></div>
+
 <p>
 	Goroutines are essentially coroutines,
 	from Tony Hoare's
@@ -147,16 +207,41 @@
 		Communicating Sequential Processes
 	</a>.
 	Like very lightweight threads; multiplexed onto operating system threads.
-	Launch any function call in a new goroutine with the 'go' keyword.
+	<br/><br/>
+	Launch any function call in a new goroutine with the <strong>go</strong> keyword.
 	You don't get handles, or any explicit management of goroutines.
 </p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="7500" data-y="0">
-<img src="img/code-editor.jpg" />
+<div class="step slide code" data-x="7500" data-y="0">
 <h1>Channels</h1>
+
+<div><pre>
+produce := func(c chan int) {
+	c <- 1
+	c <- 2
+	c <- 5
+	c <- 3
+	close(c)
+}
+
+consume := func(c chan int) {
+	for {
+		i, ok := <-c
+		if !ok {
+			break
+		}
+		fmt.Println(i)
+	}
+}
+
+c := make(chan int)
+go produce(c)
+consume(c) // what about 'go consume(c)'?
+</pre></div>
+
 <p>
 	Communication between goroutines is idiomatically accomplished
 	with channels, which are typed, synchronized, and optionally-
@@ -416,6 +501,10 @@ func main() {
 		$(".visual h2").toggle();
 		$(".visual h3").toggle();
 		$(".visual p").toggle();
+		$(".code h1").toggle();
+		$(".code h2").toggle();
+		$(".code h3").toggle();
+		$(".code p").toggle();
 	});
 </script>
 </body>
