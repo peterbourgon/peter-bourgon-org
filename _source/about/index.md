@@ -30,6 +30,6 @@ Some nice things to read on dead trees are, in particular order,
 
 <script src="/js/jquery-1.8.1.min.js" type="text/javascript"></script>
 <script src="/js/jquery-blink.js" type="text/javascript"></script>
-<script type="text/javascript" language="javascript">
+<script type="text/javascript">
   $(document).ready(function() { $(".blink").blink({delay:730}); });
 </script>
