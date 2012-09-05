@@ -104,21 +104,9 @@
 <!-- - - - - - -->
 
 <div class="step slide code" data-x="1500" data-y="0">
+
+<div class="notes">
 <h1>Syntax</h1>
-
-<div><pre>
-package main
-
-import "fmt"
-
-func main() {
-	var s1 string = "Jónsi"
-	s2 := "Jón Þór Birgisson"
-
-	fmt.Printf("%s, or '%s' for short\n", s1, s2)
-}
-</pre></div>
-
 <p>
 	<em style="background-color:yellow;">
 		Note that every slide with code on it will be interactive,
@@ -138,6 +126,21 @@ func main() {
 	<br/><br/>
 	Printf is a function defined in the 'fmt' package, and is called this way.
 </p>
+</div>
+
+<div><pre>
+package main
+
+import "fmt"
+
+func main() {
+	var s1 string = "Jón Þór Birgisson"
+	s2 := "Jónsi"
+
+	fmt.Printf("%s, or '%s' for short\n", s1, s2)
+}
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 </div>
 
 <!-- - - - - - -->
@@ -163,7 +166,8 @@ func main() {
 		fmt.Println("It's cold!")
 	}
 }
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Types are concrete things which may be defined by the user via
@@ -184,7 +188,8 @@ type Reader interface {
 }
 
 // TODO expand example
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Interfaces specify behavior:
@@ -211,7 +216,8 @@ doSomething()
 go doSomething()
 
 // TODO expand example
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Goroutines are essentially coroutines,
@@ -253,7 +259,8 @@ consume := func(c chan int) {
 c := make(chan int)
 go produce(c)
 consume(c) // what about 'go consume(c)'?
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Communication between goroutines is idiomatically accomplished
@@ -320,7 +327,8 @@ func main() {
 	fmt.Println(time.Since(began))
 	fmt.Println(results)
 }
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Imagine a request/response service which should aggregate results
@@ -358,7 +366,8 @@ func QueryAllConcurrent(q string, backends ...Backend) []string {
 	}
 	return results
 }
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Of course, naïve is not ideal.
@@ -383,7 +392,7 @@ func QueryAllConcurrent(q string, backends ...Backend) []string {
 <div class="step slide code" data-x="4500" data-y="1000">
 <h1>Query v3</h1>
 
-<pre>
+<div><pre>
 type BackendGroup []Backend
 
 func (g BackendGroup) QueryAllTakeFirst(q string) string {
@@ -416,7 +425,8 @@ func main() {
 	began := time.Now()
 	results := QueryReplicas("dubstep", g1, g2)
 }
-</pre>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Still not ideal. What if one of the backends goes down, or is slow?
@@ -495,7 +505,8 @@ func main() {
 
 	time.Sleep(1 * time.Second)
 }
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	Each step takes input, does its work, and forwards the output.
@@ -536,7 +547,8 @@ func main() {
 
 	time.Sleep(1 * time.Second)
 }
-</div></pre>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	If we want to add a new Filter stage, it's very straightforward.
@@ -566,7 +578,8 @@ func main() {
 
 	time.Sleep(1 * time.Second)
 }
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	If a specific pipeline stage takes longer than the others,
@@ -631,7 +644,8 @@ func Store(in chan Msg) {
 		msg.Done <- true        // signal to handler
 	}
 }
-</pre></div>
+</pre><div class="output"></div></div>
+<div class="compile-overlay"><a class="compile-button" href="#">&#x25BA;</a></div>
 
 <p>
 	What if our producer isn't a message queue, but instead a HTTP server?
@@ -672,12 +686,14 @@ func Store(in chan Msg) {
 </div><!--c-->
 </div><!--impress-->
 
-<div class="overlay"><a id="text-button" href="#">Notes</a></div>
-
+<div class="notes-overlay"><a id="notes-button" href="#">Notes</a></div>
 <script src="impress.js"></script>
 <script>impress().init();</script>
 <script>
-	$("#text-button").click(function() {
+	$("pre").contents().unwrap().wrap("<textarea wrap='off'/>");
+</script>
+<script>
+	$("#notes-button").click(function() {
 		$(".visual h1").toggle();
 		$(".visual h2").toggle();
 		$(".visual h3").toggle();
@@ -687,6 +703,15 @@ func Store(in chan Msg) {
 		$(".code h3").toggle();
 		$(".code p").toggle();
 	});
+	$(".compile-button").click(function() {
+		$(".present > div > .output").html("output here\nfoo bar\nfoo\nfoo\nfoo\nfoo\n")
+	});
+	$("body").keydown(function(event) {
+  		console.log(event.which)
+  		if (event.which == 27) {
+  			$("#notes-button").trigger("click");
+  		}
+   	});
 </script>
 </body>
 </html>
