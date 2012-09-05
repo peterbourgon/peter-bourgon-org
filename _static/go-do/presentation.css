@@ -32,7 +32,7 @@ a:visited { color: #66a; }
 .quarter { width: 25%; }
 
 .slide {
-    width: 900px;
+    min-width: 900px;
 }
 
 .slide img {
@@ -51,8 +51,8 @@ a:visited { color: #66a; }
 	background-color: rgba(255, 255, 255, 0.9);
 	padding: 15px;
 }
-.title h1 { font-size: 80px; }
 
+.title h1 { font-size: 80px; }
 
 .visual h1 {
 	position: absolute;
@@ -81,7 +81,7 @@ a:visited { color: #66a; }
 }
 
 .code {
-	background-color: yellow;
+
 }
 .code h1, .code h2, .code h3, .code p {
 
@@ -100,10 +100,11 @@ a:visited { color: #66a; }
 	width: 45%;
 }
 .code pre {
-	font-size: 16px;
-	background-color: green;
-	width: 45%;
-	min-height: 350px;
+	font-size: 18px;
+	width: 95%;
+	height: 600px;
+	overflow-x: visible;
+	overflow-y: scroll;
 }
 
 img {

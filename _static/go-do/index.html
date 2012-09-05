@@ -15,9 +15,20 @@
 
 <!-- - - - - - -->
 
-<div class="step slide title" data-x="0" data-y="-1000">
+<div class="step slide title" data-x="-1500" data-y="-1000">
 <h1>Go Do</h1>
 <h2>Peter Bourgon</h2>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide" data-x="0" data-y="-1000">
+<h1>peter.bourgon.org/go-do</h1>
+<p>
+	<br/>
+	If you have trouble seeing the slides, or want to play with the
+	interactive code (later on), you can access this presentation here.
+</p>
 </div>
 
 <!-- - - - - - -->
@@ -49,22 +60,23 @@
 	and comparing that against how the system should exist in the ideal case.
 	And the better I am at what I do, the better I can perform that transformation.
 </p>
-
 </div>
 
 <!-- - - - - - -->
 
 <div class="step slide" data-x="4500" data-y="-1000">
+<h1>Why Go?</h1>
 
 <p>
 	To help us walk the line between "now" and "later", we use tools.
+	<br/><br/>
 	<strong>I think Go is a really excellent tool.</strong>
+	<br/><br/>
 	It provides a small set of primitives that are orthogonal to each other,
 	and can be easily combined to build solutions to a large class of problems.
 
-	Those solutions tend to be easily decomposable, testable, and maintainable.
+	Those solutions tend to be decomposable, testable, and maintainable.
 </p>
-
 </div>
 
 <!-- - - - - - -->
@@ -105,19 +117,16 @@ func main() {
 
 	fmt.Printf("%s, or '%s' for short\n", s1, s2)
 }
-
-
-
-
-
-
-
-
-
-
 </pre></div>
 
 <p>
+	<em style="background-color:yellow;">
+		Note that every slide with code on it will be interactive,
+		editable, compilable, and runnable in situ. See
+		<a href="http://tour.golang.org">the Go Tour</a>
+		for an example.
+	</em>
+	<br/><br/>
 	Every Go source file is a member of a package.
 	"main" implies an executable; everything else implies a library.
 	<br/><br/>
@@ -159,7 +168,7 @@ func main() {
 <p>
 	Types are concrete things which may be defined by the user via
 	the <strong>type</strong> keyword. Commonly structs, but also aliases.
-	Note that 'type' always defines a new (ie. distinct) type,
+	Note that <strong>type</strong> always defines a new (ie. distinct) type,
 	which is not interchangable with the thing it's based on.
 </p>
 </div>
@@ -173,6 +182,8 @@ func main() {
 type Reader interface {
 	Read(n int) ([]byte, error)
 }
+
+// TODO expand example
 </pre></div>
 
 <p>
@@ -198,6 +209,8 @@ type Reader interface {
 <div><pre>
 doSomething()
 go doSomething()
+
+// TODO expand example
 </pre></div>
 
 <p>
@@ -220,7 +233,7 @@ go doSomething()
 
 <div><pre>
 produce := func(c chan int) {
-	c <- 1
+	c <- 1 // put data onto channel
 	c <- 2
 	c <- 5
 	c <- 3
@@ -229,7 +242,7 @@ produce := func(c chan int) {
 
 consume := func(c chan int) {
 	for {
-		i, ok := <-c
+		i, ok := <-c // read data from channel
 		if !ok {
 			break
 		}
@@ -260,21 +273,9 @@ consume(c) // what about 'go consume(c)'?
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="1500" data-y="1000">
-<img src="img/code-editor.jpg" />
-<p>
-	Imagine a request/response service which should aggregate results
-	from multiple backends.
-	Mock out a "backend", which takes some time to provide a result.
-	Then, make simple sequential queries over three of them.
-	The results are aggregated and returned to the user.
-	(<a href="http://code.google.com/p/go-tour/source/browse/talks/2012-04-25-NewYorkMeetup/index.html#676">inspiration</a>).
-
-	This is the most naïve way of making a search.
-	Which is a good way to start!
-	<br/><br/>
-
-<pre>
+<div class="step slide code" data-x="1500" data-y="1000">
+<h1>Query v1</h1>
+<div><pre>
 package main
 
 import (
@@ -319,36 +320,34 @@ func main() {
 	fmt.Println(time.Since(began))
 	fmt.Println(results)
 }
-</pre>
+</pre></div>
+
+<p>
+	Imagine a request/response service which should aggregate results
+	from multiple backends.
+	<br/><br/>
+	First, mock out some "backends", which take some time to provide a result.
+	<br/><br/>
+	Then, make simple sequential queries over them.
+	The results are aggregated and returned to the user.
+	(<a href="http://code.google.com/p/go-tour/source/browse/talks/2012-04-25-NewYorkMeetup/index.html#676">Inspiration</a>.)
+	<br/><br/>
+	This is the most naïve way of making a search.
+	Which is a good way to start!
 </p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="3000" data-y="1000">
-<img src="img/code-editor.jpg" />
-<p>
-	Of course, naïve is not ideal.
-	Why can't both backends be processing queries at the same time?
-	We can make this code concurrent pretty easily.
-	Think in terms of goroutines and channels.
-	Each query can execute in a separate goroutine, and the result fed into
-	a channel.
-	The "calling" goroutine can aggregate the results from that channel.
-	It looks like this.
-	<br/><br/>
-	Note: no explicit synchronization.<br/>
-	Note: no changes to the API. All the asynchronous stuff is handled
-	behind a synchronous API.<br/>
-	Note: no explicit cleanup.<br/>
-	<br/><br/>
+<div class="step slide code" data-x="3000" data-y="1000">
+<h1>Query v2</h1>
 
-<pre>
+<div><pre>
 func QueryAllConcurrent(q string, backends ...Backend) []string {
 	// query
 	c := make(chan string, len(backends))
 	for _, backend := range backends {
-		// why do I need to pass 'b' explicitly to the function?
+		// why do I need to explicitly pass 'backend' to the function?
 		go func(b Backend) { c <- b.Query(q) }(backend)
 	}
 
@@ -359,20 +358,30 @@ func QueryAllConcurrent(q string, backends ...Backend) []string {
 	}
 	return results
 }
-</pre>
+</pre></div>
+
+<p>
+	Of course, naïve is not ideal.
+	Why can't both backends be processing queries at the same time?
+	<br/><br/>
+	We can make this code concurrent pretty easily.
+	Think in terms of goroutines and channels.
+	Each query can execute in a separate goroutine, and the result fed into
+	a channel.
+	The "calling" goroutine can aggregate the results from that channel.
+	It looks like this.
+	<br/><br/>
+	<em>No</em> explicit synchronization.
+	<em>No</em> explicit cleanup.
+	<em>No</em> changes to the API;
+	all the asynchronous stuff is handled inside a synchronous function.
 </p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="4500" data-y="1000">
-<img src="img/code-editor.jpg" />
-<p>
-	Still not happy. What if one of the backends goes down, or is slow?
-	We can replicate the backends in different data centers,
-	push the query to all of them, and take the first response.
-	That should bring our averages down, and let us handle failures.
-	<br/><br/>
+<div class="step slide code" data-x="4500" data-y="1000">
+<h1>Query v3</h1>
 
 <pre>
 type BackendGroup []Backend
@@ -382,7 +391,7 @@ func (g BackendGroup) QueryAllTakeFirst(q string) string {
 	for _, backend := range g {
 		go func(b Backend) { c <- b.Query(q) }(backend)
 	}
-	return <-c  // what happens to the other results?
+	return <-c // what happens to the other goroutines?
 }
 
 func QueryReplicas(q string, groups ...BackendGroup) []string {
@@ -408,6 +417,12 @@ func main() {
 	results := QueryReplicas("dubstep", g1, g2)
 }
 </pre>
+
+<p>
+	Still not ideal. What if one of the backends goes down, or is slow?
+	We can replicate the backends in different data centers,
+	push the query to all of them, and take the first response.
+	That should bring our averages down, and let us handle failures.
 </p>
 </div>
 
@@ -430,60 +445,226 @@ func main() {
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="3000" data-y="2000">
-<img src="img/code-editor.jpg" />
+<div class="step slide code" data-x="3000" data-y="2000">
+<h1>Pipeline v1</h1>
+
+<div><pre>
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+type Msg string
+
+func Listen(out chan Msg) {
+	rand.Seed(time.Now().UnixNano())
+	for {
+		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+		if rand.Intn(10) < 3 {
+			out <- "foo"
+		} else {
+			out <- "bar"
+		}
+	}
+}
+
+func Enrich(in, out chan Msg) {
+	for {
+		msg := <-in
+		msg = "☆" + msg + "☆"
+		out <- msg
+	}
+}
+
+func Store(in chan Msg) {
+	for {
+		msg := <-in
+		fmt.Println(msg) // mock storage
+	}
+}
+
+func main() {
+	toEnricher := make(chan Msg)
+	toStore := make(chan Msg)
+
+	go Listen(toEnricher)
+	go Enrich(toEnricher, toStore)
+	go Store(toStore)
+
+	time.Sleep(1 * time.Second)
+}
+</pre></div>
+
 <p>
-	Break each step of the process apart, into simple,
-	synchronous functions. We will manage the motion of data
-	in a separate conceptual layer.
+	Each step takes input, does its work, and forwards the output.
+	Using channels to pass ownership of an event between stages makes the
+	program naturally concurrent.
+	It also cleanly separates the business logic from transport semantics.
+	<br/><br/>
+	Also, because the channels are unbuffered, you get automatic backpressure,
+	which (in my experience) is generally what you want.
 </p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="4500" data-y="2000">
-<img src="img/code-editor.jpg" />
-<p>
-	Using channels to pass ownership of a request
-	between pipeline stages makes the program
-	naturally concurrent.
+<div class="step slide code" data-x="4500" data-y="2000">
+<h1>Pipeline v2</h1>
 
-	It also cleanly separates concerns: business logic,
-	error handling, scaling for performance.
+<div><pre>
+func Filter(in, out chan Msg) {
+	for {
+		msg := <-in
+		if msg == "bar" {
+			continue // drop
+		}
+		out <- msg
+	}
+}
+
+func main() {
+	toFilter := make(chan Msg)
+	toEnricher := make(chan Msg)
+	toStore := make(chan Msg)
+
+	go Listen(toFilter)
+	go Filter(toFilter, toEnricher)
+	go Enrich(toEnricher, toStore)
+	go Store(toStore)
+
+	time.Sleep(1 * time.Second)
+}
+</div></pre>
+
+<p>
+	If we want to add a new Filter stage, it's very straightforward.
+	Just think in terms of the actors doing the work,
+	and the channels, ie. conduits, for that work.
+	It's safe and easy to abort processing of a Msg at the Filter stage.
 </p>
 </div>
 
 <!-- - - - - - -->
 
-<div class="step slide visual" data-x="6000" data-y="2000">
-<img src="img/code-editor.jpg" />
-<p>
-	A failure at any stage of the pipeline can easily trigger
-	a "failed" response to the client and terminate the request.
-	The consequences of the error don't bubble any further into
-	the workflow than they need to.
-</p>
-</div>
+<div class="step slide code" data-x="6000" data-y="2000">
+<h1>Pipeline v3</h1>
 
-<!-- - - - - - -->
+<div><pre>
+func main() {
+	toFilter := make(chan Msg)
+	toEnricher := make(chan Msg)
+	toStore := make(chan Msg)
 
-<div class="step slide visual" data-x="7500" data-y="2000">
-<img src="img/code-editor.jpg" />
+	go Listen(toFilter)
+	go Filter(toFilter, toEnricher)
+	go Enrich(toEnricher, toStore)
+	go Enrich(toEnricher, toStore)
+	go Enrich(toEnricher, toStore)
+	go Store(toStore)
+
+	time.Sleep(1 * time.Second)
+}
+</pre></div>
+
 <p>
-	If a specific backend takes longer to call than the others,
-	we can preserve overall throughput by scaling the actors for
+	If a specific pipeline stage takes longer than the others,
+	we can improve overall throughput by scaling the actors for
 	that backend independently.
+	<br/><br/>
+	Channel operations are a synchronization point across goroutines,
+	so multiple goroutines may safely read from, or write to, the same channel.
+	Each sent message will be delivered to precisely one receiver.
+</p>
+</div>
+
+<!-- - - - - - -->
+
+<div class="step slide code" data-x="7500" data-y="2000">
+<h1>Pipeline v4</h1>
+
+<div><pre>
+import (
+	"net/http" // production-grade HTTP server
+)
+
+type Msg struct {
+	Req    *http.Request
+	MyData string
+	Resp   http.ResponseWriter
+	Done   chan bool // signal channel
+}
+
+func Listen(out chan Msg) {
+	http.HandleFunc("/endpoint", func(r *http.Request, w http.ResponseWriter) {
+		msg := Msg{
+			Req:    r,
+			MyData: r.URL.Query().Get("data"),
+			Resp:   w,
+		}
+		out <- msg
+		<-msg.Done // wait for done signal (why do we need to do this?)
+	})
+	http.ListenAndServe("0.0.0.0:8080", nil) // blocks
+}
+
+// ...
+
+func Filter(in, out chan Msg) {
+	for {
+		msg := <-in
+		if msg.MyData == "bar" {
+			msg.Done <- true // signal to handler
+			continue         // loop for next Msg
+		}
+		out <- msg
+	}
+}
+
+// ...
+
+func Store(in chan Msg) {
+	for {
+		msg := <-in
+		fmt.Println(msg.MyData) // mock storage
+		msg.Done <- true        // signal to handler
+	}
+}
+</pre></div>
+
+<p>
+	What if our producer isn't a message queue, but instead a HTTP server?
+	What if every message is an HTTP request?
+	Do we need to do anything special?
+	<br/><br/>
+	Not really. Just change the listener and the Msg type.
 </p>
 </div>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 <div class="step slide title" data-x="0" data-y="3000">
-<h1>Thanks!</h1>
-<h2>@peterbourgon</h2>
-<a href="http://soundcloud.com">
-	<img src="img/soundcloud.png" alt="SoundCloud" />
-</a>
+
+<table cellpadding=35>
+<tr><td colspan="3" align="center"><h1>Thanks!</h1></td></tr>
+<tr>
+	<td>
+		<h2>@peterbourgon</h2>
+	</td>
+	<td>
+		<a href="http://soundcloud.com">
+			<img src="img/soundcloud.png" alt="SoundCloud" />
+		</a>
+	</td>
+	<td>
+		<a href="http://golang.org">
+			<img src="img/golang.png" alt="Golang" />
+		</a>
+	</td>
+</tr>
+</table>
+
 </div>
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
