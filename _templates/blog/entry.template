@@ -13,7 +13,7 @@
     <a href="/blog/archive" title="Archive">archive</a>.</h2>
 <h1>{{title}}</h1>
 
-<p class="when">{{year}} {{month}} {{day}}</p>
+<p class="when"><a href="/{{url}}">{{year}} {{month}} {{day}}</a></p>
 
 {{{content}}}
 
