@@ -13,9 +13,10 @@ http://peter.bourgon.org
 
 * Software Engineering as Process
 
+.image placeholder.jpg
+
 I think of developing and maintaining as processes. In both cases, I'm looking at the system as it exists now, and comparing that against how the system should exist in the ideal case. And the better I am at what I do, the better I can perform that transformation.
 
-.image placeholder.jpg
 
 
 * Why Go?
@@ -80,12 +81,16 @@ Interfaces are first-class objects: many stdlib functions operate exclusively on
 
 Goroutines are essentially coroutines, from Tony Hoare's _Communicating_Sequential_Processes_. Like very lightweight threads, multiplexed onto OS threads.
 
-Launch any function call in a new goroutine with the *go* keyword. It begins executing concurrently, "in the background". You don't get handles, or any explicit goroutine management.
+Launch any function call in a new goroutine with the *go* keyword. It begins executing concurrently, "in the background".
+
+You don't get handles, or any explicit goroutine management. Because...
 
 
 * Channels
 
 Communication between goroutines is idiomatically accomplished with *channels*, which are typed, synchronized, and optionally-buffered pipes for data.
+
+Channels are first-class objects, and may be passed around like anything else. You can have a channel of channels (of channels...)
 
 
 * Channels
@@ -239,6 +244,7 @@ We can just change the Msg type, to hold the relevant context...
 * Pipelined data processing
 
 And modify the Listener to start an HTTP server, to generate those Msgs.
+Note that we're passing pointers, now, because the stages can modify the message.
 
 .code http-pipeline.go /func Listen/,/^}$/
 

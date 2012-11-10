@@ -10,9 +10,9 @@ type Msg struct {
 	Done chan bool // signal channel to request handler
 }
 
-func Listen(out chan Msg) {
+func Listen(out chan *Msg) {
 	http.HandleFunc("/incoming", func(w http.ResponseWriter, r *http.Request) {
-		msg := Msg{
+		msg := &Msg{
 			Data: r.FormValue("data"),
 			Done: make(chan bool),
 		}
@@ -30,7 +30,7 @@ func Listen(out chan Msg) {
 	http.ListenAndServe(":8080", nil) // blocks
 }
 
-func Filter(in, out chan Msg) {
+func Filter(in, out chan *Msg) {
 	for {
 		msg := <-in
 		if msg.Data == "bar" {
@@ -41,7 +41,7 @@ func Filter(in, out chan Msg) {
 	}
 }
 
-func Enrich(in, out chan Msg) {
+func Enrich(in, out chan *Msg) {
 	for {
 		msg := <-in
 		msg.Data = "☆ " + msg.Data + " ☆"
@@ -49,7 +49,7 @@ func Enrich(in, out chan Msg) {
 	}
 }
 
-func Store(in chan Msg) {
+func Store(in chan *Msg) {
 	for {
 		msg := <-in
 		fmt.Println(msg.Data)
@@ -58,9 +58,9 @@ func Store(in chan Msg) {
 }
 
 func main() {
-	toFilter := make(chan Msg)
-	toEnricher := make(chan Msg)
-	toStore := make(chan Msg)
+	toFilter := make(chan *Msg)
+	toEnricher := make(chan *Msg)
+	toStore := make(chan *Msg)
 
 	go Listen(toFilter)
 	go Filter(toFilter, toEnricher)
