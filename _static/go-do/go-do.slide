@@ -13,28 +13,18 @@ http://peter.bourgon.org
 
 * Software Engineering as Process
 
-.image placeholder.jpg
+.image process.jpg
 
-I think of developing and maintaining as processes. In both cases, I'm looking at the system as it exists now, and comparing that against how the system should exist in the ideal case. And the better I am at what I do, the better I can perform that transformation.
-
+I think of this as a *process*. I look at a system as it exists today, and compare it against how it should exist in the future. The better I am at what I do, the better I can perform that transformation.
 
 
 * Why Go?
 
-To help us walk the line between _now_ and _later_, we use tools.
+# To help us walk the line between _now_ and _later_, we use tools.
 
 I think Go is a *really*excellent*tool*.
 
-It provides a small set of primitives that are orthogonal to each other, and can be easily combined to build solutions to a large class of problems.
-
-Those solutions tend to be decomposable, testable, and maintainable.
-
-
-* Why Go?
-
-.image placeholder.jpg
-
-Because the primitives are so powerful, solving a problem _correctly_ — ie. _ideally_ — is possible without leaning heavily on libraries or frameworks.
+It provides a small set of carefully-considered primitives which are orthogonal to each other, and can be easily combined to *develop* solutions to a large class of problems. Those solutions tend to be decomposable, testable, and *maintainable*.
 
 
 #
@@ -42,7 +32,7 @@ Because the primitives are so powerful, solving a problem _correctly_ — ie. _i
 #
 
 
-* Go in 3 minutes
+* Go in 5 minutes
 
 
 * Syntax
@@ -93,14 +83,33 @@ Communication between goroutines is idiomatically accomplished with *channels*, 
 Channels are first-class objects, and may be passed around like anything else. You can have a channel of channels (of channels...)
 
 
-* Channels
-
-.html ethos.html
+# * Channels
+#
+# .html ethos.html
 
 
 * Channels
 
 .play produce-consume.go
+
+
+* Concepts
+
+- Types & interfaces
+- Goroutines & channels
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+
+* Software Engineering as Process
+
+- Simplest possible *correct* solution to the problem
+- Make it better
+- Make it better
+- Make it better
 
 
 #
@@ -111,13 +120,23 @@ Channels are first-class objects, and may be passed around like anything else. Y
 * Example: Collect data from multiple backends
 
 
+* "Let's Go Further: Building Concurrent Software With Go"
+
+Sameer Ajmani, Google Tech Talk
+April 25, 2012
+
+.link http://youtu.be/4iAiS-qv26Q youtu.be/4iAiS-qv26Q
+
+_Example_respectfully_repurposed_.
+
+
 * Collect data from multiple backends
 
 Let's say a backend can perform queries, and return a string.
 
-.code naïve-aggregator.go /type Backend/,/^}$/
-.code naïve-aggregator.go /type MyBackend/,/^}$/
-.code naïve-aggregator.go /type Skrillex/,/^}$/
+.code naive-aggregator.go /type Backend/,/^}$/
+.code naive-aggregator.go /type MyBackend/,/^}$/
+.code naive-aggregator.go /type Skrillex/,/^}$/
 
 
 * Collect data from multiple backends
@@ -125,8 +144,8 @@ Let's say a backend can perform queries, and return a string.
 We want to broadcast a query to a set of backends, and aggregate the responses.
 What's the most naïve implementation?
 
-.code naïve-aggregator.go /func QueryAll/,/^}$/
-.play naïve-aggregator.go /func main/,/^}$/
+.code naive-aggregator.go /func QueryAll/,/^}$/
+.play naive-aggregator.go /func main/,/^}$/
 
 
 * Collect data from multiple backends
@@ -149,7 +168,6 @@ We can do even better. Replicate backends!
 
 Then query the replicas.
 
-.code replicated-aggregator.go /query-begin/,/query-end/
 .play replicated-aggregator.go /func main/,/^}$/
 
 
@@ -163,55 +181,58 @@ Then query the replicas.
 
 * Pipelined data processing
 
-.image placeholder.jpg
+.image listen-enrich-store.jpg
 
 We're subscribing to an event publisher, converting messages to enriched data models, and feeding them into a data store.
 
 
-* Pipelined data processing
+* Pipelined data processing: Listen
 
-Model each stage as a function. Here, our Listen function simulates an infinite stream of messages, pushing them down an output channel.
+Model each stage as a function.
+
+Here, our Listen function simulates an infinite stream of messages, pushing them down an output channel.
 
 .code simple-pipeline.go /func Listen/,/^}$
 
 
-* Pipelined data processing
+* Pipelined data processing: Enrich
 
 The Enrich stage reads a single message from the input channel, processes it, and pushes the result down the output channel.
 
 .code simple-pipeline.go /func Enrich/,/^}$
 
-Note: no explicit synchronization, no condition variables, no timed waits. Everything falls out of the goroutine/channel model.
+Note: no explicit synchronization, no condition variables, no timed waits.
+Everything falls out of the goroutine/channel model.
 
 
-* Pipelined data processing
+* Pipelined data processing: Store
 
 The Store stage simulates writing the message somewhere.
 
 .code simple-pipeline.go /func Store/,/^}$
 
 
-* Pipelined data processing
+* Pipelined data processing: main
 
 Wire the stages together, and launch each stage as a goroutine.
 
 .play simple-pipeline.go /func main/,/^}$/
 
-Using channels to pass ownership of a message between stages makes the program naturally concurrent. It also cleanly separates the business logic from transport semantics.
+Using channels to pass ownership of a message between stages makes the program naturally concurrent. It also cleanly separates the business logic from transport semantics: total separation of concerns.
 
 Note that because the channels are unbuffered, you get automatic backpressure, which (in my experience) is generally what you want.
 
 
-* Pipelined data processing
+* Pipelined data processing: Filter
 
 Let's add a Filtering stage!
 
 .code filtered-pipeline.go /func Filter/,/^}$
 
-Think in terms of actors doing the work, and the channels used to transport that work. It's safe and easy to abort the pipeline at the Filter stage.
+Think in terms of actors doing the work, and the pipes used to transport that work. It's safe and easy to abort the pipeline at any stage.
 
 
-* Pipelined data processing
+* Pipelined data processing: Filter
 
 Wire up the Filter stage...
 
@@ -222,34 +243,34 @@ There's no complex abstraction to get lost in. You can look at this function and
 "The code does what it says on the page."
 
 
-* Pipelined data processing
+* Pipelined data processing: concurrency
 
-If a specific stage takes longer than the others, we can improve overall throughput by scaling the actors for that stage independently.
+Scaling the actors for a stage increases the _concurrency_ of the program.
 
 .play scaled-pipeline.go /func main/,/^}$/
 
-No additional code. Channel operations are a synchronization point across goroutines, so multiple goroutines may safely read from (or write to) the same channel. Each message will be delivered to exactly one receiver.
+Channel operations are a synchronization point across goroutines, so multiple goroutines may safely read from (or write to) the same channel. Each message will be delivered to exactly one receiver.
 
 
-* Pipelined data processing
+* Pipelined data processing: HTTP
 
 What if our event source isn't a message queue, but instead an HTTP server?
 What if every message is an HTTP request?
 
-We can just change the Msg type, to hold the relevant context...
+We can just change the Msg type, to hold the relevant information...
 
 .code http-pipeline.go /type Msg/,/^}$/
 
 
-* Pipelined data processing
+* Pipelined data processing: HTTP
 
 And modify the Listener to start an HTTP server, to generate those Msgs.
-Note that we're passing pointers, now, because the stages can modify the message.
+(We're passing pointers, now, because the stages can modify the message.)
 
 .code http-pipeline.go /func Listen/,/^}$/
 
 
-* Pipelined data processing
+* Pipelined data processing: HTTP
 
 Also, whenever our pipeline completes, we need to signal the HTTP handler to write a response to the client and close the connection.
 
@@ -257,11 +278,23 @@ Also, whenever our pipeline completes, we need to signal the HTTP handler to wri
 .code http-pipeline.go /func Store/,/^}$/
 
 
-* Pipelined data processing
+* Pipelined data processing: HTTP
 
 Otherwise, everything is identical.
 
 .play http-pipeline.go /func main/,/^}$/
+
+
+* Software Engineering + Go
+
+Go helps the *process* of engineering software to be more pleasant.
+
+- Simple, orthogonal primitives
+- Readable + maintainable
+- "Code that grows with grace"
+
+
+
 
 #
 # ------------------------------------------------------------------------------

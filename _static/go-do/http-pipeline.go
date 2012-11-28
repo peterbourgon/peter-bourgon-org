@@ -11,7 +11,7 @@ type Msg struct {
 }
 
 func Listen(out chan *Msg) {
-	http.HandleFunc("/incoming", func(w http.ResponseWriter, r *http.Request) {
+	h := func(w http.ResponseWriter, r *http.Request) {
 		msg := &Msg{
 			Data: r.FormValue("data"),
 			Done: make(chan bool),
@@ -24,8 +24,9 @@ func Listen(out chan *Msg) {
 			return
 		}
 		w.Write([]byte(fmt.Sprintf("OK: %s", msg.Data)))
-	})
+	}
 
+	http.HandleFunc("/incoming", h)
 	fmt.Println("listening on :8080")
 	http.ListenAndServe(":8080", nil) // blocks
 }

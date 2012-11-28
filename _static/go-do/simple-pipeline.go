@@ -34,7 +34,7 @@ func Enrich(in, out chan Msg) {
 func Store(in chan Msg) {
 	for {
 		msg := <-in
-		fmt.Println(msg) // mock storage
+		fmt.Println(msg) // store to stdout
 	}
 }
 

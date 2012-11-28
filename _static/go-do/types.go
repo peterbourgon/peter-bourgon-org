@@ -11,8 +11,8 @@ type Celsius float32
 type Fahrenheit float32
 
 func main() {
-	c := Celsius(0)
-	f := Fahrenheit(32)
+	c := Celsius(-40.0)
+	f := Fahrenheit(-40.0)
 
 	if c == f { // compiler error
 		fmt.Println("It's cold!")

@@ -53,7 +53,7 @@ func main() {
 	toEnricher := make(chan Msg)
 	toStore := make(chan Msg)
 
-	go Listen(toFilter)
+	go Listen(toFilter)             // HL
 	go Filter(toFilter, toEnricher) // HL
 	go Enrich(toEnricher, toStore)
 	go Store(toStore)

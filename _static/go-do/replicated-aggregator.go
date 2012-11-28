@@ -36,24 +36,20 @@ func (b MyBackend) Query(q string) string {
 
 type Replicas []Backend // Backends with same content
 
-func (r Replicas) QueryAllTakeFirst(q string) string {
+func (r Replicas) Query(q string) string { // HL
 	c := make(chan string, len(r))
 	for _, backend := range r {
 		go func(b Backend) { c <- b.Query(q) }(backend)
 	}
-	return <-c // what happens to the other goroutines? // HL
+	return <-c // HL
 }
 
-// query-begin OMIT
-func QueryAll(q string, replicas ...Replicas) []string {
+func QueryAll(q string, backends ...Backend) []string {
 	// query
-	c := make(chan string, len(replicas))
-	for _, r := range replicas {
-		go func(r Replicas) { c <- r.QueryAllTakeFirst(q) }(r)
+	c := make(chan string, len(backends)) // buffered chan
+	for _, backend := range backends {
+		go func(b Backend) { c <- b.Query(q) }(backend) // HL
 	}
-
-	// ...
-	// query-end OMIT
 
 	// aggregate
 	results := []string{}
@@ -64,8 +60,8 @@ func QueryAll(q string, replicas ...Replicas) []string {
 }
 
 func main() {
-	r1 := Replicas{MyBackend("foo1"), MyBackend("foo2")}
-	r2 := Replicas{MyBackend("bar1"), MyBackend("bar2"), MyBackend("bar3")}
+	r1 := Replicas{MyBackend("foo1"), MyBackend("foo2"), MyBackend("foo3")}
+	r2 := Replicas{MyBackend("bar1"), MyBackend("bar2")}
 	r3 := Replicas{Skrillex{}, Skrillex{}, Skrillex{}, Skrillex{}, Skrillex{}}
 
 	began := time.Now()
