@@ -285,7 +285,7 @@ Otherwise, everything is identical.
 .play http-pipeline.go /func main/,/^}$/
 
 
-* Software Engineering + Go
+* Recap 
 
 Go helps the *process* of engineering software to be more pleasant.
 

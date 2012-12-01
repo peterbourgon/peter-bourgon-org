@@ -1,0 +1,1424 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Go Do</title>
+    <meta charset='utf-8'>
+    <script src='slides.js'></script>
+  </head>
+
+  <body style='display: none'>
+
+    <section class='slides layout-widescreen'>
+      
+      <article>
+        <h1>Go Do</h1>
+        
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Peter Bourgon
+  </p>
+  
+
+  
+  <p>
+    SoundCloud
+  </p>
+  
+
+          </div>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    
+  </p>
+  
+
+          </div>
+        
+      </article>
+      
+  
+  
+      <article>
+      
+        <h3>Software Engineering</h3>
+        <blockquote>
+	is concerned with <strong>developing</strong> and
+	<strong>maintaining</strong> software systems that behave reliably and
+	efficiently, are affordable to develop and maintain, and satisfy all the
+	requirements that customers have defined for them.
+</blockquote>
+
+&mdash;<a href="http://computingcareers.acm.org/?page_id=12">ACM</a>
+
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Software Engineering as Process</h3>
+        <div class="image"><img src="process.jpg" ></div>
+  
+  <p>
+    I think of this as a <b>process</b>. I look at a system as it exists today, and compare it against how it should exist in the future. The better I am at what I do, the better I can perform that transformation.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Why Go?</h3>
+        
+  
+  <p>
+    I think Go is a <b>really excellent tool</b>.
+  </p>
+  
+
+  
+  <p>
+    It provides a small set of carefully-considered primitives which are orthogonal to each other, and can be easily combined to <b>develop</b> solutions to a large class of problems. Those solutions tend to be decomposable, testable, and <b>maintainable</b>.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h2>Go in 5 minutes</h2>
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Syntax</h3>
+        
+  <div class="code playground" contenteditable="true"><!--{{.play syntax.go}}
+--><pre style="display: none"></pre><pre>package main
+
+import &#34;fmt&#34;
+
+func main() {
+    var s1 string = &#34;Jón Þór Birgisson&#34; // Variables may be explicitly typed,
+    s2 := &#34;Jónsi&#34;                       // or implicitly typed.
+
+    fmt.Printf(&#34;%s, or &#39;%s&#39; for short\n&#34;, s1, s2)
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Types</h3>
+        
+  <div class="code playground" contenteditable="true"><!--{{.play types.go}}
+--><pre style="display: none"></pre><pre>package main
+
+import &#34;fmt&#34;
+
+type Thing struct {
+    Name  string
+    Value int
+}
+
+type Celsius float32
+type Fahrenheit float32
+
+func main() {
+    c := Celsius(-40.0)
+    f := Fahrenheit(-40.0)
+
+    if c == f { // compiler error
+        fmt.Println(&#34;It&#39;s cold!&#34;)
+    }
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Interfaces</h3>
+        
+  
+  <p>
+    An interface is similar to an abstract class in other languages.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code race.go /type Runner/,/^}$/}}
+--><pre>type Runner interface {
+    Run(distance int) error
+}
+</pre></div>
+
+  
+  <p>
+    Concrete types <i>implement</i> interfaces.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code race.go /type Runbot9000/,/^}$/}}
+--><pre>type Runbot9000 struct {
+    // ...
+}
+</pre></div>
+
+  <div class="code" contenteditable="true"><!--{{.code race.go /func \(b Runbot9000\) Run/,/^}$/}}
+--><pre>func (b Runbot9000) Run(distance int) error {
+    return nil // Runbot 9000 is not programmed to fail
+}
+</pre></div>
+
+  
+  <p>
+    Crucially: there is <b>no explicit declaration of intent</b>.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Interfaces</h3>
+        
+  
+  <p>
+    Interfaces are first-class objects: many stdlib functions operate exclusively on interfaces.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code race.go /func Race/,/^}$/}}
+--><pre>func Race(distance int, runners ...Runner) {
+    for i, r := range runners {
+        err := r.Run(distance)
+        if err == nil {
+            fmt.Printf(&#34;Runner %d finished, hooray!\n&#34;, i)
+        } else {
+            fmt.Printf(&#34;Runner %d didn&#39;t finish: %s\n&#34;, i, err)
+        }
+    }
+}
+</pre></div>
+
+  <div class="code playground" contenteditable="true"><!--{{.play race.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+type Runner interface {
+	Run(distance int) error
+}
+
+type Runbot9000 struct {
+	// ...
+}
+
+func (b Runbot9000) Run(distance int) error {
+	return nil // Runbot 9000 is not programmed to fail
+}
+
+type Baby struct{}
+
+func (x Baby) Run(distance int) error {
+	return fmt.Errorf(&#34;babies can&#39;t run&#34;)
+}
+
+type Developer struct {
+	Clumsiness float32 // 0..1
+}
+
+func (d Developer) Run(distance int) error {
+	if rand.Float32() &lt; d.Clumsiness {
+		return fmt.Errorf(&#34;tripped over shoelaces&#34;)
+	}
+	return nil
+}
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+func Race(distance int, runners ...Runner) {
+	for i, r := range runners {
+		err := r.Run(distance)
+		if err == nil {
+			fmt.Printf(&#34;Runner %d finished, hooray!\n&#34;, i)
+		} else {
+			fmt.Printf(&#34;Runner %d didn&#39;t finish: %s\n&#34;, i, err)
+		}
+	}
+}
+
+</pre><pre>func main() {
+    Race(50, Developer{Clumsiness: 0.5}, Baby{}, Runbot9000{})
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Goroutines</h3>
+        
+  
+  <p>
+    Goroutines are essentially coroutines, from Tony Hoare&#39;s <i>Communicating Sequential Processes</i>. Like very lightweight threads, multiplexed onto OS threads.
+  </p>
+  
+
+  
+  <p>
+    Launch any function call in a new goroutine with the <b>go</b> keyword. It begins executing concurrently, &#34;in the background&#34;.
+  </p>
+  
+
+  
+  <p>
+    You don&#39;t get handles, or any explicit goroutine management. Because...
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Channels</h3>
+        
+  
+  <p>
+    Communication between goroutines is idiomatically accomplished with <b>channels</b>, which are typed, synchronized, and optionally-buffered pipes for data.
+  </p>
+  
+
+  
+  <p>
+    Channels are first-class objects, and may be passed around like anything else. You can have a channel of channels (of channels...)
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Channels</h3>
+        
+  <div class="code playground" contenteditable="true"><!--{{.play produce-consume.go}}
+--><pre style="display: none"></pre><pre>package main
+
+import &#34;fmt&#34;
+
+func main() {
+    c := make(chan int)
+    go produce(c)
+    <b>consume(c)</b>
+}
+
+func produce(c chan int) {
+    c &lt;- 1 // put data onto channel
+    c &lt;- 2
+    c &lt;- 3
+    close(c)
+}
+
+func consume(c chan int) {
+    for i := range c {
+        fmt.Println(i)
+    }
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Concepts</h3>
+        
+  <ul>
+  
+    <li>Types &amp; interfaces</li>
+  
+    <li>Goroutines &amp; channels</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Software Engineering as Process</h3>
+        
+  <ul>
+  
+    <li>Simplest possible <b>correct</b> solution to the problem</li>
+  
+    <li>Make it better</li>
+  
+    <li>Make it better</li>
+  
+    <li>Make it better</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h2>Example: Collect data from multiple backends</h2>
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>&#34;Let&#39;s Go Further: Building Concurrent Software With Go&#34;</h3>
+        
+  
+  <p>
+    Sameer Ajmani, Google Tech Talk<br>
+    April 25, 2012
+  </p>
+  
+<p class="link"><a href="http://youtu.be/4iAiS-qv26Q">youtu.be/4iAiS-qv26Q</a></p>
+  
+  <p>
+    <i>Example respectfully repurposed</i>.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Collect data from multiple backends</h3>
+        
+  
+  <p>
+    Let&#39;s say a backend can perform queries, and return a string.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code naive-aggregator.go /type Backend/,/^}$/}}
+--><pre>type Backend interface {
+    Query(q string) string
+}
+</pre></div>
+
+  <div class="code" contenteditable="true"><!--{{.code naive-aggregator.go /type MyBackend/,/^}$/}}
+--><pre>type MyBackend string
+
+func (b MyBackend) Query(q string) string {
+    time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+    return fmt.Sprintf(&#34;%s/%s&#34;, b, q)
+}
+</pre></div>
+
+  <div class="code" contenteditable="true"><!--{{.code naive-aggregator.go /type Skrillex/,/^}$/}}
+--><pre>type Skrillex struct{}
+
+func (s Skrillex) Query(q string) string {
+    time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+    return &#34;wub-wub-wub&#34;
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Collect data from multiple backends</h3>
+        
+  
+  <p>
+    We want to broadcast a query to a set of backends, and aggregate the responses.<br>
+    What&#39;s the most naïve implementation?
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code naive-aggregator.go /func QueryAll/,/^}$/}}
+--><pre>func QueryAll(q string, backends ...Backend) []string {
+    results := []string{}
+    for _, backend := range backends {
+        r := backend.Query(q)
+        results = append(results, r)
+    }
+    return results
+}
+</pre></div>
+
+  <div class="code playground" contenteditable="true"><!--{{.play naive-aggregator.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;flag&#34;
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+func init() {
+	flag.Parse()
+	rand.Seed(time.Now().UnixNano())
+}
+
+type Backend interface {
+	Query(q string) string
+}
+
+type Skrillex struct{}
+
+func (s Skrillex) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	return &#34;wub-wub-wub&#34;
+}
+
+type MyBackend string
+
+func (b MyBackend) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	return fmt.Sprintf(&#34;%s/%s&#34;, b, q)
+}
+
+func QueryAll(q string, backends ...Backend) []string {
+	results := []string{}
+	for _, backend := range backends {
+		r := backend.Query(q)
+		results = append(results, r)
+	}
+	return results
+}
+
+</pre><pre>func main() {
+    b1 := MyBackend(&#34;server-1&#34;)
+    b2 := MyBackend(&#34;server-2&#34;)
+    b3 := Skrillex{}
+
+    began := time.Now()
+    results := QueryAll(&#34;dubstep&#34;, b1, b2, b3)
+    fmt.Println(results)
+    fmt.Println(time.Since(began))
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Collect data from multiple backends</h3>
+        
+  
+  <p>
+    We can do better. Let&#39;s fire queries concurrently.
+  </p>
+  
+
+  <div class="code playground" contenteditable="true"><!--{{.play async-aggregator.go /func QueryAll/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;flag&#34;
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+func init() {
+	flag.Parse()
+	rand.Seed(time.Now().UnixNano())
+}
+
+type Backend interface {
+	Query(q string) string
+}
+
+type Skrillex struct{}
+
+func (s Skrillex) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	return &#34;wub-wub-wub&#34;
+}
+
+type MyBackend string
+
+func (b MyBackend) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	return fmt.Sprintf(&#34;%s/%s&#34;, b, q)
+}
+
+</pre><pre>func QueryAll(q string, backends ...Backend) []string {
+    // query
+    c := make(chan string, len(backends)) // buffered chan
+    for _, backend := range backends {
+        <b>go func(b Backend) { c &lt;- b.Query(q) }(backend)</b>
+    }
+
+    // aggregate
+    results := []string{}
+    for i := 0; i &lt; cap(c); i++ {
+        results = append(results, &lt;-c)
+    }
+    return results
+}
+</pre><pre style="display: none">
+func main() {
+	b1 := MyBackend(&#34;server-1&#34;)
+	b2 := MyBackend(&#34;server-2&#34;)
+	b3 := Skrillex{}
+
+	began := time.Now()
+	results := QueryAll(&#34;dubstep&#34;, b1, b2, b3)
+	fmt.Println(results)
+	fmt.Println(time.Since(began))
+}
+</pre></div>
+
+  
+  <p>
+    Note the QueryAll method definition didn&#39;t change. We still call it synchronously, and it does concurrent stuff internally.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Collect data from multiple backends</h3>
+        
+  
+  <p>
+    We can do even better. Replicate backends!
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code replicated-aggregator.go /type Replicas/,/^}$/}}
+--><pre>type Replicas []Backend // Backends with same content
+
+<b>func (r Replicas) Query(q string) string {</b>
+    c := make(chan string, len(r))
+    for _, backend := range r {
+        go func(b Backend) { c &lt;- b.Query(q) }(backend)
+    }
+    <b>return &lt;-c</b>
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Collect data from multiple backends</h3>
+        
+  
+  <p>
+    Then query the replicas.
+  </p>
+  
+
+  <div class="code playground" contenteditable="true"><!--{{.play replicated-aggregator.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;flag&#34;
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+var (
+	method = flag.String(&#34;method&#34;, &#34;sync&#34;, &#34;which query method to use&#34;)
+)
+
+func init() {
+	flag.Parse()
+	rand.Seed(time.Now().UnixNano())
+}
+
+type Backend interface {
+	Query(q string) string
+}
+
+type Skrillex struct{}
+
+func (s Skrillex) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	return &#34;wub-wub-wub&#34;
+}
+
+type MyBackend string
+
+func (b MyBackend) Query(q string) string {
+	time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+	return fmt.Sprintf(&#34;%s/%s&#34;, b, q)
+}
+
+type Replicas []Backend // Backends with same content
+
+func (r Replicas) Query(q string) string { // HL
+	c := make(chan string, len(r))
+	for _, backend := range r {
+		go func(b Backend) { c &lt;- b.Query(q) }(backend)
+	}
+	return &lt;-c // HL
+}
+
+func QueryAll(q string, backends ...Backend) []string {
+	// query
+	c := make(chan string, len(backends)) // buffered chan
+	for _, backend := range backends {
+		go func(b Backend) { c &lt;- b.Query(q) }(backend) // HL
+	}
+
+	// aggregate
+	results := []string{}
+	for i := 0; i &lt; cap(c); i++ {
+		results = append(results, &lt;-c)
+	}
+	return results
+}
+
+</pre><pre>func main() {
+    r1 := Replicas{MyBackend(&#34;foo1&#34;), MyBackend(&#34;foo2&#34;), MyBackend(&#34;foo3&#34;)}
+    r2 := Replicas{MyBackend(&#34;bar1&#34;), MyBackend(&#34;bar2&#34;)}
+    r3 := Replicas{Skrillex{}, Skrillex{}, Skrillex{}, Skrillex{}, Skrillex{}}
+
+    began := time.Now()
+    results := QueryAll(&#34;dubstep&#34;, r1, r2, r3)
+    fmt.Println(results)
+    fmt.Println(time.Since(began))
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h2>Example: Pipelined data processing</h2>
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing</h3>
+        <div class="image"><img src="listen-enrich-store.jpg" ></div>
+  
+  <p>
+    We&#39;re subscribing to an event publisher, converting messages to enriched data models, and feeding them into a data store.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: Listen</h3>
+        
+  
+  <p>
+    Model each stage as a function.
+  </p>
+  
+
+  
+  <p>
+    Here, our Listen function simulates an infinite stream of messages, pushing them down an output channel.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code simple-pipeline.go /func Listen/,/^}$}}
+--><pre>func Listen(out chan Msg) {
+    for {
+        time.Sleep(time.Duration(rand.Intn(250)) * time.Millisecond)
+        if rand.Intn(10) &lt; 6 {
+            out &lt;- &#34;foo&#34;
+        } else {
+            out &lt;- &#34;bar&#34;
+        }
+    }
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: Enrich</h3>
+        
+  
+  <p>
+    The Enrich stage reads a single message from the input channel, processes it, and pushes the result down the output channel.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code simple-pipeline.go /func Enrich/,/^}$}}
+--><pre>func Enrich(in, out chan Msg) {
+    for {
+        msg := &lt;-in
+        msg = &#34;☆ &#34; + msg + &#34; ☆&#34;
+        out &lt;- msg
+    }
+}
+</pre></div>
+
+  
+  <p>
+    Note: no explicit synchronization, no condition variables, no timed waits.<br>
+    Everything falls out of the goroutine/channel model.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: Store</h3>
+        
+  
+  <p>
+    The Store stage simulates writing the message somewhere.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code simple-pipeline.go /func Store/,/^}$}}
+--><pre>func Store(in chan Msg) {
+    for {
+        msg := &lt;-in
+        fmt.Println(msg) // store to stdout
+    }
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: main</h3>
+        
+  
+  <p>
+    Wire the stages together, and launch each stage as a goroutine.
+  </p>
+  
+
+  <div class="code playground" contenteditable="true"><!--{{.play simple-pipeline.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+type Msg string
+
+func Listen(out chan Msg) {
+	for {
+		time.Sleep(time.Duration(rand.Intn(250)) * time.Millisecond)
+		if rand.Intn(10) &lt; 6 {
+			out &lt;- &#34;foo&#34;
+		} else {
+			out &lt;- &#34;bar&#34;
+		}
+	}
+}
+
+func Enrich(in, out chan Msg) {
+	for {
+		msg := &lt;-in
+		msg = &#34;☆ &#34; + msg + &#34; ☆&#34;
+		out &lt;- msg
+	}
+}
+
+func Store(in chan Msg) {
+	for {
+		msg := &lt;-in
+		fmt.Println(msg) // store to stdout
+	}
+}
+
+</pre><pre>func main() {
+    // build the infrastructure
+    toEnricher := make(chan Msg)
+    toStore := make(chan Msg)
+
+    // launch the actors
+    go Listen(toEnricher)
+    go Enrich(toEnricher, toStore)
+    go Store(toStore)
+
+    time.Sleep(1 * time.Second)
+}
+</pre><pre style="display: none"></pre></div>
+
+  
+  <p>
+    Using channels to pass ownership of a message between stages makes the program naturally concurrent. It also cleanly separates the business logic from transport semantics: total separation of concerns.
+  </p>
+  
+
+  
+  <p>
+    Note that because the channels are unbuffered, you get automatic backpressure, which (in my experience) is generally what you want.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: Filter</h3>
+        
+  
+  <p>
+    Let&#39;s add a Filtering stage!
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code filtered-pipeline.go /func Filter/,/^}$}}
+--><pre>func Filter(in, out chan Msg) {
+    for {
+        msg := &lt;-in
+        if msg == &#34;bar&#34; {
+            continue // drop
+        }
+        out &lt;- msg
+    }
+}
+</pre></div>
+
+  
+  <p>
+    Think in terms of actors doing the work, and the pipes used to transport that work. It&#39;s safe and easy to abort the pipeline at any stage.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: Filter</h3>
+        
+  
+  <p>
+    Wire up the Filter stage...
+  </p>
+  
+
+  <div class="code playground" contenteditable="true"><!--{{.play filtered-pipeline.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+type Msg string
+
+func Listen(out chan Msg) {
+	for {
+		time.Sleep(time.Duration(rand.Intn(250)) * time.Millisecond)
+		if rand.Intn(10) &lt; 6 {
+			out &lt;- &#34;foo&#34;
+		} else {
+			out &lt;- &#34;bar&#34;
+		}
+	}
+}
+
+func Filter(in, out chan Msg) {
+	for {
+		msg := &lt;-in
+		if msg == &#34;bar&#34; {
+			continue // drop
+		}
+		out &lt;- msg
+	}
+}
+
+func Enrich(in, out chan Msg) {
+	for {
+		msg := &lt;-in
+		msg = &#34;☆ &#34; + msg + &#34; ☆&#34;
+		out &lt;- msg
+	}
+}
+
+func Store(in chan Msg) {
+	for {
+		msg := &lt;-in
+		fmt.Println(msg) // mock storage
+	}
+}
+
+</pre><pre>func main() {
+    <b>toFilter := make(chan Msg)</b>
+    toEnricher := make(chan Msg)
+    toStore := make(chan Msg)
+
+    <b>go Listen(toFilter)            </b>
+    <b>go Filter(toFilter, toEnricher)</b>
+    go Enrich(toEnricher, toStore)
+    go Store(toStore)
+
+    time.Sleep(1 * time.Second)
+}
+</pre><pre style="display: none"></pre></div>
+
+  
+  <p>
+    There&#39;s no complex abstraction to get lost in. You can look at this function and immediately understand what it does and how it works.
+  </p>
+  
+
+  
+  <p>
+    &#34;The code does what it says on the page.&#34;
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: concurrency</h3>
+        
+  
+  <p>
+    Scaling the actors for a stage increases the <i>concurrency</i> of the program.
+  </p>
+  
+
+  <div class="code playground" contenteditable="true"><!--{{.play scaled-pipeline.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;fmt&#34;
+	&#34;math/rand&#34;
+	&#34;time&#34;
+)
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+type Msg string
+
+func Listen(out chan Msg) {
+	for {
+		time.Sleep(time.Duration(rand.Intn(250)) * time.Millisecond)
+		if rand.Intn(10) &lt; 6 {
+			out &lt;- &#34;foo&#34;
+		} else {
+			out &lt;- &#34;bar&#34;
+		}
+	}
+}
+
+func Filter(in, out chan Msg) {
+	for {
+		msg := &lt;-in
+		if msg == &#34;bar&#34; {
+			continue // drop
+		}
+		out &lt;- msg
+	}
+}
+
+func Enrich(in, out chan Msg) {
+	for {
+		msg := &lt;-in
+		msg = &#34;☆ &#34; + msg + &#34; ☆&#34;
+		out &lt;- msg
+	}
+}
+
+func Store(in chan Msg) {
+	for {
+		msg := &lt;-in
+		fmt.Println(msg) // mock storage
+	}
+}
+
+</pre><pre>func main() {
+    toFilter := make(chan Msg)
+    toEnricher := make(chan Msg)
+    toStore := make(chan Msg)
+
+    go Listen(toFilter)
+    go Filter(toFilter, toEnricher)
+    <b>go Enrich(toEnricher, toStore)</b>
+    <b>go Enrich(toEnricher, toStore)</b>
+    <b>go Enrich(toEnricher, toStore)</b>
+    go Store(toStore)
+
+    time.Sleep(1 * time.Second)
+}
+</pre><pre style="display: none"></pre></div>
+
+  
+  <p>
+    Channel operations are a synchronization point across goroutines, so multiple goroutines may safely read from (or write to) the same channel. Each message will be delivered to exactly one receiver.
+  </p>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: HTTP</h3>
+        
+  
+  <p>
+    What if our event source isn&#39;t a message queue, but instead an HTTP server?<br>
+    What if every message is an HTTP request?
+  </p>
+  
+
+  
+  <p>
+    We can just change the Msg type, to hold the relevant information...
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code http-pipeline.go /type Msg/,/^}$/}}
+--><pre>type Msg struct {
+    Data string    // &#39;data&#39; parameter extracted from form values
+    Done chan bool // signal channel to request handler
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: HTTP</h3>
+        
+  
+  <p>
+    And modify the Listener to start an HTTP server, to generate those Msgs.<br>
+    (We&#39;re passing pointers, now, because the stages can modify the message.)
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code http-pipeline.go /func Listen/,/^}$/}}
+--><pre>func Listen(out chan *Msg) {
+    h := func(w http.ResponseWriter, r *http.Request) {
+        msg := &amp;Msg{
+            Data: r.FormValue(&#34;data&#34;),
+            Done: make(chan bool),
+        }
+        out &lt;- msg
+
+        success := &lt;-msg.Done // wait for done signal
+        if !success {
+            w.Write([]byte(fmt.Sprintf(&#34;aborted: %s&#34;, msg.Data)))
+            return
+        }
+        w.Write([]byte(fmt.Sprintf(&#34;OK: %s&#34;, msg.Data)))
+    }
+
+    http.HandleFunc(&#34;/incoming&#34;, h)
+    fmt.Println(&#34;listening on :8080&#34;)
+    http.ListenAndServe(&#34;:8080&#34;, nil) // blocks
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: HTTP</h3>
+        
+  
+  <p>
+    Also, whenever our pipeline completes, we need to signal the HTTP handler to write a response to the client and close the connection.
+  </p>
+  
+
+  <div class="code" contenteditable="true"><!--{{.code http-pipeline.go /func Filter/,/^}$/}}
+--><pre>func Filter(in, out chan *Msg) {
+    for {
+        msg := &lt;-in
+        if msg.Data == &#34;bar&#34; {
+            <b>msg.Done &lt;- false</b>
+            continue
+        }
+        out &lt;- msg
+    }
+}
+</pre></div>
+
+  <div class="code" contenteditable="true"><!--{{.code http-pipeline.go /func Store/,/^}$/}}
+--><pre>func Store(in chan *Msg) {
+    for {
+        msg := &lt;-in
+        fmt.Println(msg.Data)
+        <b>msg.Done &lt;- true</b>
+    }
+}
+</pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Pipelined data processing: HTTP</h3>
+        
+  
+  <p>
+    Otherwise, everything is identical.
+  </p>
+  
+
+  <div class="code playground" contenteditable="true"><!--{{.play http-pipeline.go /func main/,/^}$/}}
+--><pre style="display: none">package main
+
+import (
+	&#34;fmt&#34;
+	&#34;net/http&#34; // production-grade HTTP server
+)
+
+type Msg struct {
+	Data string    // &#39;data&#39; parameter extracted from form values
+	Done chan bool // signal channel to request handler
+}
+
+func Listen(out chan *Msg) {
+	h := func(w http.ResponseWriter, r *http.Request) {
+		msg := &amp;Msg{
+			Data: r.FormValue(&#34;data&#34;),
+			Done: make(chan bool),
+		}
+		out &lt;- msg
+
+		success := &lt;-msg.Done // wait for done signal
+		if !success {
+			w.Write([]byte(fmt.Sprintf(&#34;aborted: %s&#34;, msg.Data)))
+			return
+		}
+		w.Write([]byte(fmt.Sprintf(&#34;OK: %s&#34;, msg.Data)))
+	}
+
+	http.HandleFunc(&#34;/incoming&#34;, h)
+	fmt.Println(&#34;listening on :8080&#34;)
+	http.ListenAndServe(&#34;:8080&#34;, nil) // blocks
+}
+
+func Filter(in, out chan *Msg) {
+	for {
+		msg := &lt;-in
+		if msg.Data == &#34;bar&#34; {
+			msg.Done &lt;- false // HL
+			continue
+		}
+		out &lt;- msg
+	}
+}
+
+func Enrich(in, out chan *Msg) {
+	for {
+		msg := &lt;-in
+		msg.Data = &#34;☆ &#34; + msg.Data + &#34; ☆&#34;
+		out &lt;- msg
+	}
+}
+
+func Store(in chan *Msg) {
+	for {
+		msg := &lt;-in
+		fmt.Println(msg.Data)
+		msg.Done &lt;- true // HL
+	}
+}
+
+</pre><pre>func main() {
+    toFilter := make(chan *Msg)
+    toEnricher := make(chan *Msg)
+    toStore := make(chan *Msg)
+
+    go Listen(toFilter)
+    go Filter(toFilter, toEnricher)
+    go Enrich(toEnricher, toStore)
+    go Store(toStore)
+
+    select {} // block forever without spinning the CPU
+}
+</pre><pre style="display: none"></pre></div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Recap </h3>
+        
+  
+  <p>
+    Go helps the <b>process</b> of engineering software to be more pleasant.
+  </p>
+  
+
+  <ul>
+  
+    <li>Simple, orthogonal primitives</li>
+  
+    <li>Readable + maintainable</li>
+  
+    <li>&#34;Code that grows with grace&#34;</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h1>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Peter Bourgon
+  </p>
+  
+
+  
+  <p>
+    SoundCloud
+  </p>
+  
+<p class="link"><a href="http://twitter.com/peterbourgon">@peterbourgon</a></p><p class="link"><a href="http://peter.bourgon.org">peter.bourgon.org</a></p>
+          </div>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  </body>
+  <script src='playground.js'></script>
+</html>

@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	c := make(chan int)
 	go produce(c)
-	consume(c) // what about 'go consume(c)'?
+	consume(c) // HL
 }
 
 func produce(c chan int) {
