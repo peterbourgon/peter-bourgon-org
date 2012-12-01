@@ -6,5 +6,7 @@ links:
     url: /blog
   - title: my presentation on Postmodernism
     url: /postmodernism
+  - title: my presentation on Go and software engineering, Go Do
+    url: /go-do
     new: true
 
