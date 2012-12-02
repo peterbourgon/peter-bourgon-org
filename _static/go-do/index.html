@@ -109,6 +109,33 @@
   
       <article>
       
+        <h3>Facts about Go</h3>
+        
+  <ul>
+  
+    <li>Statically typed</li>
+  
+    <li>Compiled — <i>fast!</i></li>
+  
+    <li>Native binaries</li>
+  
+    <li>Garbage collected</li>
+  
+    <li>Looks like C</li>
+  
+    <li>Big standard library</li>
+  
+    <li>Baked-in concurrency</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
         <h3>Syntax</h3>
         
   <div class="code playground" contenteditable="true"><!--{{.play syntax.go}}
@@ -173,7 +200,7 @@ func main() {
 
   <div class="code" contenteditable="true"><!--{{.code race.go /type Runner/,/^}$/}}
 --><pre>type Runner interface {
-    Run(distance int) error
+    Run(int) error
 }
 </pre></div>
 
@@ -239,7 +266,7 @@ import (
 )
 
 type Runner interface {
-	Run(distance int) error
+	Run(int) error
 }
 
 type Runbot9000 struct {
@@ -423,14 +450,14 @@ func consume(c chan int) {
       <article>
       
         <h3>&#34;Let&#39;s Go Further: Building Concurrent Software With Go&#34;</h3>
-        
+        <p class="link"><a href="http://youtu.be/4iAiS-qv26Q">youtu.be/4iAiS-qv26Q</a></p>
   
   <p>
     Sameer Ajmani, Google Tech Talk<br>
     April 25, 2012
   </p>
   
-<p class="link"><a href="http://youtu.be/4iAiS-qv26Q">youtu.be/4iAiS-qv26Q</a></p>
+
   
   <p>
     <i>Example respectfully repurposed</i>.
@@ -1365,7 +1392,7 @@ func Store(in chan *Msg) {
   
       <article>
       
-        <h3>Recap </h3>
+        <h3>Recap</h3>
         
   
   <p>
