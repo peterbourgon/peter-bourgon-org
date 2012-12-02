@@ -7,7 +7,7 @@ import (
 )
 
 type Runner interface {
-	Run(distance int) error
+	Run(int) error
 }
 
 type Runbot9000 struct {
