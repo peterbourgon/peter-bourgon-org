@@ -35,6 +35,17 @@ It provides a small set of carefully-considered primitives which are orthogonal 
 * Go in 5 minutes
 
 
+* Facts about Go
+
+- Statically typed
+- Compiled — _fast!_
+- Native binaries
+- Garbage collected
+- Looks like C
+- Big standard library
+- Baked-in concurrency
+
+
 * Syntax
 
 .play syntax.go
@@ -122,10 +133,9 @@ Channels are first-class objects, and may be passed around like anything else. Y
 
 * "Let's Go Further: Building Concurrent Software With Go"
 
+.link http://youtu.be/4iAiS-qv26Q youtu.be/4iAiS-qv26Q
 Sameer Ajmani, Google Tech Talk
 April 25, 2012
-
-.link http://youtu.be/4iAiS-qv26Q youtu.be/4iAiS-qv26Q
 
 _Example_respectfully_repurposed_.
 
@@ -285,7 +295,7 @@ Otherwise, everything is identical.
 .play http-pipeline.go /func main/,/^}$/
 
 
-* Recap 
+* Recap
 
 Go helps the *process* of engineering software to be more pleasant.
 
