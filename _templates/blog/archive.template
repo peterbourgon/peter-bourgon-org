@@ -9,14 +9,16 @@
 <body>
 <div class="c">
 
-<h2><a href="/" title="Home">Home</a>,
+<h2><a href="/" title="Home">Home</a>;
     <span class="disabled" title="Archive">archive</span>.</h2>
+<hr/>
+
 <h1>Peter Bourgon <s>blag</s>blog</h1>
 
 <table>
 {{#index}}
 <tr>
-	<td><p class="flat when">{{year}} {{month}} {{day}}</p></td>
+	<td><p class="flat when"><a href="/{{url}}">{{year}} {{month}} {{day}}</a></p></td>
 	<td><p class="flat"><a href="/{{url}}">{{title}}</a></p></td>
 </tr>
 {{/index}}
