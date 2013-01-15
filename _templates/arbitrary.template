@@ -9,8 +9,7 @@
 <body>
 <div class="c">
 
-<h2><a href="/" title="Home">Home</a>.</h2>
-<hr/>
+[[header.template]]
 
 <h1>{{title}}</h1>
 

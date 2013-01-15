@@ -1,2 +1,2 @@
-template: blog/index.template
-index: 1
+template: redirect.template
+url: /blog/archive

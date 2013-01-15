@@ -9,11 +9,10 @@
 <body>
 <div class="c">
 
-<h2><a href="/" title="Home">Home</a>;
-    <span class="disabled" title="Archive">archive</span>.</h2>
-<hr/>
+[[header.template]]
 
-<h1>Peter Bourgon <s>blag</s>blog</h1>
+<h1>My blog entries,</h1>
+<h2 style="margin-top:-1em;">let me show you them.</h2>
 
 <table>
 {{#index}}
