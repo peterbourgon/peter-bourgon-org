@@ -11,14 +11,14 @@ rationally, compilers correctly flag this as problematic:
 ./test.cpp:8: warning: comparison between signed and unsigned integer expressions
 ```
 
-I think the best solution is to static_cast one to the other. But which to
+I think the best solution is to `static_cast` one to the other. But which to
 which? If you cast the `int` to a `size_t`, you run the risk of a negative `int`
 overflowing into an incorrectly-huge `size_t`. And if you cast the `size_t` to
 an int, you run the risk of a huge `size_t` overflowing into an incorrectly-
 negative int. So, pragmatically, if your `int` has a high likelihood of being
 negative, you should cast your `size_t` to an `int`; if your `size_t` has a high
 likelihood of being larger than your implementation's max `int` value, you
-should cast your `int` to a size_t.
+should cast your `int` to a `size_t`.
 
 Yet, at a high level, `size_t` is a "concept" both in the sense that it is not
 directly a primitive type, and that it represents something not immediately
