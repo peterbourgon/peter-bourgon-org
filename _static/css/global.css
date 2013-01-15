@@ -6,7 +6,8 @@ h1 { font: 400 20pt/20pt }
 h2 { font: 400 16pt/20pt }
 h3 { font: 400 12pt/20pt }
 
-p, ol, ul { font: 300 12pt/18pt "Averia Libre", monospace; }
+p, ol, ul { font: 300 12pt/18pt "Averia Libre", Georgia, serif; }
+p code { font-size: 10pt; }
 
 pre { margin-left: 2em; }
 
@@ -20,7 +21,7 @@ tr { min-height: 30px; vertical-align: top; }
 td { margin: 0 20px 0 0; min-width: 100px; }
 
 .when { font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-.when { color: #aaa; margin-top: -1.5em; }
+.when { color: #aaa; margin-top: -1em; }
 .when a { color: #aaa; }
 .when a:visited { color:#aaa; }
 
