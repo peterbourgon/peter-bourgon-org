@@ -21,13 +21,17 @@ public:
 };
 ```
 
-You just need to define one typedef (for convenience) and then you can create a member function pointer more or less as a first class object.
+You just need to define one typedef (for convenience) and then you can create a
+member function pointer more or less as a first class object.
 
 ```
 // typedef return-type (ClassName::*my-typedef-name)(arg1-type, arg2-type, ...)
 typedef void (Foo::*SomeFooFunction)();
+```
+
 Presumably you made it to pass it around to functions, or what-have-you:
 
+```
 void call_some_function(Foo& f, SomeFooFunction func_ptr)
 {
     (f.*func_ptr)();
@@ -42,7 +46,8 @@ int main()
 }
 ```
 
-Member functions of the same return type and argument signature can be interchangeably represented by the same member function pointer typedef.
+Member functions of the same return type and argument signature can be
+interchangeably represented by the same member function pointer typedef.
 
 ```
 class Foo
