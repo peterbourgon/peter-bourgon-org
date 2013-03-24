@@ -2,6 +2,8 @@
   "title": "About me!",
   "showtitle": false }
 ---
+# About me
+
 <a href="http://www.flickr.com/photos/peterbourgon/4108333661/" title="Untitled by peterbourgon, on Flickr">
 <img src="http://farm3.staticflickr.com/2614/4108333661_7c1fae058c_n.jpg" width="320" height="240" alt="Picture of me" />
 </a>
