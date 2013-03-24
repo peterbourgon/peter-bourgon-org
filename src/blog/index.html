@@ -1,0 +1,24 @@
+{ "entry": false,
+  "title": "Blog articles" }
+---
+{{ importhtml "../inc/top.source" }}
+
+<ul>
+{{ range sorted .files.blog }}
+	{{ if .entry }}
+		<li>
+			{{ if .date }}{{ .date }} &mdash;{{ end }}
+			<a href="{{ .url }}">
+				{{ if .title }}
+					{{ .title }}
+				{{ else }}
+					<em>untitled</em>
+				{{ end }}
+			</a>
+		</li>
+	{{ end }}
+{{ end }}
+</ul>
+
+{{ importhtml "../inc/bottom.source" }}
+

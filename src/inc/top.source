@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ .title }}</title>
+{{ importhtml "parts/meta.source" }}
+{{ importhtml "parts/csslinks.source" }}
+{{ importhtml "parts/ga.source" }}
+</head>
+<body>
+<div class="c">
+
+{{ if .showheader }}{{ importhtml "parts/header.source" }}{{ end }}
+
+{{ if .showtitle }}<h1>{{ .title }}</h1>{{ end }}

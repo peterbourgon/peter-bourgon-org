@@ -1,0 +1,5 @@
+{{ importhtml "top.source" }}
+
+{{ .content }}
+
+{{ importhtml "bottom.source" }}

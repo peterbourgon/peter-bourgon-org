@@ -1,0 +1,14 @@
+{{ importhtml "../inc/top.source" }}
+
+<h3 class="date">{{ .date }}</h3>
+
+{{ .content }}
+
+<br/><br/>
+<hr/>
+<p class="footer">
+  More <a href="/blog">blog articles</a>,
+  or follow me <a href="http://twitter.com/peterbourgon">on Twitter</a>.
+</p>
+
+{{ importhtml "../inc/bottom.source" }}

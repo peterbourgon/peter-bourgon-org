@@ -1,4 +1,3 @@
-peter-bourgon-org
-=================
+# peter.bourgon.org
 
 My web site.
