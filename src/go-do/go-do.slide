@@ -1,0 +1,311 @@
+Go Do
+
+Peter Bourgon
+SoundCloud
+@peterbourgon
+http://peter.bourgon.org
+
+
+* Software Engineering
+
+.html acm-definition.html
+
+
+* Software Engineering as Process
+
+.image process.jpg
+
+I think of this as a *process*. I look at a system as it exists today, and compare it against how it should exist in the future. The better I am at what I do, the better I can perform that transformation.
+
+
+* Why Go?
+
+# To help us walk the line between _now_ and _later_, we use tools.
+
+I think Go is a *really*excellent*tool*.
+
+It provides a small set of carefully-considered primitives which are orthogonal to each other, and can be easily combined to *develop* solutions to a large class of problems. Those solutions tend to be decomposable, testable, and *maintainable*.
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+
+* Go in 5 minutes
+
+
+* Facts about Go
+
+- Statically typed
+- Compiled — _fast!_
+- Native binaries
+- Garbage collected
+- Looks like C
+- Big standard library
+- Baked-in concurrency
+
+
+* Syntax
+
+.play syntax.go
+
+
+* Types
+
+.play types.go
+
+
+* Interfaces
+
+An interface is similar to an abstract class in other languages.
+
+.code race.go /type Runner/,/^}$/
+
+Concrete types _implement_ interfaces.
+
+.code race.go /type Runbot9000/,/^}$/
+.code race.go /func \(b Runbot9000\) Run/,/^}$/
+
+Crucially: there is *no*explicit*declaration*of*intent*.
+
+
+* Interfaces
+
+Interfaces are first-class objects: many stdlib functions operate exclusively on interfaces.
+
+.code race.go /func Race/,/^}$/
+.play race.go /func main/,/^}$/
+
+
+* Goroutines
+
+Goroutines are essentially coroutines, from Tony Hoare's _Communicating_Sequential_Processes_. Like very lightweight threads, multiplexed onto OS threads.
+
+Launch any function call in a new goroutine with the *go* keyword. It begins executing concurrently, "in the background".
+
+You don't get handles, or any explicit goroutine management. Because...
+
+
+* Channels
+
+Communication between goroutines is idiomatically accomplished with *channels*, which are typed, synchronized, and optionally-buffered pipes for data.
+
+Channels are first-class objects, and may be passed around like anything else. You can have a channel of channels (of channels...)
+
+
+# * Channels
+#
+# .html ethos.html
+
+
+* Channels
+
+.play produce-consume.go
+
+
+* Concepts
+
+- Types & interfaces
+- Goroutines & channels
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+
+* Software Engineering as Process
+
+- Simplest possible *correct* solution to the problem
+- Make it better
+- Make it better
+- Make it better
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+
+* Example: Collect data from multiple backends
+
+
+* "Let's Go Further: Building Concurrent Software With Go"
+
+.link http://youtu.be/4iAiS-qv26Q youtu.be/4iAiS-qv26Q
+Sameer Ajmani, Google Tech Talk
+April 25, 2012
+
+_Example_respectfully_repurposed_.
+
+
+* Collect data from multiple backends
+
+Let's say a backend can perform queries, and return a string.
+
+.code naive-aggregator.go /type Backend/,/^}$/
+.code naive-aggregator.go /type MyBackend/,/^}$/
+.code naive-aggregator.go /type Skrillex/,/^}$/
+
+
+* Collect data from multiple backends
+
+We want to broadcast a query to a set of backends, and aggregate the responses.
+What's the most naïve implementation?
+
+.code naive-aggregator.go /func QueryAll/,/^}$/
+.play naive-aggregator.go /func main/,/^}$/
+
+
+* Collect data from multiple backends
+
+We can do better. Let's fire queries concurrently.
+
+.play async-aggregator.go /func QueryAll/,/^}$/
+
+Note the QueryAll method definition didn't change. We still call it synchronously, and it does concurrent stuff internally.
+
+
+* Collect data from multiple backends
+
+We can do even better. Replicate backends!
+
+.code replicated-aggregator.go /type Replicas/,/^}$/
+
+
+* Collect data from multiple backends
+
+Then query the replicas.
+
+.play replicated-aggregator.go /func main/,/^}$/
+
+
+#
+# ------------------------------------------------------------------------------
+#
+
+
+* Example: Pipelined data processing
+
+
+* Pipelined data processing
+
+.image listen-enrich-store.jpg
+
+We're subscribing to an event publisher, converting messages to enriched data models, and feeding them into a data store.
+
+
+* Pipelined data processing: Listen
+
+Model each stage as a function.
+
+Here, our Listen function simulates an infinite stream of messages, pushing them down an output channel.
+
+.code simple-pipeline.go /func Listen/,/^}$
+
+
+* Pipelined data processing: Enrich
+
+The Enrich stage reads a single message from the input channel, processes it, and pushes the result down the output channel.
+
+.code simple-pipeline.go /func Enrich/,/^}$
+
+Note: no explicit synchronization, no condition variables, no timed waits.
+Everything falls out of the goroutine/channel model.
+
+
+* Pipelined data processing: Store
+
+The Store stage simulates writing the message somewhere.
+
+.code simple-pipeline.go /func Store/,/^}$
+
+
+* Pipelined data processing: main
+
+Wire the stages together, and launch each stage as a goroutine.
+
+.play simple-pipeline.go /func main/,/^}$/
+
+Using channels to pass ownership of a message between stages makes the program naturally concurrent. It also cleanly separates the business logic from transport semantics: total separation of concerns.
+
+Note that because the channels are unbuffered, you get automatic backpressure, which (in my experience) is generally what you want.
+
+
+* Pipelined data processing: Filter
+
+Let's add a Filtering stage!
+
+.code filtered-pipeline.go /func Filter/,/^}$
+
+Think in terms of actors doing the work, and the pipes used to transport that work. It's safe and easy to abort the pipeline at any stage.
+
+
+* Pipelined data processing: Filter
+
+Wire up the Filter stage...
+
+.play filtered-pipeline.go /func main/,/^}$/
+
+There's no complex abstraction to get lost in. You can look at this function and immediately understand what it does and how it works.
+
+"The code does what it says on the page."
+
+
+* Pipelined data processing: concurrency
+
+Scaling the actors for a stage increases the _concurrency_ of the program.
+
+.play scaled-pipeline.go /func main/,/^}$/
+
+Channel operations are a synchronization point across goroutines, so multiple goroutines may safely read from (or write to) the same channel. Each message will be delivered to exactly one receiver.
+
+
+* Pipelined data processing: HTTP
+
+What if our event source isn't a message queue, but instead an HTTP server?
+What if every message is an HTTP request?
+
+We can just change the Msg type, to hold the relevant information...
+
+.code http-pipeline.go /type Msg/,/^}$/
+
+
+* Pipelined data processing: HTTP
+
+And modify the Listener to start an HTTP server, to generate those Msgs.
+(We're passing pointers, now, because the stages can modify the message.)
+
+.code http-pipeline.go /func Listen/,/^}$/
+
+
+* Pipelined data processing: HTTP
+
+Also, whenever our pipeline completes, we need to signal the HTTP handler to write a response to the client and close the connection.
+
+.code http-pipeline.go /func Filter/,/^}$/
+.code http-pipeline.go /func Store/,/^}$/
+
+
+* Pipelined data processing: HTTP
+
+Otherwise, everything is identical.
+
+.play http-pipeline.go /func main/,/^}$/
+
+
+* Recap
+
+Go helps the *process* of engineering software to be more pleasant.
+
+- Simple, orthogonal primitives
+- Readable + maintainable
+- "Code that grows with grace"
+
+
+
+
+#
+# ------------------------------------------------------------------------------
+#
