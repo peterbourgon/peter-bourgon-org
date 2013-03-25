@@ -1,4 +1,8 @@
-body { margin: 4em 0; font-family: "Courier New", monospace; background-color: #fdfdfd; }
+body {
+	margin: 4em 0;
+	font-family: "Courier New", monospace;
+	background-color: #fdfdfd;
+}
 
 h1, h2, h3 { font-family: "Arvo", Palatino, serif; }
 h1 { font: 400 24pt/28pt; margin: 1em 0; }
@@ -7,31 +11,26 @@ h3 { font: 400 16pt/28pt; }
 
 h3.date { margin-top: -1.5em; margin-bottom: 1.5em; }
 
-p, ol, ul { color: #333; font: 400 14pt/21pt "Helvetica Neue", Helvetica, Arial, sans-serif; }
+p, ol, ul {
+	color: #444;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 24px;
+}
+
 pre { margin-left: 2em; }
 code { font-size: 12pt; }
 p strong { font-weight: 500; }
 
 p.header { font-style: italic; }
-p.footer { font-style: italic; margin-top: -1.8em; }
+p.footer { font-style: italic; margin-top: -2.2em; }
 
 a { text-decoration: none; }
 a:visited { color: #66a; }
 a:hover { text-decoration: underline; }
+
 hr { margin: -1em 0 2em 0; width: 66%; }
-
-table { border: 0; }
-tr { min-height: 30px; vertical-align: top; }
-td { margin: 0 20px 0 0; min-width: 100px; }
-
-.when { font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-.when { color: #aaa; margin-top: -1em; }
-.when a { color: #aaa; }
-.when a:visited { color:#aaa; }
-
-.disabled { color: #ccc; }
-.end { color: #999; border-top: solid 1px #000; margin-top: 4em; width: 66%; }
-.flat { line-height: 12pt; margin: 0 inherit; }
 
 .c { width: 55%; margin-left: 17%; min-width: 500px; }
 
