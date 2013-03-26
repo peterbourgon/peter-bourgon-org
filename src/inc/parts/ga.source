@@ -1,6 +1,6 @@
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-34323602-1']);
+  _gaq.push(['_setAccount', 'UA-16576902-1']);
   _gaq.push(['_setDomainName', 'bourgon.org']);
   _gaq.push(['_trackPageview']);
 
