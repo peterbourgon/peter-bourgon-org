@@ -33,6 +33,7 @@ a:hover { text-decoration: underline; }
 hr { margin: -1em 0 2em 0; width: 66%; }
 
 .c { width: 55%; margin-left: 17%; min-width: 500px; }
+.ads { float: right; width: 200px; }
 
 .new {
 	display: inline;
