@@ -9,8 +9,8 @@
 </a>
 <span style="position:relative; top:-115px; left:-260px; font-size:100px; color:#fff;" class="blink">&rarr;</span>
 
-I'm Peter, a systems and infrastructure software engineer. I'm currently living
-in Berlin, Germany, working on search and discovery for
+I'm Peter, a distributed systems software engineer. I'm currently living in
+Berlin, Germany, working on search and discovery for
 [SoundCloud](http://soundcloud.com).
 
 I'm into well-designed and maintainable code, avoiding pre- and over-
