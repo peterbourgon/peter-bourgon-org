@@ -146,9 +146,10 @@ public:
 };
 ```
 
-To make a block of code synchronized, you can simply put a Synchronize
-sync(monitor_mutex); at the entry point. Now we can combine our ThreadBase with
-our Monitor to get a synchronized thread, which may actually do useful work.
+To make a block of code synchronized, you can simply put a 
+`Synchronize sync(monitor_mutex);` at the entry point. Now we can combine 
+our ThreadBase with our Monitor to get a synchronized thread, which may 
+actually do useful work.
 
 ```
 class MyWorker : public ThreadBase, public Monitor
@@ -183,3 +184,17 @@ public:
 * (edit: fixed ThreadBase::join)
 * (edit: fixed shared_ptr formatting)
 * (edit: fixed Monitor destructor)
+
+Edit, June 2013: Bjørn Reese 
+[correctly notes](http://lists.boost.org/boost-users/2013/05/78869.php)
+that
+
+> The worker in this blog has a synchronization error. If stop() is called 
+> before run() -- this could happen due to thread scheduling -- then it 
+> will not stop.
+
+One solution, with one set of tradeoffs, is discussed in the thread.
+Another solution would be to withhold calls to `stop()` from your manager
+thread until you get a signal from a separate resource that processing is
+finished.
+
