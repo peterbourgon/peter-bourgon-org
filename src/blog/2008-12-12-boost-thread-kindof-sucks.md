@@ -1,6 +1,11 @@
 { "title": "boost::thread kindof sucks" }
 ---
 
+(_A follow-up to this rant came two years later: 
+ [Who needs boost? A simple pthreads wrapper][0]._)
+
+[0]: /blog/2010/10/27
+
 boost::thread is a (supposedly) powerful, clean, and otherwise good thread
 library for C++. I don't know. It's okay. But it's pretty non-condusive to good
 object-oriented design, mostly due to its (frankly, stupid) decision to deal in
