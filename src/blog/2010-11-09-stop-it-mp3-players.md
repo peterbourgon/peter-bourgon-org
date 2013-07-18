@@ -11,7 +11,7 @@ pocket, your MP3 player makes this really awful statement about your relation
 to your environment, by which I mean your society, by which I mean the rest of
 humanity. By plugging in your ear-buds you're effectively turning off one of
 your senses, which as a statement reads either as being too good for the place
-you're in, or too bored. or in any case that you want to separate yourself from
+you're in, or too bored, or in any case that you want to separate yourself from
 your surroundings to the maximum allowable degree. I have those moods too, but
 when I feel like indulging them I *stay at home*.
 
