@@ -10,12 +10,12 @@
 <span style="position:relative; top:-115px; left:-260px; font-size:100px; color:#fff;" class="blink">&rarr;</span>
 
 I'm Peter, a distributed systems software engineer. I'm currently living in
-Berlin, Germany, working on search and discovery for
+Berlin, Germany, working on large-scale data services for
 [SoundCloud](http://soundcloud.com).
 
-I'm into well-designed and maintainable code, avoiding pre- and over-
-optimization, and best practices. For fun, I do a lot of reading, and when the
-weather's nice, I'm an avid runner.
+I'm into well-designed and maintainable code, avoiding pre- and 
+over-optimization, and best practices. For fun, I do a lot of 
+reading, and when the weather's nice, I'm an avid runner.
 
 Some nice things to read on the internet are, in no particular order,
  [the Atlantic](http://www.theatlantic.com),
