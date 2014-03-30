@@ -42,3 +42,6 @@ hr { margin: -1em 0 2em 0; width: 66%; }
 	padding: 0px 4px 0px 2px;
 	font-style: italic;
 }
+
+.smallhex { font-family: "Arvo", monospace; font-size: 8pt; margin: 0 4px; }
+.smallhex a { color: #aaa; }
