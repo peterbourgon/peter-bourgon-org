@@ -96,7 +96,7 @@ It's also nice to break long lines on parameters. That is, rather than the Java-
 
 ```
 // Don't do this.
-func process(dst io.Writer,	readTimeout,
+func process(dst io.Writer, readTimeout,
 	writeTimeout time.Duration, allowInvalid bool,
 		max int, src <-chan util.Job) {
 	// ...
