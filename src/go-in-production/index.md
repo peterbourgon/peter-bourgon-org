@@ -145,7 +145,7 @@ f.Dest.Value = 2014
 
 We tried many ways of passing configuration to a Go program: parsing config files, extracting it from the environment directly with `os.Getenv`, various value-add flag parsing packages. In the end, the best value-for-money is just plain `package flag`. The strict typing and simple semantics are absolutely good enough for everything we need.
 
-We deploy primarily [12-Factor](http://12factor.net) applications, and 12-Factor apps pass configuration through the environment. But even there, we use a start script to convert environment variables to explicit flags. Flags act as an explicit and fully-documented surface area between a program and its operator. These are invaluable properties for understanding and operating binaries.
+We deploy primarily [12-Factor](http://12factor.net) applications, and 12-Factor apps pass configuration through the environment. But even so, we use a start script to convert environment variables to flags. Flags act as an explicit and fully-documented surface area between a program and its operating context. They're invaluable for understanding and operating programs.
 
 A nice idiom for flags is to define them in your `func main`. That prevents you from reading them arbitrarily in your code as globals, which forces you to abide strict dependency injection, which makes testing easier.
 
