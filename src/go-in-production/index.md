@@ -10,7 +10,7 @@
 
 At SoundCloud, we structure our product as an API with many clients. That is, our main website, mobile client, and mobile apps are all first-order clients of a single main API. Behind that API is a universe of services: SoundCloud operates basically as a Service-Oriented-Architecture.
 
-We're also a polyglot organizations, which means we use lots of languages. And many of those services (and backing infrastructure bits) are written in Go. In fact, we were pretty early adopters: we've been using Go in production for about two and a half years, now. Some of our projects include:
+We're also a polyglot organization, which means we use lots of languages. And many of those services (and backing infrastructure bits) are written in Go. In fact, we were pretty early adopters: we've been using Go in production for about two and a half years, now. Some of our projects include:
 
  - Bazooka, our internal platform-as-a-service; spiritually, very similar to Heroku or Flynn;
  - Our perimeter traffic tier is pretty standard (nginx, HAProxy, etc.) but it's coördinated with Go services;
