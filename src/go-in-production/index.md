@@ -263,3 +263,5 @@ $ bazooka scale -r <old> -n 0 ...
 ## Conclusions
 
 I intend this to be a kind of experience report from a large organization that's been running Go in production for a relatively long time. While these are informed opinions, they're still just opinions, so please take everything with a grain of salt. That said, Go's greatest strength is its structural simplicity. **The ultimate best practice is to embrace simplicity**, rather than trying to circumvent it.
+
+<br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon), or whatever.*
