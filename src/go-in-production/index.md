@@ -6,8 +6,6 @@
 
 ---
 
-# Go: Best Practices for Production Environments
-
 (_This was originally a talk at [GopherCon](http://www.gophercon.com) 2014. [Find the slides here](https://github.com/gophercon/2014-talks). No video yet._)
 
 At SoundCloud, we structure our product as an API with many clients. That is, our main website, mobile client, and mobile apps are all first-order clients of a single main API. Behind that API is a universe of services: SoundCloud operates basically as a Service-Oriented-Architecture.
