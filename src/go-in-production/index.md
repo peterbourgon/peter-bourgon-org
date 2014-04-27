@@ -162,7 +162,7 @@ func main() {
 
 ## Logging and telemetry
 
-We played around with several logging frameworks, providing things like leveled logging, debug, output routing, special formatting, and so on. In the end, we settled on plain `package log`. It works because we only log actionable information. That means serious, panic-level errors that need to be addressed by humans, or structured data that will be consumed by other machines. For example, the search dispatcher emits every request it processes with contextual information, so our analytics workflows can see how often people with New Zealand IPs search for Lorde, for example.
+We played around with several logging frameworks, providing things like leveled logging, debug, output routing, special formatting, and so on. In the end, we settled on plain `package log`. It works because we only log actionable information. That means serious, panic-level errors that need to be addressed by humans, or structured data that will be consumed by other machines. For example, the search dispatcher emits every request it processes with contextual information, so our analytics workflows can see how often people with New Zealand IPs search for [Lorde](https://soundcloud.com/lordemusic), or whatever.
 
 Everything else emitted by a running process we consider telemetry. Request response times, QPS, runtime errors, queue depths, and so on. And telemtry basically operates in one of two models: push and pull.
 
@@ -264,4 +264,4 @@ $ bazooka scale -r <old> -n 0 ...
 
 I intend this to be a kind of experience report from a large organization that's been running Go in production for a relatively long time. While these are informed opinions, they're still just opinions, so please take everything with a grain of salt. That said, Go's greatest strength is its structural simplicity. **The ultimate best practice is to embrace simplicity**, rather than trying to circumvent it.
 
-<br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon), or whatever.*
+<br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon).*
