@@ -164,7 +164,7 @@ func main() {
 
 We played around with several logging frameworks, providing things like leveled logging, debug, output routing, special formatting, and so on. In the end, we settled on plain `package log`. It works because we only log actionable information. That means serious, panic-level errors that need to be addressed by humans, or structured data that will be consumed by other machines. For example, the search dispatcher emits every request it processes with contextual information, so our analytics workflows can see how often people with New Zealand IPs search for [Lorde](https://soundcloud.com/lordemusic), or whatever.
 
-Everything else emitted by a running process we consider telemetry. Request response times, QPS, runtime errors, queue depths, and so on. And telemtry basically operates in one of two models: push and pull.
+Everything else emitted by a running process we consider telemetry. Request response times, QPS, runtime errors, queue depths, and so on. And telemetry basically operates in one of two models: push and pull.
 
  - **Push** means emitting metrics to a known external system. For example, Graphite, Statsd, and AirBrake work this way.
  - **Pull** means exposing metrics at some known location, and allowing an external system to scrape them. For example, `expvar` and Prometheus work this way. (Maybe there are others?)
