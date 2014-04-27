@@ -21,7 +21,7 @@ We're also a polyglot organization, which means we use lots of languages. And ma
  - We're also experimentation with a pure Go implementation of HTTP Live Streaming;
  - and many other small product-oriented services.
 
-These projects have been writte by around half a dozen teams, comprised of over a dozen individual SoundCloud gophers, most of whom work with Go full-time. After all this time, all of these projects, and among such a heterogeneous mix of engineers, we've evolved a set of best practices for Go in production. The lessons we've learned might be useful to other organizations starting to invest heavily in Go.
+These projects have been written by around half a dozen teams, comprised of over a dozen individual SoundCloud gophers, most of whom work with Go full-time. After all this time, all of these projects, and among such a heterogeneous mix of engineers, we've evolved a set of best practices for Go in production. The lessons we've learned might be useful to other organizations starting to invest heavily in Go.
 
 ## Development Environment
 
