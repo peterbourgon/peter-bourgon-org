@@ -175,7 +175,7 @@ Both styles have their place. Push is intuitive and straightforward to use when 
 
 We tried many different testing libraries and frameworks over the course of a year, but very quickly gave up on most of them, and today all of our testing is done with plain `package testing`, via data-driven (table-driven) tests. We don't have strong or specific complaints against testing/checking packages, beyond that they simply provided no great value. One thing that does help: [reflect.DeepEqual](http://golang.org/pkg/reflect#DeepEqual) gives you simple, full comparison of arbitrary data (i.e. expected vs. got).
 
-Package testing is geared around unit testing, but for integration tests, things are a little trickier. Spinning up external services typically depends on your integration environment, but we did find one nice idiom to integrate against them. Write an `integration_test.go`, and give it a build tag of `integration`. Define (global) flags for things like service addresses and connect strings, and use them in your tests.
+Package testing is geared around unit testing, but for integration tests, things are a little trickier. The process of spinning up external services typically depends on your integration environment, but we did find one nice idiom to integrate against them. Write an `integration_test.go`, and give it a build tag of `integration`. Define (global) flags for things like service addresses and connect strings, and use them in your tests.
 
 ```
 // +build integration
