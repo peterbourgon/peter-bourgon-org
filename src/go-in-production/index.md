@@ -200,7 +200,7 @@ Deploy           | `go test -tags=integration`
 
 ## Interlude
 
-So far, nothing too crazy. When doing research to compile this list, what was notable to me was just how... uninteresting the conclusions were. Boring. I want to emphasize that these very lightweight, pure-stdlib conventions really do scale to large groups of developers and diverse project ecosystems. You absolutely don't need your own error checking framework, or testing library, simply because your code base has grown beyond a certain size. Or you believe it _might_ grow beyond a certain size! You truly ain't gonna need it. The standard idioms and practices continue to function beautifully at scale.
+So far, nothing too crazy. When doing research to compile this list, what was notable to me was just how... uninteresting the conclusions were. Boring. I want to emphasize that these very lightweight, pure-stdlib conventions really do scale to large groups of developers and diverse project ecosystems. You absolutely don't need your own error checking framework, or testing library, or flag parser, simply because your code base has grown beyond a certain size. Or you believe it _might_ grow beyond a certain size! You truly ain't gonna need it. The standard idioms and practices continue to function beautifully at scale.
 
 ## Dependency management
 
