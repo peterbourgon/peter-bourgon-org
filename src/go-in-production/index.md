@@ -213,7 +213,7 @@ How important is your project? | Your dependency management solution is...
 Eh...                          | `go get -d` and hope!
 _Very._                        | VENDORING
 
-(It's worth noting that a shocking number of our long-term production services still rely on option 1. Still, because we don't generally use a lot of third-party code, and because major problems are usually detected at build time, we can get away with it.)
+(It's worth noting that a shocking number of our long-term production services still rely on option 1. Still, because we don't generally use a lot of third-party code, and because major problems are usually detected at build time, we can mostly get away with it.)
 
 Vendoring means copying your dependencies into your project's repo, and then using them when building. Depending on what you're shipping, there are two best practice ways of vendoring.
 
