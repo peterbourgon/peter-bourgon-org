@@ -169,7 +169,7 @@ Everything else emitted by a running process we consider telemetry. Request resp
  - **Push** means emitting metrics to a known external system. For example, Graphite, Statsd, and AirBrake work this way.
  - **Pull** means exposing metrics at some known location, and allowing an external system to scrape them. For example, `expvar` and Prometheus work this way. (Maybe there are others?)
 
-Both styles have their place. Push is intuitive and straightforward to use when you're just getting started. But pushed metrics are perversely incentivized with growth: the bigger you get, the more they cost. We've found that past a certain size of infrastructure, pull is the only model that scales. There's also a lot of value in being able to introspect a running system. So, best practice: `expvar` or expvar-style metrics exposition.
+Both styles have their place. Push is intuitive and straightforward to use when you're just getting started. But pushed metrics are perversely incentivized with growth: the bigger you get, the more they cost, in terms of CPU cycles and bandwidth. We've found that past a certain size of infrastructure, pull is the only model that scales. There's also a lot of value in being able to introspect a running system. So, best practice: `expvar` or expvar-style metrics exposition.
 
 ## Testing and validation
 
