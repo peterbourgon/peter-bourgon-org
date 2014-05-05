@@ -23,7 +23,8 @@ We're also a polyglot organization, which means we use lots of languages. And ma
 
 These projects have been written by around half a dozen teams, comprised of over a dozen individual SoundCloud gophers, most of whom work with Go full-time. After all this time, all of these projects, and among such a heterogeneous mix of engineers, we've evolved a set of best practices for Go in production. The lessons we've learned might be useful to other organizations starting to invest heavily in Go.
 
-## Development Environment
+<a name="development-environment"></a>
+## Development environment <a class="lite" href="#development-environment">&#8734;</a>
 
 On our laptops, we've got a single, global `GOPATH`. Personally, I like `$HOME`, but many others use a subdirectory under `$HOME`. We clone our repos into their canonical paths within the `GOPATH`, and work there directly. That is,
 
@@ -37,7 +38,8 @@ Many of us fought with this convention for a long time in the early days, to pre
 
 For editors, many of use use vim, with various plugins. (I understand [vim-go](https://github.com/fatih/vim-go) is a good one.) Many, including myself, use Sublime Text with GoSublime. A few use emacs. Nobody uses an IDE. I'm not sure that's a best practice, it's just interesting to note.
 
-## Repository structure
+<a name="repository-structure"></a>
+## Repository structure <a class="lite" href="#repository-structure">&#8734;</a>
 
 Our best practice is to keep things simple. Many, many services are maybe half a dozen source files in `package main`.
 
@@ -80,7 +82,8 @@ github.com/soundcloud/complex/
 
 Note that there's never a `src` directory involved. With the exception of a vendor subdirectory (more on that below) your repos shouldn't contain a directory named `src`, or represent their own `GOPATH`.
 
-## Formatting and style
+<a name="formatting-and-style"></a>
+## Formatting and style <a class="lite" href="#formatting-and-style">&#8734;</a>
 
 First and foremost, configure your editor to `go fmt` (or [`goimports`](https://github.com/bradfitz/goimports)) your code on save, using the default arguments. That means tabs for indentation, and spaces for alignment. Code that isn't properly formatted shouldn't be committed anywhere.
 
@@ -141,7 +144,8 @@ f.Dest.Key = "gophercon"
 f.Dest.Value = 2014
 ```
 
-## Configuration
+<a name="configuration"></a>
+## Configuration <a class="lite" href="#configuration">&#8734;</a>
 
 We tried many ways of passing configuration to a Go program: parsing config files, extracting it from the environment directly with `os.Getenv`, various value-add flag parsing packages. In the end, the best value-for-money is just plain `package flag`. The strict typing and simple semantics are absolutely good enough for everything we need.
 
@@ -160,7 +164,8 @@ func main() {
 }
 ```
 
-## Logging and telemetry
+<a name="logging-and-telemetry"></a>
+## Logging and telemetry <a class="lite" href="#logging-and-telemetry">&#8734;</a>
 
 We played around with several logging frameworks, providing things like leveled logging, debug, output routing, special formatting, and so on. In the end, we settled on plain `package log`. It works because we only log actionable information. That means serious, panic-level errors that need to be addressed by humans, or structured data that will be consumed by other machines. For example, the search dispatcher emits every request it processes with contextual information, so our analytics workflows can see how often people with New Zealand IPs search for [Lorde](https://soundcloud.com/lordemusic), or whatever.
 
@@ -171,7 +176,8 @@ Everything else emitted by a running process we consider telemetry. Request resp
 
 Both styles have their place. Push is intuitive and straightforward to use when you're just getting started. But pushed metrics are perversely incentivized with growth: the bigger you get, the more they cost, in terms of CPU cycles and bandwidth. We've found that past a certain size of infrastructure, pull is the only model that scales. There's also a lot of value in being able to introspect a running system. So, best practice: `expvar` or expvar-style metrics exposition.
 
-## Testing and validation
+<a name="testing-and-validation"></a>
+## Testing and validation <a class="lite" href="#testing-and-validation">&#8734;</a>
 
 We tried many different testing libraries and frameworks over the course of a year, but very quickly gave up on most of them, and today all of our testing is done with plain `package testing`, via data-driven (table-driven) tests. We don't have strong or specific complaints against testing/checking packages, beyond that they simply provided no great value. One thing that does help: [reflect.DeepEqual](http://golang.org/pkg/reflect#DeepEqual) gives you simple, full comparison of arbitrary data (i.e. expected vs. got).
 
@@ -202,7 +208,8 @@ Deploy           | `go test -tags=integration`
 
 So far, nothing too crazy. When doing research to compile this list, what was notable to me was just how... uninteresting the conclusions were. Boring. I want to emphasize that these very lightweight, pure-stdlib conventions really do scale to large groups of developers and diverse project ecosystems. You absolutely don't need your own error checking framework, or testing library, or flag parser, simply because your code base has grown beyond a certain size. Or you believe it _might_ grow beyond a certain size! You truly ain't gonna need it. The standard idioms and practices continue to function beautifully at scale.
 
-## Dependency management
+<a name="dependency-management"></a>
+## Dependency management <a class="lite" href="#dependency-management">&#8734;</a>
 
 Dependency management! Whee! ᕕ( ᐛ )ᕗ
 
@@ -211,7 +218,7 @@ The state of dependency management in the Go ecosystem is a topic of hot debate,
 How important is your project? | Your dependency management solution is...
 -------------------------------|-------------------------------------------
 Eh...                          | `go get -d` and hope!
-_Very._                        | VENDORING
+_Very._                        | VENDOR
 
 (It's worth noting that a shocking number of our long-term production services still rely on option 1. Still, because we don't generally use a lot of third-party code, and because major problems are usually detected at build time, we can mostly get away with it.)
 
@@ -238,7 +245,8 @@ If you're shipping a library, create a `vendor` subdirectory in the root of your
 
 How to actually copy the dependencies into your repository is another hot topic. The simplest way is to **manually** copy the files from a clone, which may be the best answer if you're not concerned with pushing changes upstream. Some people use **git submodules**, but we found them very counterintuitive and difficult to manage. (So do [many](http://codingkilledthecat.wordpress.com/2012/04/28/why-your-company-shouldnt-use-git-submodules) other [people](http://somethingsinistral.net/blog/git-submodules-are-probably-not-the-answer/), for the record.) We've had good success with **git subtrees**, which appear to work like submodules ought to. And there's plenty of work on **tools** to handle this work automatically. Right now, it looks like [godep](http://github.com/tools/godep) is the most actively developed, and is certainly worth investigating.
 
-## Building and deploying
+<a name="building-and-deploying"></a>
+## Building and deploying <a class="lite" href="#building-and-deploying">&#8734;</a>
 
 Building and deploying is tricky, because it's so tightly coupled to your operational environment. I'll describe our situation, because I think it's a really good model, but it may not apply directly to other organizations.
 
@@ -260,7 +268,8 @@ $ # validate
 $ bazooka scale -r <old> -n 0 ...
 ```
 
-## Conclusions
+<a name="conclusions"></a>
+## Conclusions <a class="lite" href="#conclusions">&#8734;</a>
 
 I intend this to be a kind of experience report from a large organization that's been running Go in production for a relatively long time. While these are informed opinions, they're still just opinions, so please take everything with a grain of salt. That said, Go's greatest strength is its structural simplicity. **The ultimate best practice is to embrace simplicity**, rather than trying to circumvent it.
 

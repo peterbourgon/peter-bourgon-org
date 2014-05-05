@@ -24,6 +24,7 @@ th { font-weight: bold; text-align: left; }
 pre { margin: 0 2em; padding: 1em; background-color: #eee; }
 code { font-size: 11pt; background-color: #eee; }
 p strong { font-weight: 500; }
+h2 a, a:visited { text-decoration: none; color: #ddd; }
 
 p.header { font-style: italic; }
 p.footer { font-style: italic; margin-top: -2.2em; }
