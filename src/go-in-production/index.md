@@ -36,7 +36,7 @@ $ git clone git@github.com:soundcloud/roshi
 
 Many of us fought with this convention for a long time in the early days, to preserve our own particular methods of code organization. It simply wasn't worth the hassle.
 
-For editors, many of use use vim, with various plugins. (I understand [vim-go](https://github.com/fatih/vim-go) is a good one.) Many, including myself, use Sublime Text with GoSublime. A few use emacs. Nobody uses an IDE. I'm not sure that's a best practice, it's just interesting to note.
+For editors, many of us use vim, with various plugins. (I understand [vim-go](https://github.com/fatih/vim-go) is a good one.) Many, including myself, use Sublime Text with GoSublime. A few use emacs. Nobody uses an IDE. I'm not sure that's a best practice, it's just interesting to note.
 
 <a name="repository-structure"></a>
 ## Repository structure <a class="lite" href="#repository-structure">&#8734;</a>
