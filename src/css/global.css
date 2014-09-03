@@ -53,6 +53,6 @@ hr { margin: -1em 0 2em 0; width: 66%; }
 	font-style: italic;
 }
 
-.smallhex { font-family: "Arvo", monospace; font-size: 8pt; margin: 0 4px; }
+.smallhex { font-size: 8pt; margin: 0 4px; }
 .smallhex a { color: #aaa; }
 

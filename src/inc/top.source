@@ -9,6 +9,6 @@
 <body>
 <div class="c">
 
-{{ if .showheader }}{{ importhtml "parts/header.source" }}{{ end }}
+{{ if .showsidebar }}{{ importhtml "parts/sidebar.source" }}{{ end }}
 
 {{ if .showtitle }}<h1>{{ .title }}</h1>{{ end }}

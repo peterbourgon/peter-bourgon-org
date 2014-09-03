@@ -1,7 +1,6 @@
 {
 	"template": "../inc/arbitrary-page.template.source",
-	"title": "Emoticon index",
-	"showheader": true
+	"title": "Emoticon index"
 }
 
 ---
@@ -13,7 +12,7 @@
 ᕕ( ᐛ )ᕗ         | whee
 (ಠ_ಠ)           | disapproval
 (Ծ‸Ծ)           | disapproval
-ఠ ͟ಠ             | compact disapproval 
+ఠ ͟ಠ             | compact disapproval
 ༼⍨༽             | weird dude
 (  ͡° ͜ʖ ͡°)       | creepy guy
 (ง •̀_•́)ง        | fighting words
