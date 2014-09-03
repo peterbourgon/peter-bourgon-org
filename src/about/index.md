@@ -13,8 +13,8 @@ I'm Peter, a software engineer focusing on large-scale distributed systems.
 I'm currently living in Berlin, Germany, working on the infrastructure that
 powers [SoundCloud](http://soundcloud.com).
 
-I prefer to write software that solves a specific, tightly-defined problem,
-rather than software that solves a class of problems generally. I believe:
+I prefer to write code that solves a specific, tightly-defined problem, rather
+than code that solves a class of problems generally. I believe:
 
 - in [stripped and liberated](https://news.ycombinator.com/item?id=8013616) software;
 - in [the Unix philosophy](http://en.wikipedia.org/wiki/Unix_philosophy), especially its rule of composition;
