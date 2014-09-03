@@ -1,7 +1,6 @@
 {
 	"template": "../inc/arbitrary-page.template.source",
-	"title": "Go: Best Practices for Production Environments",
-	"showheader": false
+	"title": "Go: Best Practices for Production Environments"
 }
 
 ---

@@ -1,7 +1,8 @@
-<p class="header">
-  Peter Bourgon:
-  <a href="/" title="Home">home</a>,
-  <a href="/about" title="About">about</a>,
-  <a href="/blog" title="Blog">blog</a>.
+<div id="sidebar">
+<p>
+  <strong>Peter Bourgon</strong><br/>
+  <a href="/" title="Home">Home</a><br/>
+  <a href="/about" title="About">About</a><br/>
+  <a href="/blog" title="Blog">Blog</a><br/>
 </p>
-<hr/>
+</div>
