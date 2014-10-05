@@ -47,7 +47,7 @@ hr { margin: -1em 0 2em 0; width: 66%; }
 .smallhex a { color: #aaa; }
 
 table.cv { border-collapse: collapse; margin: 0; padding: 0; }
-table.cv td { padding: 0 34px 0 0; }
+table.cv td { padding: 0 34px 0 0; vertical-align: top; }
 table.cv td.when { white-space: nowrap; }
 table.cv td.where { width: 99% }
 table.cv td.what { padding: 0 0 0 34px; }
