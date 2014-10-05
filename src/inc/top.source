@@ -7,8 +7,8 @@
 {{ importhtml "parts/ga.source" }}
 </head>
 <body>
-<div class="c">
-
-{{ if .showsidebar }}{{ importhtml "parts/sidebar.source" }}{{ end }}
+<div id="c">
+<div id="cc">
+<div id="main">
 
 {{ if .showtitle }}<h1>{{ .title }}</h1>{{ end }}

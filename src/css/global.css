@@ -2,6 +2,7 @@ body {
 	margin: 4em 0;
 	font-family: "Courier New", monospace;
 	background-color: #fdfdfd;
+	text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3 { font-family: "Helvetica Neue", Arial, serif; letter-spacing: 1px; }
@@ -26,14 +27,6 @@ code { font-size: 11pt; background-color: #eee; }
 p strong { font-weight: 500; }
 h2 a, a:visited { text-decoration: none; color: #ddd; }
 
-div#sidebar {
-	float: left;
-	margin-left: -150px;
-	margin-top: -4px;
-	width: 140px;
-	left: 10%;
-}
-
 p.footer { font-style: italic; margin-top: -2.2em; }
 
 a { text-decoration: none; }
@@ -41,9 +34,6 @@ a:visited { color: #66a; }
 a:hover { text-decoration: underline; }
 
 hr { margin: -1em 0 2em 0; width: 66%; }
-
-.c { width: 55%; min-width: 500px; max-width: 650px; margin: 0 auto; }
-.ads { float: right; width: 200px; }
 
 .new {
 	display: inline;
@@ -56,3 +46,38 @@ hr { margin: -1em 0 2em 0; width: 66%; }
 .smallhex { font-size: 8pt; margin: 0 4px; }
 .smallhex a { color: #aaa; }
 
+table.cv { border-collapse: collapse; margin: 0; padding: 0; }
+table.cv td { padding: 0 34px 0 0; }
+table.cv td.when { white-space: nowrap; }
+table.cv td.where { width: 99% }
+table.cv td.what { padding: 0 0 0 34px; }
+
+div#c{
+   width: 65%;
+   min-width: 600px;
+   max-width: 850px;
+   margin: 0 auto;
+}
+
+div#cc{
+   float: left;
+   width: 100%;
+}
+
+div#main{
+   margin-right:150px;
+   margin-left:150px;
+}
+
+div#sidebar{
+   float: left;
+   width: 120px;
+   margin-top: 27px;
+   margin-left: -100%;
+}
+
+div#right {
+   float: left;
+   width: 120px;
+   margin-left: -120px;
+}
