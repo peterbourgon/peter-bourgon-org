@@ -20,5 +20,6 @@
 ┬──┬◡ﾉ(° -°ﾉ)   | table reset
 (∩｀-´)⊃━☆ﾟ.*･｡ﾟ| gun sparkles
 (ﾉ °▽°)ﾉ*:・ﾟ✧  | happy sparkles
+( ॣ•͈૦•͈ ॣ)꒳ᵒ꒳ᵎᵎᵎ | wow
 
 
