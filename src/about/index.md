@@ -14,7 +14,8 @@ I'm currently living in Berlin, Germany, working on the infrastructure that
 powers [SoundCloud](http://soundcloud.com).
 
 I prefer to write code that solves a specific, tightly-defined problem, rather
-than code that solves a class of problems generally. I believe:
+than code that solves a class of problems generally. Letter openers, not Swiss Army knives.
+I believe:
 
 - in [stripped and liberated](https://news.ycombinator.com/item?id=8013616) software;
 - in [the Unix philosophy](http://en.wikipedia.org/wiki/Unix_philosophy), especially its rule of composition;
