@@ -11,4 +11,4 @@
 <div id="cc">
 <div id="main">
 
-{{ if .showtitle }}<h1>{{ .title }}</h1>{{ end }}
+{{ if .showtitle }}<h1{{ if .titleclass }} class="{{ .titleclass }}"{{ end }}>{{ .title }}</h1>{{ end }}

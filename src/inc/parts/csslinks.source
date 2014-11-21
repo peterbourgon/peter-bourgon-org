@@ -1,1 +1,2 @@
 <link href="/css/global.css" rel="stylesheet" type="text/css" />
+<link href="/css/print.css"  rel="stylesheet" type="text/css" media="print" />

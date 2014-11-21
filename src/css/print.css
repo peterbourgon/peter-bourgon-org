@@ -1,0 +1,7 @@
+body { margin: 0; }
+div#c { width: 100%; }
+div#cc { width: 100%; }
+div#sidebar { display: none; }
+div#main { margin: 0; }
+.noprint { display: none; }
+.onlyprint { display: inherit; }

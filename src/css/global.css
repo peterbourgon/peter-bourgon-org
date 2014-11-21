@@ -46,30 +46,32 @@ hr { margin: -1em 0 2em 0; width: 66%; }
 .smallhex { font-size: 8pt; margin: 0 4px; }
 .smallhex a { color: #aaa; }
 
+.onlyprint { display: none; }
+
 table.cv { border-collapse: collapse; margin: 0; padding: 0; }
 table.cv td { padding: 0 34px 0 0; vertical-align: top; }
 table.cv td.when { white-space: nowrap; }
 table.cv td.where { width: 99% }
 table.cv td.what { padding: 0 0 0 34px; }
 
-div#c{
+div#c {
    width: 65%;
    min-width: 600px;
    max-width: 850px;
    margin: 0 auto;
 }
 
-div#cc{
+div#cc {
    float: left;
    width: 100%;
 }
 
-div#main{
+div#main {
    margin-right:150px;
    margin-left:150px;
 }
 
-div#sidebar{
+div#sidebar {
    float: left;
    width: 120px;
    margin-top: 27px;
