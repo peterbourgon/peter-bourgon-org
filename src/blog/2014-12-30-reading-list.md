@@ -1,0 +1,20 @@
+{ "title": "Reading list, 2014" }
+---
+- Viktor Frankl - Man’s Search for Meaning
+- David Foster Wallace - Brief Interviews with Hideous Men
+- David Foster Wallace - The Pale King (abandoned)
+- George R Stewart - Earth Abides
+- Umberto Eco - Foucault’s Pendulum (abandoned)
+- Robert M Pirsig - Zen and the Art of Motorcycle Maintenance
+- Joseph Conrad - Under Western Eyes (re-read)
+- Neil Strauss - The Game
+- David Foster Wallace - Everything and More
+- David Foster Wallace - Both Flesh and Not
+- Alan Watts - The Book: On the Taboo Against Knowing Who You Are
+- Roberto Bolaño - The Savage Detectives (shelved)
+- Daniel Kahneman - Thinking, Fast and Slow (abandoned)
+- Cormac McCarthy - Blood Meridian
+- China Mieville - The City & The City
+- Max Kanat-Alexander - Code Simplicity
+- Friedrich Nietzsche - Thus Spoke Zarathustra (re-read, shelved)
+- Theo Schlossnagle - Scalable Internet Architectures (abandoned)
