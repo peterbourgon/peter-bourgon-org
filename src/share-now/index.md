@@ -3,6 +3,8 @@
 	"template": "../inc/arbitrary-page.template.source"
 }
 ---
+<img src="like.png" width=500 height=356 alt="Like."/>
+
 Social media icons are ubiquitous on the modern internet, haphazardly-placed
 and misaligned, almost background noise. But they’re not passive: each one is
 a beacon, tracking your online movement and associating it to your social
