@@ -22,8 +22,8 @@ p, ol, ul, th, td {
 
 td, th { padding: 0 10px; }
 th { font-weight: bold; text-align: left; }
-pre { margin: 0 2em; padding: 1em; background-color: #eee; }
-code { font-size: 11pt; background-color: #eee; }
+pre { margin: 0 2em; padding: 1em; border-top: solid 1px #000; border-bottom: solid 1px #000; }
+code { font-size: 11pt; }
 p strong { font-weight: 500; }
 h2 a, a:visited { text-decoration: none; color: #ddd; }
 

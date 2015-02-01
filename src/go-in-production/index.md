@@ -1,6 +1,6 @@
 {
-	"template": "../inc/arbitrary-page.template.source",
-	"title": "Go: Best Practices for Production Environments"
+    "template": "../inc/arbitrary-page.template.source",
+    "title": "Go: Best Practices for Production Environments"
 }
 
 ---
@@ -44,12 +44,12 @@ Our best practice is to keep things simple. Many, many services are maybe half a
 
 ```
 github.com/soundcloud/simple/
-	README.md
-	Makefile
-	main.go
-	main_test.go
-	support.go
-	support_test.go
+    README.md
+    Makefile
+    main.go
+    main_test.go
+    support.go
+    support_test.go
 ```
 
 Our search dispatcher, for example, is still like this after 2 years. Don't create structure until you demonstrably need it.
@@ -60,23 +60,23 @@ Sometimes a repo needs to contain multiple binaries; for example, when a job nee
 
 ```
 github.com/soundcloud/complex/
-	README.md
-	Makefile
-	complex-server/
-		main.go
-		main_test.go
-		handlers.go
-		handlers_test.go
-	complex-worker/
-		main.go
-		main_test.go
-		process.go
-		process_test.go
-	shared/
-		foo.go
-		foo_test.go
-		bar.go
-		bar_test.go
+    README.md
+    Makefile
+    complex-server/
+        main.go
+        main_test.go
+        handlers.go
+        handlers_test.go
+    complex-worker/
+        main.go
+        main_test.go
+        process.go
+        process_test.go
+    shared/
+        foo.go
+        foo_test.go
+        bar.go
+        bar_test.go
 ```
 
 Note that there's never a `src` directory involved. With the exception of a vendor subdirectory (more on that below) your repos shouldn't contain a directory named `src`, or represent their own `GOPATH`.
@@ -99,9 +99,9 @@ It's also nice to break long lines on parameters. That is, rather than the Java-
 ```
 // Don't do this.
 func process(dst io.Writer, readTimeout,
-	writeTimeout time.Duration, allowInvalid bool,
-		max int, src <-chan util.Job) {
-	// ...
+    writeTimeout time.Duration, allowInvalid bool,
+        max int, src <-chan util.Job) {
+    // ...
 }
 ```
 
@@ -109,13 +109,13 @@ prefer
 
 ```
 func process(
-	dst io.Writer,
-	readTimeout, writeTimeout time.Duration,
-	allowInvalid bool,
-	max int,
-	src <-chan util.Job,
+    dst io.Writer,
+    readTimeout, writeTimeout time.Duration,
+    allowInvalid bool,
+    max int,
+    src <-chan util.Job,
 ) {
-	// ...
+    // ...
 }
 ```
 
@@ -123,12 +123,12 @@ Similarly, when constructing objects,
 
 ```
 f := foo.New(foo.Config{ 
-	Site: "zombo.com", 
-	Out:  os.Stdout, 
-	Dest: conference.KeyPair{ 
-		Key:   "gophercon",
-		Value: 2014,
-	},
+    Site: "zombo.com", 
+    Out:  os.Stdout, 
+    Dest: conference.KeyPair{ 
+        Key:   "gophercon",
+        Value: 2014,
+    },
 })
 ```
 
@@ -154,12 +154,12 @@ A nice idiom for flags is to define them in your `func main`. That prevents you 
 
 ```
 func main() {
-	var (
-		payload = flag.String("payload", "abc", "payload data")
-		delay   = flag.Duration("delay", 1*time.Second, "write delay")
-	)
-	flag.Parse()
-	// ...
+    var (
+        payload = flag.String("payload", "abc", "payload data")
+        delay   = flag.Duration("delay", 1*time.Second, "write delay")
+    )
+    flag.Parse()
+    // ...
 }
 ```
 
@@ -188,8 +188,8 @@ Package testing is geared around unit testing, but for integration tests, things
 var fooAddr = flag.String(...)
 
 func TestToo(t *testing.T) {
-	f, err := foo.Connect(*fooAddr)
-	// ...
+    f, err := foo.Connect(*fooAddr)
+    // ...
 }
 ```
 
@@ -223,10 +223,10 @@ _Very._                        | VENDOR
 
 Vendoring means copying your dependencies into your project's repo, and then using them when building. Depending on what you're shipping, there are two best practice ways of vendoring.
 
-Shipping a | Vendor directory name | Procedure
------------|-----------------------|--------------------------------------
-Binary     | `_vendor`             | Blessed build with prefixed `GOPATH`
-Library    | `vendor`              | Rewrite your imports
+Shipping&nbsp;a | Vendor&nbsp;path | Procedure
+----------------|------------------|--------------------------------------
+Binary          | `_vendor`        | Blessed build with prefixed `GOPATH`
+Library         | `vendor`         | Rewrite your imports
 
 If you ship a binary, create a `_vendor` subdirectory in the root of your repository. (With a leading underscore, so the `go` tool ignores it when doing e.g. `go test ./...`.) Treat it like its own `GOPATH`; for example, copy the dependency `github.com/user/dep` to `_vendor/src/github.com/user/dep`. Then, write a so-called blessed build procedure, which prepends `_vendor` to any existing `GOPATH`. (Remember: `GOPATH` is actually a list of paths, searched in order by the `go` tool when resolving imports.) For example, you might have a top-level Makefile that looks like this:
 
@@ -237,7 +237,7 @@ GOPATH := $(CURDIR)/_vendor:$(GOPATH)
 all: build
 
 build:
-	$(GO) build
+    $(GO) build
 ```
 
 If you're shipping a library, create a `vendor` subdirectory in the root of your repository. Treat it just like a prefix in package paths; for example, copy the dependency `github.com/user/dep` to `vendor/user/dep`. Then, rewrite all of your imports, transitively. While a pain, this seems to be the best available way to ensure actually-reproducible builds while remaining `go get` compliant. It's worth noting that we don't actually ship any libraries, so this method may be too much of a hassle in practice to be worthwhile.
@@ -253,10 +253,10 @@ For building, we generally use plain `go build` for development, and a Makefile 
 
 For deploying, the key abstraction for us is stateless versus stateful.
 
-Mode      | Example        | Model        | Deploying is called | Deploy in
-----------|----------------|--------------|---------------------|--------------
-Stateless | Request router | 12-Factor    | Scaling             | Containers
-Stateful  | Redis          | None, really | Provisioning        | Containers?
+Mode      | Example             | Model           | Deploying&nbsp;is... | Deploy in
+----------|---------------------|-----------------|----------------------|--------------
+Stateless | Request&nbsp;router | 12&#8209;Factor | Scaling              | Containers
+Stateful  | Redis               | Any             | Provisioning         | Containers?
 
 We primarily deploy stateless services, in a manner very similar to Heroku.
 
