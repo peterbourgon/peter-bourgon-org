@@ -5,12 +5,12 @@
 
 ---
 
-_This was originally a talk in February, 2015 at [FOSDEM](http://www.fosdem.org) and the London Go meetup.
-[Find the video here](#)._
-
-1. [The modern enterprise and the SOA](#the-modern-enterprise)
+1. [The modern, service-oriented enterprise](#the-modern-enterprise)
 1. [What Go needs: a Go kit](#what-go-needs)
 1. [Let's collaborate](#next-steps)
+
+_This was originally a talk in February, 2015 at [FOSDEM](http://www.fosdem.org) and the London Go meetup.
+[Find the video here](#)._
 
 Go recently celebrated its [5<sup>th</sup> birthday](http://blog.golang.org/5years).
 In half a decade, the language has enjoyed great success in a huge range of projects, from
@@ -39,8 +39,8 @@ These _modern enterprises_ tend to share a few characteristics:
 
 Most of the points are flexible, but the last one is important.
 
-<a name="the-service-oriented-architecture"></a>
-### The service-oriented architecture <a class="lite" href="#the-service-oriented-architecture">&#8734;</a>
+<a name="a-service-oriented-architecture"></a>
+### A service-oriented architecture <a class="lite" href="#a-service-oriented-architecture">&#8734;</a>
 
 With notable exceptions, most major modern enterprises have adopted a service-oriented (or microservice) architecture,
  after very similar patterns of evolution.
@@ -79,7 +79,7 @@ I believe Go needs a Finagle-style toolkit, a Go kit, to allow it to be a viable
 ### Go kit <a class="lite" href="#go-kit">&#8734;</a>
 
 I imagine a Go kit, composed of multiple co-related packages, that together
- provide an opinionated framework for constructing large SOAs.
+ form an opinionated framework for constructing large SOAs.
 The toolkit should be comprehensive, ticking all of the boxes that are important to system architects.
 It should do that while encoding strong opinions and conventions,
  informed by the operational experience of its contributors,
@@ -186,16 +186,29 @@ At a minimum, that means support for static lists of endpoints,
 <a name="package-transport"></a>
 ### package transport <a class="lite" href="#package-transport">&#8734;</a>
 
-Lorem ipsum.
+Service implementations should be decoupled from their transports.
+A single service should be able to bind listeners to, and serve identically over, multiple transports.
+Here I mean transport in a broad sense:
+ both request/response [de]serialization (e.g. JSON, Protocol Buffers, Thrift, Avro, etc.)
+ and the underlying transport for those messages (e.g. HTTP, [package rpc](http://golang.org/pkg/rpc), TCP, etc.)
+
+Our goal should be to allow the service author to work exclusively in their business domain,
+ and leave the details of the communication mechanism to the toolkit.
 
 <a name="package-inspect"></a>
 ### package inspect <a class="lite" href="#package-inspect">&#8734;</a>
 
-Lorem ipsum.
+If our distributed system reliably abides a set of conventions,
+ we can leverage them as assumptions, and build higher-order abstractions to gain higher-order insight.
+I can imagine a package inspect that provides deep introspection of the overall system at runtime.
+It might allow us to compare the same dimensions of instrumentation across heterogeneous service instances.
+Or expose and isolate particular request pathologies.
+Effectively, package inspect would be one way to cash in on the taxes we've paid,
+ and convert them into business value.
 
 <a name="next-steps"></a>
 ## Next steps <a class="lite" href="#next-steps">&#8734;</a>
 
-Lorem ipsum.
+--
 
 <br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon).*
