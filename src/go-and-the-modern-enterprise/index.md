@@ -46,30 +46,84 @@ Service-oriented architectures yield
  but they come at a cost.
 Any set of network services is inherently more complex than its monolithic equivalent, owing to the well-documented
  [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing).
-Dealing with those complexities becomes the job of conventions and best practices.
-Those idioms can be collected and codified into libraries and frameworks.
+Managing those complexities becomes the job of conventions and best practices.
+And those idioms can be collected and codified into libraries and frameworks.
 In the modern enterprise, de-facto standard libraries are beginning to emerge, often as open-source projects.
 From my perspective, [Twitter's Finagle](https://twitter.github.io/finagle) seems to be the most notable.
 [Netflix](https://netflix.github.io/) also maintains a stack that appears in many discussions.
-And there are countless other, smaller organizations that maintain their own idiomatic frameworks.
+And there are countless other, smaller organizations that maintain their own frameworks.
 
-—
-
-It's here, I think, that Go really has the opportunity to shine.
-Go's coherent and considered design, developer friendly toolchain, architecture native binaries, and near C efficiency
- make it incredibly attractive in a service-oriented architecture.
+Go has the opportunity to shine here.
+Its coherent and considered design, developer friendly toolchain, architecture native binaries, and near C efficiency
+ make it incredibly attractive in a service-oriented architecture,
+  especially when compared against the current state of the art.
 Go also punches well above its age-class in terms of library and ecosystem maturity, and in-the-wild success stories.
-
-
-
-<a name="structured-services"></a>
-## Structured services <a class="lite" href="#structured-services">&#8734;</a>
-
-Lorem ipsum dolor sit.
+But we don't -- yet -- have a mature, **comprehensive** library/framework for the requirements of the modern SOA.
+I think that's a gap that's ready to be filled.
 
 <a name="what-go-needs"></a>
 ## What Go needs <a class="lite" href="#what-go-needs">&#8734;</a>
 
-Lorem ipsum dolor sit.
+Go needs a Finagle-style toolkit, to allow it to be a viable alternative language in the modern service-oriented enterprise.
+
+The toolkit should embrace and extend Go idioms wherever possible.
+But it shouldn't be bound to them, if they represent a burden to achieving a goal.
+We're also willing to pay a reasonable performance or efficiency tax if it enables a higher-order goal.
+
+Service-to-service communication typically follows the RPC model. That is,
+
+<img src="client-server.png" width=400 height=150 alt="Client to server"/>
+
+Let's consider the core requirements.
+
+<a name="package-metrics"></a>
+### package metrics <a class="lite" href="#package-metrics">&#8734;</a>
+
+Both clients and servers need thorough instrumentation.
+That means common runtime metrics, like memory and CPU profiling, GC information, and OS details like open file descriptors.
+It also means basic mechanical details, like request durations, internal queue depths,
+ and per-stage latencies for e.g. in-process pipelines.
+And it includes business-level metrics, like deviance from SLAs.
+
+I imagine a package metrics would have first-order concepts of counters, histograms, and gauges.
+We have an existing basis for exposition in [package expvar](http://golang.org/pkg/expvar),
+ and so I imagine the toolkit's metrics would use expvar as a source of truth,
+ and provide parameterized exporters to multiple instrumentation backends, like
+ [Prometheus](http://prometheus.io),
+ [Graphite](http://graphite.readthedocs.org/en/latest),
+ [InfluxDB](http://influxdb.com), and so on.
+
+All of the packages I'll propose have well-established prior art, which we should build upon.
+For metrics, we should consider CodaHale, Prometheus, go-metrics, TODO.
+
+<a name="package-log"></a>
+### package log <a class="lite" href="#package-log">&#8734;</a>
+
+Lorem ipsum.
+
+<a name="package-server"></a>
+### package server <a class="lite" href="#package-server">&#8734;</a>
+
+Lorem ipsum.
+
+<a name="package-client"></a>
+### package client <a class="lite" href="#package-client">&#8734;</a>
+
+Lorem ipsum.
+
+<a name="package-transport"></a>
+### package transport <a class="lite" href="#package-transport">&#8734;</a>
+
+Lorem ipsum.
+
+<a name="package-inspect"></a>
+### package inspect <a class="lite" href="#package-inspect">&#8734;</a>
+
+Lorem ipsum.
+
+<a name="next-steps"></a>
+## Next steps <a class="lite" href="#next-steps">&#8734;</a>
+
+Lorem ipsum.
 
 <br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon).*

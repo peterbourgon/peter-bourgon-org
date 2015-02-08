@@ -32,6 +32,7 @@ p.footer { font-style: italic; margin-top: -2.2em; }
 a { text-decoration: none; }
 a:visited { color: #66a; }
 a:hover { text-decoration: underline; }
+a.lite { color: #eee; }
 
 hr { margin: -1em 0 2em 0; width: 66%; }
 
