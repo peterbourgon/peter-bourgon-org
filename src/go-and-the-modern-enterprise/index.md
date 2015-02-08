@@ -41,14 +41,12 @@ after very similar patterns of evolution.
 1. Break out key components as services, leading to an **SOA**
 1. Maybe, further deconstruction toward **microservices**
 
-Service-oriented architectures can yield
+Service-oriented architectures yield
  [big advantages](https://en.wikipedia.org/wiki/Service-oriented_architecture#Organizational_benefits),
- but not without cost.
+ but they come at a cost.
 Any set of network services is inherently more complex than its monolithic equivalent, owing to the well-documented
  [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing).
-Gains in velocity, autonomy, and developer productivity are countered, in part, by
- losses in API stability, testability, and overall system comprehensibility,
- which can, in turn, be minimized by strong conventions and best-practices.
+Dealing with those complexities becomes the job of conventions and best practices.
 Those idioms can be collected and codified into libraries and frameworks.
 In the modern enterprise, de-facto standard libraries are beginning to emerge, often as open-source projects.
 From my perspective, [Twitter's Finagle](https://twitter.github.io/finagle) seems to be the most notable.
