@@ -5,13 +5,15 @@
 
 ---
 
-1. [The modern, service-oriented enterprise](#the-modern-enterprise)
+_This was originally a talk in February, 2015 at [FOSDEM](http://www.fosdem.org) and the London Go meetup.<br/>
+[Find the video here](#)._
+
+1. [The modern service-oriented enterprise](#the-modern-enterprise)
 1. [What Go needs: a Go kit](#what-go-needs)
 1. [Let's collaborate](#next-steps)
 
-_This was originally a talk in February, 2015 at [FOSDEM](http://www.fosdem.org) and the London Go meetup.
-[Find the video here](#)._
 
+<!--
 Go recently celebrated its [5<sup>th</sup> birthday](http://blog.golang.org/5years).
 In half a decade, the language has enjoyed great success in a huge range of projects, from
  [commandline tools](https://github.com/tsenart/vegeta), to
@@ -24,6 +26,7 @@ It's rare that a day goes by without a front-page [Hacker News](http://news.ycom
 Yet while Go is strongly represented in individual components and systems,
  it seems under-represented in the business domain of large, trend-setting organizations --
  companies I'll refer to as **the modern enterprise**.
+-->
 
 <a name="the-modern-enterprise"></a>
 ## The modern enterprise <a class="lite" href="#the-modern-enterprise">&#8734;</a>
@@ -56,45 +59,49 @@ SOAs yield
  but [they come at a cost](http://highscalability.com/blog/2014/4/8/microservices-not-a-free-lunch.html).
 Any set of network services is inherently more complex than its monolithic equivalent, owing to the well-documented
  [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing).
-Managing that complexity usually begins as the job of conventions and best practices,
- which eventually evolves into libraries, frameworks, and other technologies.
-In the modern enterprise, de-facto standard libraries are beginning to emerge, often as open-source projects.
+Managing that complexity usually begins with conventions and best practices,
+ which eventually evolve into libraries and frameworks.
+In the modern enterprise, de-facto standards are beginning to emerge, often as open-source projects.
 From my perspective, [Twitter's Finagle](https://twitter.github.io/finagle) seems to be the most notable.
 [Netflix](https://netflix.github.io/) also maintains a stack that appears in many discussions.
-And there are many other, smaller organizations that maintain their own code.
+And there are for sure many other codebases fulfilling the same general role, maintained by smaller organizations.
 
 These libraries are primarily written in Scala, and have some limited interop with other JVM languages.
-And Scala has a lot of advantages in this space: it's expressive, permissive, and reasonably fast.
-But it's not a panacea: by any measure it's a hugely complex language,
- with an undeniably difficult toolchain, and often unclear -- even contradictory -- language design,
- which means it's understood by few, and arguably completely by none.
+Scala has a lot of advantages in this space: it's expressive, permissive, and reasonably fast.
+But it's not a panacea; by any measure it's hugely complex,
+ with an undeniably difficult toolchain, and often unclear -- even contradictory -- language design.
+Which means it's well-understood by few, and perhaps completely understood by none.
+The inevitable consequence is antipatterns: cargo-culting, reinventing,
+ patching misunderstood problems with leaky abstractions, and so on.
 
 In this environment, a language like Go has the opportunity to shine.
 Its coherent and considered design, developer friendly toolchain, architecture native binaries, and near C efficiency
  make it incredibly attractive in a service-oriented architecture,
  especially when compared against the current state of the art.
 Go also punches well above its age-class in terms of library and ecosystem maturity, and in-the-wild success stories.
-But we don't -- yet -- have a mature, **comprehensive** toolkit for the requirements of the modern SOA.
+But we don't -- yet -- have a mature, **comprehensive** distributed services toolkit.
 I think that's a gap that's ready to be filled.
 
+<!--
 Previous generations of developers focused largely on _the web framework_,
- because that's what last-gen companies were building: big, responsive, data-driven websites.
-But modern enterprises do more than just that: they implement more and bigger features, provide greater value,
- with what is ultimately an ad-hoc distributed system.
+ because last-gen companies were building big, responsive, data-driven websites.
+But modern enterprises do more: they implement more and bigger features, provide greater value,
+ with what is typically an ad-hoc distributed system.
 Modern languages and language ecosystems need to respond to this reality, and provide a _distributed system framework_
- to enable modern enterprises to achieve their goals.
-And I believe Go needs an entry in this space to reach the next level of its success.
+ to enable these organizations to achieve their goals.
+I believe Go needs an entry in this space to reach the next level of its success.
+-->
 
 <a name="what-go-needs"></a>
 ## What Go needs <a class="lite" href="#what-go-needs">&#8734;</a>
 
-I believe Go needs a Finagle-style toolkit, a Go kit,
+I believe Go needs a Finagle-style toolkit -- a _Go kit_ --
  to allow it to be a viable alternative language in the modern service-oriented enterprise.
 
 <a name="go-kit"></a>
 ### Go kit <a class="lite" href="#go-kit">&#8734;</a>
 
-I imagine a Go kit, composed of multiple co-related packages, that together
+I imagine a Go kit composed of multiple co-related packages, that together
  form an opinionated framework for constructing large SOAs.
 The toolkit should be comprehensive, ticking all of the boxes that are important to system architects.
 It should do that while encoding strong opinions and conventions,
@@ -104,7 +111,7 @@ And it should integrate with the most common infrastructural components,
  to reduce deployment friction and promote interop with existing systems.
 
 I imagine the toolkit would need a minimum set of core packages.
-I'll describe what I envision for each, but bear in mind this is just my own set of opinions.
+I'll describe what I envision for each, but keep in mind this is just my own set of opinions.
 I'm primarily interested in [starting a discussion](#next-steps), and realizing a collective vision.
 
 <a name="package-metrics"></a>
@@ -130,12 +137,14 @@ We have an existing basis for exposition in [package expvar](http://golang.org/p
 
 Organizations will have their own requirements for log levels, schemas, and destinations.
 I imagine the toolkit could leverage [package log](http://golang.org/pkg/log) at the core,
- and provide a common mechanism to plug-in modules for level splitting, schema declaration and enforcement,
-  and different backends, like plain stdout/stderr,
-  [syslog](http://golang.org/pkg/log/syslog),
-  [NSQ](https://github.com/bitly/nsq),
-  [Kafka](https://kafka.apache.org),
-  and so on.
+ and provide an abstraction for optional modules, for things like
+ level splitting, schema declaration and enforcement, and different backends.
+It could support plain stdout/stderr, as well as systems like
+ [syslog](http://golang.org/pkg/log/syslog),
+ [NSQ](https://github.com/bitly/nsq),
+ [Kafka](https://kafka.apache.org),
+ and so on.
+
 Our toolkit's log package should ultimately be usable for all kinds of log-structured data,
  not just diagnostic application logs.
 
@@ -163,6 +172,7 @@ It should encode and enforce conventions for client-side concerns,
  like request tracing, rate limiting, circuit breaking, connection pooling, and so on.
 Same as package server, it should integrate with [service discovery](#service-discovery),
  and work equally well over multiple [transports](#package-transport).
+And prior art exists in the form of Finagle and [Ribbon](https://github.com/Netflix/ribbon), among others.
 
 Where appropriate, package client and server should share code.
 For example, connection pooling, rate limiting, and request tracing all share a common core
@@ -172,9 +182,9 @@ For example, connection pooling, rate limiting, and request tracing all share a 
 ### Service discovery <a class="lite" href="#service-discovery">&#8734;</a>
 
 The business of connecting clients to servers in a dynamic environment is a huge topic in itself.
-Suffice to say there are many strategies, from hard-coded endpoints, to topology subscriptions, and everything in between.
+Suffice to say there are many strategies, from static endpoints, to dynamic topology subscriptions, and everything in between.
 The toolkit should ultimately be compatible with whichever infrastructure is in use at your organization.
-At a minimum, that means support for static lists of endpoints,
+At a minimum, that means support for hard-coded lists of endpoints,
  and deep integration for fully-distributed systems i.e. DNS SRV records,
  centralized systems like [Consul](http://consul.io) or [etcd](https://github.com/coreos/etcd),
  and hybrid systems like [Airbnb's SmartStack](http://nerds.airbnb.com/smartstack-service-discovery-cloud/).
@@ -186,26 +196,29 @@ Service implementations should be decoupled from their transports.
 A single service should be able to bind listeners to, and serve identically over, multiple transports.
 And here I mean transport in a broad sense:
  from request/response de/serialization (e.g. JSON, [package gob](http://golang.org/pkg/encoding/gob))
- up to and including IDL semantics (e.g. Protocol Buffers, Thrift, Avro, etc.)
- as well as the underlying transport for those messages (e.g. HTTP, [package rpc](http://golang.org/pkg/rpc), raw TCP, etc.).
+ up to and including IDL semantics (e.g. Protocol Buffers, Thrift, Avro)
+ as well as the underlying transport for those messages (e.g. HTTP, [package rpc](http://golang.org/pkg/rpc), raw TCP).
 
-Our goal should be to allow the service author to work exclusively in their business domain,
+With package transport, our goal is to allow the service author to work exclusively in their business domain,
  and leave the details of the communication mechanism to the toolkit.
 
-<a name="introspection-and-feedback"></a>
-### Introspection and feedback <a class="lite" href="#introspection-and-feedback">&#8734;</a>
+<a name="the-benefits"></a>
+## The benefits <a class="lite" href="#the-benefits">&#8734;</a>
 
 If our distributed system reliably abides a set of conventions,
- we can leverage them as assumptions, and build higher-order abstractions to gain higher-order insight.
-Imagine a tool that gives you deep introspection of the overall system at runtime.
- It might allow us to compare the same dimensions of instrumentation across heterogeneous service instances.
- Or expose and isolate particular request pathologies.
+ we can leverage them as simplifying assumptions,
+  and build a more comprehensible and reliable mental model.
+After all, [simplicity is a prerequisite for reliability](http://en.wikiquote.org/wiki/Edsger_W._Dijkstra).
+
+Even further: imagine a tool that leverages conventions to give deep introspection of the overall system at runtime.
+It might allow us to compare the same dimensions of instrumentation across heterogeneous service instances.
+Or expose and isolate particular request pathologies.
 With that information, we could create feedback systems,
- and allow the system to dynamically react to environmental conditions.
+ to allow the system to dynamically react to environmental conditions.
 It would enable advanced operational patterns like load-based autoscaling,
  or safe continuous deployment without operator involvement.
 
-These are just some immediately obvious ways to cash in on the taxes we've paid, and convert them to real business value.
+That's just one immediately obvious way to cash in on the taxes we've paid, and convert them to real business value.
 But the future is wide open, full of possibilities we haven't yet imagined.
 
 <a name="next-steps"></a>
