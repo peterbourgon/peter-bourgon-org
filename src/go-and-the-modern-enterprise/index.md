@@ -234,10 +234,13 @@ I'm motivated both by the desire to see Go reach the next level of its success,
 With luck, I believe we can see an early version in production at recognizable organizations in a few months,
  and iterate on the lessons learned very quickly.
 
-To start, I've created a [Go kit mailing list](https://groups.google.com/forum/#!forum/go-kit),
+To start, I've created a mailing list,
  where we can begin collecting requirements and ideas, and organize work on an initial implementation.
 I've also created [gokit.io](http://gokit.io), to act as a knowledge base as the group explores the space,
  and maybe host the first drafts of the packages I've described.
+
+- [Go kit mailing list](https://groups.google.com/forum/#!forum/go-kit)
+- [http://gokit.io](http://gokit.io)
 
 If this sounds at all interesting to you, please join the mailing list and enter the discussion.
 I'm excited to start!
