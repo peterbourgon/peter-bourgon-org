@@ -224,6 +224,23 @@ But the future is wide open, full of possibilities we haven't yet imagined.
 <a name="next-steps"></a>
 ## Next steps <a class="lite" href="#next-steps">&#8734;</a>
 
---
+When I gave this talk at FOSDEM and the Google Campus London meetup,
+ I received a lot of enthusiasm from developers in similar situations.
+I was encouraged, and believe it's the right time to capture and amplify that enthusiasm.
+I'd like to create a working group to explore these ideas, and to start building a comprehensive Go service toolkit.
+
+I'm motivated both by the desire to see Go reach the next level of its success,
+ and to bring Go to a class of problems that I believe will benefit greatly from it.
+With luck, I believe we can see an early version in production at recognizable organizations in a few months,
+ and iterate on the lessons learned very quickly.
+
+To start, I've created a [Go kit mailing list](https://groups.google.com/forum/#!forum/go-kit),
+ where we can begin collecting requirements and ideas, and organize work on an initial implementation.
+I've also created [gokit.io](http://gokit.io), to act as a knowledge base as the group explores the space,
+ and maybe host the first drafts of the packages I've described.
+
+If this sounds at all interesting to you, please join the mailing list and enter the discussion.
+I'm excited to start!
+
 
 <br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon).*
