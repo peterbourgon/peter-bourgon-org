@@ -5,13 +5,12 @@
 
 ---
 
-_This was originally a talk in February, 2015 at [FOSDEM](http://www.fosdem.org) and the London Go meetup.<br/>
-[Find the video here](#)._
+_This was originally a talk in February 2015 at [FOSDEM](http://www.fosdem.org) and the Google Campus London meetup.
+I'll post a link to the video when it's available._
 
 1. [The modern service-oriented enterprise](#the-modern-enterprise)
 1. [What Go needs: a Go kit](#what-go-needs)
 1. [Let's collaborate](#next-steps)
-
 
 <!--
 Go recently celebrated its [5<sup>th</sup> birthday](http://blog.golang.org/5years).
@@ -242,8 +241,8 @@ I've also created [gokit.io](http://gokit.io), to act as a knowledge base as the
 - [Go kit mailing list](https://groups.google.com/forum/#!forum/go-kit)
 - [http://gokit.io](http://gokit.io)
 
-If this sounds at all interesting to you, please join the mailing list and enter the discussion.
-I'm excited to start!
+If this sounds at all interesting to you, please join the mailing list and the discussion.
+I'm excited to get started!
 
 
 <br>________<br>*[Go back to my website](/), or [follow me on Twitter](http://twitter.com/peterbourgon).*
