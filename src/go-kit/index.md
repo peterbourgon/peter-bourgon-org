@@ -12,21 +12,6 @@ I'll post a link to the video when it's available._
 1. [What Go needs: a Go kit](#what-go-needs)
 1. [Let's collaborate](#next-steps)
 
-<!--
-Go recently celebrated its [5<sup>th</sup> birthday](http://blog.golang.org/5years).
-In half a decade, the language has enjoyed great success in a huge range of projects, from
- [commandline tools](https://github.com/tsenart/vegeta), to
- [powerful](https://github.com/boltdb/bolt)
- [databases](https://github.com/soundcloud/roshi), to
- [infrastructure orchestration](https://github.com/hashicorp/terraform),
- [containerization](https://github.com/docker), and
- [monitoring](https://github.com/prometheus/prometheus) systems.
-It's rare that a day goes by without a front-page [Hacker News](http://news.ycombinator.com) post about Go in some capacity.
-Yet while Go is strongly represented in individual components and systems,
- it seems under-represented in the business domain of large, trend-setting organizations --
- companies I'll refer to as **the modern enterprise**.
--->
-
 <a name="the-modern-enterprise"></a>
 ## The modern enterprise <a class="lite" href="#the-modern-enterprise">&#8734;</a>
 
@@ -80,16 +65,6 @@ Its coherent and considered design, developer friendly toolchain, architecture n
 Go also punches well above its age-class in terms of library and ecosystem maturity, and in-the-wild success stories.
 But we don't -- yet -- have a mature, **comprehensive** distributed services toolkit.
 I think that's a gap that's ready to be filled.
-
-<!--
-Previous generations of developers focused largely on _the web framework_,
- because last-gen companies were building big, responsive, data-driven websites.
-But modern enterprises do more: they implement more and bigger features, provide greater value,
- with what is typically an ad-hoc distributed system.
-Modern languages and language ecosystems need to respond to this reality, and provide a _distributed system framework_
- to enable these organizations to achieve their goals.
-I believe Go needs an entry in this space to reach the next level of its success.
--->
 
 <a name="what-go-needs"></a>
 ## What Go needs <a class="lite" href="#what-go-needs">&#8734;</a>
