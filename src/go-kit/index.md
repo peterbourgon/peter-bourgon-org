@@ -1,6 +1,6 @@
 {
 	"template": "../inc/arbitrary-page.template.source",
-	"title": "Go and the modern enterprise"
+	"title": "Go kit: Go in the modern enterprise"
 }
 
 ---
@@ -225,8 +225,8 @@ But the future is wide open, full of possibilities we haven't yet imagined.
 
 When I gave this talk at FOSDEM and the Google Campus London meetup,
  I received a lot of enthusiasm from developers in similar situations.
-I was encouraged, and believe it's the right time to capture and amplify that enthusiasm.
-I'd like to create a working group to explore these ideas, and to start building a comprehensive Go service toolkit.
+I was encouraged, and want to capture and amplify that enthusiasm.
+I'd like to create a working group to explore these ideas, and to start building the Go kit.
 
 I'm motivated both by the desire to see Go reach the next level of its success,
  and to bring Go to a class of problems that I believe will benefit greatly from it.
