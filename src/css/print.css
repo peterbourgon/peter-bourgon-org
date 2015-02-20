@@ -1,4 +1,5 @@
 body { margin: 0; }
+@page { margin: 20mm; }
 div#c { width: 100%; }
 div#cc { width: 100%; }
 div#sidebar { display: none; }
@@ -7,3 +8,4 @@ div#main { margin: 0; }
 .onlyprint { display: inherit; }
 a { text-decoration: underline; color: #333; }
 a:visited { color: #333; }
+h1.printname { margin-top: 0; }
