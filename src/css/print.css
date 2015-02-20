@@ -5,3 +5,5 @@ div#sidebar { display: none; }
 div#main { margin: 0; }
 .noprint { display: none; }
 .onlyprint { display: inherit; }
+a { text-decoration: underline; color: #333; }
+a:visited { color: #333; }

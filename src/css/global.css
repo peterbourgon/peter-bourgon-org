@@ -28,6 +28,7 @@ p strong { font-weight: 500; }
 h2 a, a:visited { text-decoration: none; color: #ddd; }
 
 p.footer { font-style: italic; margin-top: -2.2em; }
+p.byline { margin-top: -30px; margin-bottom: 30px; color: #666; }
 
 a { text-decoration: none; }
 a:visited { color: #66a; }
