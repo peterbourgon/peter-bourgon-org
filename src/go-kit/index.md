@@ -6,7 +6,7 @@
 ---
 
 _This was originally a talk in February 2015 at [FOSDEM](http://www.fosdem.org) and the Google Campus London meetup.
-I'll post a link to the video when it's available._
+[Watch the video here](https://www.youtube.com/watch?v=iFR_7AKkJFU)._
 
 1. [The modern service-oriented enterprise](#the-modern-enterprise)
 1. [What Go needs: a Go kit](#what-go-needs)
