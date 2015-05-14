@@ -10,8 +10,8 @@
 <span style="position:relative; top:-115px; left:-260px; font-size:100px; color:#fff;" class="blink">&rarr;</span>
 
 I'm Peter, a software engineer focusing on large-scale distributed systems.
-I'm currently living in Berlin, Germany, working on the infrastructure that
-powers [SoundCloud](http://soundcloud.com).
+I'm currently living in Berlin, Germany, working on software-defined networking
+and infrastructure monitoring at [Weaveworks](http://weave.works).
 
 I prefer to write code that solves a specific, tightly-defined problem, rather
 than code that solves a class of problems generally. Letter openers, not Swiss Army knives.
