@@ -25,7 +25,7 @@ December 2014, QCon, San Francisco — [video](http://www.infoq.com/interviews/b
 
 **Consistency without consensus: CRDTs in production** <br/>
 December 2014, QCon, San Francisco — [video](http://www.infoq.com/presentations/crdt-soundcloud)<br/>
-September 2014, Strange Loop, St. Louis — [video](https://www.youtube.com/watch?v=em9zLzM8O7c)
+September 2014, Strange Loop, St. Louis — [video](https://www.youtube.com/watch?v=em9zLzM8O7c)<br/>
 May 2014, Buzzwords, Berlin — [video](https://www.youtube.com/watch?v=U6xLcIf1Qlw)
 
 **[Go: Best Practices for Production Environments](http://peter.bourgon.org/go-in-production)** <br/>
