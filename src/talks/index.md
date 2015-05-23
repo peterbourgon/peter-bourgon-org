@@ -4,6 +4,8 @@
 }
 ---
 
+## 2015
+
 **[Go Kit: a Standard Library for Distributed Programming](http://gophercon.com/talks/go-kit/)** <span class="new">coming soon</span> <br/>
 July 2015, GopherCon, Denver
 
@@ -18,7 +20,7 @@ Bordeaux
 February 2015, FOSDEM, Brussels <br/>
 February 2015, Go Gathering, London — [video](https://www.youtube.com/watch?v=iFR_7AKkJFU)
 
-&mdash; &ndash; &dash;
+## 2014
 
 **Go at SoundCloud** (interview) <br/>
 December 2014, QCon, San Francisco — [video](http://www.infoq.com/interviews/bourgon-crdt-go)
@@ -31,7 +33,7 @@ May 2014, Buzzwords, Berlin — [video](https://www.youtube.com/watch?v=U6xLcIf1
 **[Go: Best Practices for Production Environments](http://peter.bourgon.org/go-in-production)** <br/>
 July 2014, GopherCon, Denver — [video](https://www.youtube.com/watch?v=Y1-RLAl7iOI)
 
-&mdash; &ndash; &dash;
+## 2013
 
 **Go in the Real World** <br/>
 December 2013, Hackference, Birmingham
@@ -39,7 +41,7 @@ December 2013, Hackference, Birmingham
 **Search and Discovery at SoundCloud** <br/>
 June 2013, Buzzwords, Berlin — [video](https://www.youtube.com/watch?v=qI584upmYTY)
 
-&mdash; &ndash; &dash;
+## 2012
 
 **[Go Do: Go and software engineering](http://peter.bourogn.org/go-do)** <br/>
 December 2012, Kings of Code, Amsterdam <br/>
