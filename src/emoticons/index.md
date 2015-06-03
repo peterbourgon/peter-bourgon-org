@@ -22,4 +22,4 @@
 (ﾉ °▽°)ﾉ*:・ﾟ✧  | happy sparkles
 ( ॣ•͈૦•͈ ॣ)꒳ᵒ꒳ᵎᵎᵎ | wow
 ༼ᕗ •̀︿•́༽ᕗ       | angry fists
-
+(╭☞ ᐛ )╭☞       | this guy
