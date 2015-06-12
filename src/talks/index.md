@@ -13,7 +13,7 @@
 · May 2015, SREcon Europe, Dublin
 
 **CRDTs in production** <br/>
-· April 2015, [Principles of Consistency for Distributed Data](http://papoc.di.uminho.pt/index.html), EuroSys,
+· April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys,
 Bordeaux
 
 **Go and the modern enterprise** <br/>
