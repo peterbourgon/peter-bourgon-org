@@ -9,8 +9,8 @@
 **[Go Kit: a standard library for distributed programming](http://gophercon.com/talks/go-kit/)** <span class="new">coming soon</span> <br/>
 · July 2015, GopherCon, Denver
 
-**Mapping a microservices architecture** <span class="new">coming soon</span> <br/>
-· May 2015, SREcon Europe, Dublin
+**Mapping a microservices architecture** <br/>
+· May 2015, SREcon Europe, Dublin — [video](https://www.usenix.org/conference/srecon15europe/program/presentation/bourgon)
 
 **CRDTs in production** <br/>
 · April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys,
