@@ -6,8 +6,8 @@
 
 ## 2015
 
-**[Go Kit: a standard library for distributed programming](http://gophercon.com/talks/go-kit/)** <span class="new">coming soon</span> <br/>
-· July 2015, GopherCon, Denver
+**[Go Kit: a standard library for distributed programming](http://gophercon.com/talks/go-kit/)** <br/>
+· July 2015, GopherCon, Denver — [video](https://www.youtube.com/watch?v=1AjaZi4QuGo)
 
 **Mapping a microservices architecture** <br/>
 · May 2015, SREcon Europe, Dublin — [video](https://www.usenix.org/conference/srecon15europe/program/presentation/bourgon)
