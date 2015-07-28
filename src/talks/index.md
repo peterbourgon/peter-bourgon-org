@@ -6,7 +6,7 @@
 
 ## 2015
 
-**[Go Kit: a standard library for distributed programming](http://gophercon.com/talks/go-kit/)** <br/>
+**[Go kit](http://gokit.io): a standard library for distributed programming** <br/>
 · July 2015, GopherCon, Denver — [video](https://www.youtube.com/watch?v=1AjaZi4QuGo)
 
 **Mapping a microservices architecture** <br/>
