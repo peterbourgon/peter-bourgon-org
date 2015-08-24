@@ -1,4 +1,4 @@
-{ "title": "The nihilist and optimst programmers" }
+{ "title": "The nihilist and optimist programmers" }
 ---
 The nihilist programmer takes as axiomatic that their product is already
 broken. It is in constant flux, poorly defined, the product of compromise in
