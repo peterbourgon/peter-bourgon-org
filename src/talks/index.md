@@ -7,16 +7,15 @@
 ## 2015
 
 **[Go kit](http://gokit.io): a standard library for distributed programming** <br/>
-· November 2015, [dotGo](http://www.dotgo.eu), Paris — in the future!
-· August 2015, [Golang UK](http://www.golanguk.com), London — video coming soon
+· November 2015, [dotGo](http://www.dotgo.eu), Paris — in the future! <br/>
+· August 2015, [Golang UK](http://www.golanguk.com), London — video coming soon <br/>
 · July 2015, [GopherCon](http://gophercon.com), Denver — [video](https://www.youtube.com/watch?v=1AjaZi4QuGo), [slides](https://github.com/gophercon/2015-talks/raw/master/Go%20kit/go-kit.pdf)
 
 **Mapping a microservices architecture** <br/>
 · May 2015, SREcon Europe, Dublin — [video](https://www.usenix.org/conference/srecon15europe/program/presentation/bourgon)
 
 **CRDTs in production** <br/>
-· April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys,
-Bordeaux
+· April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys, Bordeaux
 
 **Go and the modern enterprise** <br/>
 · February 2015, FOSDEM, Brussels <br/>
