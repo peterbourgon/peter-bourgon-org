@@ -29,13 +29,13 @@ div#main h1, h2, h3, h4, h5, h6 {
 	transform: rotate(1deg);
 }
 
-div#main :nth-child(2n) {
+div#main :nth-child(2n):not(li) {
 	-ms-transform: rotate(-0.6deg);
 	-webkit-transform: rotate(-0.6deg);
 	transform: rotate(-0.6deg);
 }
 
-div#main :nth-child(3n) {
+div#main :nth-child(3n):not(li) {
 	-ms-transform: rotate(0.5deg);
 	-webkit-transform: rotate(0.5deg);
 	transform: rotate(0.5deg);
