@@ -1,14 +1,14 @@
 { "title": "Optimism about Google Wave and the Wave protocol" }
 ---
 The [Google Wave](http://wave.google.com/) announcement did something strange:
-after reading up on it, I'm finding that I'm softening my [hard
-lines](http://bourgon.org/2009/2/24) against web apps, opening up just a little
+after reading up on it, I'm finding that I'm softening my
+[hard lines](/blog/2009/2/24) against web apps, opening up just a little
 to the usefulness of XML on the wire, and feeling a bit more permissive in what
 I think HTTP may be used for.
 
 Maybe it has something to do with my burgeoning receptiveness to articles like
-[this one](http://www.mikeindustries.com/blog/archive/2009/05/examining-
-typekit), which reasonably state things like "the entire world wide web is a
+[this one](http://www.mikeindustries.com/blog/archive/2009/05/examining-typekit),
+which reasonably state things like "the entire world wide web is a
 hack." Fair. But I think Wave pushed it all over the edge because it's not
 fundamentally corrupting the document model of the web. It extends the model in
 arguably corrupt ways, sure, but at the end of the day a Wave _is-a_

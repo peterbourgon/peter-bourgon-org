@@ -1,6 +1,6 @@
 <div id="sidebar">
 <p>
-  <strong>Peter Bourgon</strong><br/>
+  <strong>{{if .sidebartitle}}Peter Bourgon{{else}}&nbsp;{{end}}</strong><br/>
   <a href="/" title="Home">Home</a><br/>
   <a href="/about" title="About">About</a><br/>
   <a href="/talks" title="Talks">Talks</a><br/>

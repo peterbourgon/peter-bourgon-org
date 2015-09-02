@@ -1,4 +1,6 @@
 {
 	"showsidebar": true,
-	"showtitle": true
+	"sidebartitle": true,
+	"showtitle": true,
+	"rotate": true
 }

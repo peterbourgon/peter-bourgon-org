@@ -6,10 +6,10 @@ sites-available config file, and add a section like:
 
 ```
 server {
-	listen 80;
-	server_name subdomain.domain.com;
-	access_log /var/log/nginx/subdomain.domain.com.access.log;
-	root /var/www/subdomain;
+    listen 80;
+    server_name subdomain.domain.com;
+    access_log /var/log/nginx/subdomain.domain.com.access.log;
+    root /var/www/subdomain;
 }
 ```
 
@@ -20,13 +20,13 @@ almost equally as easy:
 
 ```
 server {
-	listen 80;
-	server_name service.domain.com;
-	access_log /var/log/nginx/service.domain.com.access.log;
-	location / {
-		proxy_pass http://127.0.0.1:9999/;
-	}
+    listen 80;
+    server_name service.domain.com;
+    access_log /var/log/nginx/service.domain.com.access.log;
+    location / {
+        proxy_pass http://127.0.0.1:9999/;
+    }
 }
 ```
 
-As always, to bounce nginx, it's just sudo /etc/init.d/nginx restart - simple!
+As always, to bounce nginx, it's just sudo `/etc/init.d/nginx restart`—simple!

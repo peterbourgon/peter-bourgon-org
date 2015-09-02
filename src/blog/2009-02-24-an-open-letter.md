@@ -1,6 +1,6 @@
-# An open letter to A.A.
+## An open letter to A.A.
 
-## In clarification of my hastily-written thoughts on Web applications, and in response to his comments on the same.
+### In clarification of my hastily-written thoughts on Web applications, and in response to his comments on the same.
 
 First, let me say that you're right: I'm unlikely to convert you to one
 particular mode of development, or one way of thinking about development. Nor

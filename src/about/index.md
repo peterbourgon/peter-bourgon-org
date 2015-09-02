@@ -24,15 +24,16 @@ I believe:
 - that my mind is always open to persuasive arguments otherwise!
 
 Some nice things to read on the internet include
+ [Aeon](http://aeon.co/),
+ [Nautilus](http://nautil.us/),
+ [The Atlantic](http://www.theatlantic.com/),
  [lobste.rs](https://lobste.rs/),
  [cat-v](http://cat-v.org/),
  [Hacker News](http://news.ycombinator.com),
  [The New York Times](http://www.nytimes.com/),
  [n+1](http://nplusonemag.com/),
- [The New Yorker](http://www.newyorker.com/),
+ [The New Yorker](http://www.newyorker.com/), and
  [Long Reads](http://longreads.com),
- [Aeon](http://aeon.co/), and
- [The Atlantic](http://www.theatlantic.com/).
 Some nice things to read on dead trees include
  [Joe Conrad](http://www.gutenberg.org/browse/authors/c#a125),
  [Fyodor Dostoyevsky](http://www.gutenberg.org/browse/authors/d#a314),

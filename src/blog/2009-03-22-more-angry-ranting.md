@@ -3,8 +3,8 @@ And now, for my third act
 which I will entitle: Why 37signals is a Pile of Shit; see
 [this belabored blog post][3] for appropriate background.
 
-[1]: http://bourgon.org/2009/02/09
-[2]: http://bourgon.org/2009/02/24
+[1]: /blog/2009/02/09
+[2]: /blog/2009/02/24
 [3]: http://www.37signals.com/svn/posts/1634-ask-37signals-how-does-37signals-use-its-own-products-on-a-day-to-day-basis
 
 First let me say that I'm totally into the idea of marketing a product

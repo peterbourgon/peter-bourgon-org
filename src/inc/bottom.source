@@ -2,6 +2,7 @@
 </div>
 
 {{ if .showsidebar }}{{ importhtml "parts/sidebar.source" }}{{ end }}
+{{ importhtml "parts/right.source" }}
 
 </div>
 </body>

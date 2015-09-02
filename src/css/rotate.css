@@ -1,0 +1,48 @@
+div#cc {
+	-ms-transform: rotate(-0.5deg);
+	-webkit-transform: rotate(-0.5deg);
+	transform: rotate(-0.5deg);
+}
+
+div#main {
+	-ms-transform: rotate(1deg);
+	-webkit-transform: rotate(1deg);
+	transform: rotate(1deg);
+}
+
+div#sidebar {
+	-ms-transform: rotate(-2deg);
+	-webkit-transform: rotate(-2deg);
+	transform: rotate(-2deg);
+	margin-top: 49px;
+}
+
+div#right {
+	-ms-transform: rotate(-1deg);
+	-webkit-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+}
+
+div#main h1, h2, h3, h4, h5, h6 {
+	-ms-transform: rotate(1deg);
+	-webkit-transform: rotate(1deg);
+	transform: rotate(1deg);
+}
+
+div#main :nth-child(2n) {
+	-ms-transform: rotate(-0.6deg);
+	-webkit-transform: rotate(-0.6deg);
+	transform: rotate(-0.6deg);
+}
+
+div#main :nth-child(3n) {
+	-ms-transform: rotate(0.5deg);
+	-webkit-transform: rotate(0.5deg);
+	transform: rotate(0.5deg);
+}
+
+div#main img {
+	-ms-transform: rotate(-0.3deg);
+	-webkit-transform: rotate(-0.3deg);
+	transform: rotate(-0.3deg);
+}

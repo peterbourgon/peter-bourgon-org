@@ -1,0 +1,23 @@
+body {
+	background-color: #fee;
+}
+
+div#cc {
+	border: solid 2px #555;
+	background-color: #efe;
+}
+
+div#main {
+	border: solid 2px #999;
+	background-color: #eef;
+}
+
+div#sidebar {
+	border: solid 2px #999;
+	background-color: #ffe;
+}
+
+div#right {
+	border: solid 2px #999;
+	background-color: #fef;
+}
