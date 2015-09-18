@@ -46,3 +46,9 @@ div#main img {
 	-webkit-transform: rotate(-0.3deg);
 	transform: rotate(-0.3deg);
 }
+
+div#main img.dance {
+	-ms-transform: none;
+	-webkit-transform: none;
+	transform: none;
+}
