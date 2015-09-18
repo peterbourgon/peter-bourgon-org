@@ -9,7 +9,7 @@
 {{ range sorted .files.blog }}
 	{{ if .entry }}
 		<!--<li>-->
-			<p>{{ if .date }}{{ .date }} &mdash;{{ end }}
+			<p class="bloglink">{{ if .date }}{{ .date }} &mdash;{{ end }}
 			<a href="{{ .url }}">
 				{{ if .title }}
 					{{ .title }}
