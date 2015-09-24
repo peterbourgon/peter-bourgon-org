@@ -2,5 +2,6 @@
 	"showsidebar": true,
 	"sidebartitle": true,
 	"showtitle": true,
-	"rotate": false
+	"rotate": false,
+	"border": false
 }

@@ -3,11 +3,11 @@ body {
 	color: #1a1a4f;
 	font-family: Input, Consolas, "Liberation Mono", Menlo, Courier, monospace;
 	margin-top: 41px;
-   text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
 }
 
 div#c {
-	width: 65%;
+	width: 90%;
 	min-width: 600px;
 	max-width: 1000px;
 	margin: 0 auto;
@@ -19,7 +19,7 @@ div#cc {
 }
 
 div#main {
-	margin: 40px 150px;
+	margin: 40px 130px 40px 150px;
 	padding: 10px;
 }
 
@@ -28,15 +28,16 @@ div#sidebar {
 	width: 150px;
 	margin-left: -100%;
 	margin-top: 55px;
-   padding: 10px;
+	padding: 10px;
+	padding-right: 0px;
 }
 
 div#right {
-   float: right;
-   width: 120px;
-   margin-left: -100%;
-   margin-top: 55px;
-   padding: 10px;
+	float: right;
+	width: 120px;
+	margin-left: -100%;
+	margin-top: 55px;
+	padding: 10px;
 }
 
 .smallhex {
@@ -58,11 +59,7 @@ div#right {
 }
 
 h1, h2, h3 { font-family: "Helvetica Neue", Arial, serif; letter-spacing: 1px; }
-/*h1 { font-weight: 400; font-size: 24pt; line-height: 28pt; margin: 1em 0; }
-h2 { font-weight: 400; font-size: 20pt; line-height: 28pt; }
-h3 { font-weight: 400; font-size: 16pt; line-height: 28pt; }*/
 h3.date {
-	margin-top: -1.5em;
 	margin-bottom: 1.5em;
 }
 
@@ -83,7 +80,7 @@ p.bloglink { line-height: 14pt; }
 
 td, th { padding: 0 10px; }
 th { font-weight: bold; text-align: left; }
-pre { margin: 0 2em; padding: 1em; border-top: solid 1px #888; border-bottom: solid 1px #888; }
+pre { margin: 0 4em 0 2em; padding: 1em; border-top: solid 1px #555; border-bottom: solid 1px #555; }
 code { font-size: 11pt; font-family: Input, Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 p strong { font-weight: 600; }
 h2 a, a:visited { text-decoration: none; color: #ddd; }

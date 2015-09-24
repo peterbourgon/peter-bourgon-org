@@ -1,4 +1,4 @@
 <link href="/css/global.css" rel="stylesheet" type="text/css" />
 {{ if .rotate }}<link href="/css/rotate.css" rel="stylesheet" type="text/css" />{{ end }}
-<!--<link href="/css/border.css" rel="stylesheet" type="text/css" />-->
+{{ if .border }}<link href="/css/border.css" rel="stylesheet" type="text/css" />{{ end }}
 <link href="/css/print.css"  rel="stylesheet" type="text/css" media="print" />
