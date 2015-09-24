@@ -66,7 +66,7 @@ because when runsvdir returns with 111,
 Docker will immediately tear down the container.
 Our daemons may not have had the chance to receive their TERM signals.
 
-One solution emplyed by [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker)
+One solution employed by [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker)
 is to wrap runit in
 [another my_init script](https://github.com/phusion/baseimage-docker/blob/14ec533a164cdb495e1c6ab10b82ebe96695a971/image/bin/my_init).
 But that's a bit heavyweight.
