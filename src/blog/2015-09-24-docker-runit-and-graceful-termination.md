@@ -10,7 +10,7 @@ and I've been using it ever since.
 It's small, purpose-built, and does everything right,
 including all of the tricky edge cases.
 
-For each binary, you'll need a run script in /etc/service/foo/run.
+To use runit, you'll need a run script for each daemon in /etc/service/foo/run.
 That will look like
 
 ```sh
