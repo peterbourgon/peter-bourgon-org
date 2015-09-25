@@ -2,19 +2,10 @@
 	"title": "Docker, runit, and graceful termination"
 }
 ---
-**Important amendment**: this solution will work in a pinch,
-but it doesn't properly handle
-[the PID 1 zombie-reaping problem](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
-On reflection, you shouldn't use it in production.
-An updated post will follow.
-
 If you have a Docker container that hosts several daemons,
-it's important to also provide a supervisor process
-to manage their lifecycle.
-I was introduced to [runit](http://smarden.org/runit) at SoundCloud,
-and I've been using it ever since.
-It's small, purpose-built, and does everything right,
-including all of the tricky edge cases.
+ it's important to also provide a supervisor process to manage their lifecycle.
+I was introduced to [runit](http://smarden.org/runit) at SoundCloud, and I've been using it ever since.
+It's small, purpose-built, and does everything right, including all of the tricky edge cases.
 
 To use runit, you'll need a run script for each daemon in /etc/service/foo/run.
 That will look like
@@ -25,32 +16,13 @@ That will look like
 exec /path/to/foo
 ```
 
-Then, you'll need a global entrypoint script,
-to start runit as PID 1, and have it supervise the daemons.
+Then, you'll need a global entrypoint script, to start runit as PID 1, and have it supervise the daemons.
 That will look like
 
 ```sh
 #!/bin/sh
 
 exec /sbin/runsvdir /etc/service
-```
-
-For the record, the final Dockerfile will look something like
-
-```
-FROM alpine:latest
-RUN apk add --update runit
-
-ADD foo /foo
-RUN mkdir /etc/service/foo
-ADD run-foo /etc/service/foo/run
-
-ADD bar /bar
-RUN mkdir /etc/service/bar
-ADD run-bar /etc/service/bar/run
-
-ADD entrypoint /
-ENTRYPOINT ["/entrypoint"]
 ```
 
 This works.
@@ -60,24 +32,23 @@ And as we read from [the man page](http://smarden.org/runit/runsvdir.8.html),
 > If **runsvdir** receives a TERM signal, it exits with 0 immediately.
 
 If we want our daemons to receive their own TERM signals,
-so they can do a graceful shutdown,
-perhaps we need to send HUP, as
+ so they can do a graceful shutdown,
+  perhaps we need to send HUP, as
 
 > If **runsvdir** receives a HUP signal,
 > it sends a TERM signal to each runsv(8) process
 > it is monitoring and then exits with 111.
 
 But sending `docker kill -s HUP` still doesn't do what we want,
-because when runsvdir returns with 111,
-Docker will immediately tear down the container.
+ because when runsvdir returns with 111,
+  Docker will immediately tear down the container.
 Our daemons may not have had the chance to receive their TERM signals.
 
 One solution employed by [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker)
-is to wrap runit in
+ is to wrap runit in
 [another my_init script](https://github.com/phusion/baseimage-docker/blob/14ec533a164cdb495e1c6ab10b82ebe96695a971/image/bin/my_init).
-But that's a bit heavyweight.
-We can use the shell to the same effect.
-Modify the entrypoint script
+But that requires python3, and it's a bit heavyweight besides.
+It's tempting to use a shell script to approximate the same effect, i.e.
 
 ```sh
 #!/bin/sh
@@ -94,7 +65,15 @@ trap "sv_stop; exit" SIGTERM
 wait
 ```
 
-Now, the TERM signal sent by `docker stop` is trapped,
-and each service is stopped properly.
+The TERM signal sent by `docker stop` is trapped, and each service is stopped properly.
+But this script doesn't [reap orphaned zombie processes](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/),
+ which is a critical task for any PID 1.
 
-_With inspiration from [this GitLab script](https://gitbit.net/gitlab/gitlab/commit/9338c6325263d950966e87ddb23095075f18558e)._
+So, I wrote a small Go program,
+ designed to be used as the ENTRYPOINT in a Docker container with one or more runit services,
+  which converts the TERM signal from a Docker stop into graceful shutdown of those services,
+   and which properly reaps orphaned zombie processes.
+
+Check out [peterbourgon/runsvinit](https://github.com/peterbourgon/runsvinit),
+ including an [example Docker container](https://github.com/peterbourgon/runsvinit/tree/master/example),
+  and please let me know if I've done something stupid.
