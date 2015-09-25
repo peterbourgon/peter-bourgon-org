@@ -8,8 +8,6 @@ but it doesn't properly handle
 On reflection, you shouldn't use it in production.
 An updated post will follow.
 
----
-
 If you have a Docker container that hosts several daemons,
 it's important to also provide a supervisor process
 to manage their lifecycle.
