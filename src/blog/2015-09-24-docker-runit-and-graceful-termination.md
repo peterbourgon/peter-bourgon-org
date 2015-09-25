@@ -2,6 +2,14 @@
 	"title": "Docker, runit, and graceful termination"
 }
 ---
+**Important amendment**: this solution will work in a pinch,
+but it doesn't properly handle
+[the PID 1 zombie-reaping problem](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/).
+On reflection, you shouldn't use it in production.
+An updated post will follow.
+
+---
+
 If you have a Docker container that hosts several daemons,
 it's important to also provide a supervisor process
 to manage their lifecycle.
