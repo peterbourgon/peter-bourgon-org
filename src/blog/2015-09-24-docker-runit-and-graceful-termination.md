@@ -2,6 +2,8 @@
 	"title": "Docker, runit, and graceful termination"
 }
 ---
+tl;dr: **[peterbourgon/runsvinit](https://github.com/peterbourgon/runsvinit)**
+
 If you have a Docker container that hosts several daemons,
  it's important to also provide a supervisor process to manage their lifecycle.
 I was introduced to [runit](http://smarden.org/runit) at SoundCloud, and I've been using it ever since.
