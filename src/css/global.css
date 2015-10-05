@@ -58,17 +58,13 @@ div#right {
 	font-size: 8pt;
 }
 
-h1, h2, h3 { font-family: "Helvetica Neue", Arial, serif; letter-spacing: 1px; }
+h1, h2, h3 { font-family: "San Francisco", "Helvetica Neue", Arial, serif; letter-spacing: 1px; }
 h3.date {
 	margin-bottom: 1.5em;
 }
 
 p, ol, ul, th, td {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: 400;
-	font-size: 13pt;
-	line-height: 19pt;
-	letter-spacing: 0.05em;
+	font: 13pt/1.618 "Helvetica Neue", Helvetica, Arial, sans-serif;;
 }
 
 div#right p {
@@ -80,7 +76,7 @@ p.bloglink { line-height: 14pt; }
 
 td, th { padding: 0 10px; }
 th { font-weight: bold; text-align: left; }
-pre { margin: 0 4em 0 2em; padding: 1em; border-top: solid 1px #555; border-bottom: solid 1px #555; }
+pre { margin: 0 4em 0 2em; padding: 1em; border-top: solid 1px #ccc; border-bottom: solid 1px #ccc; }
 code { font-size: 11pt; font-family: Input, Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 p strong { font-weight: 600; }
 h2 a, a:visited { text-decoration: none; color: #ddd; }
