@@ -1,0 +1,10 @@
+<div id="header">
+<p>
+  <strong>Peter Bourgon</strong>
+  <a href="/" title="Home">Home</a>
+  <a href="/about" title="About">About</a>
+  <a href="/talks" title="Talks">Talks</a>
+  <a href="/blog" title="Blog">Blog</a>
+</p>
+<hr/>
+</div>

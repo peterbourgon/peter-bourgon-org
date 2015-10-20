@@ -1,14 +1,11 @@
 body { margin: 0; background-color: #fff; color: #000; }
 @page { margin: 20mm; }
-div#c { width: 100%; }
-div#cc { width: 100%; }
-div#sidebar { display: none; }
-div#right { display: none; }
-div#main { margin: 0; }
+div#c { width: 85%; }
+div#header { display: none; }
 .noprint { display: none; }
 .onlyprint { display: inherit; }
 a { text-decoration: underline; color: #000; }
 a:visited { color: #000; }
 h1.printname { margin-top: 0; }
 p { font-size: 11pt; line-height: 14pt; }
-.byline { padding-top: 5px; margin-left: 10px; }
+p.byline { margin-top: -20px; margin-bottom: 30px; margin-left: 6px; color: #666; }

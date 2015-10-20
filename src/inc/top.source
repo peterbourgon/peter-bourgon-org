@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="c">
-<div id="cc">
-<div id="main">
+
+{{ importhtml "parts/header.source" }}
 
 {{ if .showtitle }}<h1{{ if .titleclass }} class="{{ .titleclass }}"{{ end }}>{{ .title }}</h1>{{ end }}
