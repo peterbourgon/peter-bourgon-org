@@ -8,9 +8,14 @@
 
 ## 2015
 
+**A case for microservices** <br/>
+· November 2015, [dotGo](https://www.dotgo.eu), Paris
+
+**Cloud-native application stacks: a lightly-opinionated survey** <br/>
+· November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
+
 **[Go kit](http://gokit.io): a standard library for microservices** <br/>
-· November 2015, [dotGo](http://www.dotgo.eu), Paris — in the future! <br/>
-· August 2015, [Golang UK](http://www.golanguk.com), London — video coming soon <br/>
+· August 2015, [Golang UK](http://www.golanguk.com), London — [video](https://www.youtube.com/watch?v=aL6sd4d4hxk) <br/>
 · July 2015, [GopherCon](http://gophercon.com), Denver — [video](https://www.youtube.com/watch?v=1AjaZi4QuGo), [slides](https://github.com/gophercon/2015-talks/raw/master/Go%20kit/go-kit.pdf)
 
 **Mapping a microservices architecture** <br/>
@@ -20,6 +25,7 @@
 · April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys, Bordeaux
 
 **Go and the modern enterprise** <br/>
+· September 2015, [Rocket Tech Summit](http://www.techsummit2015.com/), Berlin <br/>
 · February 2015, [FOSDEM](https://fosdem.org), Brussels <br/>
 · February 2015, Go Gathering, London — [video](https://www.youtube.com/watch?v=iFR_7AKkJFU)
 
