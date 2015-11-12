@@ -1,5 +1,5 @@
 body { margin: 0; background-color: #fff; color: #000; }
-@page { margin: 20mm; }
+@page { margin: 15mm 15mm 20mm 15mm; }
 div#c { width: 85%; }
 div#header { display: none; }
 .noprint { display: none; }
@@ -7,4 +7,4 @@ div#header { display: none; }
 a { text-decoration: underline; color: #000; }
 a:visited { color: #000; }
 p { font-size: 11pt; line-height: 14pt; }
-p.byline { margin-top: -20px; margin-bottom: 30px; margin-left: 6px; color: #666; }
+p.byline { margin-top: -10px; margin-bottom: 25px; color: #666; }
