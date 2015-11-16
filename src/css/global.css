@@ -23,6 +23,13 @@ pre { margin: 0 4em 0 2em; padding: 1em; border-top: solid 1px #ccc; border-bott
 td, th { padding: 0 10px; }
 th { font-weight: bold; text-align: left; }
 
+span.highlight {
+	font-size: 10pt;
+	background-color: yellow;
+	font-style: italic;
+	padding: 0px 3px;
+}
+
 /* ?? h2 a, a:visited { text-decoration: none; color: #ddd; } */
 
 a:visited { color: #66a; }

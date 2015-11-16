@@ -8,7 +8,7 @@
 
 ## 2015
 
-**A case for microservices** <br/>
+**[A case for microservices](/a-case-for-microservices)** <br/>
 · November 2015, [dotGo](https://www.dotgo.eu), Paris
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
@@ -24,7 +24,7 @@
 **CRDTs in production** <br/>
 · April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys, Bordeaux
 
-**Go and the modern enterprise** <br/>
+**[Go and the modern enterprise](/go-and-the-modern-enterprise)** <br/>
 · September 2015, [Rocket Tech Summit](http://www.techsummit2015.com/), Berlin <br/>
 · February 2015, [FOSDEM](https://fosdem.org), Brussels <br/>
 · February 2015, Go Gathering, London — [video](https://www.youtube.com/watch?v=iFR_7AKkJFU)
