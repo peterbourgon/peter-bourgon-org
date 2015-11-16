@@ -144,7 +144,7 @@ As Dan North puts it, microservices allow us to write code that fits in our head
 Our language should allow us to understand quickly, and make changes authoritatively.
 Go's small surface area, and orthogonal features, allow us to know what we're doing.
 
-I love Go for this, I think all Go programmers do.
+I love Go for this; I think all Go programmers do.
 Go is a language that lets me confidently express myself, without doubt of the unknown.
 And I love microservices for this.
 They let me experiment, build and re-build, freely engage in the act of creation.
