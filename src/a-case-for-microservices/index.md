@@ -67,13 +67,13 @@ But there are benefits that follow directly from these costs.
 Chief among them, in my view, is the richness of Go's tooling.
 gofix, go fmt, go vet, golint, the gocode autocompletion daemon, the Go Oracle.
 All rely, to some degree, on the sparsity of the underlying language.
-Not that it would be impossible otherwise, but that it would be much harder.
+Not that these things would be impossible otherwise, but that they would be much harder.
 The presence of macros in Rust, for example, make it very difficult to effectively and efficiently produce and manipulate ASTs.
 Which, in turn, makes a Rust autocompletion daemon a tricky prospect.
 
 In losing inheritance in favor of composition, or structural subtyping, we actually eliminate entire classes of design errors.
 Similarly, we lose threads but gain goroutines, and eliminate classes of concurrency errors.
-The distillation of errors to mere values increases verbosity, but seems to make us more thoughtful, and our code more resilient.
+The distillation of [errors to mere values](https://blog.golang.org/errors-are-values) increases verbosity, but seems to make us more thoughtful, and our code more resilient.
 
 These benefits are perhaps dissatisfying to someone walking a feature checklist.
 But Go programmers understand that they are real and powerful things.
