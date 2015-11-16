@@ -90,7 +90,7 @@ And in our zeitgeist, you're going to have to think distributed at some point.
 
 When function calls are RPCs you think carefully about your APIs, aiding encapsulation.
 Code duplication and multiple languages enable experimentation, and suitability for purpose.
-Difficult end-to-end tests force an investment in unit and integration testing, which is correct.
+Difficult end-to-end tests force an investment in unit and integration testing, [which is correct](http://googletesting.blogspot.de/2015/04/just-say-no-to-more-end-to-end-tests.html).
 An increased emphasis on deployment automation is painful in the short-term, but a game-changer in the long term.
 And forcing teams to think carefully about consumer-driven contracts and responsibility boundaries brings all the benefits of spec-driven development.
 
