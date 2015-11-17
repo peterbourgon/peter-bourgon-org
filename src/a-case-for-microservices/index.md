@@ -153,7 +153,7 @@ From idea to product, a solution that's a perfect fit for the problem.
 ## Go kit
 
 I'm working on this project to make microservices in Go a nicer experience.
-[Go kit](https://gokit.io) is a toolkit for writing microservices in Go.
+[Go kit](http://gokit.io) is a toolkit for writing microservices in Go.
 It collects necessary stuff like circuit breakers, instrumentation, and adapters to different transports.
 It defines ways of structuring applications that are safe, performant, and adaptable to different needs.
 It reflects a lot of experience running microservices in production.
