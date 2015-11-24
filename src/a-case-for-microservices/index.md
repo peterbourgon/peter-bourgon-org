@@ -6,8 +6,6 @@
 
 _This article was originally delivered as the opening talk at [dotGo](http://dotgo.eu), Paris, November 2015. <br/> Video coming soon._
 
-&mdash;&nbsp;&ndash;&nbsp;-
-
 I want to make a case for microservices.
 I think they represent something really powerful, in a similar way that Go represents something powerful.
 But I'm not going to make a technical case.
