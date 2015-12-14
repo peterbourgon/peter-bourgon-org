@@ -171,7 +171,7 @@ So take a look if this might be able to help you.
 And contribute, if this area is interesting to you.
 I hope it will create some happiness in the world.
 
-## Happiness
+## Thank you
 
 Thank you to the Go authors for giving me a tool that makes me happy.
 Thank you to the other [dotGo speakers](http://dotgo.eu) for sharing what makes them happy.
