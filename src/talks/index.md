@@ -9,7 +9,7 @@
 ## 2015
 
 **[A case for microservices](/a-case-for-microservices)** <br/>
-· November 2015, [dotGo](https://www.dotgo.eu), Paris
+· November 2015, [dotGo](http://www.dotgo.eu), Paris
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
 · November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
