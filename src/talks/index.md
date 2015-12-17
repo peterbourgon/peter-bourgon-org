@@ -9,7 +9,7 @@
 ## 2015
 
 **[A case for microservices](/a-case-for-microservices)** <br/>
-· November 2015, [dotGo](http://www.dotgo.eu), Paris
+· November 2015, [dotGo](http://www.dotgo.eu), Paris — [video](http://www.thedotpost.com/2015/11/peter-bourgon-a-case-for-microservices)
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
 · November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
