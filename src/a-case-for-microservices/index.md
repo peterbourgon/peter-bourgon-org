@@ -4,7 +4,7 @@
 }
 ---
 
-_This article was originally delivered as the opening talk at [dotGo](http://dotgo.eu), Paris, November 2015. <br/> Video coming soon._
+_This article was originally delivered as the opening talk at [dotGo](http://dotgo.eu), Paris, November 2015. <br/> [Click here for the video](http://www.thedotpost.com/2015/11/peter-bourgon-a-case-for-microservices)._
 
 I want to make a case for microservices.
 I think they represent something really powerful, in a similar way that Go represents something powerful.
