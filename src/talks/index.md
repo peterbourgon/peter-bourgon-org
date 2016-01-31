@@ -52,7 +52,7 @@
 
 ## 2012
 
-**[Go Do: Go and software engineering](http://peter.bourogn.org/go-do)** <br/>
+**[Go Do: Go and software engineering](/go-do)** <br/>
 · December 2012, Kings of Code, Amsterdam <br/>
 · December 2012, Tech Mesh, London
 
