@@ -14,6 +14,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
+h1 { line-height: 1em; } /* fix wrapping titles */
 
 code { font-size: 10pt; font-family: monospace; }
 pre { margin: 0 4em 0 2em; padding: 1em; border-top: solid 1px #ccc; border-bottom: solid 1px #ccc; }
@@ -28,8 +29,6 @@ span.highlight {
 	font-style: italic;
 	padding: 0px 3px;
 }
-
-/* ?? h2 a, a:visited { text-decoration: none; color: #ddd; } */
 
 a:visited { color: #66a; }
 .lite { color: #ddd; text-decoration: none; } /* Permalink */
