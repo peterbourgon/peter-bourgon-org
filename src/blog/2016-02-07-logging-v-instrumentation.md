@@ -91,7 +91,7 @@ All good libraries have (at least) three main primitives:
 - A **gauge**, for recording things that fluctuate over time, e.g. the size of a threadpool.
 - A **histogram**, for recording observations of scalar quantities of events, e.g. request durations.
 
-Primitive instrumentation libraries and systems, like Graphite,
+Old-school instrumentation libraries and systems, like Graphite,
  will couple a primitive to a single, static name.
 So, you might create a histogram called `http_request_duration`,
  and invoke e.g. histogram.Observe(took.Microseconds) at the conclusion of every HTTP request.
