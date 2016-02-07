@@ -65,7 +65,7 @@ Metrics are (or should be) cheap to record and report,
  which is a virtuous cycle: the more you have, the better-off you are.
 
 Good initial candidates for instrumentation include the things you've left out of your logging.
-That's things like incoming request counts, request durations, and error counts.
+That tends to be things like incoming request counts, request durations, and error counts.
 My [Weave](https://weave.works) colleague [Tom Wilkie](https://twitter.com/tom_wilkie)
  suggests a useful mnemonic for this three-tuple of information.
 The [RED method](https://twitter.com/LindsayofSF/status/692191001692237825)
