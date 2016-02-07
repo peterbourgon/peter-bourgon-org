@@ -59,7 +59,7 @@ That kind of high-volume data is a better match for instrumentation.
 ## Instrumentation
 
 Instrumentation is for all remaining diagnostic information about your service.
-In contrast to logging, services should instrument **every meaningful number available for capture**.
+In contrast to logging, services should **instrument every meaningful number available for capture**.
 Metrics are (or should be) cheap to record and report,
  and instrumentation systems are more useful the more data they contain,
  which is a virtuous cycle: the more you have, the better-off you are.
