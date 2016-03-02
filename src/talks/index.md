@@ -6,13 +6,23 @@
 
 <img src="face.jpg" width="430" height="150" alt="My face, when I talk" />
 
+## 2016
+
+**Successful Go program design, six years in** <br/>
+· April 2016, [mix-IT](https://www.mix-it.fr/), Lyon <span class="highlight">soon!</span> <br/>
+· March 2016, [QCon](https://qconlondon.com), London <span class="highlight">soon!</span>
+
+**Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
+· March 2016, [QCon](https://qconlondon.com), London <span class="highlight">soon!</span> <br/>
+
+**Cloud-native application stacks: a lightly-opinionated survey** <br/>
+· May 2016, [GlueCon](http://gluecon.com/), Denver <span class="highlight">soon!</span> <br/>
+· November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
+
 ## 2015
 
 **[A case for microservices](/a-case-for-microservices)** <br/>
 · November 2015, [dotGo](http://www.dotgo.eu), Paris — [video](http://www.thedotpost.com/2015/11/peter-bourgon-a-case-for-microservices)
-
-**Cloud-native application stacks: a lightly-opinionated survey** <br/>
-· November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
 
 **[Go kit](http://gokit.io): a standard library for microservices** <br/>
 · August 2015, [Golang UK](http://www.golanguk.com), London — [video](https://www.youtube.com/watch?v=aL6sd4d4hxk) <br/>
