@@ -14,7 +14,7 @@ I do half- and full-day courses on pretty much any Go or microservice topic you 
 I also do a 3 to 4 day intensive course, teaching Go from first principles to groups of any skill level.
 
 My training style is thorough, didactic, and interactive.
-I highlight best practices, idioms, and antipatterns: stuff you can't necessarily get from books and literature.
+I highlight best practices, idioms, and antipatterns: stuff you can't easily get from books and literature.
 
 If this is interesting to you, get in touch:
  <a href='ma&#105;l&#116;o&#58;pete&#114;&#64;b&#111;u%7&#50;gon&#46;o&#114;%67'>p&#101;t&#101;r&#64;bou&#114;gon&#46;org</a>, or
