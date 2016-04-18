@@ -4,25 +4,39 @@
 }
 ---
 
-<img src="face.jpg" width="430" height="150" alt="My face, when I talk" />
+<img src="face.jpg" width="430" height="150" alt="My face, when I talk (I kind of look like a techbro here and I regret that)" />
 
 ## 2016
 
-**Successful Go program design, six years in** <br/>
-· April 2016, [mix-IT](https://www.mix-it.fr/), Lyon <span class="highlight">soon!</span> <br/>
-· March 2016, [QCon](https://qconlondon.com), London <span class="highlight">soon!</span>
-
-**Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
-· March 2016, [QCon](https://qconlondon.com), London <span class="highlight">soon!</span> <br/>
+**Go Microservices workshop** &mdash; _space available, [register here](https://qconnewyork.com/ny2016/workshops/go-microservices)!_ <br/>
+· June 2016, [QCon](https://qconnewyork.com), New York <span class="highlight">soon!</span>
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
 · May 2016, [GlueCon](http://gluecon.com/), Denver <span class="highlight">soon!</span> <br/>
 · November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
 
+**Applied Go kit** <br/>
+· April 2016, [CRAFT Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest <span class="highlight">soon!</span>
+
+**Go, from zero to hero** <br/>
+· April 2016, [mix-IT](https://www.mix-it.fr/), Lyon <span class="highlight">soon!</span> <br/>
+
+**Successful Go program design, six years on** <br/>
+· March 2016, [QCon](https://qconlondon.com), London
+
+**Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
+· March 2016, [QCon](https://qconlondon.com), London
+
+
 ## 2015
 
 **[A case for microservices](/a-case-for-microservices)** <br/>
 · November 2015, [dotGo](http://www.dotgo.eu), Paris — [video](http://www.thedotpost.com/2015/11/peter-bourgon-a-case-for-microservices)
+
+**[Go and the modern enterprise](/go-and-the-modern-enterprise)** <br/>
+· September 2015, [Rocket Tech Summit](http://www.techsummit2015.com/), Berlin <br/>
+· February 2015, [FOSDEM](https://fosdem.org), Brussels <br/>
+· February 2015, Go Gathering, London — [video](https://www.youtube.com/watch?v=iFR_7AKkJFU)
 
 **[Go kit](http://gokit.io): a standard library for microservices** <br/>
 · August 2015, [Golang UK](http://www.golanguk.com), London — [video](https://www.youtube.com/watch?v=aL6sd4d4hxk) <br/>
@@ -33,11 +47,6 @@
 
 **CRDTs in production** <br/>
 · April 2015, [Principles and Practices of Consistency](http://papoc.di.uminho.pt/index.html), EuroSys, Bordeaux
-
-**[Go and the modern enterprise](/go-and-the-modern-enterprise)** <br/>
-· September 2015, [Rocket Tech Summit](http://www.techsummit2015.com/), Berlin <br/>
-· February 2015, [FOSDEM](https://fosdem.org), Brussels <br/>
-· February 2015, Go Gathering, London — [video](https://www.youtube.com/watch?v=iFR_7AKkJFU)
 
 ## 2014
 
