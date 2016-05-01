@@ -15,18 +15,20 @@
 · May 2016, [GlueCon](http://gluecon.com/), Denver <span class="highlight">soon!</span> <br/>
 · November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
 
+**etcd over gossip: strongly-consistent semantics in a weakly-consistent world** <br/>
+· May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin <span class="highlight">soon!</span>
+
 **Applied Go kit** <br/>
-· April 2016, [CRAFT Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest <span class="highlight">soon!</span>
+· April 2016, [CRAFT Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest
 
-**Go, from zero to hero** <br/>
-· April 2016, [mix-IT](https://www.mix-it.fr/), Lyon <span class="highlight">soon!</span> <br/>
+**Introductory Go, from zero to hero** <br/>
+· April 2016, [mix-IT](https://www.mix-it.fr/), Lyon
 
-**Successful Go program design, six years on** <br/>
+**[Go best practices, six years in](/go-best-practices-2016)** <br/>
 · March 2016, [QCon](https://qconlondon.com), London
 
 **Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
 · March 2016, [QCon](https://qconlondon.com), London
-
 
 ## 2015
 

@@ -17,12 +17,35 @@ body {
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
 h1 { line-height: 1em; } /* fix wrapping titles */
 
-code { font-size: 10pt; font-family: monospace; }
-pre { margin: 0 4em 0 2em; padding: 1em; border-top: solid 1px #ccc; border-bottom: solid 1px #ccc; }
+code { font-size: 11pt; font-family: monospace; }
+pre {
+	margin: 0 4em 0 2em;
+	padding: 1em;
+	line-height: 1em;
+	border-top: solid 1px #ccc;
+	border-bottom: solid 1px #ccc;
+}
 
 /* Go in Production */
 td, th { padding: 0 10px; }
 th { font-weight: bold; text-align: left; }
+div.toptip {
+	background-color: #ded;
+	padding: 20px;
+	margin: 20px;
+	border-top: solid 1px #171;
+	border-bottom: solid 1px #171;
+}
+div.bigdeal {
+	border-top: solid 3px #171;
+	border-bottom: solid 3px #171;
+	font-size: 20pt;
+	font-weight: bold;
+}
+div.toptip a {
+	text-decoration: none;
+	color: #171;
+}
 
 span.highlight {
 	font-size: 10pt;
@@ -32,7 +55,8 @@ span.highlight {
 }
 
 a:visited { color: #66a; }
-.lite { color: #ddd; text-decoration: none; } /* Permalink */
+.lite { color: #ddd; text-decoration: none; font-size: 14pt; font-variant: small-caps;} /* Permalink */
+.lite:visited { color: #ddd; }
 
 .onlyprint { display: none; }
 
