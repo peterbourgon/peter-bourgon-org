@@ -33,7 +33,7 @@ Some nice things to read on the internet include
  [The New York Times](http://www.nytimes.com/),
  [n+1](http://nplusonemag.com/),
  [The New Yorker](http://www.newyorker.com/), and
- [Long Reads](http://longreads.com),
+ [Long Reads](http://longreads.com).
 Some nice things to read on dead trees include
  [Joe Conrad](http://www.gutenberg.org/browse/authors/c#a125),
  [Fyodor Dostoyevsky](http://www.gutenberg.org/browse/authors/d#a314),
