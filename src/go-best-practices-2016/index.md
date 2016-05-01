@@ -691,18 +691,18 @@ The install verb caches build artifacts from dependencies in $GOPATH/pkg,
  making builds faster.
 It also puts binaries in $GOPATH/bin,
  making them easier to find and invoke.
-Also, if you produce a binary, don't be afraid to try out new build tools
- like [gb](https://getgb.io), which may significantly reduce your cognitive burden.
 
 <a name="top-tip-15"></a><div class="toptip"><a href="#top-tip-15">✪</a>&nbsp;
 <strong>Top Tip</strong> &mdash;
 Prefer go install to go build.
 </div>
 
+If you produce a binary, don't be afraid to try out new build tools
+ like [gb](https://getgb.io), which may significantly reduce your cognitive burden.
 Conversely, remember that since Go 1.5 cross-compilation is built-in;
  just set the appropriate GOOS and GOARCH environment variables, and
   invoke the appropriate go command.
-There's no need for extra tools here anymore.
+So there's no need for extra tools here anymore.
 
 Regarding deployment, we Gophers have it pretty easy
  compared to languages like Ruby or Python,
