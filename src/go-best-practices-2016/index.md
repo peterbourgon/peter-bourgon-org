@@ -501,7 +501,8 @@ Here are some facts about Go:
 
 - log.Print uses a fixed, global log.Logger
 - http.Get uses a fixed, global http.Client
-- database/sql uses a fixed, global driver reigstry
+- http.Server, by default, uses a fixed, global log.Logger
+- database/sql uses a fixed, global driver registry
 - func init exists only to have side effects on package-global state
 
 These facts are convenient in the small, but awkward in the large.
