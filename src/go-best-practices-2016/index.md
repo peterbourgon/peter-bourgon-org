@@ -475,7 +475,7 @@ To speak about the problem generally for a moment:
   which has mostly just increased my respect for the problem.
 Logging is expensive, more expensive than you think,
  and can quickly become the bottleneck of your system.
-I wrote more extensively on the subject [in a separate blog post](peter.bourgon.org/blog/2016/02/07/logging-v-instrumentation.html),
+I wrote more extensively on the subject [in a separate blog post](/blog/2016/02/07/logging-v-instrumentation.html),
  but to re-cap:
 
 - Log only _actionable information_, which will be read by a human or a machine
