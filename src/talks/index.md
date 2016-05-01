@@ -19,7 +19,7 @@
 · May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin <span class="highlight">soon!</span>
 
 **Applied Go kit** <br/>
-· April 2016, [CRAFT Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest
+· April 2016, [Craft Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest
 
 **Introductory Go, from zero to hero** <br/>
 · April 2016, [mix-IT](https://www.mix-it.fr/), Lyon
