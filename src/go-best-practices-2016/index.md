@@ -205,11 +205,10 @@ Defer to Andrew Gerrand's <a href="https://talks.golang.org/2014/names.slide">na
 </div>
 
 And in terms of tooling, things have only gotten better.
-You should configure your editor to invoke gofmt on save.
+You should configure your editor to invoke gofmt&mdash;or, better, [goimports](https://github.com/bradfitz/goimports)&mdash;on save.
 (At this point, I hope that's not in any way controversial.)
-To the best of my knowledge,
- the go vet tool produces no false positives,
-  so it's a good idea to make it part of your precommit hook.
+The go vet tool produces ([almost](https://github.com/golang/go/issues/9171))!) no false positives,
+ so you might consider making it part of your precommit hook.
 And check out the excellent [gometalinter](https://github.com/alecthomas/gometalinter) for linting concerns.
 This _can_ produce false positives, so it's not a bad idea to
  [encode your own conventions](https://github.com/weaveworks/mesh/blob/master/lint) somehow.
