@@ -459,7 +459,7 @@ Of course, we should also be sure to take a sensible default for our logger.
 func newFoo(..., cfg fooConfig) *foo {
     // ...
     if cfg.Logger == nil {
-        cfg.Logger = log.NewLogger(ioutil.Discard, ...)
+        cfg.Logger = log.New(ioutil.Discard, ...)
     }
     // ...
 }
