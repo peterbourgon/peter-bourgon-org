@@ -588,7 +588,7 @@ Another incredibly interesting topic has been designing for testing.
 Mitchell Hashimoto recently gave a great talk on the subject here in Berlin
  ([SpeakerDeck](https://speakerdeck.com/mitchellh/advanced-testing-with-go),
   [YouTube](https://www.youtube.com/watch?v=yszygk1cpEc))
- which I think should be be required viewing.
+ which I think should be required viewing.
 
 In general, the thing that seems to work the best is to write Go in a generally functional style,
  where dependencies are explicitly enumerated, and provided as small, tightly-scoped interfaces whenever possible.
