@@ -467,7 +467,7 @@ func newFoo(..., cfg fooConfig) *foo {
 
 
 <br/><a name="logging-and-instrumentation"></a>
-## Logging and instrumentation  &nbsp;<a class="lite" href="#logging-and-instrumentation">permalink</a> <span class="orig"><a class="lite" href="/go-in-production/#logging-and-instrumentation">original</a></span>
+## Logging and instrumentation  &nbsp;<a class="lite" href="#logging-and-instrumentation">permalink</a> <span class="orig"><a class="lite" href="/go-in-production/#logging-and-telemetry">original</a></span>
 
 To speak about the problem generally for a moment:
  I've had a lot more production experience with logging,
