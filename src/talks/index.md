@@ -8,15 +8,15 @@
 
 ## 2016
 
-**Go Microservices workshop** &mdash; _space available, [register here](https://qconnewyork.com/ny2016/workshops/go-microservices)!_ <br/>
+**Go Microservices workshop** <br/>
 · June 2016, [QCon](https://qconnewyork.com), New York <span class="highlight">soon!</span>
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
-· May 2016, [GlueCon](http://gluecon.com/), Denver <span class="highlight">soon!</span> <br/>
+· May 2016, [GlueCon](http://gluecon.com/), Denver — [slides](https://speakerdeck.com/peterbourgon/cloud-native-application-stacks-a-lightly-opinionated-survey-may-2016) <br/>
 · November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
 
 **etcd over gossip: strongly-consistent semantics in a weakly-consistent world** <br/>
-· May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin <span class="highlight">soon!</span>
+· May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin
 
 **Applied Go kit** <br/>
 · April 2016, [Craft Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest
