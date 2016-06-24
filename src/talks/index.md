@@ -9,7 +9,7 @@
 ## 2016
 
 **Go Microservices workshop** <br/>
-· June 2016, [QCon](https://qconnewyork.com), New York <span class="highlight">soon!</span>
+· June 2016, [QCon](https://qconnewyork.com), New York
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
 · May 2016, [GlueCon](http://gluecon.com/), Denver — [slides](https://speakerdeck.com/peterbourgon/cloud-native-application-stacks-a-lightly-opinionated-survey-may-2016) <br/>
