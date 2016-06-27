@@ -16,7 +16,7 @@
 · November 2015, [µCon](https://skillsmatter.com/conferences/7279-mucon-stockholm-2015-the-microservices-conference), Stockholm
 
 **etcd over gossip: strongly-consistent semantics in a weakly-consistent world** <br/>
-· May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin
+· May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin — [video](https://www.youtube.com/watch?v=c2RyuTyVHxE)
 
 **Applied Go kit** <br/>
 · April 2016, [Craft Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest
