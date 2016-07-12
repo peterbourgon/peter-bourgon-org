@@ -9,6 +9,7 @@
 ## 2016
 
 **Go Microservices workshop** <br/>
+· November 2016, [QCon](https://qconsf.com), San Francisco — _[tickets available!](https://qconsf.com/sf2016/workshop/go-microservices)_ <br/>
 · June 2016, [QCon](https://qconnewyork.com), New York
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
