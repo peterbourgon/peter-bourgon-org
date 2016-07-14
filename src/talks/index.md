@@ -26,7 +26,7 @@
 · April 2016, [mix-IT](https://www.mix-it.fr/), Lyon
 
 **[Go best practices, six years in](/go-best-practices-2016)** <br/>
-· March 2016, [QCon](https://qconlondon.com), London
+· March 2016, [QCon](https://qconlondon.com), London — [video](https://www.infoq.com/presentations/go-patterns)
 
 **Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
 · March 2016, [QCon](https://qconlondon.com), London

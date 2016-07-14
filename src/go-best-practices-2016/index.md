@@ -4,7 +4,7 @@
 }
 ---
 
-(_This article was originally a talk at QCon London 2016. Slides and video coming soon._)
+(_This article was originally a talk at QCon London 2016. [Video and slides here](https://www.infoq.com/presentations/go-patterns)._)
 
 In 2014, I gave a talk at the inaugural GopherCon titled [Best Practices in Production Environments](/go-in-production).
 We were early adopters at [SoundCloud](https://soundcloud.com), and by that point had been writing, running, and maintaining Go in production in one form or another for nearly 2 years.
