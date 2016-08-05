@@ -29,7 +29,7 @@
 · March 2016, [QCon](https://qconlondon.com), London — [video](https://www.infoq.com/presentations/go-patterns)
 
 **Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
-· March 2016, [QCon](https://qconlondon.com), London
+· March 2016, [QCon](https://qconlondon.com), London — [video](https://qconlondon.com/presentation/effortless-eventual-consistency-weave-mesh)
 
 ## 2015
 
