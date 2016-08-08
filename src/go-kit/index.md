@@ -5,7 +5,8 @@
 
 ---
 
-_This was originally a talk in February 2015 at [FOSDEM](http://www.fosdem.org) and the Google Campus London meetup. [Watch the video here](https://www.youtube.com/watch?v=iFR_7AKkJFU)._
+_This was originally a talk in February 2015 at [FOSDEM](http://www.fosdem.org) and the Google Campus London meetup._
+_You can [watch the video here](https://www.youtube.com/watch?v=iFR_7AKkJFU)._
 
 _This page is also a bit out-of-date by now. For the latest updates on Go kit, see [gokit.io](https://gokit.io)._
 
