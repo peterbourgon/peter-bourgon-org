@@ -109,6 +109,10 @@ And the [IntelliJ Go plugin](https://github.com/go-lang-plugin-org/go-lang-idea-
 <br/><a name="repository-structure"></a>
 ## Repository structure  &nbsp;<a class="lite" href="#repository-structure">permalink</a> <span class="orig"><a class="lite" href="/go-in-production/#repository-structure">original</a></span>
 
+_**Update**: Ben Johnson has written an excellent article titled
+ [Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1)
+ with great advice for typical line-of-business applications._
+
 We've had a lot of time for projects to mature, and some clear patterns have emerged.
 How you structure your repo depends on what your project _is_.
 First, if your project is private or internal to your company, go nuts:
