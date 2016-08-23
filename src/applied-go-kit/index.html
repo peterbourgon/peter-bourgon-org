@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Go + Microservices = Go kit</title>
+
+    <script>var notesEnabled = false;</script>
+    <script src="slides.js"></script>
+
+  <meta name="viewport" content="width=1100,height=750"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+
+  <body style="display: none" class="loaded">
+
+    <section class="slides layout-widescreen">
+
+      <article>
+        <h1>Go + Microservices = Go kit</h1>
+
+
+
+          <div class="presenter">
+
+
+  <p>
+    Peter Bourgon
+  </p>
+
+
+
+  <p>
+    Gopher 🏌
+  </p>
+
+
+          </div>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Outline</h3>
+
+  <ul>
+
+    <li>Microservices??</li>
+
+    <li>Microservices :(</li>
+
+    <li>Go kit makes them less terrible (only just)</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Hang on</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Microservice?</h3>
+
+  <ul>
+
+    <li>1000 lines or fewer?</li>
+
+    <li>Deployed in a Docker container?</li>
+
+    <li>Written in Node?</li>
+
+  </ul>
+
+
+  <p>
+    None of these are good definitions.
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Size definitions</h3>
+
+
+  <p>
+    "A single programmer can design, implement, deploy, and maintain."
+  </p>
+
+<p class="link"><a href="https://www.infoq.com/news/2015/07/microservices-programming-style" target="_blank">Fred George</a></p>
+
+  <p>
+    "Software that fits in your head."
+  </p>
+
+<p class="link"><a href="https://www.infoq.com/presentations/microservices-replaceability-consistency" target="_blank">Dan North</a></p>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Data definitions</h3>
+
+
+  <p>
+    "A microservice implements a single bounded context."
+  </p>
+
+<p class="link"><a href="http://martinfowler.com/bliki/BoundedContext.html" target="_blank">Martin Fowler, Sam Newman</a></p>
+
+  <p>
+    "A single logical database per service."
+  </p>
+
+<p class="link"><a href="http://microservices.io/patterns/data/database-per-service.html" target="_blank">Chris Richardson</a></p>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Operational definitions</h3>
+
+
+  <p>
+    "Built &amp; deployed independently. Stateless; state as backing services."
+  </p>
+
+<p class="link"><a href="http://12factor.net/" target="_blank">12Factor.net</a></p>
+
+  <p>
+    "Addressable through a service discovery system."
+  </p>
+
+<p class="link"><a href="http://microservices.io/patterns/service-registry.html" target="_blank">Chris Richardson</a></p>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Architecture</h3>
+
+  <ul>
+
+    <li>CRUD-oriented</li>
+
+    <li>Typically RPC, often HTTP</li>
+
+    <li>Request processing</li>
+
+    <li>Monolith → microservices</li>
+
+    <li>Ruby on Rails, Java+Tomcat/Jetty (Spring Boot), Scala+Akka/Play...</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Did you mean...</h3>
+
+  <ul>
+
+    <li>Stream-oriented</li>
+
+    <li>Event sourcing</li>
+
+    <li>Message processing</li>
+
+    <li>Materialized views</li>
+
+    <li>SQS, Kinesis, Kafka, RabbitMQ...</li>
+
+  </ul>
+
+
+  <p>
+    This is another architecture — which is incredibly interesting!
+  </p>
+
+
+
+  <p>
+    But not what we'll be talking about today.
+  </p>
+
+<p class="link"><a href="https://medium.com/@skamille/microservices-real-architectural-patterns-68bd83bbb6cd" target="_blank">Microservices: Real Architectural Patterns by Camille Fournier</a></p>
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Important</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Cost v. benefit</h3>
+
+<div class="image">
+  <img src="solve-cause.png">
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Problems solved</h3>
+
+  <ul>
+
+    <li>Team is too large to work effectively on shared codebase</li>
+
+    <li>Teams are blocked on other teams, can't make progress</li>
+
+    <li>Communication overhead becomes gigantic</li>
+
+    <li>Product velocity stalled</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Problems caused</h3>
+
+  <ul>
+
+    <li>Need well-defined business domains for stable APIs</li>
+
+    <li>No more shared DB — distributed transactions?!</li>
+
+    <li>Testing becomes <i>really hard</i></li>
+
+    <li>Requires dev/ops culture: devs deploy and operate their work</li>
+
+    <li>Job (service) scheduling — manual works for a while...</li>
+
+    <li>Addressibility i.e. service discovery</li>
+
+    <li>Monitoring and instrumentation — tailing logs? Nagios and New Relic? ha!</li>
+
+    <li>Distributed tracing?</li>
+
+    <li>Build pipelines??</li>
+
+    <li>Security???</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>From one to many</h3>
+
+<div class="image">
+  <img src="soundcloud.png">
+</div>
+
+
+  <p>
+    <i> Concerns for a single service, Sean Treadway, SoundCloud</i>
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Think twice</h3>
+
+  <ul>
+
+    <li>You probably don't need microservices</li>
+
+    <li>5 or fewer engineers? You <i>definitely</i> don't</li>
+
+    <li>Building an AMI for an EC2 autoscaling group works really really well</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Go</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Go, IMO</h3>
+
+  <ul>
+
+    <li>A breath of fresh air from "kitchen sink" languages (cf. Scala)</li>
+
+    <li>Simple, orthogonal features that aren't surprising (cf. Node)</li>
+
+    <li>Efficient by default (cf. Python, Ruby)</li>
+
+    <li>Predictable runtime behavior, fast lifecycles (cf. all JVM languages)</li>
+
+    <li>Familiar heritage, syntax, and paradigm (cf. Haskell, Elixir)</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Go, IMO</h3>
+
+  <ul>
+
+    <li>By far, the best language for writing servers</li>
+
+    <li>Why not the best language for microservices?</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Go at SoundCloud</h3>
+
+
+  <p>
+    2012
+  </p>
+
+
+  <ul>
+
+    <li>We're doing microservices! — well, we called it SOA</li>
+
+    <li>Teams picked their favorite languages</li>
+
+    <li>Go was very well represented</li>
+
+  </ul>
+
+
+  <p>
+    2014
+  </p>
+
+
+  <ul>
+
+    <li>Started to consolidate mechanics, domain objects, behaviors...</li>
+
+    <li>JVM teams coalesced around Scala + Finagle</li>
+
+    <li>Go teams had to reinvent everything :(</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Go was missing something</h3>
+
+  <ul>
+
+    <li>Transport-agnostic libraries to solve typical RPC problems</li>
+
+    <li>Reasonably generic interfaces for service discovery, event streams, etc.</li>
+
+    <li>Enforce organization standards for logging, instrumentation, etc.</li>
+
+  </ul>
+
+
+  <p>
+    In general, a way to create &amp; maintain a <b>shared context</b> for building Go microservices, interoperable with other teams' work.
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Go lost</h3>
+
+  <ul>
+
+    <li>Scala teams had something they could lean on and leverage</li>
+
+    <li>Go teams couldn't justify reimplementing Finagle + their own work</li>
+
+    <li>Scala eventually won :(</li>
+
+    <li>Go still heavily used for infrastructure/SRE tasks, but not for line-of-business code</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Enter Go kit</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>The pitch</h3>
+
+  <ul>
+
+    <li>Make these problems tractable</li>
+
+    <li>Make Go attractive to your organization</li>
+
+    <li>Play nice with others</li>
+
+  </ul>
+<p class="link"><a href="https://gokit.io/" target="_blank">gokit.io</a></p>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>NOT a framework</h3>
+
+  <ul>
+
+    <li><b>Not</b> like Revel, Beego, Kite, Micro, H2, gocircuit</li>
+
+    <li>More like Gorilla</li>
+
+    <li>Use what you need</li>
+
+    <li>Progressive enhancement as you need more</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Compare to</h3>
+
+  <ul>
+
+    <li>Finagle (Scala) — initial inspiration</li>
+
+    <li>Netflix OSS: Eureka, Hystrix, Zuul, etc. (JVM) — similar goals</li>
+
+    <li>Spring Boot (Java) — similar goals, though Go kit is smaller in scope</li>
+
+    <li>Nameko (Python) — just heard of this, looks similar</li>
+
+    <li>Others?</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Philosophy</h3>
+
+
+  <p>
+    Go kit encourages you to write your programs with:
+  </p>
+
+
+  <ul>
+
+    <li>No global state</li>
+
+    <li>Declarative composition</li>
+
+    <li>Explicit dependencies</li>
+
+    <li>Interfaces as contracts</li>
+
+  </ul>
+
+
+  <p>
+    Towards established practices of software engineering:
+  </p>
+
+
+  <ul>
+
+    <li>SOLID design</li>
+
+    <li>Domain-Driven Design</li>
+
+    <li>The Clean Architecture</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>How does it taste?</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Profile service</h3>
+
+
+  <p>
+    Let's say we have some service, illustrated by an interface.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="10">type ProfileService interface {</span>
+<span num="11">    PostProfile(p Profile) error</span>
+<span num="12">    GetProfile(id string) (Profile, error)</span>
+<span num="13">}</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    Here's a profile.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="15">type Profile struct {</span>
+<span num="16">    ID   string</span>
+<span num="17">    Name string</span>
+<span num="18">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Naïve implementation</h3>
+
+
+  <p>
+    Without Go kit stuff, for now.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="21">type profileService struct {</span>
+<span num="22">    <b>profiles map[string]Profile // in-memory data store</b></span>
+<span num="23">}</span>
+<span num="24"></span>
+<span num="25">func (ps *profileService) PostProfile(p Profile) error {</span>
+<span num="26">    if _, ok := ps.profiles[p.ID]; ok {</span>
+<span num="27">        return errors.New("profile already exists")</span>
+<span num="28">    }</span>
+<span num="29">    ps.profiles[p.ID] = p</span>
+<span num="30">    return nil</span>
+<span num="31">}</span>
+<span num="32"></span>
+<span num="33">func (ps *profileService) GetProfile(id string) (Profile, error) {</span>
+<span num="34">    p, ok := ps.profiles[id]</span>
+<span num="35">    if !ok {</span>
+<span num="36">        return Profile{}, errors.New("profile not found")</span>
+<span num="37">    }</span>
+<span num="38">    return p, nil</span>
+<span num="39">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Transport</h3>
+
+
+  <p>
+    Defining a ServeHTTP method on the profileService turns it into an HTTP handler.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="44">func (ps *profileService) ServeHTTP(w http.ResponseWriter, r *http.Request) {</span>
+<span num="45">    switch r.Method {</span>
+<span num="46">    case "POST":</span>
+<span num="47">        var p Profile</span>
+<span num="48">        if err := json.NewDecoder(r.Body).Decode(&amp;p); err != nil {</span>
+<span num="49">            http.Error(w, err.Error(), http.StatusBadRequest)</span>
+<span num="50">            return</span>
+<span num="51">        }</span>
+<span num="52">        if err := ps.PostProfile(p); err != nil {</span>
+<span num="53">            http.Error(w, err.Error(), http.StatusInternalServerError)</span>
+<span num="54">            return</span>
+<span num="55">        }</span>
+<span num="56">        fmt.Fprintf(w, "OK")</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Transport</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="60">    case "GET":</span>
+<span num="61">        id := r.FormValue("id")</span>
+<span num="62">        if id == "" {</span>
+<span num="63">            http.Error(w, "no ID specified", http.StatusBadRequest)</span>
+<span num="64">            return</span>
+<span num="65">        }</span>
+<span num="66">        p, err := ps.GetProfile(id)</span>
+<span num="67">        if err != nil {</span>
+<span num="68">            http.Error(w, err.Error(), http.StatusInternalServerError)</span>
+<span num="69">            return</span>
+<span num="70">        }</span>
+<span num="71">        json.NewEncoder(w).Encode(p)</span>
+<span num="72">    }</span>
+<span num="73">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>main</h3>
+
+
+  <p>
+    Now that the profileService is an HTTP handler, we can pass it to ListenAndServe.
+  </p>
+
+
+  <div class="code playground" contenteditable="true" spellcheck="false">
+<pre style="display: none"><span>package main
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"net/http"
+)
+
+type ProfileService interface {
+	PostProfile(p Profile) error
+	GetProfile(id string) (Profile, error)
+}
+
+type Profile struct {
+	ID   string
+	Name string
+}
+
+// START IMPL OMIT
+type profileService struct {
+	profiles map[string]Profile // in-memory data store // HL
+}
+
+func (ps *profileService) PostProfile(p Profile) error {
+	if _, ok := ps.profiles[p.ID]; ok {
+		return errors.New("profile already exists")
+	}
+	ps.profiles[p.ID] = p
+	return nil
+}
+
+func (ps *profileService) GetProfile(id string) (Profile, error) {
+	p, ok := ps.profiles[id]
+	if !ok {
+		return Profile{}, errors.New("profile not found")
+	}
+	return p, nil
+}
+
+// END IMPL OMIT
+
+// START POST OMIT
+func (ps *profileService) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "POST":
+		var p Profile
+		if err := json.NewDecoder(r.Body).Decode(&amp;p); err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		if err := ps.PostProfile(p); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		fmt.Fprintf(w, "OK")
+		// END POST OMIT
+
+		// START GET OMIT
+	case "GET":
+		id := r.FormValue("id")
+		if id == "" {
+			http.Error(w, "no ID specified", http.StatusBadRequest)
+			return
+		}
+		p, err := ps.GetProfile(id)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		json.NewEncoder(w).Encode(p)
+	}
+}
+
+// END GET OMIT
+
+</span></pre>
+
+<pre><span num="77">func main() {</span>
+<span num="78">    ps := &amp;profileService{</span>
+<span num="79">        profiles: map[string]Profile{</span>
+<span num="80">            "john": Profile{ID: "john", Name: "John Edgar"},</span>
+<span num="81">        },</span>
+<span num="82">    }</span>
+<span num="83">    http.ListenAndServe(":8080", ps)</span>
+<span num="84">}</span>
+</pre>
+
+
+</div><div class="buttons"></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Hooray</h3>
+
+<div class="image">
+  <img src="congratulations.png">
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Logging</h3>
+
+
+  <p>
+    Here's how you might try adding logging...
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="42">func (ps *profileService) ServeHTTP(w http.ResponseWriter, r *http.Request) {</span>
+<span num="43">    switch r.Method {</span>
+<span num="44">    case "POST":</span>
+<span num="45">        var p Profile</span>
+<span num="46">        if err := json.NewDecoder(r.Body).Decode(&amp;p); err != nil {</span>
+<span num="47">            code := http.StatusBadRequest</span>
+<span num="48">            http.Error(w, err.Error(), code)</span>
+<span num="49">            <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</b></span>
+<span num="50">            return</span>
+<span num="51">        }</span>
+<span num="52">        if err := ps.PostProfile(p); err != nil {</span>
+<span num="53">            code := http.StatusInternalServerError</span>
+<span num="54">            http.Error(w, err.Error(), code)</span>
+<span num="55">            <b>log.Printf("%s: %s%s : %d", r.RemoteAddr, r.Method, r.URL, code)</b></span>
+<span num="56">            return</span>
+<span num="57">        }</span>
+<span num="58">        fmt.Fprintf(w, "OK")</span>
+<span num="59">        <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200)</b></span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Logging</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="63">    case "GET":</span>
+<span num="64">        id := r.FormValue("id")</span>
+<span num="65">        if id == "" {</span>
+<span num="66">            code := http.StatusBadRequest</span>
+<span num="67">            http.Error(w, "no ID specified", code)</span>
+<span num="68">            <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</b></span>
+<span num="69">            return</span>
+<span num="70">        }</span>
+<span num="71">        p, err := ps.GetProfile(id)</span>
+<span num="72">        if err != nil {</span>
+<span num="73">            code := http.StatusInternalServerError</span>
+<span num="74">            http.Error(w, err.Error(), code)</span>
+<span num="75">            <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</b></span>
+<span num="76">            return</span>
+<span num="77">        }</span>
+<span num="78">        json.NewEncoder(w).Encode(p)</span>
+<span num="79">        <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200)</b></span>
+<span num="80">    }</span>
+<span num="81">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Logging</h3>
+
+  <div class="code playground" contenteditable="true" spellcheck="false">
+<pre style="display: none"><span>package main
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"log"
+	"net/http"
+)
+
+type ProfileService interface {
+	PostProfile(p Profile) error
+	GetProfile(id string) (Profile, error)
+}
+
+type Profile struct {
+	ID   string
+	Name string
+}
+
+type profileService struct {
+	profiles map[string]Profile
+}
+
+func (ps *profileService) PostProfile(p Profile) error {
+	if _, ok := ps.profiles[p.ID]; ok {
+		return errors.New("profile already exists")
+	}
+	ps.profiles[p.ID] = p
+	return nil
+}
+
+func (ps *profileService) GetProfile(id string) (Profile, error) {
+	p, ok := ps.profiles[id]
+	if !ok {
+		return Profile{}, errors.New("profile not found")
+	}
+	return p, nil
+}
+
+// START POST OMIT
+func (ps *profileService) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "POST":
+		var p Profile
+		if err := json.NewDecoder(r.Body).Decode(&amp;p); err != nil {
+			code := http.StatusBadRequest
+			http.Error(w, err.Error(), code)
+			log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code) // HL
+			return
+		}
+		if err := ps.PostProfile(p); err != nil {
+			code := http.StatusInternalServerError
+			http.Error(w, err.Error(), code)
+			log.Printf("%s: %s%s : %d", r.RemoteAddr, r.Method, r.URL, code) // HL
+			return
+		}
+		fmt.Fprintf(w, "OK")
+		log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200) // HL
+		// END POST OMIT
+
+		// START GET OMIT
+	case "GET":
+		id := r.FormValue("id")
+		if id == "" {
+			code := http.StatusBadRequest
+			http.Error(w, "no ID specified", code)
+			log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code) // HL
+			return
+		}
+		p, err := ps.GetProfile(id)
+		if err != nil {
+			code := http.StatusInternalServerError
+			http.Error(w, err.Error(), code)
+			log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code) // HL
+			return
+		}
+		json.NewEncoder(w).Encode(p)
+		log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200) // HL
+	}
+}
+
+// END GET OMIT
+
+</span></pre>
+
+<pre><span num="85">func main() {</span>
+<span num="86">    ps := &amp;profileService{</span>
+<span num="87">        profiles: map[string]Profile{</span>
+<span num="88">            "john": Profile{ID: "john", Name: "John Edgar"},</span>
+<span num="89">        },</span>
+<span num="90">    }</span>
+<span num="91">    <b>log.Printf("listening on :8080")</b></span>
+<span num="92">    <b>log.Fatal(http.ListenAndServe(":8080", ps))</b></span>
+<span num="93">}</span>
+</pre>
+
+
+</div><div class="buttons"></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Instrumentation</h3>
+
+
+  <p>
+    And here's how you might try adding some instrumentation...
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="25">var dur = prometheus.NewSummaryVec(prometheus.SummaryOpts{</span>
+<span num="26">    Namespace: "users_team",</span>
+<span num="27">    Subsystem: "profile_service",</span>
+<span num="28">    <b>Name:      "http_request_duration_seconds",</b></span>
+<span num="29">    Help:      "Time spent serving HTTP requests.",</span>
+<span num="30"><b>}, []string{"method", "status_code"})</b></span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Instrumentation</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="55">func (ps *profileService) ServeHTTP(w http.ResponseWriter, r *http.Request) {</span>
+<span num="56">    <b>begin := time.Now()</b></span>
+<span num="57">    switch r.Method {</span>
+<span num="58">    case "POST":</span>
+<span num="59">        var p Profile</span>
+<span num="60">        if err := json.NewDecoder(r.Body).Decode(&amp;p); err != nil {</span>
+<span num="61">            code := http.StatusBadRequest</span>
+<span num="62">            http.Error(w, err.Error(), code)</span>
+<span num="63">            log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</span>
+<span num="64">            <b>dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="65">            return</span>
+<span num="66">        }</span>
+<span num="67">        if err := ps.PostProfile(p); err != nil {</span>
+<span num="68">            code := http.StatusInternalServerError</span>
+<span num="69">            http.Error(w, err.Error(), code)</span>
+<span num="70">            log.Printf("%s: %s%s : %d", r.RemoteAddr, r.Method, r.URL, code)</span>
+<span num="71">            <b>dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="72">            return</span>
+<span num="73">        }</span>
+<span num="74">        fmt.Fprintf(w, "OK")</span>
+<span num="75">        log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200)</span>
+<span num="76">        <b>dur.WithLabelValues(r.Method, fmt.Sprint(200)).Observe(time.Since(begin).Seconds())</b></span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Instrumentation</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="80">    case "GET":</span>
+<span num="81">        id := r.FormValue("id")</span>
+<span num="82">        if id == "" {</span>
+<span num="83">            code := http.StatusBadRequest</span>
+<span num="84">            http.Error(w, "no ID specified", code)</span>
+<span num="85">            log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</span>
+<span num="86">            <b>dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="87">            return</span>
+<span num="88">        }</span>
+<span num="89">        p, err := ps.GetProfile(id)</span>
+<span num="90">        if err != nil {</span>
+<span num="91">            code := http.StatusInternalServerError</span>
+<span num="92">            http.Error(w, err.Error(), code)</span>
+<span num="93">            log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</span>
+<span num="94">            <b>dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="95">            return</span>
+<span num="96">        }</span>
+<span num="97">        json.NewEncoder(w).Encode(p)</span>
+<span num="98">        log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200)</span>
+<span num="99">        <b>dur.WithLabelValues(r.Method, fmt.Sprint(200)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="100">    }</span>
+<span num="101">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Mixed concerns</h3>
+
+
+  <p>
+    Our business logic is still clean, but now our transport code is full of mixed concerns.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="107"><b>begin := time.Now()</b></span>
+<span num="108">switch r.Method {</span>
+<span num="109">case "POST":</span>
+<span num="110">    var p Profile</span>
+<span num="111">    if err := json.NewDecoder(r.Body).Decode(&amp;p); err != nil {</span>
+<span num="112">        <b>code := http.StatusBadRequest</b></span>
+<span num="113">        http.Error(w, err.Error(), code)</span>
+<span num="114">        <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, code)</b></span>
+<span num="115">        <b>dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="116">        return</span>
+<span num="117">    }</span>
+<span num="118">    if err := ps.PostProfile(p); err != nil {</span>
+<span num="119">        <b>code := http.StatusInternalServerError</b></span>
+<span num="120">        http.Error(w, err.Error(), code)</span>
+<span num="121">        <b>log.Printf("%s: %s%s : %d", r.RemoteAddr, r.Method, r.URL, code)</b></span>
+<span num="122">        <b>dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())</b></span>
+<span num="123">        return</span>
+<span num="124">    }</span>
+<span num="125">    fmt.Fprintf(w, "OK")</span>
+<span num="126">    <b>log.Printf("%s: %s %s: %d", r.RemoteAddr, r.Method, r.URL, 200)</b></span>
+<span num="127">    <b>dur.WithLabelValues(r.Method, fmt.Sprint(200)).Observe(time.Since(begin).Seconds())</b></span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Separating concerns</h3>
+
+
+  <p>
+    Go kit encourages you to separate all of these concerns.
+  </p>
+
+
+<div class="image">
+  <img src="concerns.png">
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Middleware</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Middleware</h3>
+
+
+  <p>
+    It would be great to have some kind of single-purpose, composable middleware.
+  </p>
+
+
+
+  <div class="code"><pre>func foo(...) {
+    // do the business logic
+}
+
+func log(...) {
+    // proceed as normal, get the request and response
+    log.Printf("%s: %s: %d", r.RemoteAddr, r.Method, code)
+}
+
+func instrument(...) {
+    // proceed as normal, get the request and response
+    dur.WithLabelValues(r.Method, fmt.Sprint(code)).Observe(time.Since(begin).Seconds())
+}
+
+func rateLimit(...) {
+    if aboveThreshold {
+        error
+    }
+    // proceed as normal
+}</pre></div>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Endpoint</h3>
+
+
+  <p>
+    Let's generalize each operation as an RPC: request, response. We can model RPC methods as endpoints.
+  </p>
+
+
+
+  <div class="code"><pre>type Endpoint func(request) response</pre></div>
+
+
+
+  <p>
+    RPCs can fail, so we want some way to signal failure. And we'd like to have some way of passing request-scoped information between the layers of this onion. So the actual definition is a little bigger.
+  </p>
+
+
+
+  <div class="code"><pre>type Endpoint func(ctx context.Context, request interface{}) (response interface{}, err error)</pre></div>
+
+
+
+  <p>
+    interface{} ?  interface{} :(
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Profile service endpoints</h3>
+
+
+  <p>
+    One way to do it is to <b>change the profileService methods</b> into endpoints.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="38"><b>func (ps *profileService) PostProfile(ctx *context.Context, request interface{})</b></span>
+<span num="39">        <b>(response interface{}, err error) {</b></span>
+<span num="40"></span>
+<span num="41">    <b>p := request.(Profile)</b></span>
+<span num="42">    if _, ok := ps.profiles[p.ID]; ok {</span>
+<span num="43">        return nil, errors.New("profile already exists")</span>
+<span num="44">    }</span>
+<span num="45">    ps.profiles[p.ID] = p</span>
+<span num="46">    return nil, nil</span>
+<span num="47">}</span>
+</pre>
+
+
+</div>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="52"><b>func (ps *profileService) GetProfile(ctx *context.Context, request interface{})</b></span>
+<span num="53">        <b>(response interface{}, err error) {</b></span>
+<span num="54"></span>
+<span num="55">    <b>id := request.(string)</b></span>
+<span num="56">    p, ok := ps.profiles[id]</span>
+<span num="57">    if !ok {</span>
+<span num="58">        return nil, errors.New("profile not found")</span>
+<span num="59">    }</span>
+<span num="60">    return p, nil</span>
+<span num="61">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Profile service endpoints</h3>
+
+
+  <p>
+    Another way is to <b>write endpoint constructors</b> which take the (unaltered) service.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="66">func makePostProfileEndpoint(ps *profileService) Endpoint {</span>
+<span num="67">    return func(_ context.Context, request interface{}) (response interface{}, err error) {</span>
+<span num="68">        p := request.(Profile)</span>
+<span num="69">        err := ps.PostProfile(p)</span>
+<span num="70">        return nil, err</span>
+<span num="71">    }</span>
+<span num="72">}</span>
+</pre>
+
+
+</div>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="76">func makeGetProfileEndpoint(ps *profileService) Endpoint {</span>
+<span num="77">    return func(_ context.Context, request interface{}) (response interface{}, err error) {</span>
+<span num="78">        id := request.(string)</span>
+<span num="79">        p, err := ps.GetProfile(id)</span>
+<span num="80">        return p, err</span>
+<span num="81">    }</span>
+<span num="82">}</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    This way is better. It allows us to leave our ProfileService interface pure, avoiding mixing in the endpoint concerns.
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Endpoint middleware</h3>
+
+
+  <p>
+    In either case, now that we have a general form for our operations, we can layer in value-added <i>stuff</i> without knowing or caring about the underlying logic.
+  </p>
+
+
+
+  <div class="code"><pre>type Middleware func(Endpoint) Endpoint</pre></div>
+
+
+
+  <p>
+    (Also known as the Decorator pattern.)
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Logging middleware</h3>
+
+
+  <p>
+    Perhaps the simplest middleware is one that just logs the call.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="137">func loggingMiddleware(next Endpoint) Endpoint {</span>
+<span num="138">    return func(ctx context.Context, request interface{}) (response interface{}, err error) {</span>
+<span num="139"></span>
+<span num="140">        begin := time.Now()</span>
+<span num="141">        defer func() {</span>
+<span num="142">            log.Printf("request took %s", time.Since(begin))</span>
+<span num="143">        }()</span>
+<span num="144">        return next(ctx, request)</span>
+<span num="145"></span>
+<span num="146">    }</span>
+<span num="147">}</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    But which method is it? We need to provide some more information...
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Logging middleware</h3>
+
+
+  <p>
+    Add another layer of context.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="152"><b>func loggingMiddleware(method string) Middleware {</b></span>
+<span num="153">    return func(next Endpoint) Endpoint {</span>
+<span num="154">        return func(ctx context.Context, request interface{}) (response interface{}, err error) {</span>
+<span num="155"></span>
+<span num="156">            begin := time.Now()</span>
+<span num="157">            defer func() {</span>
+<span num="158">                log.Printf("%s took %s", method, time.Since(begin))</span>
+<span num="159">            }()</span>
+<span num="160">            return next(ctx, request)</span>
+<span num="161"></span>
+<span num="162">        }</span>
+<span num="163">    }</span>
+<span num="164">}</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    And here's how you wire it in.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="169">var e Endpoint</span>
+<span num="170">e = makePostProfile(ps)</span>
+<span num="171"><b>e = loggingMiddleware("PostProfile")(e)</b></span>
+<span num="172">e = instrumentingMiddleware(...)(e)</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Middlewares are great</h3>
+
+
+  <p>
+    Each middleware is exclusively concerned with <i>one</i> task.
+  </p>
+
+
+
+  <p>
+    You can avoid mixing different concerns in the same place — keeping each piece of functionality pure and distinct.
+  </p>
+
+
+
+  <p>
+    This makes your code <i>much easier</i> to maintain, refactor, and eventually delete.
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Other endpoint middlewares</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Circuit breaker</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="177">func breaker(cb *CircuitBreaker) Middleware {</span>
+<span num="178">    return func(next Endpoint) Endpoint {</span>
+<span num="179">        return func(ctx context.Context, request interface{}) (response interface{}, err error) {</span>
+<span num="180"></span>
+<span num="181">            if !cb.Allow() {</span>
+<span num="182">                return nil, breaker.ErrCircuitOpen</span>
+<span num="183">            }</span>
+<span num="184"></span>
+<span num="185">            defer func(begin time.Time) {</span>
+<span num="186">                if err == nil {</span>
+<span num="187">                    cb.Success(time.Since(begin))</span>
+<span num="188">                } else {</span>
+<span num="189">                    cb.Failure(time.Since(begin))</span>
+<span num="190">                }</span>
+<span num="191">            }(time.Now())</span>
+<span num="192"></span>
+<span num="193">            return next(ctx, request)</span>
+<span num="194"></span>
+<span num="195">        }</span>
+<span num="196">    }</span>
+<span num="197">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Rate limiter</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="199">func limiter(tb *TokenBucket) Middleware {</span>
+<span num="200">    return func(next Endpoint) Endpoint {</span>
+<span num="201">        return func(ctx context.Context, request interface{}) (response interface{}, err error) {</span>
+<span num="202"></span>
+<span num="203">            if tb.TakeAvailable(1) == 0 {</span>
+<span num="204">                return nil, ErrLimited</span>
+<span num="205">            }</span>
+<span num="206"></span>
+<span num="207">            return next(ctx, request)</span>
+<span num="208"></span>
+<span num="209">        }</span>
+<span num="210">    }</span>
+<span num="211">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Service middlewares</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Service middlewares</h3>
+
+
+  <p>
+    So far our middleware has operated on an endpoint.
+  </p>
+
+
+
+  <div class="code"><pre>type Middleware func(Endpoint) Endpoint</pre></div>
+
+
+
+  <p>
+    But remember we also have a service interface.
+  </p>
+
+
+
+  <div class="code"><pre>type ProfileService interface {
+    PostProfile(p Profile) error
+    GetProfile(id string) (Profile, error)
+}</pre></div>
+
+
+
+  <p>
+    Which means we could define <b>a service middleware</b>, custom to our application.
+  </p>
+
+
+
+  <div class="code"><pre>type Middleware func(ProfileService) ProfileService</pre></div>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Service concerns</h3>
+
+
+  <p>
+    Service middlewares are a good way to implement single-responsibility functionality that interacts with your business domain.
+  </p>
+
+
+
+  <p>
+    Let's say you wanted to know when any Michaels registered.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="144">type alertingMiddleware struct {</span>
+<span num="145">    ProfileService</span>
+<span num="146">    alert Alerter</span>
+<span num="147">}</span>
+<span num="148"></span>
+<span num="149">func (mw alertingMiddleware) PostProfile(p Profile) error {</span>
+<span num="150">    if strings.Contains(p.Name, "Michael") {</span>
+<span num="151">        mw.alert.Alert("We've got a new Michael!!")</span>
+<span num="152">    }</span>
+<span num="153">    return mw.ProfileService.PostProfile(p)</span>
+<span num="154">}</span>
+</pre>
+
+
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Service construction</h3>
+
+
+  <p>
+    And wire it in to the service declaration, similar to constructing endpoints.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="24">    var ps ProfileService</span>
+<span num="25">    ps = newInmemProfileService()</span>
+<span num="26">    ps = alertingMiddleware{ps, alerter}</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    (In reality, you'd probably use a service middleware to do logging, too.)
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Binding to a transport</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>HTTP transport</h3>
+
+
+  <p>
+    Go kit comes with a handy HTTP transport. It adapts an endpoint to an HTTP handler.
+  </p>
+
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="30">    postProfile := httptransport.NewServer(</span>
+<span num="31">        context.Background(),</span>
+<span num="32">        <b>makePostProfileEndpoint(ps),</b></span>
+<span num="33">        decodePostRequest,</span>
+<span num="34">        encodePostResponse,</span>
+<span num="35">    )</span>
+<span num="36">    getProfile := httptransport.NewServer(</span>
+<span num="37">        context.Background(),</span>
+<span num="38">        <b>makeGetProfileEndpoint(ps),</b></span>
+<span num="39">        decodeGetRequest,</span>
+<span num="40">        encodeGetResponse,</span>
+<span num="41">    )</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    Use it with the slightly more fully-featured Gorilla muxer.
+  </p>
+
+
+  <div class="code playground" contenteditable="true" spellcheck="false">
+<pre style="display: none"><span>package main
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"log"
+	"net/http"
+	"strings"
+	"time"
+
+	"github.com/gorilla/mux"
+	"github.com/prometheus/client_golang/prometheus"
+	"golang.org/x/net/context"
+
+	"github.com/go-kit/kit/endpoint"
+	httptransport "github.com/go-kit/kit/transport/http"
+)
+
+func main() {
+	var alerter Alerter
+
+	// START SERVICE OMIT
+	var ps ProfileService
+	ps = newInmemProfileService()
+	ps = alertingMiddleware{ps, alerter}
+	// END SERVICE OMIT
+
+	// START SERVER OMIT
+	postProfile := httptransport.NewServer(
+		context.Background(),
+		makePostProfileEndpoint(ps), // HL
+		decodePostRequest,
+		encodePostResponse,
+	)
+	getProfile := httptransport.NewServer(
+		context.Background(),
+		makeGetProfileEndpoint(ps), // HL
+		decodeGetRequest,
+		encodeGetResponse,
+	)
+	// END SERVER OMIT
+
+</span></pre>
+
+<pre><span num="45">    r := mux.NewRouter()</span>
+<span num="46">    r.Methods("POST").Handler(postProfile)</span>
+<span num="47">    r.Methods("GET").Handler(getProfile)</span>
+</pre>
+
+<pre style="display: none"><span>
+	log.Printf("listening on :8080")
+	log.Fatal(http.ListenAndServe(":8080", r))
+}
+
+func decodePostRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var p Profile
+	err := json.NewDecoder(r.Body).Decode(&amp;p)
+	return p, err
+}
+
+func encodePostResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+	fmt.Fprintf(w, "OK")
+	return nil
+}
+
+func decodeGetRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	return r.FormValue("id"), nil
+}
+
+func encodeGetResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+	return json.NewEncoder(w).Encode(response)
+}
+
+type ProfileService interface {
+	PostProfile(p Profile) error
+	GetProfile(id string) (Profile, error)
+}
+
+type Profile struct {
+	ID   string
+	Name string
+}
+
+type profileService struct {
+	profiles map[string]Profile
+}
+
+func newInmemProfileService() *profileService {
+	return &amp;profileService{profiles: map[string]Profile{}}
+}
+
+func (ps *profileService) PostProfile(p Profile) error {
+	if _, ok := ps.profiles[p.ID]; ok {
+		return errors.New("profile already exists")
+	}
+	ps.profiles[p.ID] = p
+	return nil
+}
+
+func (ps *profileService) GetProfile(id string) (Profile, error) {
+	p, ok := ps.profiles[id]
+	if !ok {
+		return Profile{}, errors.New("profile not found")
+	}
+	return p, nil
+}
+
+func makePostProfileEndpoint(ps ProfileService) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+		p := request.(Profile)
+		return nil, ps.PostProfile(p)
+	}
+}
+
+func makeGetProfileEndpoint(ps ProfileService) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+		id := request.(string)
+		return ps.GetProfile(id)
+	}
+}
+
+func loggingMiddleware(method string) endpoint.Middleware {
+	return func(next endpoint.Endpoint) endpoint.Endpoint {
+		return func(ctx context.Context, request interface{}) (response interface{}, err error) { // HL
+			defer func(begin time.Time) {
+				log.Printf("%s: %s (%v)", method, time.Since(begin), err)
+			}(time.Now())
+			return next(ctx, request)
+		}
+	}
+}
+
+var dur = prometheus.NewSummaryVec(prometheus.SummaryOpts{
+	Namespace: "users_team",
+	Subsystem: "profile_service",
+	Name:      "http_request_duration_seconds", // HL
+	Help:      "Time spent serving HTTP requests.",
+}, []string{"method", "status_code"}) // HL
+
+type Alerter interface {
+	Alert(string)
+}
+
+// START SERVICEMIDDLEWARE OMIT
+type alertingMiddleware struct {
+	ProfileService
+	alert Alerter
+}
+
+func (mw alertingMiddleware) PostProfile(p Profile) error {
+	if strings.Contains(p.Name, "Michael") {
+		mw.alert.Alert("We've got a new Michael!!")
+	}
+	return mw.ProfileService.PostProfile(p)
+}
+
+// END SERVICEMIDDLEWARE OMIT
+</span></pre>
+</div><div class="buttons"></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>All the middlewares</h3>
+
+  <div class="code" contenteditable="true" spellcheck="false">
+
+
+<pre><span num="37">    var postEndpoint endpoint.Endpoint</span>
+<span num="38">    postEndpoint = makePostProfileEndpoint(ps)</span>
+<span num="39">    postEndpoint = ratelimit.NewTokenBucketLimiter(rl.NewBucketWithRate(1, 1))(postEndpoint)</span>
+<span num="40">    postEndpoint = logging("PostProfile")(postEndpoint)</span>
+<span num="41">    postEndpoint = instrument(dur)(postEndpoint)</span>
+<span num="42"></span>
+<span num="43">    postProfile := httptransport.NewServer(</span>
+<span num="44">        context.Background(),</span>
+<span num="45">        postEndpoint,</span>
+<span num="46">        decodePostRequest,</span>
+<span num="47">        encodePostResponse,</span>
+<span num="48">    )</span>
+</pre>
+
+
+</div>
+
+
+  <p>
+    (There's a similar stack for the GetProfile endpoint.)
+  </p>
+
+
+  <div class="code playground" contenteditable="true" spellcheck="false">
+<pre style="display: none"><span>package main
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"log"
+	"net/http"
+	"strings"
+	"time"
+
+	"github.com/gorilla/mux"
+	"github.com/prometheus/client_golang/prometheus"
+	"golang.org/x/net/context"
+
+	"github.com/go-kit/kit/endpoint"
+	"github.com/go-kit/kit/ratelimit"
+	httptransport "github.com/go-kit/kit/transport/http"
+	rl "github.com/juju/ratelimit"
+)
+
+func main() {
+	dur := prometheus.NewSummaryVec(prometheus.SummaryOpts{
+		Namespace: "users_team",
+		Subsystem: "profile_service",
+		Name:      "http_request_duration_seconds", // HL
+		Help:      "Time spent serving HTTP requests.",
+	}, []string{"method", "status_code"}) // HL
+
+	var alerter Alerter
+
+	var ps ProfileService
+	ps = newInmemProfileService()
+	ps = alertingMiddleware{ps, alerter}
+
+	// START MIDDLEWARE OMIT
+	var postEndpoint endpoint.Endpoint
+	postEndpoint = makePostProfileEndpoint(ps)
+	postEndpoint = ratelimit.NewTokenBucketLimiter(rl.NewBucketWithRate(1, 1))(postEndpoint)
+	postEndpoint = logging("PostProfile")(postEndpoint)
+	postEndpoint = instrument(dur)(postEndpoint)
+
+	postProfile := httptransport.NewServer(
+		context.Background(),
+		postEndpoint,
+		decodePostRequest,
+		encodePostResponse,
+	)
+	// END MIDDLEWARE OMIT
+
+	var getEndpoint endpoint.Endpoint
+	getEndpoint = makeGetProfileEndpoint(ps)
+	getEndpoint = ratelimit.NewTokenBucketLimiter(rl.NewBucketWithRate(1, 1))(getEndpoint)
+	getEndpoint = logging("GetProfile")(getEndpoint)
+	getEndpoint = instrument(dur)(getEndpoint)
+	getProfile := httptransport.NewServer(
+		context.Background(),
+		getEndpoint,
+		decodeGetRequest,
+		encodeGetResponse,
+	)
+
+</span></pre>
+
+<pre><span num="64">    r := mux.NewRouter()</span>
+<span num="65">    r.Methods("POST").Handler(postProfile)</span>
+<span num="66">    r.Methods("GET").Handler(getProfile)</span>
+<span num="67"></span>
+<span num="68">    log.Printf("listening on :8080")</span>
+<span num="69">    log.Fatal(http.ListenAndServe(":8080", r))</span>
+</pre>
+
+<pre style="display: none"><span>}
+
+func decodePostRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	var p Profile
+	err := json.NewDecoder(r.Body).Decode(&amp;p)
+	return p, err
+}
+
+func encodePostResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+	fmt.Fprintf(w, "OK")
+	return nil
+}
+
+func decodeGetRequest(_ context.Context, r *http.Request) (interface{}, error) {
+	return r.FormValue("id"), nil
+}
+
+func encodeGetResponse(_ context.Context, w http.ResponseWriter, response interface{}) error {
+	return json.NewEncoder(w).Encode(response)
+}
+
+func logging(method string) endpoint.Middleware {
+	return func(next endpoint.Endpoint) endpoint.Endpoint {
+		return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+
+			defer func(begin time.Time) {
+				if err == nil {
+					log.Printf("%s: %s (OK)", method, time.Since(begin))
+				} else {
+					log.Printf("%s: %s (%v)", method, time.Since(begin), err)
+				}
+			}(time.Now())
+
+			return next(ctx, request)
+
+		}
+	}
+}
+
+func instrument(dur *prometheus.SummaryVec) endpoint.Middleware {
+	return func(next endpoint.Endpoint) endpoint.Endpoint {
+		return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+
+			defer func(begin time.Time) {
+				method := "UNKNOWN"
+				if v := ctx.Value("method"); v != nil {
+					method = v.(string)
+				}
+				code := "UNKNOWN"
+				if v := ctx.Value("status_code"); v != nil {
+					code = fmt.Sprint(v.(string))
+				}
+				dur.WithLabelValues(method, code).Observe(time.Since(begin).Seconds())
+			}(time.Now())
+
+			return next(ctx, request)
+
+		}
+	}
+}
+
+type ProfileService interface {
+	PostProfile(p Profile) error
+	GetProfile(id string) (Profile, error)
+}
+
+type Profile struct {
+	ID   string
+	Name string
+}
+
+type profileService struct {
+	profiles map[string]Profile
+}
+
+func newInmemProfileService() *profileService {
+	return &amp;profileService{
+		profiles: map[string]Profile{
+			"john": Profile{ID: "john", Name: "John Edgar"},
+		},
+	}
+}
+
+func (ps *profileService) PostProfile(p Profile) error {
+	if _, ok := ps.profiles[p.ID]; ok {
+		return errors.New("profile already exists")
+	}
+	ps.profiles[p.ID] = p
+	return nil
+}
+
+func (ps *profileService) GetProfile(id string) (Profile, error) {
+	p, ok := ps.profiles[id]
+	if !ok {
+		return Profile{}, errors.New("profile not found")
+	}
+	return p, nil
+}
+
+func makePostProfileEndpoint(ps ProfileService) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+		p := request.(Profile)
+		return nil, ps.PostProfile(p)
+	}
+}
+
+func makeGetProfileEndpoint(ps ProfileService) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+		id := request.(string)
+		return ps.GetProfile(id)
+	}
+}
+
+func loggingMiddleware(method string) endpoint.Middleware {
+	return func(next endpoint.Endpoint) endpoint.Endpoint {
+		return func(ctx context.Context, request interface{}) (response interface{}, err error) { // HL
+			defer func(begin time.Time) {
+				log.Printf("%s: %s (%v)", method, time.Since(begin), err)
+			}(time.Now())
+			return next(ctx, request)
+		}
+	}
+}
+
+type Alerter interface {
+	Alert(string)
+}
+
+type alertingMiddleware struct {
+	ProfileService
+	alert Alerter
+}
+
+func (mw alertingMiddleware) PostProfile(p Profile) error {
+	if strings.Contains(p.Name, "Michael") {
+		mw.alert.Alert("We've got a new Michael!!")
+	}
+	return mw.ProfileService.PostProfile(p)
+}
+</span></pre>
+</div><div class="buttons"></div><div class="ui-resizable output" style="display: none;"><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="buttons"><button class="kill">Kill</button><button class="close">Close</button></div><pre></pre></div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Supported transports</h3>
+
+  <ul>
+
+    <li>HTTP — fully customizable: REST, CRUD, none of the above</li>
+
+    <li>gRPC — the new hotness</li>
+
+    <li>Thrift — if you must</li>
+
+    <li>net/rpc — for pure Go shops :)</li>
+
+    <li>RabbitMQ, Kafka, NATS — <i>Futuresauce™</i></li>
+
+  </ul>
+
+
+  <p>
+    Can easily have the same service served on multiple transports simultaneously.
+  </p>
+
+
+
+  <p>
+    Shared middleware stacks, just different serialization.
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Why bother?</h3>
+
+
+  <p>
+    Your organization has probably already decided on a transport layer.
+  </p>
+
+
+
+  <p>
+    And you've probably already built tooling, reporting, and culture around it.
+  </p>
+
+
+
+  <p>
+    Go kit wants to make it easy to adopt Go. We will always play nicely with your infrastructure, to the extent it's possible. <b>You know best.</b>
+  </p>
+
+
+
+  <p>
+    (Same goes for service discovery, logging infrastructure, orchestration, configuration...)
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>Distributed tracing</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>In general</h3>
+
+
+  <p>
+    Whenever control passes in to or out of a microservice, that service notes timing, annotation, and contextual data into a partial <b>span</b>. Spans are batched and emitted to a <b>collector</b>. The collector stitches together multiple related spans into a <b>trace</b>.
+  </p>
+
+
+<div class="image">
+  <img src="collector.png">
+</div>
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Zipkin</h3>
+
+
+  <p>
+    One popular implementation is Zipkin. It produces a sequence diagram of all the requests between your microservices.
+  </p>
+
+
+<div class="image">
+  <img src="zipkin.png">
+</div>
+
+
+  <p>
+    (I wish they used flame charts instead...)
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Go kit helpers</h3>
+
+
+  <p>
+    Go kit has a helper to move IDs from e.g. HTTP headers to the context object.
+  </p>
+
+
+
+  <div class="code"><pre>func ToContext(ctx context.Context, r *http.Request) context.Context {
+    // Copy trace and span IDs from the http.Request to the context.Context
+}</pre></div>
+
+
+
+  <p>
+    And then middlewares to create the spans and emit them to the collectors.
+  </p>
+
+
+
+  <div class="code"><pre>func AnnotateServer(...) endpoint.Middleware {
+    return func(next endpoint.Endpoint) endpoint.Endpoint {
+        return func(ctx context.Context, request interface{}) (interface{}, error) {
+
+            span := getFrom(ctx)
+            defer span.Collect()
+            span.AnnotateReceive()
+            defer span.AnnotateSend()
+            return next(ctx, request)
+
+        }
+    }
+}</pre></div>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Wire it in</h3>
+
+
+  <p>
+    Now, if you want to support Zipkin, you just add a middleware to your stack.
+  </p>
+
+
+
+  <div class="code"><pre>var myEndpoint Endpoint
+myEndpoint = makeEndpoint(myService)
+myEndpoint = instrument(...)(myEndpoint)
+myEndpoint = zipkin.AnnotateServer(...)(myEndpoint) // ☜
+myEndpoint = logging(...)(myEndpoint)</pre></div>
+
+
+
+  <p>
+    Imagine trying to do this without some structure?
+  </p>
+
+
+
+      </article>
+
+
+
+      <article>
+
+        <h2>A look back</h2>
+
+      </article>
+
+
+
+      <article>
+
+        <h3>Microservices are a pain in the ass</h3>
+
+  <ul>
+
+    <li>They cause a lot of problems</li>
+
+    <li>You probably don't need them</li>
+
+    <li>But if you do, then okay</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article class="far-past">
+
+        <h3>Go is a great language for microservices</h3>
+
+  <ul>
+
+    <li>Easy to learn</li>
+
+    <li>Naturally concurrent, built for servers</li>
+
+    <li>Efficient by default</li>
+
+    <li>Rich standard library</li>
+
+    <li>Reasonably expressive</li>
+
+    <li>Huge and growing mindshare</li>
+
+  </ul>
+
+
+      </article>
+
+
+
+      <article class="past">
+
+        <h3>Go kit fills in the gaps</h3>
+
+  <ul>
+
+    <li>Few opinions, lightly held</li>
+
+    <li>Solutions to common problems of distributed programming</li>
+
+    <li>Middlewares to encode logic with single responsibility principle</li>
+
+    <li>Adapters for common infrastructure components</li>
+
+    <li>Slow and steady progress</li>
+
+  </ul>
+
+
+  <p>
+    Make microservices tractable, and make Go viable, for your organization.
+  </p>
+
+<p class="link"><a href="https://gokit.io/" target="_blank">gokit.io</a></p>
+
+      </article>
+
+
+
+      <article class="current">
+        <h3>Thank you</h3>
+
+          <div class="presenter">
+
+
+  <p>
+    Peter Bourgon
+  </p>
+
+
+
+  <p>
+    Gopher 🏌
+  </p>
+
+<p class="link"><a href="http://twitter.com/peterbourgon" target="_blank">@peterbourgon</a></p><p class="link"><a href="https://gokit.io/" target="_blank">https://gokit.io</a></p>
+          </div>
+
+      </article>
+
+    <div class="slide-area" id="prev-slide-area"></div><div class="slide-area" id="next-slide-area"></div></section>
+
+    <div id="help" style="display: none;">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css"><link rel="stylesheet" type="text/css" href="styles.css"></body></html>
+</body></html>
