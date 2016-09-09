@@ -16,6 +16,7 @@
 [gotocph]: https://gotocon.com/cph-2016/presentations/show_presentation.jsp?oid=7957
 
 **Applied Go kit** <br/>
+· August 2016, [Golang UK](http://golanguk.com), London — [video](https://www.youtube.com/watch?v=JXEjAwNWays) <br/>
 · August 2016, [Microservices Meetup Berlin](http://www.meetup.com/Microservices-Meetup-Berlin/), Berlin — [video](https://www.youtube.com/watch?v=umleBc6fWbY) <br/>
 · April 2016, [Craft Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest <br/>
 
