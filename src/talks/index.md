@@ -17,7 +17,7 @@
 
 **Applied Go kit** <br/>
 · August 2016, [Golang UK](http://golanguk.com), London — [video](https://www.youtube.com/watch?v=JXEjAwNWays) <br/>
-· August 2016, [Microservices Meetup Berlin](http://www.meetup.com/Microservices-Meetup-Berlin/), Berlin — [video](https://www.youtube.com/watch?v=umleBc6fWbY) <br/>
+· August 2016, [Microservices Meetup](http://www.meetup.com/Microservices-Meetup-Berlin/), Berlin — [video](https://www.youtube.com/watch?v=umleBc6fWbY) <br/>
 · April 2016, [Craft Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest <br/>
 
 **Cloud-native application stacks: a lightly-opinionated survey** <br/>
