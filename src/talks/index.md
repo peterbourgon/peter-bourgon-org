@@ -10,7 +10,7 @@
 
 **Go Microservices workshop** <br/>
 · November 2016, [QCon](https://qconsf.com), San Francisco — _[tickets available!](https://qconsf.com/sf2016/workshop/go-microservices)_ <br/>
-· November 2016, [GOTO](https://gotocon.com/cph-2016/), Copenhagen — _[tickets available!][gotocph]_ <br/>
+· November 2016, [GOTO](https://gotocon.com/cph-2016/), Copenhagen <br/>
 · June 2016, [QCon](https://qconnewyork.com), New York <br/>
 
 [gotocph]: https://gotocon.com/cph-2016/presentations/show_presentation.jsp?oid=7957
