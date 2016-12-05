@@ -65,3 +65,7 @@ table.cv td { padding: 0 34px 0 0; vertical-align: top; }
 table.cv .when { white-space: nowrap; }
 table.cv .where { width: 99% }
 table.cv .what { padding: 0 0 0 34px; }
+
+/* /sale only */
+span.oldprice { padding: 0px 4px; background-color: #787; }
+span.price { padding: 2px 5px; background-color:#11dd11; }
