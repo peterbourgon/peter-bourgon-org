@@ -97,7 +97,7 @@ Classic 3-panel design, black/black/black with white logo.
 Size medium. Waterproof as all heck.
 Bought this almost 10 years ago, so it's got a few scruffs, but no damage to speak of, and it's still tough as nails.
 
-### Muji Boston bag — <span class="price">€25</span>
+### Muji Boston bag — <span class="oldprice">~~€25~~</span> <em>RESERVED</em>
 
 [![bostonbag](bostonbag-1-thumb.jpg "bostonbag")](bostonbag-1.jpg)
 [![bostonbag](bostonbag-2-thumb.jpg "bostonbag")](bostonbag-2.jpg)
@@ -129,7 +129,7 @@ It's served me many seasons and has the wear to prove it.
 It's a classic two-compartment design, big enough for a 13" laptop and a couple of books.
 It's got a nice skinny strap and smells lovely.
 
-### Muji packable duffel bag — <span class="price">€15</span>
+### Muji packable duffel bag — <span class="oldprice">~~€15~~</span> <em>RESERVED</em>
 
 [![packable](packable-1-thumb.jpg "packable")](packable-1.jpg)
 [![packable](packable-2-thumb.jpg "packable")](packable-2.jpg)
@@ -143,7 +143,7 @@ I checked it and it survived pretty much unscathed and I haven't used it since.
 It's super light and packs down into its own pocket! That's neat.
 Total volume is about 25cm x 25cm x 50cm.
 
-### Muji collapsable suitcase — <span class="price">€75</span>
+### Muji collapsable suitcase — <span class="oldprice">~~€75~~</span> <em>RESERVED</em>
 
 [![suitcase](suitcase-1-thumb.jpg "suitcase")](suitcase-1.jpg)
 <!--[![suitcase](suitcase-2-thumb.jpg "suitcase")](suitcase-2.jpg)
