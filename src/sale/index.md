@@ -206,7 +206,7 @@ The battery also pumps out the jams for easily 10 hours between charges, amazing
 <br/>
 ## <span style="margin-left: -37px;">👞 FOOTWEAR</span>
 
-### Red Wing Iron Rangers EU44 — <span class="price">€200</span>
+### Red Wing Iron Rangers EU44 — <span class="oldprice">~~€200~~</span> <em>RESERVED</em>
 
 [![boots](boots-1-thumb.jpg "boots")](boots-1.jpg)
 [![boots](boots-2-thumb.jpg "boots")](boots-2.jpg)
