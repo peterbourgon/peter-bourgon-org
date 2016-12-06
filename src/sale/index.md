@@ -21,6 +21,7 @@ If you buy lots of things at once I will give you discounts.
 This is a super simple two-pole tent that sleeps two comfortably.
 It's got an attached rain fly, sort of an automatic two-layer system that keeps you super dry.
 Also, a nice reinforced bottom layer, zip windows, and a little vestibule in the front.
+[Here's a video of it being set up and torn down](https://www.youtube.com/watch?v=KSi34rBtVsA).
 It was used at festivals for a few years, always studiously cleaned afterwards, and has been sitting in storage for awhile now.
 Packs down into a really compact little carrying thing, about 30cm x 15cm x 10cm.
 And comes with a full set of upgraded aluminum tent pegs.
