@@ -119,7 +119,7 @@ I took the Fjällräven logo off with a seam ripper, so now there's a cool littl
 It's seen some shit, so there's a few scruffs and a couple of small punctures, which I've photographed.
 But that's authenticity! No structural damage.
 
-### Custom leather messenger bag — <span class="price">€30</span>
+### Custom leather messenger bag — <span class="oldprice">~~€30~~</span> <em>RESERVED</em>
 
 [![leatherbag](leatherbag-1-thumb.jpg "leatherbag")](leatherbag-1.jpg)
 [![leatherbag](leatherbag-2-thumb.jpg "leatherbag")](leatherbag-2.jpg)
