@@ -113,81 +113,68 @@ _**Update**: Ben Johnson has written an excellent article titled
  [Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1)
  with great advice for typical line-of-business applications._
 
-We've had a lot of time for projects to mature, and some clear patterns have emerged.
-How you structure your repo depends on what your project _is_.
-First, if your project is private or internal to your company, go nuts:
- have it represent its own GOPATH,
- use a custom build tool,
- whatever makes you happy and productive.
+_**Update**: Tim Hockin's
+ [go-build-template](https://github.com/thockin/go-build-template), adapted slightly,
+ has proven to be a better general model. I've adapted this section since its original publication._
 
-However, if your project is public (i.e. open-source), the rules get a little stricter.
-You should play nice with go get,
- because that's still how most Go developers will want to consume your work.
-
-Ideal structure depends on the type of your artifacts.
-If your repo is exclusively a binary or a library,
- then make sure consumers can go get or import it by its base path.
-That is, put the package main or primary importable resource in github.com/name/repo,
- and use subdirectories for helper packages.
-
-If your repo is a combination of binaries and libraries,
- then you should determine which is the _primary_ artifact,
- and put that in the root of the repo.
-For example, if your repo is primarily a binary, but can also be used as a library,
- then you'll want to structure it like this:
+We've had a lot of time for projects to mature, and some patterns have emerged.
+While I believe there is no single best repo structure,
+ I think there is a good general model for many types of projects.
+It's especially useful for projects that provide both binaries and libraries,
+ or combine Go code with other, non-Go assets.
+ 
+The basic idea is to have two top-level directories, pkg and cmd.
+Underneath pkg, create directories for each of your libraries.
+Underneath cmd, create directories for each of your binaries.
+All of your Go code should live exclusively in one of these locations.
 
 ```
 github.com/peterbourgon/foo/
-    main.go      // package main
-    main_test.go // package main
-    lib/
-        foo.go      // package foo
-        foo_test.go // package foo
+  circle.yml
+  Dockerfile
+  cmd/
+    foosrv/
+      main.go
+    foocli/
+      main.go
+  pkg/
+    fs/
+      fs.go
+      fs_test.go
+      mock.go
+      mock_test.go
+    merge/
+      merge.go
+      merge_test.go
+    api/
+      api.go
+      api_test.go
 ```
 
-One useful thing is to name the package in the lib/ subdirectory for the library rather than the directory,
- in this case making it package foo rather than package lib.
-This is an exception to an otherwise pretty strict Go idiom,
- but in practice, it's very friendly for consumers.
-One great repo that's laid out this way is [tsenart/vegeta](https://github.com/tsenart/vegeta),
- an HTTP load testing tool.
+All of your artifacts remain go gettable.
+The paths may be slightly longer, but the nomenclature is familiar to other Go developers.
+And you have space and isolation for non-Go assets.
+For example, Javascript can live in a client or ui subdirectory.
+Dockerfiles, continuous integration configs, or other build helpers 
+ can live in the project root or in a build subdirectory.
+And runtime configuration like Kubernetes manifests can have a home, too.
 
 <a name="top-tip-2"></a><div class="toptip"><a href="#top-tip-2">✪</a>&nbsp;
 <strong>Top Tip</strong> &mdash;
-If your repo foo is primarily a binary, put your library code in a lib/ subdir, and call it package&nbsp;foo.
+Put library code under a pkg/ subdirectory. Put binaries under a cmd/ subdirectory.
 </div>
 
-If your repo is primarily a library, but it also includes one or more binaries,
- then you'll want to structure it like this:
-
-```
-github.com/peterbourgon/foo
-    foo.go      // package foo
-    foo_test.go // package foo
-    cmd/
-        foo/
-            main.go      // package main
-            main_test.go // package main
-```
-
-You'll invert the structure, putting the library code at the root,
- and making a cmd/foo/ subdirectory to hold the binary code.
-The cmd/ intermediary is nice for two reasons:
- the Go tooling automatically names binaries after the directory of their package main,
-  so it allows us to give them the best possible names without potentially conflicting
-  with other packages in the repo;
- and it makes it unambiguous to your consumers what they're getting
-  when they go get a path with /cmd/ in the middle.
-The build tool [gb](https://github.com/constabulary/gb) is laid out this way.
+Of course, you'll still use fully-qualified import paths.
+That is, the main.go in cmd/foosrv should `import "github.com/peterbourgon/foo/pkg/fs"`.
+And beware of the [ramifications of including a vendor dir](#dependency-management) for downstream users.
 
 <a name="top-tip-3"></a><div class="toptip"><a href="#top-tip-3">✪</a>&nbsp;
 <strong>Top Tip</strong> &mdash;
-If your repo is primarily a library, put your binaries in separate subdirectories under cmd/.
+Always use fully-qualified import paths. Never use relative imports.
 </div>
 
-The idea here is to optimize for consumers:
- make it easy to consume the most common form of your project.
-This abstract idea, a focus on consumers, is I think part of the Go ethos.
+This little bit of structure makes us play nice in the broader ecosystem,
+ and hopefully continues to ensure our code is easy to consume.
 
 
 <br/><a name="formatting-and-style"></a>
@@ -729,8 +716,8 @@ Resist, or at least carefully consider, the hype.
 The Top Tips:
 
 1. Put $GOPATH/bin in your $PATH, so installed binaries are easily accessible.&nbsp;&nbsp;<a class="lite" href="#top-tip-1">link</a>
-1. If your repo foo is primarily a binary, put your library code in a lib/ subdir, and call it package&nbsp;foo.&nbsp;&nbsp;<a class="lite" href="#top-tip-2">link</a>
-1. If your repo is primarily a library, put your binaries in separate subdirectories under cmd/.&nbsp;&nbsp;<a class="lite" href="#top-tip-3">link</a>
+1. Put library code under a pkg/ subdirectory. Put binaries under a cmd/ subdirectory.&nbsp;&nbsp;<a class="lite" href="#top-tip-2">link</a>
+1. Always use fully-qualified import paths. Never use relative imports.&nbsp;&nbsp;<a class="lite" href="#top-tip-3">link</a>
 1. Defer to Andrew Gerrand's <a href="https://talks.golang.org/2014/names.slide">naming conventions</a>.&nbsp;&nbsp;<a class="lite" href="#top-tip-4">link</a>
 1. Only func main has the right to decide which flags are available to the user.&nbsp;&nbsp;<a class="lite" href="#top-tip-5">link</a>
 1. Use struct literal initialization to avoid invalid intermediate state.&nbsp;&nbsp;<a class="lite" href="#top-tip-6">link</a>
