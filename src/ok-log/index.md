@@ -77,7 +77,7 @@ Most importantly, it should be simple to deploy and operate at scale.
 It should have a singular focus on containerized microservice workloads.
 And it should be a complete, end-to-end system: forwarders, ingesters, storage, and a way to query.
 
-The principle use case would be application logs from typical microservices: think debug, info, warn, etc.
+The principal use case would be application logs from typical microservices: think debug, info, warn, etc.
 These are typically high-volume, low-QOS logs, where lower latency (time-to-query) is preferred.
 But, we also want to serve so-called event logs: audit trails, click tracking, and so on.
 These are typically lower volume, high-QOS logs, where higher latency is acceptable.
@@ -114,7 +114,7 @@ But, that's fine! We can address it directly and with courage.
 
 ### Coördination-free
 
-By far most important goal is making the system easy to operate.
+By far the most important goal is making the system easy to operate.
 And from Prometheus, we learn that it should scale up smoothly, from test drives on laptops to prod, without major structural changes.
 But there is a tension here, between this desire for simplicity and the complexity inherent in distribution.
 There are many ways out of this cave, but I strongly favor coördination-free systems.
@@ -334,7 +334,7 @@ for range time.Tick(timePerCycle) {
 
 Also, I was building each log line, of random data, within the hot loop, and burning lots of CPU in math.Rand to do it.
 Precomputing a large, fixed set of random log lines at program start solved that one.
-With those changes, I could easily push plenty of MBps second from each process with negligable load.
+With those changes, I could easily push plenty of MBps second from each process with negligible load.
 
 I set up between 1–8 forwarders per forward node, times 8 ingest nodes, for 8–64 forwarder processes in total.
 Each process would do 100–1000 records per second, times 100–8000 bytes per record, for up to half a gigabit per second of production capacity.
@@ -344,7 +344,7 @@ That'll do.
 
 In the beginning I was quite concerned about assigning a ULID per record.
 But thanks to [Tomás Senart's](https://twitter.com/tsenart) excellent work with the [ULID library](https://github.com/oklog/ulid),
- these costs were actually quite low, on order of 50ns per ULID, as we don't need crypto-grade entropy.
+ these costs were actually quite low, on the order of 50ns per ULID, as we don't need crypto-grade entropy.
 
 ```
 BenchmarkNew/WithoutEntropy-8    30.0 ns/op  534.06 MB/s  1 alloc/op
@@ -353,7 +353,7 @@ BenchmarkNew/WithCryptoEntropy-8  771 ns/op   20.73 MB/s  1 alloc/op
 ```
 
 I was initially able to push to about 30 MBps into each ingest instance, but then things got screwy.
-Initial profiling revelaed disproportionate CPU burn in [bytes.FieldsFunc](https://golang.org/pkg/bytes#FieldsFunc) and syscalls.
+Initial profiling revealed disproportionate CPU burn in [bytes.FieldsFunc](https://golang.org/pkg/bytes#FieldsFunc) and syscalls.
 FieldsFunc I was using to extract and compare ULIDs, which was surprisingly inefficient.
 Switching to splitting on fixed-sized offsets — ULIDs give us that ability — improved benchmarks, but not ingest rates.
 
@@ -362,13 +362,14 @@ To verify, I abstracted the filesystem, and provided a no-op implementation.
 This worked much better, scaling to hundreds of MBps ingest.
 It turned out that in the initial design, I was muxing all incoming connections to the same active segment file.
 My thought was to optimize (minimize) the number of active segments produced by each ingester,
- under the assumption that transfering segments to the stores would be a bottleneck.
+ under the assumption that transferring segments to the stores would be a bottleneck.
+
 But profiling revealed the muxing itself to be more costly.
 So, I split it out so that each connection wrote to its own segment file.
 This was the major win. 
 
 Active segments are closed once they hit a certain age or size.
-The age limit keeps the system fresh, the size limit keeps replication managable.
+The age limit keeps the system fresh, the size limit keeps replication manageable.
 If we close based on age, we have low volume, and things are easy.
 We can choose an age based on desired record latency; 3s is the sane default.
 But if we close based on size, we have high volume, and we must balance two concerns.
@@ -440,7 +441,7 @@ So, I implemented a MultiReader, composed of plain file readers or merge readers
 This provided a good speedup, up to 50% faster in some cases.
 
 Then we gathered some profiling data, which revealed CPU burn in syscalls, the record filtering pipeline, and regexp matching.
-We thought explicit mmapping files might provide a big boost to read performance, so we prototyped an mmapping filesystem abstraction.
+We thought explicit mmapping of files might provide a big boost to read performance, so we prototyped an mmapping filesystem abstraction.
 But we didn't see significant gains.
 Compare the profiles of the direct filesystem to the mmapped filesystem.
 
@@ -530,7 +531,7 @@ Over the retention window, this will even out equally.
 But until that window is elapsed, the new store node will have a smaller share of segment files versus other store nodes.
 As an optimization, it could gossip its current data set size with other store nodes.
 When replicating, store nodes can bias in favor of nodes with a smaller share of the overall data set size
-Newer store nodes will recieve more replication writes; older store nodes will receive fewer replication writes.
+Newer store nodes will receive more replication writes; older store nodes will receive fewer replication writes.
 This gradual rebalancing strategy reflects my belief that leaving data at rest whenever possible is desirable.
 I've observed plenty of outages caused by segment/shard/node rebalancing after a big topological change.
 I think this can work, but it remains to be seen if it's truly viable.
