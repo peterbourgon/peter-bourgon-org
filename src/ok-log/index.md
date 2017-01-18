@@ -92,7 +92,7 @@ With those goals in mind, we can start adding constraints, to make the problem t
 Hard-won experience has taught me that a data system like this should focus on reliably shipping data, _or_ adding value to that data.
 That is, it should be a transport system, solving more mechanical problems, agnostic to the data being shipped;
  or it should be an application system, providing business value, agnostic to topology and performance requirements.
-Attempting to address both concerns with a single solution creates competing tensions, and compromised solutions.
+Attempting to address both concerns with a single solution creates competing tensions, and compromised results.
 So I'm interested in biasing toward a transport system, addressing lower-level throughput and latency concerns.
 We can add application or business value outside of that system, with separate tools.
 For example, contextual annotation can occur prior to ingest.
