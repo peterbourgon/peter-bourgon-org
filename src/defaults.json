@@ -3,5 +3,6 @@
 	"sidebartitle": true,
 	"showtitle": true,
 	"rotate": false,
-	"border": false
+	"border": false,
+	"prefixtitle": true
 }

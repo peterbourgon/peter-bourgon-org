@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{{ .title }}</title>
+<title>{{ if .prefixtitle }}Peter Bourgon · {{ end }}{{ .title }}</title>
 {{ importhtml "parts/meta.source" }}
 {{ importhtml "parts/csslinks.source" }}
 {{ importhtml "parts/ga.source" }}

@@ -54,6 +54,8 @@ span.highlight {
 	padding: 0px 3px;
 }
 
+span.mark { background-color: #ffc; }
+
 a:visited { color: #66a; }
 .lite { color: #ddd; text-decoration: none; font-size: 14pt; font-variant: small-caps;} /* Permalink */
 .lite:visited { color: #ddd; }
