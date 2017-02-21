@@ -19,7 +19,7 @@ Metrics, tracing, and logging are definitely all parts of a broader picture,
  but I wanted to try and identify the properties of each that were truly distinct. 
 I had a think over a coffee break and came up with this.
 
-<img src="/img/instrumentation/01.png" width=392 height=400 alt="Annotated Venn diagram" /> 
+<center><img src="/img/instrumentation/01.png" width=392 height=400 alt="Annotated Venn diagram" /></center>
 
 I think that the defining characteristic of **metrics** is that they are aggregatable: 
  they are the atoms that compose into a single logical gauge, counter, or histogram over a span of time. 
@@ -44,7 +44,7 @@ As examples:
 
 With these definitions we can label the overlapping sections.
 
-<img src="/img/instrumentation/02.png" width=613 height=400 alt="Amended, annotated Venn diagram" /> 
+<center><img src="/img/instrumentation/02.png" width=613 height=400 alt="Amended, annotated Venn diagram" /></center>
 
 Certainly a lot of the instrumentation typical to cloud-native applications will end up being request-scoped, 
  and thus may make sense to talk about in a broader context of tracing. 
@@ -71,7 +71,7 @@ Conversely, logging tends to be overwhelming, frequently coming to surpass in vo
 So we can draw a sort of volume or operational overhead gradient,
  from metrics (low) to logging (high)&mdash;and we observe that tracing probably sits somewhere in the middle.
 
-<img src="/img/instrumentation/03.png" width=676 height=400 alt="Venn diagram with gradient" /> 
+<center><img src="/img/instrumentation/03.png" width=676 height=400 alt="Venn diagram with gradient" /></center> 
 
 Maybe it's not a perfect description of the space, but my sense from the Summit attendees was that this categorization made sense:
  we were able to speak more productively when it was clear what we were talking about.
