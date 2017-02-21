@@ -32,7 +32,7 @@ I think that the defining characteristic of **logging** is that it deals with di
 As examples: 
  application debug or error messages emitted via a rotated file descriptor through syslog to Elasticsearch 
   (or [OK Log](https://peter.bourgon.org/ok-log), nudge nudge); 
- audit-trail events pushed through Kafka to a data lake like Kinesis; 
+ audit-trail events pushed through Kafka to a data lake like BigTable; 
  or request-specific metadata pulled from a service call and sent to an error tracking service like NewRelic.
 
 I think that the single defining characteristic of **tracing**, then, is that it deals with information that is request-scoped. 
