@@ -6,14 +6,17 @@
 
 <img src="face.jpg" width="430" height="150" alt="My face, when I talk (I kind of look like a techbro here and I regret that)" />
 
+## 2017
+
+**Go + microservices = Go kit** <br/>
+· March 2017, [CloudNativeCon](https://cloudnativeeu2017.sched.com/), Berlin — [slides](https://speakerdeck.com/peterbourgon/go-plus-microservices-equals-go-kit) <br/>
+
 ## 2016
 
 **Go Microservices workshop** <br/>
 · November 2016, [QCon](https://qconsf.com), San Francisco <br/>
 · November 2016, [GOTO](https://gotocon.com/cph-2016/), Copenhagen <br/>
 · June 2016, [QCon](https://qconnewyork.com), New York <br/>
-
-[gotocph]: https://gotocon.com/cph-2016/presentations/show_presentation.jsp?oid=7957
 
 **[Applied Go kit](/applied-go-kit)** <br/>
 · August 2016, [Golang UK](http://golanguk.com), London — [video](https://www.youtube.com/watch?v=JXEjAwNWays) <br/>
