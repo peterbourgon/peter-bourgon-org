@@ -456,6 +456,8 @@ func newFoo(..., cfg fooConfig) *foo {
 }
 ```
 
+_Update:_ for more detail on this and the subject of magic, see the June 2017 blog post
+ on a [theory of modern Go](/blog/2017/06/09/theory-of-modern-go.html).
 
 <br/><a name="logging-and-instrumentation"></a>
 ## Logging and instrumentation  &nbsp;<a class="lite" href="#logging-and-instrumentation">permalink</a> <span class="orig"><a class="lite" href="/go-in-production/#logging-and-telemetry">original</a></span>
