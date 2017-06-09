@@ -90,13 +90,19 @@ By modeling each concrete object as an interface, capturing only the methods we 
 This reduces source-level coupling between packages, and enables us to mock out the concrete dependencies in tests.
 Testing the original version of the code, with concrete package-level globals, involves tedious and error-prone swapping-out of components.
 
+If all of our constructors and functions [take their dependencies explicitly](https://peter.bourgon.org/go-best-practices-2016/#program-design), then we no longer have any use for globals.
+Instead, we can construct all of our database connections, our loggers, our resource pools, in our func main, so that
+ [future readers](https://blogs.msdn.microsoft.com/oldnewthing/20070406-00/?p=27343/) can very clearly map out a component graph.
+And we can very explicitly pass those dependencies to the components that use them, so that we eliminate the comprehension-subverting magic of globals.
+Also, observe that if we have no global variables, we have no more use for func init, whose only purpose is to instantiate or mutate package-global state.
+We can then look at all uses of func init with appropriate suspicion: what is this code doing? Why is it not in func main, where it belongs?
+
 It's not only possible, but quite easy, and actually extremely refreshing, to write Go programs that are practically free of global state.
 In my experience, programming in this way is not noticeably slower or more tedious than using global variables to shrink function definitions.
 On the contrary: when a function signature reliably and completely describes the behavior-scope of the function body, we can reason about, refactor, and maintain code in the large much more efficiently.
-[Go kit](https://github.com/go-kit/kit) has been written in this style since the very beginning, to its benefit.
-After all, [code is read more often than it is written](https://blogs.msdn.microsoft.com/oldnewthing/20070406-00/?p=27343/).
-As a reader of code, when I see a function call, if I can have confidence that it won't affect state or behavior beyond the parameters I give it—that's huge.
-And observe: this is just a long-winded way of re-asserting the [Go Best Practice](http://peter.bourgon.org/go-best-practices-2016): [make dependencies explicit](http://peter.bourgon.org/go-best-practices-2016/#program-design)!
+[Go kit](https://github.com/go-kit/kit) has been written in this style since the very beginning, to its great benefit.
+
+— – -
 
 From this, we can develop a theory of modern Go.
 [Based on the words of](https://twitter.com/davecheney/status/871939730761547776) Dave "Humbug" Cheney, I propose the following guidelines:
