@@ -104,5 +104,5 @@ From this, we can develop a theory of modern Go.
 - No package level variables
 - No func init
 
-From these rules, the other practices follow naturally.
+There are exceptions, of course. But from these rules, the other practices follow naturally.
 
