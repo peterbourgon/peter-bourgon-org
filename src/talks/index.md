@@ -8,6 +8,10 @@
 
 ## 2017
 
+**OK Log** <br/>
+· Distributed and coördination-free logging (systems engineering challenges) — September 2017, [SRECon17](https://www.usenix.org/conference/srecon17europe), Dublin <br/>
+· Evolutionary Optimization (software engineering best practices) — July 2017, [GopherCon](https://gophercon.com/schedule), Denver <br/>
+
 **Go + microservices = Go kit** <br/>
 · March 2017, [CloudNativeCon](https://cloudnativeeu2017.sched.com/), Berlin — [slides](https://speakerdeck.com/peterbourgon/go-plus-microservices-equals-go-kit) <br/>
 
