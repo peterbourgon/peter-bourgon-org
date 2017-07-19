@@ -15,7 +15,7 @@
 · July 2017, [GopherCon](https://gophercon.com/schedule), Denver <br/>
 
 **Go + microservices = Go kit** <br/>
-· March 2017, [CloudNativeCon](https://cloudnativeeu2017.sched.com/), Berlin — [slides](https://speakerdeck.com/peterbourgon/go-plus-microservices-equals-go-kit) <br/>
+· March 2017, [CloudNativeCon](https://cloudnativeeu2017.sched.com/), Berlin — [slides](https://speakerdeck.com/peterbourgon/go-plus-microservices-equals-go-kit), [video](https://www.youtube.com/watch?v=NX0sHF8ZZgw) <br/>
 
 ## 2016
 
