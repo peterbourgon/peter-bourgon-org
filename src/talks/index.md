@@ -12,7 +12,7 @@
 · September 2017, [SRECon17](https://www.usenix.org/conference/srecon17europe), Dublin <span class="highlight">soon!</span> <br/> 
 
 **OK Log: Evolutionary Optimization in Go** <br/>
-· July 2017, [GopherCon](https://gophercon.com/schedule), Denver <br/>
+· July 2017, [GopherCon](https://gophercon.com/schedule), Denver — [video](https://www.youtube.com/watch?v=ha8gdZ27wMo) <br/>
 
 **Go + microservices = Go kit** <br/>
 · March 2017, [CloudNativeCon](https://cloudnativeeu2017.sched.com/), Berlin — [slides](https://speakerdeck.com/peterbourgon/go-plus-microservices-equals-go-kit), [video](https://www.youtube.com/watch?v=NX0sHF8ZZgw) <br/>
