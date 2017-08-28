@@ -14,6 +14,9 @@
 **OK Log: Evolutionary Optimization in Go** <br/>
 · July 2017, [GopherCon](https://gophercon.com/schedule), Denver — [video](https://www.youtube.com/watch?v=ha8gdZ27wMo) <br/>
 
+**Ways To Do Things** <br/>
+· August 2017, [GoSF Meetup](https://www.meetup.com/golangsf/), San Francisco — [slides](https://speakerdeck.com/peterbourgon/ways-to-do-things) <br/>
+
 **Go + microservices = Go kit** <br/>
 · March 2017, [CloudNativeCon](https://cloudnativeeu2017.sched.com/), Berlin — [slides](https://speakerdeck.com/peterbourgon/go-plus-microservices-equals-go-kit), [video](https://www.youtube.com/watch?v=NX0sHF8ZZgw) <br/>
 
