@@ -9,7 +9,7 @@
 ## 2017
 
 **OK Log: Distributed and Coördination-Free Logging** <br/>
-· September 2017, [SRECon17](https://www.usenix.org/conference/srecon17europe), Dublin <br/> 
+· September 2017, [SRECon17](https://www.usenix.org/conference/srecon17europe), Dublin — [video](https://www.youtube.com/watch?v=gWWK2eyZ-sc) <br/>
 
 **OK Log: Evolutionary Optimization in Go** <br/>
 · July 2017, [GopherCon](https://gophercon.com/schedule), Denver — [video](https://www.youtube.com/watch?v=ha8gdZ27wMo) <br/>
