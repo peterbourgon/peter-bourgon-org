@@ -8,7 +8,7 @@
 
 ## 2017
 
-**Emergent Distributed Architectures** — <span class="highlight">soon!</span> <br/>
+**Emergent Distributed Architectures** <span class="highlight">soon!</span> <br/>
 · October 2017, [Velocity](https://conferences.oreilly.com/velocity/vl-eu), London <br/>
 
 **OK Log: Distributed and Coördination-Free Logging** <br/>
