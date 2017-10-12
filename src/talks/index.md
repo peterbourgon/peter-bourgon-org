@@ -8,6 +8,9 @@
 
 ## 2017
 
+**Emergent Distributed Architectures** — <span class="highlight">soon!</span> <br/>
+· October 2017, [Velocity](https://conferences.oreilly.com/velocity/vl-eu), London <br/>
+
 **OK Log: Distributed and Coördination-Free Logging** <br/>
 · September 2017, [SRECon17](https://www.usenix.org/conference/srecon17europe), Dublin — [video](https://www.youtube.com/watch?v=gWWK2eyZ-sc) <br/>
 
