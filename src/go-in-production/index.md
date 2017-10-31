@@ -1,6 +1,7 @@
 {
     "template": "../inc/arbitrary-page.template.source",
-    "title": "Go: Best Practices for Production Environments"
+    "title": "Go: Best Practices for Production Environments",
+	"metadescription": "Best practices for writing Go code, from the halcyon days of its youth."
 }
 
 ---

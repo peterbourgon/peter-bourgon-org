@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>{{ if .prefixtitle }}Peter Bourgon · {{ end }}{{ .title }}</title>
 {{ importhtml "parts/meta.source" }}

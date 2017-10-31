@@ -1,6 +1,7 @@
 {
     "title": "Go best practices, six years in",
-    "template": "../inc/arbitrary-page.template.source"
+    "template": "../inc/arbitrary-page.template.source",
+	"metadescription": "Generally good things to do when writing Go code, in 2016 and beyond."
 }
 ---
 

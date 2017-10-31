@@ -1,6 +1,7 @@
 { "template": "../inc/arbitrary-page.template.source",
   "title": "About me!",
-  "showtitle": false }
+  "showtitle": false,
+  "metadescription": "Peter's self-indulgent About Me page." }
 ---
 # About me
 

@@ -1,6 +1,7 @@
 {
     "title": "OK Log",
-    "template": "../inc/arbitrary-page.template.source"
+    "template": "../inc/arbitrary-page.template.source",
+	"metadescription": "The design and implementation of OK Log."
 }
 ---
 

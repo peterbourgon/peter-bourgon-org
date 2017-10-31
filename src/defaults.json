@@ -4,5 +4,6 @@
 	"showtitle": true,
 	"rotate": false,
 	"border": false,
-	"prefixtitle": true
+	"prefixtitle": true,
+	"metadescription": "Peter Bourgon has a web site, and this is that web site."
 }

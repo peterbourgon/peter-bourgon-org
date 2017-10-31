@@ -1,6 +1,7 @@
 {
 	"template": "../inc/arbitrary-page.template.source",
-	"title": "Talks I've talked"
+	"title": "Talks I've talked",
+	"metadescription": "An index of the talks that I've given, on a variety of technical topics."
 }
 ---
 
@@ -48,7 +49,7 @@
 **[Go best practices, six years in](/go-best-practices-2016)** <br/>
 · March 2016, [QCon](https://qconlondon.com), London — [video](https://www.infoq.com/presentations/go-patterns) <br/>
 
-**Effortless eventual consistency: gossip and CRDTs with Weave Mesh** </br>
+**Effortless eventual consistency: gossip and CRDTs with Weave Mesh** <br/>
 · March 2016, [QCon](https://qconlondon.com), London — [video](https://qconlondon.com/presentation/effortless-eventual-consistency-weave-mesh) <br/>
 
 ## 2015
