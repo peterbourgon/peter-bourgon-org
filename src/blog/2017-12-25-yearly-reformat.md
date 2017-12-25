@@ -29,6 +29,8 @@ Small things that, in aggregate, should improve my general opsec without killing
 Since I've done reformats a few times, I'm pretty good at them by now.
 This time I took some notes. Here's my process!
 
+### Prep
+
 First, I source a USB stick, at least 8GB, to hold the macOS installer.
 The specific details change, so I basically search "install mac on usb stick" and take the first result as a guide.
 [Here's what I found](https://support.apple.com/en-us/HT201372) this time.
@@ -46,7 +48,9 @@ I won't use this directly, it's just a reference.
 There tend to be some programs and utilities that I forget about: for example,
  reattach-to-user-namespace is usually necessary to get tmux to play nicely with iTerm2.
 
-Step four, I double check I've not forgotten anything important,
+### Erase
+
+I double check I've not forgotten anything important,
  I make sure I've committed and pushed all my git repos, 
  and then start the format.
 Restart and, once the screen goes black, hold down Command+R.
@@ -59,6 +63,8 @@ When the screen goes black, hold down Option.
 Then, select the USB stick to boot from it.
 Thus begins the typical macOS install. It tends to take about half an hour of waiting.
 Then you have a fresh system.
+
+### System Preferences
 
 Under System Preferences, there are a few changes I always make.
 
@@ -80,6 +86,8 @@ And a few changes to Finder.
 - Preferences: Advanced: Keep folders on top when sorting by name
 - View: Show Status Bar, Show Path Bar
 
+### Apps and configs
+
 Next, I got Homebrew going.
 I use Safari to go to [brew.sh](https://brew.sh) and copy the install instructions.
 Open Terminal, paste; the XCode command line tools get installed.
@@ -96,6 +104,8 @@ brew install --devel go
 brew cask install google-chrome sizeup 1password keybase dropbox spotify iterm2 visual-studio-code
 ```
 
+### Keys, passwords, VPNs
+
 Next I grabbed the archive from where I stashed it, and decrypted it.
 This involved a `keybase login`, which required me to remember my passphrase. Luckily, I've done that!
 When that was done, I rotated all my keybase devices, and generated new paper keys.
@@ -104,6 +114,12 @@ I installed my SSH keys, logged in to 1Password, and destroyed the archive.
 
 All other passwords are gated by 1Password.
 So, from this point, I'm able to log in to Dropbox and start syncing.
+
+Next, I set up my VPNs.
+I don't want to give too much away, and the details differ based on the VPN provider, anyway.
+So, just make sure you have access to that documentation.
+
+### Shell and browser
 
 Now I can set up my terminal environment.
 First, gotta configure iTerm a little bit:
@@ -116,14 +132,13 @@ These are designed to be idempotent, so it works without too much fuss.
 I open up Visual Studio Code and installed the only two extensions I use:
  the Monokai Dark Soda theme, and the Go plugin.
 
-Then, I set up Chrome.
-First, I make sure it's the default browser.
-Next, I set up DuckDuckGo as the default search engine.
-Next, I log in. I know this isn't great, but the convenience is just too high. I may re-evaluate this later.
+Last, I set up Chrome.
+I make sure it's the default browser, and I set up DuckDuckGo as the default search engine.
+I log in to Chrome Sync. I know this isn't great, but the convenience is just too high. I may re-evaluate this later.
+And finally I configure [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega) 
+ to killfile the most common domains from the most common social networks.
 
-Next, I set up my VPNs.
-I don't want to give too much away, and the details differ based on the VPN provider, anyway.
-So, just make sure you have access to that documentation.
+### Conclusion
 
 By now, it's usually about two hours since I started, and the computer is pretty much back to the way it was.
 At this point I create new SSH keys and rotate all the accounts I can remember.
