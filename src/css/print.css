@@ -6,5 +6,5 @@ div#header { display: none; }
 .onlyprint { display: inherit; }
 a { text-decoration: underline; color: #000; }
 a:visited { color: #000; }
-p { font-size: 11pt; line-height: 14pt; }
+p, li { font-size: 10pt; line-height: 14pt; }
 p.byline { margin-top: -10px; margin-bottom: 25px; color: #666; }
