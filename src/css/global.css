@@ -1,71 +1,70 @@
 body {
-	background-color: #eee;
-	color: #111;
-	font-family: serif;
-	font-size: 14pt;
-	line-height: 1.4em;
-	margin-top: 3%;
-	margin-bottom: 6%;
+    margin: 0;
+    font-size: 14pt;
+    font-family: serif;
+    line-height: 1.6em;
+    background-color: #fff;
+	color: #000;
 }
 
-#c {
-	min-width: 375px;
-	max-width: 750px;
-	margin: 0 8%;
+div#c {
+    min-width: 20em;
+    max-width: 40em;
+    margin-top: 7%;
+    margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 7%;
 }
 
-h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
-h1 { line-height: 1em; } /* fix wrapping titles */
+a {
+    text-decoration: underline;
+    color: #000;
+}
 
-code { font-size: 11pt; font-family: monospace; }
+a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+div#header * {
+    margin: 0 1em 0 0;
+}
+
+div#header a {
+    text-decoration: none;
+    border-bottom: solid 1px #000;    
+}
+
+img {
+	margin: 1em 0 0 0;
+}
+
 pre {
-	margin: 0 4em 0 2em;
-	padding: 1em;
-	line-height: 1em;
-	border-top: solid 1px #ccc;
-	border-bottom: solid 1px #ccc;
+	font-size: 11pt;
+	margin: 1em;
+	padding: 1em 0;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
 }
 
-/* Go in Production */
-td, th { padding: 0 10px; }
-th { font-weight: bold; text-align: left; }
-div.toptip {
-	background-color: #ded;
-	padding: 20px;
-	margin: 20px;
-	border-top: solid 1px #171;
-	border-bottom: solid 1px #171;
-}
-div.bigdeal {
-	border-top: solid 3px #171;
-	border-bottom: solid 3px #171;
-	font-size: 20pt;
-	font-weight: bold;
-}
-div.toptip a {
-	text-decoration: none;
-	color: #171;
+code {
+	font-size: 11pt;
+	background-color: #eee;
 }
 
-span.highlight {
-	font-size: 10pt;
-	background-color: yellow;
+pre > code {
+	background-color: inherit;
+}
+
+h2 {
 	font-style: italic;
-	padding: 0px 3px;
 }
 
-a:visited { color: #66a; }
-.lite { color: #ddd; text-decoration: none; font-size: 14pt; font-variant: small-caps;} /* Permalink */
+.onlyprint {
+	display: none;
+}
+
+/* Go best practices */
+.lite { color: #ddd; text-decoration: none; font-size: 14pt; font-variant: small-caps; }
 .lite:visited { color: #ddd; }
-
-.onlyprint { display: none; }
-
-table.cv { border-collapse: collapse; margin: 0; padding: 0; }
-table.cv td { padding: 0 34px 0 0; vertical-align: top; }
-table.cv .when { white-space: nowrap; }
-table.cv .where { width: 99% }
-table.cv .what { padding: 0 0 0 34px; }
-
-/* /sale only */
-span.oldprice { padding: 0px 4px; background-color: #787; }
-span.price { padding: 2px 5px; background-color:#11dd11; }
+div.toptip { background-color: #ded; padding: 1em; margin: 1em; }
+div.toptip a { text-decoration: none; }

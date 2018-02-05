@@ -1,10 +1,11 @@
 body { margin: 0; background-color: #fff; color: #000; }
 @page { margin: 15mm 15mm 20mm 15mm; }
-div#c { width: 85%; }
+div#c { width: 90%; margin: 0 auto; }
 div#header { display: none; }
 .noprint { display: none; }
 .onlyprint { display: inherit; }
 a { text-decoration: underline; color: #000; }
 a:visited { color: #000; }
 p, li { font-size: 10pt; line-height: 14pt; }
+code, pre { font-size: 9pt; line-height: 12pt; }
 p.byline { margin-top: -10px; margin-bottom: 25px; color: #666; }
