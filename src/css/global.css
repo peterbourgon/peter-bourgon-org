@@ -64,7 +64,7 @@ h2 {
 }
 
 /* Go best practices */
-.lite { color: #ddd; text-decoration: none; font-size: 14pt; font-family: sans-serif; font-variant: small-caps; }
+.lite { color: #ddd; text-decoration: none; font-size: 14pt; font-family: sans-serif; font-variant: small-caps; font-style: italic; }
 .lite:visited { color: #ddd; }
 div.toptip { background-color: #ded; padding: 1em; margin: 1em; }
 div.toptip a { text-decoration: none; }
