@@ -1,6 +1,6 @@
 {{ importhtml "../inc/top.source" }}
 
-<h3 class="date">{{ .date }}</h3>
+<strong class="date">{{ .date }}</strong>
 
 {{ .content }}
 
