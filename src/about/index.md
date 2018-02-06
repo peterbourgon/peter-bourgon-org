@@ -36,8 +36,8 @@ Some nice things to read on dead trees include
  [Dave Wallace](http://en.wikipedia.org/wiki/David_Foster_Wallace), and
  [Neal Stephenson](http://www.nealstephenson.com/).
 
-<script src="/js/jquery-1.8.1.min.js" type="text/javascript"></script>
-<script src="/js/jquery-blink.js" type="text/javascript"></script>
-<script type="text/javascript">
+<script src="/js/jquery-1.8.1.min.js"></script>
+<script src="/js/jquery-blink.js"></script>
+<script>
   $(document).ready(function() { $(".blink").blink({delay:730}); });
 </script>
