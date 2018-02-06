@@ -1,37 +1,37 @@
 body {
-    margin: 0;
-    font-size: 14pt;
-    font-family: serif;
-    line-height: 1.6em;
-    background-color: #fff;
+	margin: 0;
+	font-size: 14pt;
+	font-family: serif;
+	line-height: 1.6em;
+	background-color: #fff;
 	color: #000;
 }
 
 div#c {
-    min-width: 20em;
-    max-width: 40em;
-    margin-top: 7%;
-    margin-left: 10%;
+	min-width: 20em;
+	max-width: 40em;
+	margin-top: 7%;
+	margin-left: 10%;
 	margin-right: 10%;
 	margin-bottom: 7%;
 }
 
 a {
-    text-decoration: underline;
-    color: #000;
+	text-decoration: underline;
+	color: #000;
 }
 
 a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 div#header * {
-    margin: 0 1em 0 0;
+	margin: 0 1em 0 0;
 }
 
 div#header a {
-    text-decoration: none;
-    border-bottom: solid 1px #000;    
+	text-decoration: none;
+	border-bottom: solid 1px #000;
 }
 
 img {
