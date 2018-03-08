@@ -7,6 +7,11 @@
 
 <img src="face.jpg" width="430" height="150" alt="My face, when I talk (I kind of look like a techbro here and I regret that)" />
 
+## 2018
+
+**CASPaxos** <br/>
+February 2018, Papers We Love Too, San Francisco <br/>
+
 ## 2017
 
 **Emergent Distributed Architectures** <br/>
