@@ -10,13 +10,13 @@
 ## 2018
 
 **Observability: the Hard Parts** <br/>
-June 2018, Monitorama, Portland <br/>
+June 2018, [Monitorama](http://monitorama.com/), Portland <br/>
 
 **Go: Best Practices for Industrial Programming** <br/>
-June 2018, GopherCon Iceland, Reykjavík <br/>
+June 2018, [GopherCon Iceland](https://gophercon.is/), Reykjavík <br/>
 
 **Observability workshop** <br/>
-April 2018, Fastly Altitude, New York City <br/>
+April 2018, [Fastly Altitude](https://fastly.com/altitude-nyc), New York City <br/>
 
 **CASPaxos** <br/>
 February 2018, Papers We Love Too, San Francisco <br/>
