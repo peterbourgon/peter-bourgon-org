@@ -19,7 +19,7 @@ June 2018, [GopherCon Iceland](https://gophercon.is/), Reykjavík <br/>
 April 2018, [Fastly Altitude](https://fastly.com/altitude-nyc), New York City <br/>
 
 **CASPaxos** <br/>
-February 2018, Papers We Love Too, San Francisco <br/>
+February 2018, Papers We Love Too, San Francisco — [video](https://www.youtube.com/watch?v=TW2OPHdIKsM&t=150) <br/>
 
 ## 2017
 
