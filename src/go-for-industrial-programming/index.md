@@ -217,6 +217,7 @@ here I definitely don't mean the dependency container approach used by
 <a href="https://github.com/uber/dig">uber/dig</a>, but rather the much simpler practice of enumerating dependencies as parameters to types
 or constructors.
 
+<a href="">Here's an example</a> of container-based dependency injection that recently made the rounds:
 
 <pre>
 func BuildContainer() *dig.Container {  
@@ -297,7 +298,7 @@ globals can have surprising side effects, which subverts the
 reader’s ability to understand and mentally model the program.
 
 Accordingly, and in deference to read-optimization and
-maintenence costs, I think the ideal Go program has little to no
+maintenance costs, I think the ideal Go program has little to no
 package global state, preferring instead to enumerate
 dependencies explicitly, through constructors. And since the
 only job of func init is to initialize package global state, I
@@ -311,6 +312,7 @@ So,
 </p>
 
 <ul>
+<li>Explicit dependencies</li>
 <li>No package level variables</li>
 <li>No func init</li>
 </ul>
