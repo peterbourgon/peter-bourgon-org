@@ -829,14 +829,15 @@ Using the value propegation features of contexts has proven to be a bit
 trickier. The problem with context.Value is that the key and value are untyped
 and not guaranteed to exist, which opens your program up to runtime costs and
 failure modes that may otherwise be avoidable. My experience has been that
-developers over-use context values for things that really ought to be regular
+developers over-use context.Value for things that really ought to be regular
 dependencies or function parameters.
 
 So, one essential of thumb: only use context.Value for data that
 can't be passed through your program in any other way. In
 practice, this means only using context.Value for
 <em>request-scoped information</em>, like request IDs, user
-authentication tokens, and so on. If the information is
+authentication tokens, and so on&mdash;information that only gets
+created with or during a request. If the information is
 available when the program starts, like a database handle or
 logger, then it shouldn't be passed through the context.
 
