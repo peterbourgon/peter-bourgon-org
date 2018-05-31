@@ -332,7 +332,7 @@ most people want to accomplish with concurrency. We say things like "never start
 a goroutine without knowing how it will stop," but this advice is somewhat empty
 without a concrete methodology. And I think many tutorials and lots of example
 code, even in otherwise good references like The Go Programming Language book,
-do us a disservice by demonstrating concurrency concepts with fire-and-forget
+do us a disservice by demonstrating concurrency concepts with leaky fire-and-forget
 goroutines, global state, and patterns that would fail even basic code review.
 
 Most goroutines I see launched by my colleagues are not 
