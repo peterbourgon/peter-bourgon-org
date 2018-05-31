@@ -453,6 +453,13 @@ colleagues.
 
 ## <a href="#observability">Observability</a>
 
+Let's talk about observability. But before we do that, let's put some light on
+another kind of assumption about industrial programming: that we're writing code
+that's going to run on a server, serve requests to customers, and go through
+lifecycles, without having that service interrupted. This is different than code
+that's shrink-wrapped and delivered to customers, or code that runs as batch
+jobs and isn't customer facing.
+
 I largely agree with what Charity told us earlier in the
 program. In particular, I agree that a core invariant of our
 distributed industrial systems is that there's simply no cost-effective way
