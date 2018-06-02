@@ -214,7 +214,7 @@ strongly towards the former.
 Dependency injection is a powerful tool to optimize for read comprehension. And
 here I definitely don't mean the dependency container approach used by
 <a href="https://github.com/facebook-go/inject">facebook-go/inject</a> or
-<a href="https://github.com/uber/dig">uber/dig</a>, but rather the much simpler practice of enumerating dependencies as parameters to types
+<a href="https://github.com/uber-go/dig">uber-go/dig</a>, but rather the much simpler practice of enumerating dependencies as parameters to types
 or constructors.
 
 <a href="">Here's an example</a> of container-based dependency injection that recently made the rounds:
