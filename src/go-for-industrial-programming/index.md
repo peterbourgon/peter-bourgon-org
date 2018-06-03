@@ -175,10 +175,10 @@ of a config file format.
 This doesn't mean never use env vars or config files. There are good reasons to
 use either or both <em>in addition to</em> flags. Env vars can be useful for
 connection strings and non-secret auth tokens, especially during dev. And config
-files are great for declaring verbose configs, as well as being the only secure
-way to get secrets into a program. (Both env vars and flags can be inspected by
-other users of the system at runtime.) Just ensure that explicit commandline
-flags, if given, take highest priority. 
+files are great for declaring verbose configs, as well as being the most secure
+way to get secrets into a program. (Flags can be inspected by other users of the
+system, and env vars can easily be set and forgotten.) Just ensure that explicit
+commandline flags, if given, take highest priority. 
 
 <a name="flags-package">
 
