@@ -71,7 +71,7 @@ Goals are obviously important to direct design and development efforts.
 Non-goals are even more important, to scope the work and keep the project
 tractable.
 
-Note that the questions we want to answer are focused on the present moment.
+Observe that the questions we want to answer are focused on the present moment.
 Answering them accurately requires some degree of historical data, but not a
 lot. Marcus did some investigation of how our existing monitoring systems were
 used by internal customers. The vast majority of collected metrics were queried
