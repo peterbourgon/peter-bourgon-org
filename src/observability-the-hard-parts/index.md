@@ -87,7 +87,7 @@ We're also laser-focused on internal systems, owned and operated by the
 engineering org. We won't build a system that serves other use cases, or is
 subject to other SLAs. One common example is surfacing data to customers. In our
 industry, for online multi-tenant systems, there's a pretty clear line of
-demarcation between operational telemetry for our own systems; and (for lack of
+demarcation between operational telemetry for our own systems, and (for lack of
 a better phrase) customer metrics, data showing us the experience of our
 customers. We already had reasonably mature systems in place for the latter, and
 didn't want to expand the scope or risk profile to include them in our work.
