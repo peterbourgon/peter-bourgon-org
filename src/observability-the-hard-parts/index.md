@@ -36,7 +36,7 @@ any technical decision, there are both benefits and risks.
 
 Teams of senior engineers bring their experience with them. They also operate
 quite autonomously. This has the inevitable result of a heterogeneous mix of
-designs, implementations, and support tooling—including monitoring.
+designs, implementations, and support tooling&mdash;including monitoring.
 
 Our monitoring universe grew organically, and organic growth of software tends
 to be append-only. Initially ad-hoc dashboards, proving their value through the
@@ -76,12 +76,12 @@ Answering them accurately requires some degree of historical data, but not a
 lot. Marcus did some investigation of how our existing monitoring systems were
 used by internal customers. The vast majority of collected metrics were queried
 only over the last few hours or days. And despite collecting thousands of
-metrics per host, only perhaps tens of those metrics were queried with any
-regularity. The actual usage patterns&mdash;which were hugely different than the
-usage patterns that teams _said_ they had&mdash;helped us to work within
-Prometheus' limitations. We would have only short data retention in the initial
-few versions of the infrastructure, order of weeks. Anything longer would be a
-separate initiative, after the initial rollout.
+metrics for each host or service, only a tiny fraction of them were queried with
+any regularity. The actual usage patterns&mdash;which were hugely different than
+the usage patterns that teams _said_ they had&mdash;helped us to define
+reasonable limitations. We would have only short data retention in the initial
+few versions of the infrastructure, on the order of weeks. Anything longer would
+be a separate initiative, after the initial rollout.
 
 We're also laser-focused on internal systems, owned and operated by the
 engineering org. We won't build a system that serves other use cases, or is
@@ -145,8 +145,8 @@ and enthusiastic.
 
 The next step, then, was to inventory the company, and priority-rank teams and
 services by whatever criteria made sense. For us, this was a mix of production
-criticality and some notion of friendliness—better to have the folks eager to
-help earlier on, while we iron out the kinks. We created a burndown chart
+criticality and some notion of friendliness&mdash;better to have the folks eager
+to help earlier on, while we iron out the kinks. We created a burndown chart
 (really, a spreadsheet) with progress for each service. Of course, it grew over
 time, as we found more and more services hiding in the cracks. Each service
 progressed through stages: kickoff, instrumentation, production wire-up,
@@ -186,30 +186,29 @@ the outset, but that turns out to be inevitable, anyway.
 <a href="#documentation" style="text-decoration: none;">&mdash;</a>
 
 The documentation portal became an important center of mass. It was a GitHub
-wiki, with a roughly even split between post-hoc HOWTO-style guides, and a FAQ
+wiki, with a roughly even split between narrative HOWTO-style guides, and a FAQ
 of specific questions as they arose. There was also a large section of case
-studies, narratively describing the path of several teams; this was helpful for
-the many engineers who are most successful following the examples of others. But
-the real benefit of the portal, I think, was sprinkling every
-observability-related conversation with deep links to answers or more
-information. This socializes and reinforces the documentation site as a source
-of authority, making people more able to help themselves in the future.
+studies, describing the observability path of several teams; this was helpful
+for the many engineers who are most successful following the examples of others.
+But the real benefit of the portal, I think, was being able to sprinkle every
+observability-related conversation on e.g. Slack with deep links to answers or
+more information. This socializes and reinforces the documentation site as a
+source of authority, making people more able to help themselves in the future.
 
 <a name="wire-up" />
 
 ### <a href="#wire-up">2. Wire-up</a>
 
 Once the code was instrumented and deployed, the next step was to get it plumbed
-into the Prometheus infrastructure. Often, this required deploying that
-Prometheus infrastructure info a new corner of our infrastructure. This was
-easily the most time-consuming and trickiest technical part of the project,
-especially at the beginning, when we were still discovering and defining best
-practices. Our heterogeneous services had heterogeneous deployment models, and
-it took a long while to have good answers for all of them. Even once that was
-mostly done, new teams would invariably require exceptions. Over the life of the
-project, I think we were most often bottlenecked when trying to realize our
-design or architectural vision against the organic nature of our actual
-infrastructure.
+into the Prometheus. Often, this required deploying Prometheus info a new corner
+of our infrastructure. This was easily the most time-consuming and trickiest
+technical part of the project, especially at the beginning, when we were still
+discovering and defining best practices. Our heterogeneous services had
+heterogeneous deployment models, and it took a long while to have good answers
+for all of them. Even once that was mostly done, new teams would invariably
+require exceptions. Over the life of the project, I think we were most often
+bottlenecked when trying to realize our design or architectural vision against
+the organic nature of our actual infrastructure.
 
 <a name="optimization-and-technical-debt">
 
@@ -263,19 +262,19 @@ the beginning of the project, I would often volunteer to prototype both a
 dashboard and initial set of alerts for the team, and ask them for review and
 feedback when I was done. And, in the middle, we could model it as another
 pairing session, where I would teach them the power of PromQL and the horrors of
-Grafana.
+Grafana. (No shade, Grafana. Y'all doin' the Lord's work.)
 
 <a name="empathy" />
 
 <a href="#empathy" style="text-decoration: none;">&mdash;</a>
 
-It's easy enough to do research and compile a set of best practices for
-dashboards and alerts. It's even easy to enumerate that reasoning in a clear
-way, on demand, in classes, or in pairing sessions. What's difficult is
-convincing engineers with workflows that have historically worked for them that
-it's worth trying something different, in service to higher-order goals. This is
-the real challenge of any org-wide hearts-and-minds project. And it's why
-embedding (or something akin to it) is essential.
+It's easy enough to do research and compile a set of best practices. It's even
+easy to enumerate that reasoning in a clear way, on demand, in classes, or in
+pairing sessions. What's difficult is convincing engineers with workflows that
+have historically worked for them that it's worth trying something different, in
+service to higher-order goals. This is the real challenge of any org-wide
+hearts-and-minds project. And it's why embedding (or something akin to it) is
+essential.
 
 Every conversation I have when embedded begins as a fun little exploration, a
 dance, where I try to identify the context of the other person. I need to do
@@ -283,13 +282,13 @@ this before I start giving any information. I have a lot of choices for the type
 and amount of information to give, essentially where to start the conversation,
 and starting it in the wrong place can be a disaster.
 
-Engineers—or, really, humans—by and large need to be met where they are. The
-promise of better pastures is tempered by the pain of the journey to them. We
-can improve this ratio by making the promise greater, or more real. We can do
-that by delivering immediate and clear benefit in the form of the new ways. We
-can also improve the ratio by making the costs lesser. We can do that by
-shouldering some or much of the initial burden. In truth I think a successful
-enterprise must do both.
+If the goal is to persuade, engineers&mdash;or, really, humans&mdash;by and
+large need to be met where they are. The promise of greener pastures is tempered
+by the pain of the journey to them. We can improve this ratio by making the
+promise greater, or more real; we can do _that_ by delivering immediate and
+clear benefit in the form of the new ways. We can also improve the ratio by
+making the costs lesser; we can do _that_ by shouldering some or much of the
+initial burden. In truth I think a successful enterprise must do both.
 
 Getting by with something you already know is always easier, preferable, to
 learning something new. So to change the behavior of an entire org you have to
