@@ -128,7 +128,7 @@ avoids a messy "productionization" step between prototype and final product.
 
 To validate our plan would work, we'd pick a couple of services that would cover
 a reasonable cross-section of use cases. Some would be third-party, and we'd
-deploy the expoters; some would be in-house, and we'd either instrument them
+deploy the exporters; some would be in-house, and we'd either instrument them
 ourselves, or pair with the teams to instrument them. Finding friendly and
 enthusiastic internal alpha customers was crucial: they give us necessary
 context, and a testing ground for our theoretical workflows. If, after a short
@@ -308,7 +308,7 @@ identify owners, and get work prioritized. At the beginning, with eager alpha
 customers, this is easy. But as things drag on, and the easy wins are won,
 buy-in at the top of the org chart is essential.
 
-Teams and and will ignore carrot-based motivation, and sometimes need nudging
+Teams can and will ignore carrot-based motivation, and sometimes need nudging
 with a stick. Ultimately, that can only come from senior leadership. Without a
 clear mandate and deadlines, and org-wide refactor like this devolves into a
 forever project, with 100% probability. (Even with a clear mandate and
