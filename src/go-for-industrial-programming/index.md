@@ -825,7 +825,7 @@ type reportStore interface {
 Writing components to be context-aware for lifecycle semantics is
 straightforward: just make sure your code responds to
 <a href="https://golang.org/pkg/context/#Context">ctx.Done</a>. 
-Using the value propegation features of contexts has proven to be a bit
+Using the value propagation features of contexts has proven to be a bit
 trickier. The problem with context.Value is that the key and value are untyped
 and not guaranteed to exist, which opens your program up to runtime costs and
 failure modes that may otherwise be avoidable. My experience has been that
