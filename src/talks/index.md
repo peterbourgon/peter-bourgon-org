@@ -9,10 +9,10 @@
 
 ## 2018
 
-**Observability: the hard parts** <br/>
+**[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
 June 2018, [Monitorama](http://monitorama.com/), Portland <br/>
 
-**Go: Best Practices for Industrial Programming** <br/>
+**[Go: Best Practices for Industrial Programming](/go-for-industrial-programming/)** <br/>
 June 2018, [GopherCon EU](https://gophercon.is/), Reykjavík <br/>
 
 **Observability workshop** <br/>
@@ -45,7 +45,7 @@ November 2016, [QCon](https://qconsf.com), San Francisco <br/>
 November 2016, [GOTO](https://gotocon.com/cph-2016/), Copenhagen <br/>
 June 2016, [QCon](https://qconnewyork.com), New York <br/>
 
-**[Applied Go kit](/applied-go-kit)** <br/>
+**[Applied Go kit](/applied-go-kit/)** <br/>
 August 2016, [Golang UK](http://golanguk.com), London — [video](https://www.youtube.com/watch?v=JXEjAwNWays) <br/>
 August 2016, [Microservices Meetup](http://www.meetup.com/Microservices-Meetup-Berlin/), Berlin — [video](https://www.youtube.com/watch?v=umleBc6fWbY) <br/>
 April 2016, [Craft Conf](https://craft-conf.com/2016) [Go Meetup](http://www.meetup.com/go-budapest/events/229818949/), Budapest <br/>
@@ -60,7 +60,7 @@ May 2016, [CoreOS Fest](https://coreos.com/fest/), Berlin — [video](https://ww
 **Introductory Go, from zero to hero** <br/>
 April 2016, [mix-IT](https://www.mix-it.fr/), Lyon <br/>
 
-**[Go best practices, six years in](/go-best-practices-2016)** <br/>
+**[Go best practices, six years in](/go-best-practices-2016/)** <br/>
 March 2016, [QCon](https://qconlondon.com), London — [video](https://www.infoq.com/presentations/go-patterns) <br/>
 
 **Effortless eventual consistency: gossip and CRDTs with Weave Mesh** <br/>
@@ -68,10 +68,10 @@ March 2016, [QCon](https://qconlondon.com), London — [video](https://qconlondo
 
 ## 2015
 
-**[A case for microservices](/a-case-for-microservices)** <br/>
+**[A case for microservices](/a-case-for-microservices/)** <br/>
 November 2015, [dotGo](http://www.dotgo.eu), Paris — [video](http://www.thedotpost.com/2015/11/peter-bourgon-a-case-for-microservices) <br/>
 
-**[Go and the modern enterprise](/go-and-the-modern-enterprise)** <br/>
+**[Go and the modern enterprise](/go-and-the-modern-enterprise/)** <br/>
 September 2015, [Rocket Tech Summit](http://www.techsummit2015.com/), Berlin <br/>
 February 2015, [FOSDEM](https://fosdem.org), Brussels <br/>
 February 2015, Go Gathering, London — [video](https://www.youtube.com/watch?v=iFR_7AKkJFU) <br/>
