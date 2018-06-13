@@ -10,13 +10,13 @@
 ## 2018
 
 **[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
-June 2018, [Monitorama](http://monitorama.com/), Portland <br/>
+June 2018, [Monitorama](http://monitorama.com/), Portland — [video](https://vimeo.com/274820991) <br/>
 
 **[Go: Best Practices for Industrial Programming](/go-for-industrial-programming/)** <br/>
 June 2018, [GopherCon EU](https://gophercon.is/), Reykjavík <br/>
 
 **Observability workshop** <br/>
-April 2018, [Fastly Altitude](https://fastly.com/altitude-nyc), New York City <br/>
+April 2018, [Fastly Altitude](https://fastly.com/altitude-nyc), New York City — [video](https://vimeo.com/267641392) <br/>
 
 **CASPaxos** <br/>
 February 2018, Papers We Love Too, San Francisco — [video](https://www.youtube.com/watch?v=TW2OPHdIKsM&t=150) <br/>
