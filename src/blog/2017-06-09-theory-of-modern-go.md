@@ -81,7 +81,7 @@ type Requestor interface {
 	Request(n int) (*resource.Value, error)
 }
 
-func NewObject(q RowQueryer, r Requestor, logger log.Logger) (*Object, error) {
+func NewObject(q RowQueryer, r Requestor, n int, logger log.Logger) (*Object, error) {
 	// ...
 }
 ```
