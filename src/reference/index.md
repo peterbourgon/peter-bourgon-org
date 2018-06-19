@@ -14,3 +14,5 @@ http://basho.com/posts/technical/why-vector-clocks-are-hard/
 http://archagon.net/blog/2018/03/24/data-laced-with-history/
 &mdash; [mirror](data-laced-with-history/)
 
+https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/
+&mdash; [mirror](the-end-of-the-api)

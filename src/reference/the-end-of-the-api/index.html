@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/ -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="https://graph.facebook.com/?callback=WPCOMSharing.update_facebook_count&amp;ids=https%3A%2F%2Fwritings.quilt.org%2F2014%2F05%2F12%2Fdistributed-systems-and-the-end-of-the-api%2F&amp;_=1529366868807"></script>
+
+<meta name="viewport" content="width=device-width">
+<title>Distributed Systems and the End of the API | The Quilt Project</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://writings.quilt.org/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://s2.wp.com/wp-content/themes/pub/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://quiltorg.wordpress.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="The Quilt Project » Feed" href="https://writings.quilt.org/feed/">
+<link rel="alternate" type="application/rss+xml" title="The Quilt Project » Comments Feed" href="https://writings.quilt.org/comments/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s2.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1516999477h&ver=4.9.7-alpha-43298"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./index_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="all-css-0-1" href="./index_files/saved_resource(2)" type="text/css" media="all">
+<style id="wpcom-admin-bar-inline-css" type="text/css">
+
+			.admin-bar {
+				position: inherit !important;
+				top: auto !important;
+			}
+			.admin-bar .goog-te-banner-frame {
+				top: 32px !important
+			}
+			@media screen and (max-width: 782px) {
+				.admin-bar .goog-te-banner-frame {
+					top: 46px !important;
+				}
+			}
+			@media screen and (max-width: 480px) {
+				.admin-bar .goog-te-banner-frame {
+					position: absolute;
+				}
+			}
+		
+</style>
+<link rel="stylesheet" id="twentytwelve-fonts-css" href="./index_files/css(1)" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./index_files/style(1).css" type="text/css" media="all">
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='https://s2.wp.com/wp-content/themes/pub/twentytwelve/css/ie.css?m=1423935238h&#038;ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="all-css-4-1" href="./index_files/saved_resource(3)" type="text/css" media="all">
+<script type="text/javascript" src="./index_files/saved_resource(4)"></script><style type="text/css"></style>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://quiltorg.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="The Story So Far" href="https://writings.quilt.org/2014/05/01/the-story-so-far/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/">
+<link rel="shortlink" href="https://wp.me/p4zTvL-L">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fwritings.quilt.org%2F2014%2F05%2F12%2Fdistributed-systems-and-the-end-of-the-api%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fwritings.quilt.org%2F2014%2F05%2F12%2Fdistributed-systems-and-the-end-of-the-api%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distributed Systems and the End of the API">
+<meta property="og:url" content="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/">
+<meta property="og:description" content="This is a written (expanded) narrative of the content from a talk I first gave at PhillyETE on April 23rd, 2014. It mostly follows the flow of the presentation given then, but with a level of detai…">
+<meta property="article:published_time" content="2014-05-12T13:30:40+00:00">
+<meta property="article:modified_time" content="2015-04-01T14:05:58+00:00">
+<meta property="og:site_name" content="The Quilt Project">
+<meta property="og:image" content="https://upload.wikimedia.org/math/e/9/9/e99f03344ab9722020e7382af4e0a200.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:text:title" content="Distributed Systems and the End of the API">
+<meta name="twitter:card" content="summary">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://quiltorg.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://quiltorg.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://writings.quilt.org/osd.xml" title="The Quilt Project">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="theme-color" content="#e6e6e6">
+<meta name="application-name" content="The Quilt Project"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="writings on data, communication, and computation"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://writings.quilt.org/feed/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Read Freshly Pressed;action-uri=http://wordpress.com/#fresh;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="description" content="This is a written (expanded) narrative of the content from a talk I first gave at PhillyETE on April 23rd, 2014. It mostly follows the flow of the presentation given then, but with a level of detail that I hope enhances clarity of the ideas therein. The talk&#39;s original slides are available, though the key…">
+<link rel="amphtml" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/amp/"><style type="text/css" media="print">#wpadminbar { display:none; }</style>
+<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="./index_files/shCore.css"><link rel="stylesheet" type="text/css" href="./index_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./index_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./index_files/services.css"></head>
+
+<body class="post-template-default single single-post postid-47 single-format-standard logged-in admin-bar no-customize-support mp6 customizer-styles-applied full-width custom-font-enabled single-author highlander-enabled highlander-light">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+				<hgroup>
+			<h1 class="site-title"><a href="https://writings.quilt.org/" title="The Quilt Project" rel="home">The Quilt Project</a></h1>
+			<h2 class="site-description">writings on data, communication, and computation</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<button class="menu-toggle">Menu</button>
+			<a class="assistive-text" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#content" title="Skip to content">Skip to content</a>
+			<div class="menu-menu-1-container"><ul id="menu-menu-1" class="nav-menu"><li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="http://quilt.org/">← Back to Quilt.org</a></li>
+<li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22"><a href="http://twitter.com/QuiltProject">@QuiltProject</a></li>
+<li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23"><a href="http://quilt.org/#mailinglist">Join the Mailing List</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+
+						<a href="https://writings.quilt.org/"><img src="./index_files/2961435234_243a04582c_o5.jpg" class="header-image" width="1120" height="160" alt=""></a>
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-47" class="post-47 post type-post status-publish format-standard hentry category-talks-presentations tag-api tag-crdt tag-distributed-systems tag-rest tag-semilattices">
+				<header class="entry-header">
+			
+						<h1 class="entry-title">Distributed Systems and the End of the&nbsp;API</h1>
+								</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p><em>This is a written (expanded) narrative of the content from a talk <a href="http://phillyemergingtech.com/2014/sessions/distributed-systems-and-the-end-of-the-api">I first gave</a> at <a href="http://phillyemergingtech.com/2014/">PhillyETE</a> on April 23rd, 2014. It mostly follows the flow of the presentation given then, but with a level of detail that I hope enhances clarity of the ideas therein. <a href="https://speakerdeck.com/cemerick/distributed-systems-and-the-end-of-the-api">The talk’s original slides are available</a>, though the key illustrations and bullet points contained therein are replicated (and somewhat enhanced) below. When audio/video of the talk is published, I will update this page to link to it. Discussion about this piece has taken place on <a href="https://news.ycombinator.com/item?id=7735141">Hacker News</a>, <a href="http://www.reddit.com/r/programming/comments/25e0ni/">reddit</a>, and <a href="https://lobste.rs/s/s6gi7r/distributed_systems_and_the_end_of_the_api/">Lobsters</a>.<br>
+</em></p>
+<p>I have two claims of which I would like to convince you today:</p>
+<ol>
+<li>The notion of the networked application API is an unsalvageable anachronism that fails to account for the necessary complexities of distributed systems.</li>
+<li>There exist a set of formalisms that <em>do</em> account for these complexities, but which are effectively absent from modern programming practice.</li>
+</ol>
+<p>The outline of this piece is as follows:</p>
+<ul>
+<li>Definitions
+<ul>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-def-distsys">Distributed Systems</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-def-api">Application Programming Interface (API)</a></li>
+</ul>
+</li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-api-problem">The API Problem</a>
+<ul>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-api-sisyphean">APIs: Sisyphean programmer convenience</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-anachronism">The API: an Anachronism</a>
+<ul>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-ack">Acknowledge the network or fail</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-consistency">Consistency decisions affect everything</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-what1">What do we want?</a>
+<ul>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-been-here-before">We’ve been here before</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-appeal">My appeal to authority</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-sound-approaches">Sound approaches nearing practicality</a>
+<ul>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-semilattices">(Bounded) join semilattices</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-data-models">Data models are everything</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-programming-models">Pick a programming model</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-costs">With constraints come costs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-what2">What do we want?</a></li>
+<li><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#toc-resources">Resources</a></li>
+</ul>
+<p>Let’s start with some definitions, just because “distributed systems” and “API” are broad terms that have many connotations to different people. I’m talking about a particular (large) subset of the many different aspects of these things.</p>
+<h2><a name="toc-def-distsys"></a>Distributed Systems</h2>
+<p>There is a tongue-in-cheek saying that captures this generalization and defines what a distributed system is:</p>
+<blockquote><p>A distributed system is one where a machine I’ve never heard of can cause my program to fail.<br>
+— <a href="http://research.microsoft.com/en-us/um/people/lamport/pubs/distributed-system.txt">Leslie Lamport</a></p></blockquote>
+<p>This is something of a meme among those that study and work within fields related to distributed systems. (We’ll return soon to Mr. Lamport and his contributions beyond this catchy phrase, shown slightly tweaked above.) There are many formal definitions of “<a href="https://en.wikipedia.org/wiki/Distributed_computing">distributed system</a>” all over the internet, but my personal riff is:</p>
+<blockquote><p>A distributed system is one that is comprised of multiple processes that must communicate to perform work.</p></blockquote>
+<p>The bottom line is that, given the ambient nature of the networks that surround us and the dependence we have upon those networks for so many of the tasks our programs, clients, customers, and users take for granted, nearly <strong>every system we build is a distributed system</strong>. Unless your software runs in a totally isolated environment — e.g. on an air-gapped computer — you are building a distributed system.</p>
+<p>This is problematic in that distributed systems exhibit a set of uniformly unintuitive behaviours related to causality, consistency, and availability. These behaviours are largely emergent, and spring from the equally unintuitive semantics of the non-locality of the parts of those distributed systems and the networks that connect them. None of these behaviours or semantics are related at all to those which we — as programmers and engineers — are typically trained and acclimated to expect and reason about.</p>
+<p>Note that even if you are doing something small, or “normal”, or common, you are not immune to these challenges. Even the most vanilla web application is definitionally a distributed system. By sending data from one computer (e.g. a server) to another (e.g. your customer’s web browser), you end up having to contemplate and address all sorts of problems that simply don’t exist when you run a program in a single process on a single machine that doesn’t touch the network: consistency, coping with non-availability (i.e. latency, services being down, timing-related bugs caused by long-running computations or things as simple as garbage collection), dealing with repeated messages from clients with spotty connections, and more. If you’ve not been bitten by these things, that is evidence of luck (or, of your not having noticed the problems yet!), not of your being immune, or otherwise that what you’ve built is somehow not a distributed system and so isn’t subject to these challenges.</p>
+<h2><a name="toc-def-api"></a>Application Programming Interface (API)</h2>
+<p>Again, there are lots of definitions of the “API” term; this is mine:</p>
+<blockquote><p>An API is the set of names we interact with in our programming languages and libraries.</p></blockquote>
+<p>This concept — naming the data, types, objects, methods, modules, namespaces, and so on in our programming practice — has been around almost as long as people have been programming computers. More concretely, its origins lie in the context of imperative programming languages and libraries. Common examples include the standard C library, Win32, POSIX, and all the names of things in your favourite Javadoc, Rubydoc, library or function <code>man</code> pages, and so on.</p>
+<p>When people started hooking up computers over networks, it was natural to want to carry along this notion of using language as a way of naming things we interact with programmatically.&nbsp; Of course, assigning names is not an issue; doing so is essential to being able to talk about them at all. The problem is that APIs are fundamentally <em>only</em> nominal descriptions. We assign names to the data and operations and objects our programs manipulate, but there is nothing in such a shorthand that talks about the semantics or limits or capabilities of those things. To abuse a <a href="http://www.cs.yale.edu/homes/perlis-alan/quotes.html">Perlisism</a>, the name of a thing is a perfect vehicle for hiding information.</p>
+<p>Thus, when we are doing some network programming:</p>
+<div><div id="highlighter_359074" class="syntaxhighlighter nogutter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">client.send(data);</code></div></div></td></tr></tbody></table></div></div>
+<p>There is nothing about the API we’re touching that informs us of the semantics of the operation we’re attempting to perform. What are the bounds on how long it will take? What are its preconditions? What it should do (or what we should do additionally) in the case of a timeout, or failure, or partial success? The undefinededness is unlimited. While the lack of clearly identifiable, defined semantics is problematic even in the case of non-networked, non-distributed, single-process context programming, it is near-fatal when you are working on a networked, distributed system: you must take on the job of identifying and understanding those semantics yourself, and situating your use of APIs such that they account for the failure modes implied by the network and other aspects of the distributed system you’re building.</p>
+<h1><a name="toc-api-problem"></a>The API Problem</h1>
+<p>So, using names as the sole source of conceptual leverage while programming is problematic, and particularly so when it comes to network-related APIs. This practice is likely so deeply woven into how we have cast the instruction of computers as a language problem that any change would be a monumental conceptual shift, far beyond what I want to address here. Rather, I’d like to take a look at other aspects of APIs in the distributed systems context that I believe are fatal.</p>
+<p>Here is a rough, temporal progression of the major network API technologies that have seen wide use:</p>
+<blockquote><p>RPC → #{DCOM, CORBA} → RMI → XML-RPC → SOAP → REST → #{‘REST’, Thrift}</p></blockquote>
+<p>As far as addressing the problems of distributed systems go, <strong>these are all fundamentally equivalent</strong>. It’s possible to quibble about this on the edges, insofar as e.g. RPC mechanisms obviously have particular implementation details that are not shared by the large umbrella of HTTP APIs (which I denote above as “‘REST'”), but I claim that they all share and provide the same set of fundamental semantics:</p>
+<ul>
+<li>a request/response lifecycle</li>
+<li>always synchronous</li>
+<li>presume a point-to-point communication topology (i.e. two party, client/server communication)</li>
+<li>operations provided by these mechanisms are nearly always imperative, implying mutable data models and side-effecting operations</li>
+<li>few constraints placed on acceptable data models or representations are imposed</li>
+</ul>
+<p>These characteristics are shared by the programming language heritage that originally defined the notion of “an API”: one caller invoking operations synchronously on one callee, providing a request (arguments) in exchange for a response (a return value, sometimes), where the data involved can effectively be <em>anything — </em>very often mutable structures that are modified in-place — all while causing some side effect.&nbsp; Unfortunately, these characteristics are a large part of why APIs are a fatally bad mismatch for the job of supporting the communications between actors in a distributed system, which are frequently not best characterized as request/response, more commonly asynchronous than not, are often not ideally point-to-point, and which suffer as much or more from mutable data models and side-effecting operations as “regular”, single-process, non-networked programs.</p>
+<p>(At this point, you might object, as some of the API technologies I called out above do provide limited support for e.g. asynchrony.&nbsp; For example, an HTTP API could reasonably respond to a request that will be processed asynchronously with a <code>202 Accepted</code> status, plus a URL of a “status” resource that would eventually redirect to the final result of processing the original request. However, allowances like this amount to nothing more than idioms and “best practices”, not substantive solutions to the limitations described above. Implying otherwise would be analogous to claiming that a less capable programming language A might be argued to be equivalent to a more capable language B, simply by dint of both being Turing complete.)</p>
+<div data-shortcode="caption" id="attachment_52" style="width: 511px" class="wp-caption aligncenter"><a href="https://twitter.com/cemerick/status/431843135904571392"><img data-attachment-id="52" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/tweet/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/tweet.png" data-orig-size="1156,582" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="tweet" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=501&amp;h=252" data-large-file="https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=960" class="wp-image-52" src="./index_files/tweet.png" alt="Tweet text: &quot;People hear &#39;RPC&#39;, and giggle, smugly shaking their head while pounding out REST integrations.&quot;" width="501" height="252" srcset="https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=501&amp;h=252 501w, https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=1002&amp;h=504 1002w, https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=150&amp;h=76 150w, https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=300&amp;h=151 300w, https://quiltorg.files.wordpress.com/2014/05/tweet.png?w=768&amp;h=387 768w" sizes="(max-width: 501px) 100vw, 501px"></a><p class="wp-caption-text">I pick on REST because it is ostensibly the pinnacle of modern API technologies, but you can replace its mention in <a href="https://twitter.com/cemerick/status/431843135904571392">this tweet</a> with any other request/response, synchronous, point-to-point API mechanism that is fundamentally imperative and typically side-effecting.</p></div>
+<h2><a name="toc-api-sisyphean"></a>APIs: Sisyphean programmer convenience</h2>
+<p>While APIs provide a particularly narrow portal to the outside world, they have done wonders for programmer convenience. Here I am talking about one particular convenience that programmers implicitly value very highly when working with network APIs, and that’s the maintenance of an isomorphism between function or method calls as found in typical imperative programming languages, and the various manifestations of network APIs, regardless of the particular technology in use.</p>
+<p>For example, here are three common ways one might see usage of a <em>single</em> “create” API call exemplified:</p>
+<div><div id="highlighter_777120" class="syntaxhighlighter nogutter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">api.create(arg1, arg2);</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="plain plain">POST http://site.org/resource/create</code></div><div class="line number4 index3 alt1"><code class="plain plain">[arg1, arg2]</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="plain plain">PUT http://site.org/resource</code></div><div class="line number7 index6 alt2"><code class="plain plain">[arg1, arg2]</code></div></div></td></tr></tbody></table></div></div>
+<p>The first could be either an in-process method call that doesn’t touch the network, or an RPC call that uses programming language-native stubs or a client library and which implicitly reaches across a network. The second is typical of a strictly imperative HTTP API construction. The third is the “proper” REST corollary that uses URIs, HTTP verbs, and resource representations in particular ways to achieve the specific semantics defined by REST.</p>
+<p>In each of these cases, nominal concerns are paramount, but network and other operational semantics, failure modes, notions of causality and consistency are entirely unaccounted-for by the different API mechanisms. These unstated costs are implicitly retained by the programmer that happily uses these mechanisms, and must be balanced by either manual accommodations, error handling, and deep considerations of application-specific causality and consistency invariants…or user-visible and business-tangible failures.</p>
+<p>One particular irony is that, while more modern API technologies have been built with full knowledge of the accepted failings of RPC, many providers of e.g. HTTP APIs provide and specifically encourage programmers to use “client libraries” for one’s preferred language, effectively restoring the classic RPC programming experience, where it’s difficult to impossible know which calls will result in strictly local computation, and which will incur one or many network operations and all of the complications that that entails.</p>
+<div data-shortcode="caption" id="attachment_62" style="width: 549px" class="wp-caption aligncenter"><a href="https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png"><img data-attachment-id="62" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/stripe-http-api-2/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png?w=960" data-orig-size="539,315" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="stripe-http-api" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png?w=960?w=300" data-large-file="https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png?w=960?w=539" class="wp-image-62 size-full" src="./index_files/stripe-http-api1.png" alt="stripe-http-api" srcset="https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png 539w, https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png?w=150 150w, https://quiltorg.files.wordpress.com/2014/05/stripe-http-api1.png?w=300 300w" sizes="(max-width: 539px) 100vw, 539px"></a><p class="wp-caption-text">A snapshot of the structural isomorphism in the <a href="https://stripe.com/docs/api/ruby#create_plan">Stripe “create plan”</a> HTTP API and the corresponding method in its Ruby client library. BTW/FWIW, I love Stripe; it’s actually the high quality of their online documentation that enabled such a convenient juxtaposition of the current “state of the art”.</p></div>
+<p>It is as if we are supposed to carry on calling what look like regular functions and methods, and that everything will just work, like magic!</p>
+<div data-shortcode="caption" id="attachment_51" style="width: 330px" class="wp-caption aligncenter"><a href="http://this-plt-life.tumblr.com/post/36425228283/when-somebody-asks-me-how-i-added-a-dsl-to-my-lisp"><img data-attachment-id="51" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/magic/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/magic.gif?w=960" data-orig-size="320,179" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="magic" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/magic.gif?w=960?w=300" data-large-file="https://quiltorg.files.wordpress.com/2014/05/magic.gif?w=960?w=320" class="wp-image-51 size-full" src="./index_files/magic.gif" alt=""></a><p class="wp-caption-text">(via <a href="http://this-plt-life.tumblr.com/post/36425228283/when-somebody-asks-me-how-i-added-a-dsl-to-my-lisp">This PLT Life</a>)</p></div>
+<p>This is convenient, and feels very familiar, but does not address the problem space that we are working in.</p>
+<h2><a name="toc-anachronism"></a>The API: an anachronism</h2>
+<p>“The API” as the fundamental point of integration between parts of a distributed system is an anachronism, a hold-over from other, simpler programming contexts that predate “distributed systems” as a discrete concept:</p>
+<ul>
+<li>APIs necessitate an intense coupling between actors in many ways, principally:
+<ul>
+<li>By admitting only two-party client/server architectures, despite the actual myriad of application and network topologies that exist; anything else needs to be constructed out of this point-to-point primitive, or pushed into silos that <em>do</em> provide for more complex topologies (e.g. queues, system busses, etc).</li>
+<li><a name="note-1"></a>By allowing arbitrary data representations to be used: in order to talk to your API, I need to reconcile how my client represents data with what your server expects and produces. It is impossible to later talk to another equivalent API without repeating this process.<sup><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#note-1-text">1</a></sup></li>
+</ul>
+</li>
+<li>Common computational tasks necessitate asynchrony.&nbsp; Though some patterns and common workarounds exist, APIs are fundamentally always synchronous.</li>
+<li>APIs, as a class of technology, disavow the fundamental complexities of distributed systems:
+<ul>
+<li>Coping with network failure modes (latency, disconnection, offline contexts)</li>
+<li>Making consistency choices relevant to our applications, and being aware of the choices being made for us by our underlying technology</li>
+<li>Being aware of the impact that our consistency choices have on availability</li>
+<li>How our data models and data representations influence and sometimes determine what is and is not possible in terms of concurrent activity by different actors</li>
+</ul>
+</li>
+</ul>
+<p>To be precise, there are <a href="https://en.wikipedia.org/wiki/Network_topology">seven basic network (and therefore, system) topologies</a>, and an infinite number of permutations combining them:</p>
+<p><img data-attachment-id="66" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/500px-networktopologies-svg/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/500px-networktopologies-svg.png?w=960" data-orig-size="500,245" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="500px-NetworkTopologies.svg" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/500px-networktopologies-svg.png?w=960?w=300" data-large-file="https://quiltorg.files.wordpress.com/2014/05/500px-networktopologies-svg.png?w=960?w=500" class="aligncenter wp-image-66 size-full" src="./index_files/500px-networktopologies-svg.png" alt="500px-NetworkTopologies.svg" srcset="https://quiltorg.files.wordpress.com/2014/05/500px-networktopologies-svg.png 500w, https://quiltorg.files.wordpress.com/2014/05/500px-networktopologies-svg.png?w=150 150w, https://quiltorg.files.wordpress.com/2014/05/500px-networktopologies-svg.png?w=300 300w" sizes="(max-width: 500px) 100vw, 500px">When you consider the systems you build, you’ll recognize these topologies within whatever diagrams you draw. Meanwhile, APIs provide no way to naturally talk about anything other than two-party client/server communication. Just as any limited programming language can lean on Turing completeness to claim capability, we can lean on APIs and say that we can build any topology we like with them; while factually correct, this is an flaw, not a feature.</p>
+<h3><a name="toc-ack"></a>Acknowledge the network or fail</h3>
+<p>What distinguishes a network API from a “regular”, in-process, single-node API is…the network. That’s a tautology, but one worth making given the apparent primal desire of programmers to ignore the network in their modern practice (viz. RPC and client libraries for network APIs that obfuscate their true nature).</p>
+<p>When you try to get computers to work across a network, the network is an integral part of the resulting larger system. If you do not account for its inherent nature, your larger system will fail along with that network, in ways large and small. The first step in addressing this is to understand the ways in which networks can fail, and how those failures present to your programs.</p>
+<p>I’m by no means an expert in network failure modes (keeping up with <a href="http://aphyr.com/tags/jepsen">Kyle Kingsbury’s work with Jepsen</a> is a good first step, if you are coming from a programming-with-databases background and are looking for something accessible), but the basic network failure modes include:</p>
+<ul>
+<li>Partitions</li>
+<li>All the vibrant colours of latency
+<ul>
+<li>Variable latency, which can be caused by everything from overloaded switches to garbage collection stopping the world on a remote machine</li>
+<li>Complete and permanent loss of interconnect</li>
+<li>Offline operation</li>
+</ul>
+</li>
+<li>Reordered messages</li>
+<li>Repeated messages</li>
+</ul>
+<p>Many of these types of failures have been most well-discussed in the context of distributed databases, but they apply just as forcefully to the entirety of your systems. A partition among your application servers can cause clustered, in-memory sessions to diverge, leading to invariants being violated both server-side and in users’ web browsers as they are fed data from different divergent copies of their session. Increased latency (whatever the cause) can trip timeouts between different parts of a system, leading to spiking reconnect attempts and thus cascading, catastrophic latency. When a machine becomes totally unreachable, what parts of your system can carry on, and can the data it was serving be recovered elsewhere? What are your users’ expectations when they have no connectivity at all? When a client resends a message because it thought your service didn’t receive its first attempt due to a timeout (except it did), what do you do?</p>
+<p>In short:</p>
+<ul>
+<li>Your network’s problems are your system’s problems. The corollary of this is:</li>
+<li><em>My</em> network’s problems are your system’s problems.</li>
+</ul>
+<p>That is, the networks used to reach the people and devices and vendors at the edges of your system are almost never owned and operated by you, yet your system is subject to their failures as well.</p>
+<p>Different technologies and different data models will provide greater or lesser inherent protection from the capriciousness of networks. Of course, network API mechanisms provide exactly none, and the data representations that are commonly shipped over those mechanisms (e.g. JSON, XML, YAML, plain text, and so on) are equally of no help.</p>
+<h3><a name="toc-consistency"></a>Consistency decisions affect everything</h3>
+<p>Consistency and consensus are huge topics, and so my treatment of them here will be wanting. Much like networks and their failure modes, you cannot design or build a robust distributed system without being aware of them. However, unlike networks — the problems of which are effectively a force of nature — you have within your power the ability to <em>choose</em> what your system’s consistency guarantees will be, presumably based on the needs of your customers, users, and organization.<img data-attachment-id="50" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/choose-wisely/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png" data-orig-size="600,266" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="choose-wisely" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png?w=449&amp;h=199" data-large-file="https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png?w=600" class="aligncenter wp-image-50" src="./index_files/choose-wisely.png" alt="choose-wisely" width="449" height="199" srcset="https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png?w=449&amp;h=199 449w, https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png?w=150&amp;h=67 150w, https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png?w=300&amp;h=133 300w, https://quiltorg.files.wordpress.com/2014/05/choose-wisely.png 600w" sizes="(max-width: 449px) 100vw, 449px">There are many types of consistency, and there’s no way that I could enumerate all or even some of them. Further, there is not a spectrum of consistency; the set of available options forms something more like a multidimensional space, as there are a lot of considerations that go into choosing a set of consistency guarantees. But, the most common cases as far as I can tell include:</p>
+<ul>
+<li>Strict linearizability, where all actors in a system synchronously acknowledge each write to any shared data, yielding a global total order of all operations. Systems with this characteristic act as if their entire state is held within a single atomic reference, as found in many programming languages with such a concurrency primitive. This is incredibly expensive in terms of computational and communication overhead, but perhaps corresponds most closely with our intuitions about what happens when, and where.</li>
+<li>Causal consistency, where <a href="https://en.wikipedia.org/wiki/Logical_clock">logically temporal relationships</a> between dependent changes to shared data are tracked, yielding a partial order of all operations. Causal consistency requires much less consensus overhead for any given request to proceed (compared to strict linearizability), but ensures many desirable properties within a system with such a guarantee. One of these is the ability to read your own writes; without some mechanism to enforce causal consistency, it is possible for e.g. a web client to write a value through an HTTP API, and then see the previous value when it performs a read or query some time afterwards.</li>
+<li>Eventual consistency, where concurrent writes converge (perhaps with conflicts) such that different readers will all eventually see the same result at <em>some</em> point in the future when all prior writes have been applied. This implies no order at all to operations within a system; in effect, the only guarantee of eventual consistency is that of <em>liveness</em>, a term used in distributed systems literature to imply that all actors within a system will continue to propagate writes until all actors have seen every write.</li>
+</ul>
+<p>The choices you make with regard to consistency have a compensating impact on the availability characteristics of your system. This relationship is known more formally as the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP theorem</a> (<a href="http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf">as introduced</a>, and <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.20.1495">then proven</a>), but the basic dynamic of the tradeoff should be obvious given a couple of moments thinking about the relationship between consistency and availability:</p>
+<ul>
+<li>Insofar as every actor in your system has to synchronously acknowledge each write made by others, then those actors (a.k.a. servers, or services) cannot accept any new work until that acknowledgement process completes. During this time, your system will appear to be down (unavailable) to external parties.</li>
+<li>If <em>no</em> consensus is required among different actors (as in the various eventual consistency models), then every actor can always accept new work. Barring resource exhaustion or exigent factors (such as a network lapse), your system will always be up (available) and responsive to external parties.</li>
+</ul>
+<p>Note that different parts of a system may have different consensus requirements (and thus its consistency guarantees), and those requirements and guarantees may change over time (potentially rapidly and regularly in order to accommodate user expectations and coherence demands of different kinds of data).</p>
+<p>Just as with networks, different technologies and data models provide more or less leverage and flexibility in accommodating or enabling different degrees of consensus, consistency, and thus availability. Unsurprisingly, network API mechanisms again provide exactly nothing: they presume nothing, except that an open socket is available for use.&nbsp; It is up to you to consider these issues properly, and either prevent or resolve any inconsistencies within your system.</p>
+<p>Likewise, while plain text does offer some meagre ways to address concurrent inconsistent changes (e.g. two actors modifying the same text document concurrently can often be resolved sanely via a diff mechanism), the “richer” data representations that are favoured by most API services and clients (again, JSON, XML, etc) are fundamentally opaque and in general make reconciling independent changes impossible in a consistent way without special, often domain-specific intervention. Further, typical implementations of data structures in our programming languages provide no ways to represent or reconcile concurrent changes at all. Together, this means that concurrent actors moving state around or representing operations using these data structures and representations have no generally applicable way of resolving conflicting concurrent changes. This forces programmers to regularly re-implement such resolution mechanisms; or, more commonly, rely completely upon centralized backend databases to allow concurrency and enforce consistency, semantics that become less reliable further away from those centralized authorities.</p>
+<h1><a name="toc-what1"></a>What do we want?</h1>
+<p>Okay, I’ve just rambled on for a long time about how distributed systems have some challenges above and beyond “regular” programming, and that APIs as we know them today do not meet those challenges and may even exacerbate them by nudging us towards glossing over their existence and scope. It’s a pretty bleak picture, and you may walk away at this point and consider me a crank.</p>
+<p>I’m at peace with that, but I defy anyone to claim that programming networked services and applications is <em>easy</em>. Or that the interactions between e.g. disparate databases, application servers, caching services, load balancers, client browsers, a couple of message queues, four vendor services APIs, and that nutty Hadoop job are <em>understandable</em>. Or that errors stemming from the incidental complexity of the technologies involved in building such a system are <em>rare</em>. Or that when something does go wrong in that easy-to-build, understandable, rarely-failing distributed system, it’s <em>easy</em> to diagnose the problem.</p>
+<p>None of these things are true. Of course, I’m not saying that building distributed systems will ever be as easy or as simple as other types of programming and engineering. Further, I’m not even saying that APIs are themselves the root of all of this difficulty and complexity (though they play their part); APIs just happen to be a convenient, familiar, and obvious pain point that exemplifies the primitive nature of the raw materials we’ve imported from other programming contexts to build distributed systems.</p>
+<p>Building and reasoning about distributed systems should be easier and simpler than it is today.<sup><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#note-2-text">2</a></sup> I’d like to suggest that, in order to achieve this, we need different tools than the ones we have at our disposal now.</p>
+<p>Let’s step back. What do we want? In any distributed system we build, we want two things:</p>
+<ul>
+<li>Communication — the ability to share data among the various actors participating in our system</li>
+<li>Computation — the ability to consume and transform that data, producing new data as a result that is perhaps itself communicated</li>
+</ul>
+<p><em>Everything</em> else about building distributed systems is incidental. We need building blocks that:</p>
+<ul>
+<li>allow us to control and apply these capabilities however our particular needs demand</li>
+<li>actively prevent us from committing obvious errors in reasoning about the irreducible complexity of distributed systems</li>
+<li>even better, are architected such that committing such errors are fundamentally impossible</li>
+</ul>
+<p>That’s a tall order, and not one that can be fulfilled completely; hell, we haven’t even fulfilled one of them — computation — in the much simpler context of non-distributed, non-networked programming. But, when looking for better tools to work with, we need to keep looking towards these two primitive capabilities, <a href="http://meshedinsights.com/2014/05/09/steering-where-you-look/">lest we steer elsewhere</a>.</p>
+<h2><a name="toc-been-here-before"></a>We’ve been here before</h2>
+<p>The history of programming languages has seen many analogous transitions.</p>
+<p>Decades ago, writing software required working with extremely low-level programming languages, such as assembly and C. Relative to the higher-level languages developed since, those languages are very difficult to use effectively, have been and continue to be associated with much higher rates of error, and often prevent even <em>contemplating </em>building software systems approaching scales that are commonplace today. I think the same kind of progression can and must happen within the context of designing and building distributed systems: we simply cannot keep dragging along this notion that one can continue to work at or near the level of spitting data out of sockets and expect to build robust and understandable distributed systems on top of such primitive primitives.</p>
+<p>Put more simply, going back to picking on APIs, what will complete this analogy?</p>
+<div><div id="highlighter_425456" class="syntaxhighlighter nogutter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">assembly/C : Java/Python/Clojure :: APIs : ???</code></div></div></td></tr></tbody></table></div></div>
+<p>Just as our predecessors identified problems with machine code and assembly and constructed abstractions in higher-level languages, we must rise above the metal of sockets, RPC, APIs, and so on.&nbsp; I believe that much of this work is in identifying what <em>not</em> to do and what <em>not</em> to offer, just as higher-level programming languages are largely characterized by their constraints compared to what came before. In both contexts, what we find to be confusing and error prone — e.g. userland <code>goto</code>, manual memory allocation, and in-place mutation of objects in the case of programming languages, and things like accommodating network failure modes and implementing appropriate consensus mechanisms and consistency levels in distributed systems — are exactly the things that we need to abstract away from in day-to-day concerns in order to make progress.</p>
+<h2><a name="toc-appeal"></a>My appeal to authority</h2>
+<p>Thankfully, many people smarter than I have been thinking about these sorts of problems in the context of distributed systems for some time. Perhaps not as long as people have been thinking about programming language problems, but close: soon after networks “happened”, people became aware of the difficulties of having multiple computers agree on things and compute manipulations over the data that they share.</p>
+<div data-shortcode="caption" id="attachment_49" style="width: 226px" class="wp-caption aligncenter"><img data-attachment-id="49" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/lamport/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/lamport.png?w=960" data-orig-size="216,206" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="lamport" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/lamport.png?w=960?w=216" data-large-file="https://quiltorg.files.wordpress.com/2014/05/lamport.png?w=960?w=216" class="wp-image-49 size-full" src="./index_files/lamport.png" alt="Leslie Lamport" srcset="https://quiltorg.files.wordpress.com/2014/05/lamport.png 216w, https://quiltorg.files.wordpress.com/2014/05/lamport.png?w=150 150w" sizes="(max-width: 216px) 100vw, 216px"><p class="wp-caption-text"><a href="http://research.microsoft.com/en-us/um/people/lamport/">Leslie Lamport</a></p></div>
+<p>In many ways, Leslie Lamport’s 1978 paper <em><a href="http://research.microsoft.com/en-us/um/people/lamport/pubs/time-clocks.pdf">Time, Clocks, and the Ordering of Events in a Distributed System</a></em> was the starting shot for serious, principled research into the challenges of distributed systems. (And the beginning of a body of work which contributed significantly to Mr. Lamport’s <a href="http://amturing.acm.org/award_winners/lamport_1205376.cfm">receipt of the Turing Award earlier this year</a>.) What I appreciate most about this paper is that he talks about the difficulties of communication among concurrent, distributed actors as a <em>physics problem</em>. Contemplating the challenges of a distributed system reveals this as more than a convenient analogy, and closer to actual fact: the essential qualities of the distance between separate actors and the progression of time that paces their communications define what is and is not possible.</p>
+<p>Mr. Lamport talks at some length about this perspective in <a href="http://channel9.msdn.com/Shows/Going+Deep/E2E-Erik-Meijer-and-Leslie-Lamport-Mathematical-Reasoning-and-Distributed-Systems">a conversation he had with Erik Meijer</a> (@ 15m30s):</p>
+<blockquote><p>Most people view concurrency as a programming problem or a language problem. I regard it as a physics problem.</p></blockquote>
+<p>Mr. Lamport’s work and this inclination to reach for provable approaches to problems grounds modern research in distributed systems. While much of what we do in software might be charitably characterized as engineering (nevermind Science, or even “science”), there is some comfort to be had that a thoughtful approach to distributed systems problems should flow from a more reliable basis than even the most well-designed library, framework, or language. The emphasis being on provable formalisms over clever engineering and implementation details gives me hope that solutions to these problems, once found, may be as reliable as the mathematics and understanding of physics upon which they are built.</p>
+<h2><a name="toc-sound-approaches"></a>Sound approaches nearing practicality</h2>
+<p>Over the last ten years or so, a number of sound approaches to some of the fundamental problems of distributed systems have been developed. I’ll focus on two strongly-related threads of progress:</p>
+<ul>
+<li><a href="http://www.bloom-lang.net/calm/"> Consistency As Logical Monotonicity</a> (CALM theorem)</li>
+<li><a href="http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf">Conflict-free Replicated Data Types</a> (CRDTs)</li>
+</ul>
+<p>Both of these approaches constrain the types of operations that your system can perform in order to ensure convergence over time of changes to data shared by uncoordinated, concurrent actors, and to eliminate network failure modes as a source of error. Achieving this vastly simplifies the challenge of building robust distributed systems, just as certain advances in language design simplified the problems of programming by constraining what we could express in our programs.</p>
+<p>As I foreshadowed earlier, what’s essential about both of these approaches is not novel engineering, but the provable formalisms upon which they are premised: CALM has its roots in temporal logic, while CRDTs depend upon the algebra of <em>semilattices</em>.&nbsp; You should understand these formalisms, at least in passing, if you are to leverage their concrete implementations with confidence and to good effect.</p>
+<p>(Before you think that this is all in the realm of purely academic research, consider that, for example, CRDTs are already in production, and are <a href="http://docs.basho.com/riak/2.0.0beta1/intro-v20/#Riak-Data-Types">included as a banner feature in the impending next release of Riak</a>. These are not strictly high-minded proposals, but actionable progress in developing an understandable basis for building robust distributed systems.)</p>
+<p>I happen to be far more familiar with CRDTs and semilattices than I am with CALM’s temporal logic, and so that will be my focus for the next section. (Much of it is also true for CALM and implementations of it.) The good news is that the math in question is really quite easy: really little more than secondary school-level algebra.</p>
+<p><em>(If you’re reading this prior to May 15th, 2014, you may be interested in <a href="http://www.meetup.com/papers-we-love/events/175964662/">a talk I am delivering on that date at Papers We Love in New York discussing CRDTs</a> using the paper that originated the ‘CRDT’ term as a vehicle.)</em></p>
+<h3><a name="toc-semilattices"></a>(Bounded) join semilattices</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Lattice_%28order%29">lattice</a> is a partially-ordered set where, for any two members of the set, there exists both a least upper bound (a value that is “greater than” both members, however that relation is defined for the types in question) and a greatest lower bound (a value that is “less than” both members). These relations are called the <a href="https://en.wikipedia.org/wiki/Join_and_meet"><em>join</em> and the <em>meet</em></a>, and if a partially-ordered set admits only one of them (i.e. it is partially-ordered in only one direction), then it is a semilattice. Finally, if a lattice has an absolute maximum or absolute minimum (often called <em>top</em> and <em>bottom</em>), it is said to be bounded.</p>
+<p>CRDTs are premised upon <em>join semilattice</em><em>s</em>: partially-ordered sets of values for which a “greater than” relation holds for every member in the set. (Join and meet semilattices are mathematically equivalent; I believe it is largely just a matter of convention that join semilattices are used to describe and illustrate CRDTs, but the choice is not essential to their construction.) Finally, many CRDTs (based on those I am most aware of from the literature) are bounded.</p>
+<div data-shortcode="caption" id="attachment_79" style="width: 310px" class="wp-caption alignright"><a href="https://quiltorg.files.wordpress.com/2014/05/semilattice1.png"><img data-attachment-id="79" data-permalink="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/semilattice-2/" data-orig-file="https://quiltorg.files.wordpress.com/2014/05/semilattice1.png" data-orig-size="461,403" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="" data-image-description="" data-medium-file="https://quiltorg.files.wordpress.com/2014/05/semilattice1.png?w=300&amp;h=262" data-large-file="https://quiltorg.files.wordpress.com/2014/05/semilattice1.png?w=461" class="size-medium wp-image-79" src="./index_files/semilattice1.png" alt="a set semilattice" width="300" height="262" srcset="https://quiltorg.files.wordpress.com/2014/05/semilattice1.png?w=300&amp;h=262 300w, https://quiltorg.files.wordpress.com/2014/05/semilattice1.png?w=150&amp;h=131 150w, https://quiltorg.files.wordpress.com/2014/05/semilattice1.png 461w" sizes="(max-width: 300px) 100vw, 300px"></a><p class="wp-caption-text">a set semilattice</p></div>
+<p>Contemplating bounded-join semilattices is reasonably easy once you have seen a couple of the simplest examples.&nbsp; One would be the set of natural numbers, where the join operation is <code>max</code>. Another common example is a set semilattice, pictured here, where the join operation is set <code>union</code>.</p>
+<p>This depiction of semilattices is very common, perhaps because it illustrates both the set-theoretic effect of the join operation (e.g. taking the maximum of two natural numbers yields the higher of the two, and taking the union of two sets yields a set containing all of the members of both sets), and hints at the intuition you should develop about how a semilattice shared among multiple parties might progress upwards through its possible states over time (logically and otherwise). A set semilattice with a join relation of <code>union</code> will never <em>lose</em> information: the value of each member will always increase in size as joins are performed over time, across participants sharing the semilattice. Said another way, this is critical within the context of distributed systems because it means that you can have concurrent modifications being made to a structure like this that is logically shared by many different actors, and those modifications will always yield the same value when joined.</p>
+<p>Algebraically, join and meet operations for any semilattice must satisfy three axiomatic properties (shown here with algebraic as well as more programming-oriented formalisms):</p>
+<ul>
+<li>Associativity, the ability to batch inputs to an operation in any way without affecting the result<br>
+<code>(a <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> b) <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> c = a <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> (b <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> c) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;f(f(a, b), c) == f(a, f(b, c))</code></li>
+<li>Commutativity, the ability to change the order of inputs to an operation without affecting the result<br>
+<code>a <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> b = b <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> a &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;f(a, b) == f(b, a)</code></li>
+<li>Idempotence, the ability to apply an operation multiple times without affecting the result<br>
+<code>a <img class="mwe-math-fallback-png-inline tex" src="./index_files/e99f03344ab9722020e7382af4e0a200.png" alt="\cdot \!\,"> a = a &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;f(f(a)) == f(a) </code></li>
+</ul>
+<p>These are really useful characteristics even in our single-node, single-process programs that, when leveraged, allow us to reason much more easily and accurately about our programs’ behaviour in the face of concurrency and parallelism.&nbsp; They provide treble benefits in a distributed context though. As long as the primitive operations over an implemented data structure maintain these invariants, it is a semilattice, and is sheltered from some of the most problematic network failure modes: commutativity ensures that reordering of network messages has no ill effect, and idempotence does the same if network messages are repeated.</p>
+<p>Further, as long as liveness is preserved (the most minimal guarantee of eventual consistency), then semilattice semantics ensure that convergence of modifications and operations initiated concurrently occurs without conflict. Consider: there is no way in which set <code>union</code> (the join operation of a set semilattice) could not reconcile sets modified concurrently by different parties. The result will simply be the union of those sets, and always will be.</p>
+<p>The astute observer might point out that not all useful operations are associative, commutative, and idempotent; removing items from a set is one easy example, but anything that might be characterized as causing a loss of information over time (removals, deletions, subtractions, etc) would qualify. The key here is that only the <em>primitive</em> operations over semilattices and CRDTs must satisfy those axioms; other operations can be implemented in terms of those primitives, thus yielding the key characteristics we seek. The good news is that there <em>are</em> good ways to do this. The details of how this is done I’ll leave for another day, <a href="http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf">or for you to discover</a>.</p>
+<h3><a name="toc-data-models"></a>Data models are everything</h3>
+<p>Despite the algebraic invariants that semilattices dictate, CRDTs can and have been built representing a wide array of data types, including:</p>
+<ul>
+<li>counters</li>
+<li>registers</li>
+<li>sets</li>
+<li>(multi)maps</li>
+<li>dense and sparse lists/vectors</li>
+<li>partially-ordered sequences</li>
+<li>trees</li>
+<li>graphs</li>
+</ul>
+<p>This looks like a totally reasonable set of data types, all of which you would expect to have available to you in any modern programming environment. Recall though that all of these data types are <em>Replicated</em> (the ‘R’ in “CRDT”): they presume a network transport (with certain characteristics that I won’t detail here) that will push state or changes to it from one actor to another.</p>
+<p>This means that, when using CRDTs to tie your system together, you don’t need to resort to using impoverished representations that simply never come anywhere near the representational power of the data structures you use in your programs at runtime. Instead of working out a way to distill your model data into JSON or XML so it can be shared with other actors in your system, you simply add the data in question to a CRDT, and let its replication implementation carry it abroad, with exactly zero loss of representational fidelity.</p>
+<p>A further bit of good news for those of us that appreciate functional programming is that semilattices naturally encourage immutability. Insofar as each element within the set that forms a semilattice always “grows” relative to its predecessors and inputs, the most naive approach to implementing CRDTs (and a reasonable mental model regardless of <em>actual</em> implementations) is to maintain an immutable log of operations being applied or state being added. This means things like histories, rollbacks, and consistent snapshot — features and operations that are typically considered “advanced” today because of the incidental complexity of implementing them using the data and communication substrates that are generally in use — all come effectively for free.</p>
+<p>Finally, let’s consider again the API, our original subject of ire. Use cases that might otherwise be addressed via an API can be entirely supersetted by using a CRDT. The transformation is a simple one: change imperative, side-effecting calls like this one:</p>
+<div><div id="highlighter_729590" class="syntaxhighlighter nogutter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">api.setName(personId, &amp;quot;Chas&amp;quot;);</code></div></div></td></tr></tbody></table></div></div>
+<p>into reified data that you add to a CRDT, which is thus replicated from a “client” to other actors (perhaps a single “server”, if you so choose):</p>
+<div><div id="highlighter_646294" class="syntaxhighlighter nogutter  clojure"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="clojure plain">{</code><code class="clojure color2">:person-id</code> <code class="clojure plain">person-id </code><code class="clojure color2">:name</code> <code class="clojure plain">&amp;quot;Chas&amp;quot;}</code></div></div></td></tr></tbody></table></div></div>
+<p>The change is subtle, but has a tectonic effects. “Operations”, when cast as data, become <em>computable</em>: you can copy them, route them, reorder them freely, manipulate them and apply programs to them, at any level of your system. People familiar with message queues will think this is very natural: after all, producers don’t invoke operations on or connect directly to the consumers of a queue. Rather, the whole point of a queue is to decouple producer and consumer, so “operations” are characterized as messages, and thus become as pliable as any other data. All of the same leverage applies when you replace APIs with CRDTs.</p>
+<h3><a name="toc-programming-models"></a>Pick a programming model</h3>
+<p>The great thing about CRDTs is that they do not require you to shift your programming practice wholesale. CRDT implementations have generally materialized as libraries, not specialized runtimes or languages, so you can readily use whatever programming language you like with a CRDT. I personally think this is a very good thing, as different languages and runtimes offer different capabilities and excel in different domains. While we’re talking about distributed systems here, much of the <em>computation</em> that we want to do is essentially local even when the inputs and results may be pulled from and pushed to a shared medium. Thus, having the freedom to choose particular programming technologies and tie them together via CRDTs feels like having the best of both worlds.</p>
+<p>On the other hand, there are certain approaches to distributed systems that, in attempting to address their unique challenges, propose a total and holistic shift in programming practice. <a href="http://www.bloom-lang.net/">Bloom</a> — the programming language that has been used to research and prototype the CALM theorem — is an effort in this direction. The vast majority of data structures that you manipulate as a matter of course in Bloom are lattices or other monotonic constructs. The tradeoff here is that while Bloom can statically identify which parts of your program are non-monotonic — in join semilattice terms, where your program state <em>descends</em> in the partial order, and thus is exposed to e.g. common network failure modes — Bloom is the only place where you can reap the benefits of that analysis.</p>
+<p>Languages aside, I think there are a number of programming models that are particularly well-suited to the sorts of computation and domains to which the largest distributed systems are often applied:</p>
+<ul>
+<li>Event sourcing</li>
+<li>Stream-based computation (e.g. <a href="http://storm.incubator.apache.org/">Storm</a>)</li>
+<li>I’m particularly interested in <a href="http://en.wikipedia.org/wiki/Tuple_space">tuple spaces</a> (typified by <a href="http://en.wikipedia.org/wiki/Linda_%28coordination_language%29">Linda</a>, of which many implementations exist for modern programming languages) and other sorts of <a href="https://en.wikipedia.org/wiki/Blackboard_system">blackboard systems</a>, which I think provide a very useful metaphor for characterizing scale-invariant concurrent distributed computation.</li>
+<li>Reactive patterns of all sorts have grown in popularity and caché of late, such as <a href="https://en.wikipedia.org/wiki/Functional_reactive_programming">FRP</a>. Many of these reactive approaches are quite at home in a distributed context, where you might characterize computational services in general as operations that are triggered in response to data arriving in a local CRDT that matches a pattern or satisfies a query over the data being replicated in from other actors, similar to how triggers in relational databases are fired when a new result is found for a SQL query.</li>
+</ul>
+<p>The bottom line is that it’s not at all clear yet which programming models are best suited for use with CRDTs…though I have to say, I do like my options.</p>
+<h3><a name="toc-costs"></a>With constraints come costs</h3>
+<p>Recalling the comparison I made earlier to programming languages enforcing progressively more constraints to minimize error and maximize ease of understanding, it’s worth asking what constraints CRDTs, semilattices, and other related approaches necessitate in order to yield their benefits. There are two, as far as I can tell:</p>
+<p>It is imperative that CRDT implementations ensure that their operations adhere to the algebraic axioms of semilattices. (I think it is no accident that many CRDT implementors also happen to be very interested in things like property-based testing [e.g. <a href="http://www.cse.chalmers.se/~rjmh/QuickCheck/">QuickCheck</a>, <a href="http://quviq.com/">QuickCheck</a>, <a href="https://github.com/clojure/test.check">test.check</a>, <a href="https://github.com/cemerick/double-check">double-check</a>, and so on] and theorem provers like <a href="http://coq.inria.fr/">Coq</a>, both of which are good tools for defining and verifying strict invariants like these.) This is definitional, but further means that operations and data types that are not naturally associative, commutative, and idempotent need to be recharacterized in terms of primitives that are. There are costs here (as with any abstraction, this boils down to a certain amount of computational, storage, and transmission overhead), but I’ll submit that the benefits are well worth it.</p>
+<p>Secondly, if you want to benefit from the advantages offered by e.g. CRDTs, then you must use them to mediate <em>all</em> interactions between <em>all</em> actors in your distributed system. This implies a certain kind of boil-the-ocean sort of posture that can appear to be very costly, especially if you have a large investment in existing technologies that don’t yield similar benefits. Given my background with and habituation to functional programming and immutable data structures, I think of this constraint as being similar: once convinced of their utility, you generally try to maximize the footprint of the “sane” world that uses pure functions operating over immutable data structures, and minimize the surface area of its interaction with the often quite incomprehensible world of effects and in-place mutation. Likewise, the parts of a system that connect with and share state using CRDTs will be much easier to reason about and debug, so it is natural to want to maximize their use relative to the parts of your system that are tainted by things like usage of imperative APIs and less capable data representations. Both cases have a dynamic that favours those building new systems as opposed to those that maintain or steward large existing systems.</p>
+<p>Totally aside from the actual constraints imposed by these approaches, a final word of caution might be that all of this is incredibly new. Even though they offer formalisations of mechanisms that have been employed in the past (very rarely, and never in principled, general-purpose ways), both the CALM theorem and CRDTs have only existed as discrete named concepts for the last few years. The first practical implementations of them are even newer than that. Significant bits of theory and implementation details are still up for grabs (e.g. CRDT “garbage collection” is a bit of a hot topic right now as these things go), so act accordingly. This is powerful stuff, and its potential is immense, but there will be rough waters between now and when CALM implementations and CRDTs are thought of as indispensable and obvious choices.</p>
+<h1><a name="toc-what2"></a>What do we want?</h1>
+<p>Earlier in this piece, I laid out what we want when we build a distributed system: communication and computation. I believe that CRDTs (or something like them), with their sound formal basis, give us a way towards building systems that hew close to those essential capabilities, avoiding the incidental complexity of APIs and much of the rest of the incidental complexity that comes along with modern typical distributed programming practice.</p>
+<p>I believe these two essential capabilities can be sustained by services (and people!) reactively manipulating a shared substrate of replicated data. CRDTs appear to be an ideal, practical implementation of this substrate that connects disparate actors using reliable replication mechansisms, and thus allow for arbitrary computational models and flexible application and network topologies.</p>
+<h1><a name="toc-resources"></a>Resources</h1>
+<p>In addition to the links-as-citations that I have included throughout this piece, I could append here a thorough set of references. However, in doing so, I would effectively duplicate much of Chris Meiklejohn’s great work in compiling his <a href="http://christophermeiklejohn.com/distributed/systems/2013/07/12/readings-in-distributed-systems.html">Readings in Distributed Systems</a>. I encourage you to absorb as much as you can from the resources referenced there if you have interest in these topics.</p>
+<p>A harder alternative path would be to read about the well-grounded approaches I mentioned earlier; look up unfamiliar terminology, follow their bibliographies, and shout out on Twitter when you get stuck (there’s a good community of researchers and practitioners sharing references and experiences there):</p>
+<ul>
+<li><a href="http://www.bloom-lang.net/calm/"> Consistency As Logical Monotonicity</a></li>
+<li><a href="http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf">Conflict-free Replicated Data Types</a></li>
+</ul>
+<p>Finally, keep an eye on the <a href="http://quilt.org/">Quilt Project</a>, the manifestation of my work in this and other areas. CRDTs are an essential part of its foundation.</p>
+<h1>Footnotes</h1>
+<ol>
+<li><a name="note-1-text"></a>This dynamic alone significantly affects the social equation and economy between providers and consumers of network APIs…something I’m eager to discuss at length at some point, but not here, now. <small><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#note-1">back</a></small></li>
+<li><a name="note-2-text"></a>Anyone claiming otherwise is implying that the status quo is acceptable, where the only parties that can reasonably build large, robust distributed systems are large organizations that have the resources (generally, many millions of dollars yearly) to spend on the engineering talent and bodies that appear to be necessary given the technologies currently in widespread use. <small><a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/#note-2">back</a></small></li>
+</ol>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-press-this"><a rel="nofollow" data-shared="" class="share-press-this sd-button share-icon" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/?share=press-this&amp;nb=1" target="_blank" title="Click to Press This!"><span>Press This</span></a></li><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-47" class="share-twitter sd-button share-icon" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-47" class="share-facebook sd-button share-icon" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/?share=facebook&amp;nb=1" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-47" class="share-google-plus-1 sd-button share-icon" href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/?share=google-plus-1&amp;nb=1" target="_blank" title="Click to share on Google+"><span>Google</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-67660213-47-5b28495477cd3" data-src="//widgets.wp.com/likes/index.html?ver=20180319#blog_id=67660213&amp;post_id=47&amp;origin=quiltorg.wordpress.com&amp;obj_id=67660213-47-5b28495477cd3" data-name="like-post-frame-67660213-47-5b28495477cd3"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-67660213-47-5b28495477cd3" height="55px" width="100%" frameborder="0" src="./index_files/index.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div></div>					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="https://writings.quilt.org/category/talks-presentations/" rel="category tag">Talks &amp; Presentations</a> and tagged <a href="https://writings.quilt.org/tag/api/" rel="tag">API</a>, <a href="https://writings.quilt.org/tag/crdt/" rel="tag">CRDT</a>, <a href="https://writings.quilt.org/tag/distributed-systems/" rel="tag">Distributed Systems</a>, <a href="https://writings.quilt.org/tag/rest/" rel="tag">REST</a>, <a href="https://writings.quilt.org/tag/semilattices/" rel="tag">Semilattices</a> on <a href="https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/" title="9:30 am" rel="bookmark"><time class="entry-date" datetime="2014-05-12T09:30:40+00:00">May 12, 2014</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="https://writings.quilt.org/author/chasemerick/" title="View all posts by Chas Emerick" rel="author">Chas Emerick</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="https://writings.quilt.org/2014/05/01/the-story-so-far/" rel="prev"><span class="meta-nav">←</span> The Story So&nbsp;Far</a></span>
+					<span class="nav-next"></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+	
+	
