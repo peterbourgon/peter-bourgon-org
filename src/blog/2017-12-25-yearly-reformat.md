@@ -124,8 +124,8 @@ So, just make sure you have access to that documentation.
 Now I can set up my terminal environment.
 First, gotta configure iTerm a little bit:
  in Preferences, in General, I uncheck all the Closing options.
-To allow me to option+delete to delete words, in Keys, I add a new Key Mapping for option+delete
- and have it Send Hex Code 0x17.
+To allow me to option+delete to delete words, you gotta change
+ Preferences > Profiles > Keys > Left option key to send Esc+. 
 
 Then, I clone my dotfiles repos, and run the install scripts.
 These are designed to be idempotent, so it works without too much fuss.
