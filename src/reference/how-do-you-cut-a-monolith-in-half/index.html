@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./index_files/ga.js"></script><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="./index_files/pre_tumblelog.js"></script> 
+  
+   
+    <style>figure{margin:0}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-iframe--amp-cta-button{visibility:hidden;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--amp-cta-button.tmblr-iframe--loaded{visibility:visible;animation:iframe-app-cta-transition .2s ease-out}</style><link rel="shortcut icon" href="https://78.media.tumblr.com/avatar_b063f2c2fd26_128.pnj"><title>How do you cut a monolith in half? — programming is terrible</title><meta name="description" content="How do you cut a monolith in half? It depends. The problem with distributed systems, is that no matter what the question is, the answer is inevitably ‘It Depends’. When you cut a larger service apart,..."><meta name="color:Background" content="#FFFFFF"><meta name="color:Link" content="red"><meta name="color:Link hover" content="red"><meta name="color:Text" content="#000000"><link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://programmingisterrible.com/rss"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+        * {
+            -webkit-box-sizing: border-box; 
+        	-moz-box-sizing: border-box;  
+        	box-sizing: border-box;   
+        }
+        body {
+            background: #eeeeee;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+            /*color: #000000;*/
+            font-size: 0.9rem;
+            line-height: 1.3rem;
+
+        }
+        i, em {
+            font-family: Georgia, serif;
+        }
+        
+        body > header {
+            padding-bottom: 1rem;
+        }
+        body > header h1 {
+            font-family: Georgia, serif;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: normal;
+        }        
+        .post h1 {font-weight: normal; margin-top: 0; font-size: 1.1rem;}
+        .post h2 {font-weight: normal; margin-top: 0; font-size: 1.1rem;font-style: italic; }
+        .post h3 {font-weight: normal; margin-top: 0;  font-size: 1rem; }
+        .post {
+            margin-bottom: 2em;
+        }
+        blockquote {
+            font-style: italic;
+        }
+        blockquote em {
+            font-style: normal; 
+        }
+        .permalink a {
+            text-decoration:none;
+        }
+        .permalink a:hover {
+            text-decoration:underline;
+        }
+        a { color: #0000ff; text-decoration: none; } 
+        a:hover { color: #ff0000; text-decoration: underline; }
+        a img { outline: 0; border: none; }
+        nav {
+            width: 100%
+            display: table-row;
+            table-layout: fixed;
+        }
+
+        nav span  {
+            display:table-cell; 
+            width:15em;
+        }
+
+        #past {text-align: left}
+        #pageno {text-align: center}
+        #future {text-align: right;}
+        
+        .chatlog {
+            width: 100%
+            display: table;
+            table-layout: fixed;
+        }
+
+        .chatlog div  {
+            display: table-row;   
+        }
+        .chatlog span {
+            display:table-cell; 
+            width:1rem;
+        }
+        
+        .photopost {
+            width:100%;
+            max-width:500px;
+        }
+        
+        hr {
+            height: 0;
+            border: solid 1px;
+            color: #cccccc;
+            width: 100%;
+            max-width: 36rem;
+        }
+        
+        footer {
+            text-align: center;
+
+        }
+        footer ul {
+            padding-left: 0;
+        }
+        footer li {
+            display: inline-block;
+            list-style-type: none;
+        }
+        footer li:after {
+            content: " — ";
+        }
+        footer li:last-child:after {
+            content: "";
+        }
+
+
+    @media all and (max-width: 600px)  {
+        article {
+            padding-top: 1rem;
+        }
+        .permalink {
+            display: inline;
+        }
+        .permalink span:after {
+            content:": ";
+        }
+        .post header h1 {
+            display:inline;
+        }
+        nav {
+            border-top: solid 1px;
+            width: 100%;
+        }
+        body {
+            padding-left:3px;
+            padding-right:3px;
+        }
+        body > header a {
+            display:block;
+            padding-bottom: 0.2em;
+        }
+        blockquote, pre, ul, ol {
+            padding-left:1rem;
+            margin-left: 0;
+            padding-right: 0;
+            margin-right: 0;
+        }
+        .post {
+            border-top: solid 1px #000000;
+            padding-top: 3px;
+        }
+
+    }
+    
+    @media all and (min-width: 600px)  {
+        body > header em:before {
+            content:" — ";
+        }
+        
+        blockquote, pre { 
+            margin-left: 0rem; 
+            padding-left: 1rem; 
+            margin-top: 0; 
+            border-left: dotted 1px ;
+        }
+        blockquote blockquote { 
+            margin-left: 0; 
+        }
+
+        blockquote ul, blockquote ol {
+            padding-left: 1rem;
+        }
+
+        ul, ol {
+            padding-left: 1rem;
+        }
+        
+
+        .permalink {
+            float:left;
+            margin-left: -8rem;
+            text-align:right;
+            padding-top: 0.1rem;
+        }
+        section, nav, footer {
+            max-width:36rem;
+        }    
+        body {
+            padding-left:12rem;
+        }
+        body > header {
+            padding-top: 2rem;
+        }
+        
+
+    }
+.tex sub, .latex sub, .latex sup {
+  text-transform: uppercase;
+}
+
+.tex sub, .latex sub {
+  vertical-align: -0.5ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+}
+
+.tex, .latex, .tex sub, .latex sub {
+  font-size: 0.9em;
+}
+
+.latex sup {
+  font-size: 0.85em;
+  vertical-align: 0.15em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+    
+    </style> 
+  <link rel="alternate" href="android-app://com.tumblr/tumblr/x-callback-url/blog?blogName=programmingisterrible%26postID=162346490883"><link rel="alternate" href="ios-app://305343404/tumblr/x-callback-url/blog?blogName=programmingisterrible&amp;postID=162346490883"><link rel="alternate" type="application/json+oembed" href="https://www.tumblr.com/oembed/1.0?url=https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half" title="How do you cut a monolith in half?
+It depends.
+The problem with distributed systems, is that no matter what the question is, the answer is inevitably ‘It Depends’.
+When you cut a larger service apart, where you cut depends on latency, resources, and..."><script src="./index_files/tumblelog_post_message_queue.js"></script><!-- BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- If you'd like to specify your own Open Graph tags, define the og:url and og:title tags in your theme's HTML. --><!-- Read more: http://ogp.me/ --><meta property="fb:app_id" content="48119224995"><meta property="og:site_name" content="programming is terrible"><meta property="og:title" content="How do you cut a monolith in half?"><meta property="og:url" content="https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half"><meta property="og:description" content="It depends.
+The problem with distributed systems, is that no matter what the question is, the answer is inevitably ‘It Depends’.
+When you cut a larger service apart, where you cut depends on latency,..."><meta property="og:determiner" content="a"><meta property="og:type" content="tumblr-feed:entry"><meta property="og:image" content="https://assets.tumblr.com/images/og/fb_landscape_share.png"><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=programmingisterrible&amp;postID=162346490883"><meta property="al:ios:app_name" content="Tumblr"><meta property="al:ios:app_store_id" content="305343404"><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=programmingisterrible&amp;postID=162346490883"><meta property="al:android:app_name" content="Tumblr"><meta property="al:android:package" content="com.tumblr"><!-- END TUMBLR FACEBOOK OPENGRAPH TAGS --><!-- GOOGLE CAROUSEL --><script type="application/ld+json">
+	{"@type":"SocialMediaPosting","url":"https:\/\/programmingisterrible.com\/post\/162346490883\/how-do-you-cut-a-monolith-in-half","mainEntityOfPage":true,"datePublished":"2017-06-28T05:33:17-04:00","author":"programmingisterrible","headline":"How do you cut a monolith in half?","articleBody":"It depends.\nThe problem with distributed systems, is that no matter what the question is, the answer is inevitably \u2018It Depends\u2019.\nWhen you cut a larger service apart, where you cut depends on latency, resources, and access to state, but it also depends on error handling, availably and recovery...","@context":"http:\/\/schema.org"}</script><link rel="canonical" href="https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half"><script async="" src="./index_files/showads.js"></script><style type="text/css">.knight-rider-loader{line-height:0;white-space:nowrap;width:78px}.knight-rider-loader.small{width:39px}.knight-rider-loader.centered{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.knight-rider-loader.h-centered{position:absolute;top:0;left:50%;transform:translateX(-50%)}.knight-rider-bar{display:none;width:20px;height:20px;margin:0 3px;border-radius:5px;opacity:.5;background-color:#d0d0d0}.small>.knight-rider-bar{width:10px;height:10px;margin-left:2px;margin-right:1px;border-radius:2px}.animate>.knight-rider-bar{display:inline-block;animation:knight-rider-oscillate ease-in-out .3s infinite alternate}.knight-rider-bar:first-child{animation-delay:-.2s}.knight-rider-bar:nth-child(2){animation-delay:-.1s}@keyframes knight-rider-oscillate{0%{opacity:.5;transform:scaleY(1)}to{opacity:1;transform:scaleY(1.4)}}.tmblr-iframe{position:absolute}.tmblr-iframe.hide{display:none}.tmblr-pano-lightbox-container .tmblr-iframe--pano-lightbox{z-index:8675309;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;display:none}.tmblr-pano-lightbox-container .tmblr-iframe-preloader-container{z-index:8675310;position:fixed;bottom:0;width:100%;height:100%;background:rgba(0,0,0,.92)}.tmblr-pano-lightbox-container .tmblr-pano-lightbox{display:block}.tmblr-pano-lightbox-container .tmblr-pano-lightbox--preloading{display:none}.tmblr-iframe--controls-phone-container{padding-top:43px}.tmblr-iframe--controls-phone-container .t-logo{display:none}.tmblr-iframe--controls,.tmblr-iframe--mobile-logged-in-controls{position:fixed}.tmblr-iframe--controls.iframe-controls--desktop,.tmblr-iframe--mobile-logged-in-controls.iframe-controls--desktop{top:0;right:0;width:40%;min-width:200px;height:36px;z-index:100}.tmblr-iframe--controls.iframe-controls--phone-mobile,.tmblr-iframe--mobile-logged-in-controls.iframe-controls--phone-mobile{top:0;left:0;width:100%;height:44px;padding-right:8px;z-index:10}.tmblr-iframe--controls.iframe-controls--tablet-mobile,.tmblr-iframe--mobile-logged-in-controls.iframe-controls--tablet-mobile{top:0;right:0;width:235px;height:36px;z-index:2147483646}.tmblr-iframe--desktop-logged-in-controls{position:fixed}.tmblr-iframe--desktop-logged-in-controls.iframe-controls--desktop{right:0;top:0;z-index:100}.tmblr-iframe--unified-controls{position:fixed;top:0;right:0;left:0;width:100%;height:0;z-index:100}.tmblr-iframe-compact .tmblr-iframe--unified-controls{left:auto}@media screen and (max-device-width:568px){.tmblr-iframe-overlay.tmblr-iframe-full-width .no-image:not(.avatar-hidden) #header{padding-top:140px}}.tmblr-iframe-overlay.tmblr-iframe-full-width:not(.tmblr-iframe-themed) .top-blog-header .header-image.cover.loaded:after{display:none}.tmblr-iframe-overlay.tmblr-iframe-full-width:not(.tmblr-iframe-themed) .tmblr-iframe--unified-controls{background-image:linear-gradient(180deg,rgba(0,0,0,.4) 0,transparent);padding-bottom:10px;transition:padding-bottom .1s linear}.tmblr-iframe-overlay.tmblr-iframe-full-width:not(.tmblr-iframe-themed) .tmblr-iframe--unified-controls.tmblr-iframe--below-header{padding-bottom:0}.tmblr-iframe--follow-teaser{position:fixed;bottom:0;right:0;z-index:100;display:none}.tmblr-iframe--follow-teaser.open{display:block}.tmblr-iframe--follow-teaser.sticky-ad-visible{bottom:310px}@keyframes iframe-app-cta-transition{0%{opacity:0;bottom:-2em}to{opacity:1}}@keyframes iframe-app-cta-dismiss-transition{0%{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(2em)}}body.android,body.ios{padding-bottom:50px}.tmblr-iframe--app-cta-button{display:none;position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:100}.tmblr-iframe--app-cta-button.tmblr-iframe--loaded{display:block;animation:iframe-app-cta-transition .2s ease-out}body.ios .tmblr-iframe--app-cta-button{bottom:30px}.tmblr-lightbox{position:fixed;top:0;bottom:0;left:0;right:0;z-index:8675309;overflow:hidden;background-color:hsla(0,0%,7%,.92)}.tmblr-lightbox .vignette{position:absolute;width:100%;height:100%;left:0;top:0;right:0;bottom:0;z-index:8675308;background-size:100% 100%}.tmblr-lightbox .lightbox-image-container{position:absolute;z-index:8675310;cursor:pointer}.tmblr-lightbox .lightbox-image-container.single-image{cursor:default}.tmblr-lightbox .lightbox-image{border-radius:3px;box-shadow:0 4px 30px #000;border-width:0;background-color:transparent}.tmblr-lightbox .lightbox-image.hide{display:none}.tmblr-lightbox .lightbox-image.placeholder{background-color:hsla(0,0%,100%,.05)}.tmblr-lightbox .lightbox-caption{position:absolute;text-align:center;font-family:Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif;font-size:17px;font-weight:700;color:#fff;padding-top:20px;text-shadow:0 4px 30px #000;display:inline-block;text-rendering:optimizeLegibility}.tmblr-lightbox .lightbox-caption.hide{display:none}.hidden-body{position:relative;left:-99999px;overflow:hidden;background-color:#000}.hidden-body .show-mobile-lightbox{position:fixed;overflow:hidden;width:100%;top:0;left:0;right:0;bottom:0;z-index:8675309}.sticky-ad-wrapper{position:fixed;right:20px;bottom:-330px;border:1px solid #9da6af;border-radius:5px 0 0;background-color:#fff;z-index:100;transition:all .5s ease}.sticky-ad-wrapper .tmblr-iframe--sticky-ad{position:relative;margin-top:10px}.sticky-ad-wrapper.show{bottom:0}.sticky-ad-wrapper .ad-header{line-height:1;margin:5px;text-transform:uppercase;top:4px}.sticky-ad-wrapper .ad-footer,.sticky-ad-wrapper .ad-header{font-size:10px;text-align:center;color:#9da6af;position:relative}.sticky-ad-wrapper .ad-footer{bottom:12px;line-height:100%}.sticky-ad-wrapper .ad-footer a{color:#444;text-decoration:none;border-bottom:0}.sticky-darla-ad{position:fixed;bottom:-315px;right:20px;z-index:100;border-radius:5px 0 0;border:1px solid #9da6af;transition:all .5s ease;padding:10px}.sticky-darla-ad.show{bottom:0}.sticky-darla-ad .ad-close-btn{position:relative;font-weight:900;margin-left:auto;margin-right:-11px;margin-top:-26px;cursor:pointer;width:20px;height:15px;text-align:center;border-radius:5px 5px 0 0;font-size:12px;line-height:1.5;border-top:1px solid #9da6af;border-left:1px solid #9da6af;border-right:1px solid #9da6af}.sticky-darla-ad .ad-close-btn .icon-x{display:none;position:relative;font-size:12px;content:"\D7";color:#9da6af}.sticky-darla-ad .ad-footer{font-size:10px;line-height:1;text-align:center;color:#9da6af}.sticky-darla-ad .ad-footer a{color:#444;padding-left:5px;border-bottom:0;text-decoration:none}.sticky-darla-ad .ad-header{font-size:10px;line-height:1;text-align:center;margin:5px;text-transform:uppercase;color:#9da6af}.nu-optica-sticky-darla-ad{display:none;z-index:100;transition:all .5s ease}.nu-optica-sticky-darla-ad.show{display:block}.nu-optica-sticky-darla-ad.fixed{position:fixed;margin-top:0}.nu-optica-sticky-darla-ad.parked{position:absolute;margin-top:0}.nu-optica-sticky-darla-ad .ad-header{font-size:10px;text-align:center;margin:5px;text-transform:uppercase;color:#9da6af}.nu-optica-sticky-darla-ad .ad-footer,.nu-optica-sticky-darla-ad .ad-header{line-height:1;text-align:left;font-size:12px;font-weight:700}.nu-optica-sticky-darla-ad .ad-footer a{padding-left:5px;border-bottom:0;text-decoration:none}.nu-optica-sticky-darla-ad .ad-footer a:after{content:"\276F";padding-left:4px}.tmblr-iframe--init{width:0;height:0;opacity:0;z-index:-1;pointer-events:none}</style><script async="" src="./index_files/px.js"></script><style type="text/css">.live-photo {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; }
+  .live-photo video,
+  .live-photo img {
+    display: block;
+    max-width: 100%;
+    pointer-events: none;
+    -ms-touch-action: none;
+        touch-action: none; }
+  .live-photo video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+    .live-photo video::-webkit-media-controls-start-playback-button {
+      display: none; }
+  .live-photo .live-photo-icon {
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 24px;
+    height: 24px;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg' fill='%23fff'%3E%3Ctitle%3ELive Photo%3C/title%3E%3Cg fill-rule='evenodd'%3E%3Cpath d='M24 36c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.373-12 12 5.373 12 12 12zm0-2c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z'/%3E%3Cpath d='M24 29a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4.788.63a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4.462 1.85a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm3.831 2.94a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm2.94 3.831a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm1.849 4.462a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm.63 4.788a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-.63 4.788a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-1.85 4.461a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-2.94 3.831a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-3.831 2.94a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-4.462 1.849a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM24 44a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-4.788-.63a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-4.462-1.85a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-3.831-2.94a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-2.94-3.831a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM6.13 30.288a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 25.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm.63-4.788a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm1.85-4.462a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm2.94-3.831a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm3.831-2.94a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4.462-1.849a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z'/%3E%3C/g%3E%3C/svg%3E") center center;
+    background-size: contain;
+    -webkit-filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+    pointer-events: none; }
+  .live-photo .live-photo-postroll,
+  .live-photo .live-photo-video {
+    opacity: 0; }
+  .live-photo .live-photo-video {
+    -webkit-filter: blur(7.5px);
+            filter: blur(7.5px); }
+  .live-photo .live-photo-keyframe,
+  .live-photo .live-photo-postroll,
+  .live-photo .live-photo-video {
+    will-change: transform, filter, opacity;
+    transition: opacity 0.5s linear, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s linear;
+    transition: transform 0.5s ease-out, filter 0.5s linear, opacity 0.5s linear;
+    transition: transform 0.5s ease-out, filter 0.5s linear, opacity 0.5s linear, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s linear; }
+  .live-photo.loading .live-photo-icon {
+    -webkit-animation: live-photo-icon-loading 0.5s linear alternate infinite both;
+            animation: live-photo-icon-loading 0.5s linear alternate infinite both; }
+  .live-photo.preview .live-photo-postroll {
+    opacity: 1;
+    transition-duration: 0s; }
+  .live-photo.active video,
+  .live-photo.active img {
+    -webkit-transform: scale(1.075, 1.075);
+        -ms-transform: scale(1.075, 1.075);
+            transform: scale(1.075, 1.075); }
+  .live-photo.active .live-photo-postroll {
+    -webkit-animation: live-photo-post-roll 1s both;
+            animation: live-photo-post-roll 1s both; }
+  .live-photo.active .live-photo-video {
+    opacity: 1;
+    -webkit-filter: none;
+            filter: none;
+    transition-delay: 0.375s;
+    transition-duration: 0.625s; }
+
+@-webkit-keyframes live-photo-icon-loading {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.75; } }
+
+@keyframes live-photo-icon-loading {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.75; } }
+
+@-webkit-keyframes live-photo-post-roll {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(0);
+            filter: blur(0); }
+  2% {
+    opacity: 1; }
+  37.5% {
+    opacity: 1;
+    -webkit-filter: blur(7.5px);
+            filter: blur(7.5px); }
+  100% {
+    opacity: 0; } }
+
+@keyframes live-photo-post-roll {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(0);
+            filter: blur(0); }
+  2% {
+    opacity: 1; }
+  37.5% {
+    opacity: 1;
+    -webkit-filter: blur(7.5px);
+            filter: blur(7.5px); }
+  100% {
+    opacity: 0; } }
+</style><script async="" src="./index_files/px(1).js"></script></head> 
+  <body><div class="ui_dialog_lock" style="display: none;"></div><header><h1><a href="https://programmingisterrible.com/">programming is terrible</a><em>lessons learned from a life wasted</em></h1> 
+   </header><section id="main"><!-- 
+        done: 
+            fix pagination, search results.
+            hanign punctuation, floating dates to left
+            responsive design, li styled properly.
+            link, video, photo, post, quote, audio
+        todo:
+            answer, chat
+    
+    
+    
+    
+    --><article class="post text"><header><div class="permalink"><a href="https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half">2017-06-28</a><span></span></div><h1>How do you cut a monolith in half?</h1></header><p>It depends.</p><p>The problem with distributed systems, is that no matter what the question is, the answer is inevitably ‘It Depends’.</p><p>When you cut a larger service apart, where you cut depends on latency, resources, and access to state, but it also depends on error handling, availably and recovery processes. It depends, but you probably don’t want to depend on a message broker.</p><p>Using a message broker to distribute work is like a cross between a load balancer with a database, with the disadvantages of both and the advantages of neither.</p><p>Message brokers, or persistent queues accessed by publish-subscribe, are a popular way to pull components apart over a network. They’re popular because they often have a low setup cost, and provide easy service discovery, but they can come at a high operational cost, depending where you put them in your systems.</p><p>In practice, a message broker is a service that transforms network errors and machine failures into filled disks. Then you add more disks. The advantage of publish-subscribe is that it isolates components from each other, but the problem is usually gluing them together.</p><p><br></p><h1>For short-lived tasks, you want a load balancer</h1><p>For short-lived tasks, publish-subscribe is a convenient way to build a system quickly, but you inevitably end up implementing a new protocol atop. You have publish-subscribe, but you really want request-response. If you want something computed, you’ll probably want to know the result.</p><p>Starting with publish-subscribe makes work assignment easy: jobs get added to the queue, workers take turns to remove them. Unfortunately, it makes finding out what happened quite hard, and you’ll need to add another queue to send a result back.</p><p>Once you can handle success, it is time to handle the errors. The first step is often adding code to retry the request a few times. After you DDoS your system, you put a call to sleep(). After you slowly DDoS your system, each retry waits twice as long as the previous.</p><p>(Aside: Accidental synchronisation is still a problem, as waiting to retry doesn’t prevent a lot of things happening at once.)</p><p>As workers fail to keep up, clients give up and retry work, but the earlier request is still waiting to be processed. The solution is to move some of the queue back to clients, asking them to hold onto work until work has been accepted: back-pressure, or acknowledgements.</p><p>Although the components interact via publish-subscribe, we’ve created a request-response protocol atop. Now the message broker is really only doing two useful things: service discovery, and load balancing. It is also doing two not-so-useful thing: enqueuing requests, and persisting them.</p><p>For short-lived tasks, the persistence is unnecessary: the client sticks around for as long as the work needs to be done, and handles recovery. The queuing isn’t that necessary either.</p><p>Queues inevitably run in two states: full, or empty. If your queue is running full, you haven’t pushed enough work to the edges, and if it is running empty, it’s working as a slow load balancer.</p><p>A mostly empty queue is still first-come-first-served, serving as point of contention for requests. A broker often does nothing but wait for workers to poll for new messages. If your queue is meant to run empty, why wait to forward on a request.</p><p>(Aside: Something like random load balancing will work, but join-idle-queue is well worth your time investigating)</p><p>For distributing short-lived tasks, you can use a message broker, but you’ll be building a load balancer, along with an ad-hoc RPC system, with extra latency.</p><p><br></p><h1>For long-lived tasks, you’ll need a database</h1><p>A load balancer with service discovery won’t help you with long running tasks, or work that outlives the client, or manage throughput.  You’ll want persistence, but not in your message broker.  For long-lived tasks, you’ll want a database instead.</p><p>Although the persistence and queueing were obstacles for short-lived tasks, the disadvantages are less obvious for long-lived tasks, but similar things can go wrong.</p><p>If you care about the result of a task, you’ll want to store that it is needed somewhere other than in the persistent queue. If the task is run but fails midway, something will have to take responsibility for it, and the broker will have forgotten. This is why you want a database.</p><p>Duplicates in a queue often cause more headaches, as long-lived tasks have more opportunities to overlap. Although we’re using the broker to distribute work, we’re also using it implicitly as a mutex. To stop work from overlapping, you implement a lock atop. After it breaks a couple of times, you replace it with leases, adding timeouts.</p><p>(Note: This is not why you want a database, using transactions for long running tasks is suffering. Long running processes are best modelled as state machines.)</p><p>When the database becomes the primary source of truth, you can handle a broker going offline, or a broker losing the contents of a queue, by backfilling from the database. As a result, you don’t need to directly enqueue work with the broker, but mark it as required in the database, and wait for something else to handle it.</p><p>Assuming that something else isn’t a human who has been paged.</p><p>A message pump can scan the database periodically and send work requests to the broker. Enqueuing work in batches can be an effective way of making an expensive database call survivable. The pump responsible for enqueuing the work can also track if it has completed, and so handle recovery or retries too.</p><p>Backlog is still a problem, so you’ll want to use back-pressure to keep the queue fairly empty, and only fill from the database when needed.  Although a broker can handle temporary overload, back-pressure should mean it never has to.</p><p>At this point the message broker is really providing two things: service discovery, and work assignment, but really you need a scheduler. A scheduler is what scans a database, works out which jobs need to run, and often where to run them too. A scheduler is what takes responsibility for handling errors.</p><p>(Aside: Writing a scheduler is hard. It is much easier to have 1000 while loops waiting for the right time, than one while loop waiting for which of the 1000 is first. A scheduler can track when it last ran something, but the work can’t rely on that being the last time it ran. Idempotency isn’t just your friend, it is your saviour.)</p><p>You can use a message broker for long-lived tasks, but you’ll be building a lock manager, a database, and a scheduler, along with yet another home-brew request-response system.</p><p><br></p><h1>Publish-Subscribe is about isolating components</h1><p>The problem with running tasks with publish-subscribe is that you really want request-response. The problem with using queues to assign work is that you don’t want to wait for a worker to ask.</p><p>The problem with relying on a persistent queue for recovery, is that recovery must get handled elsewhere, and the problem with brokers is nothing else makes service discovery so trivial.</p><p>Message brokers can be misused, but it isn’t to say they have no use.  Brokers work well when you need to cross system boundaries.</p><p>Although you want to keep queues empty between components, it is convenient to have a buffer at the edges of your system, to hide some failures from external clients.  When you handle external faults at the edges, you free the insides from handling them. The inside of your system can focus on handling internal problems, of which there are many.</p><p>A broker can be used to buffer work at the edges, but it can also be used as an optimisation, to kick off work a little earlier than planned. A broker can pass on a notification that data has been changed, and the system can fetch data through another API.</p><p>(Aside: If you use a broker to speed up a process, the system will grow to rely on it for performance. People use caches to speed up database calls, but there are many systems that simply do not work fast enough until the cache is warmed up, filled with data. Although you are not relying on the message broker for reliability, relying on it for performance is just as treacherous.)</p><p>Sometimes you want a load balancer, sometimes you’ll need a database, but sometimes a message broker will be a good fit.</p><p>Although persistence can’t handle many errors, it is convenient if you need to restart with new code or settings, without data loss. Sometimes the error handling offered is just right.</p><p>Although a persistent queue offers some protection against failure, it can’t take responsibility for when things go wrong halfway through a task. To be able to recover from failure you have to stop hiding it, you must add acknowledgements, back-pressure, error handling, to get back to a working system.</p><p>A persistent message queue is not bad in itself, but relying on it for recovery, and by extension, correct behaviour, is fraught with peril.</p><p><br></p><h1>Systems grow by pushing responsibilities to the edges</h1><p>Performance isn’t easy either.  You don’t want queues, or persistence in the central or underlying layers of your system. You want them at the edges.</p><p><em>It’s slow</em> is the hardest problem to debug, and often the reason is that something is stuck in a queue. For long and short-lived tasks, we used back-pressure to keep the queue empty, to reduce latency.</p><p>When you have several queues between you and the worker, it becomes even more important to keep the queue out of the centre of the network. We’ve spent decades on tcp congestion control to avoid it.</p><p>If you’re curious, the history of tcp congestion makes for interesting reading. Although the ends of a tcp connection were responsible for failure and retries, the routers were responsible for congestion: drop things when there is too much.</p><p>The problem is that it worked until the network was saturated, and similar to backlog in queues, when it broke, errors cascaded. The solution was similar: back-pressure. Similar to sleeping twice as long on errors, tcp sends half as many packets, before gradually increasing the amount as things improve.</p><p>Back-pressure is about pushing work to the edges, letting the ends of the conversation find stability, rather than trying to optimise all of the links in-between in isolation. Congestion control is about using back-pressure to keep the queues in-between as empty as possible, to keep latency down, and to increase throughput by avoiding the need to drop packets.</p><p>Pushing work to the edges is how your system scales.  We have spent a lot of time and a considerable amount of money on IP-Multicast, but nothing has been as effective as BitTorrent. Instead of relying on smart routers to work out how to broadcast, we rely on smart clients to talk to each other.</p><p>Pushing recovery to the outer layers is how your system handles failure. In the earlier examples, we needed to get the client, or the scheduler to handle the lifecycle of a task, as it outlived the time on the queue.</p><p>Error recovery in the lower layers of a system is an optimisation, and you can’t push work to the centre of a network and scale. This is the end-to-end principle, and it is one of the most important ideas in system design.</p><p>The end-to-end principle is why you can restart your home router, when it crashes, without it having to replay all of the websites you wanted to visit before letting you ask for a new page. The browser (and your computer) is responsible for recovery, not the computers in between.</p><p>This isn’t a new idea, and Erlang/OTP owes a lot to it. OTP organises a running program into a supervision tree. Each process will often have one process above it, restarting it on failure, and above that, another supervisor to do the same.</p><p>(Aside: Pipelines aren’t incompatible with process supervision, one way is for each part to spawn the program that reads its output. A failure down the chain can propagate back up to be handled correctly.)</p><p>Although each program will handle some errors, the top levels of the supervision tree handle larger faults with restarts. Similarly, it’s nice if your webpage can recover from a fault, but inevitably someone will have to hit refresh.</p><p>The end-to-end principle is realising that no matter how many exceptions you handle deep down inside your program, some will leak out, and something at the outer layer has to take responsibility.</p><p>Although sometimes taking responsibility is writing things to an audit log, and message brokers are pretty good at that.</p><p><br></p><h1>Aside: But what about replicated logs?</h1><blockquote><p>“How do I subscribe to the topic on the message broker?”</p><p>“It’s not a message broker, it’s a replicated log”</p><p>“Ok, How do I subscribe to the replicated log”</p><p><em>From ‘I believe I did, Bob’, jrecursive</em></p></blockquote><p>Although a replicated log is often confused with a message broker, they aren’t immune from handling failure. Although it’s good the components are isolated from each other, they still have to be integrated into the system at large.  Both offer a one way stream for sharing, both offer publish-subscribe like interfaces, but the intent is wildly different.</p><p>A replicated log is often about auditing, or recovery: having a central point of truth for decisions. Sometimes a replicated log is about building a pipeline with fan-in (aggregating data), or fan-out (broadcasting data), but always building a system where data flows in one direction.</p><p>The easiest way to see the difference between a replicated log and a message broker is to ask an engineer to draw a diagram of how the pieces connect.</p><p>If the diagram looks like a one-way system, it’s a replicated log. If almost every component talks to it, it’s a message broker. If you can draw a flow-chart, it’s a replicated log. If you take all the arrows away and you’re left with a venn diagram of ‘things that talk to each other’, it’s a message broker.</p><p>Be warned: A distributed system is something you can draw on a whiteboard pretty quickly, but it’ll take hours to explain how all the pieces interact.</p><p><br></p><h1>You cut a monolith with a protocol</h1><p>How you cut a monolith is often more about how you are cutting up responsibility within a team, than cutting it into components.  It really does depend, and often more on the social aspects than the technical ones, but you are still responsible for the protocol you create.</p><p>Distributed systems are messy because of how the pieces interact over time, rather than which pieces are interacting.  The complexity of a distributed system does not come from having hundreds of machines, but hundreds of ways for them to interact. A protocol must take into account performance, safety, stability, availability, and most importantly, error handling.</p><p>When we talk about distributed systems, we are talking about power structures: how resources are allocated, how work is divided, how control is shared, or how order is kept across systems ostensibly built out of well meaning but faulty components.</p><p>A protocol is the rules and expectations of participants in a system, and how they are beholden to each other. A protocol defines who takes responsibility for failure.</p><p>The problem with message brokers, and queues, is that no-one does.</p><p>Using a message broker is not the end of the world, nor a sign of poor engineering. Using a message broker is a tradeoff. Use them freely knowing they work well on the edges of your system as buffers. Use them wisely knowing that the buck has to stop somewhere else. Use them cheekily to get something working.</p><p>I say don’t rely on a message broker, but I can’t point to easy off-the-shelf answers. HTTP and DNS are remarkable protocols, but I still have no good answers for service discovery.</p><p>Lots of software regularly gets pushed into service way outside of its designed capabilities, and brokers are no exception. Although the bad habits around brokers and the relative ease of getting a prototype up and running lead to nasty effects at scale, you don’t need to build everything at once.</p><p>The complexity of a system lies in its protocol not its topology, and a protocol is what you create when you cut your monolith into pieces. If modularity is about building software, protocol is about how we break it apart.</p><blockquote><p>The main task of the engineering analyst is not merely to obtain “solutions” but is rather to understand the dynamic behaviour of the system in such a way that the secrets of the mechanism are revealed, and that if it is built it will have no surprises left for [them]. Other than exhaustive physical experimentations, this is the only sound basis for engineering design, and disregard of this cardinal principle has not infrequently lead to disaster.</p><p><em>From “Analysis of Nonlinear Control Systems” by Dustan Graham and Duane McRuer, p 436</em></p></blockquote><p>Protocol is the reason why ‘it depends’, and the reason why you shouldn’t depend on a message broker: You can use a message broker to glue systems together, but never use one to cut systems apart.</p></article></section><footer> 
+    <ul><li><a href="https://programmingisterrible.com/">new</a></li> 
+        <li><a href="https://programmingisterrible.com/rss">rss</a></li><li><a href="https://programmingisterrible.com/about">about</a></li> 
+        <li><a href="https://programmingisterrible.com/ask">ask</a></li> 
+        <li><a href="http://twitter.com/tef_ebooks">@tef_ebooks</a></li> 
+     </ul></footer><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37428230-1']);
+  _gaq.push(['_setDomainName', 'programmingisterrible.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script><iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target" src="./index_files/analytics.html"></iframe><script type="text/javascript">
+    (function(){
+        var analytics_frame = document.getElementById('ga_target');
+        var analytics_iframe_loaded;
+        var user_logged_in;
+        var blog_is_nsfw = 'No';
+        var addthis_enabled = false;
+
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+            switch (message[0]) {
+                case 'analytics_iframe_loaded':
+                    analytics_iframe_loaded = true;
+                    postCSMessage();
+                    postGAMessage();
+                    postATMessage();
+                    postRapidMessage();
+                    break;
+                case 'user_logged_in':
+                    user_logged_in = message[1];
+                    postGAMessage();
+                    postATMessage();
+                    break;
+            }
+        }, false);
+
+        analytics_frame.src = "https://assets.tumblr.com/analytics.html?a76144f6ac3f4c5ec0b80b2f2a5b4fd0#" +
+                              "https://programmingisterrible.com";
+        function postGAMessage() {
+            if (analytics_iframe_loaded && user_logged_in) {
+                var is_ajax = false;
+                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/post/162346490883/how-do-you-cut-a-monolith-in-half?route=%2Fpost%2F%3Aid%2F%3Asummary'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postCSMessage() {
+            COMSCORE = true;
+            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
+        }
+        function postATMessage() {
+            if (addthis_enabled && analytics_iframe_loaded) {
+                analytics_frame.contentWindow.postMessage('enable_addthis', analytics_frame.src.split('/analytics.html')[0]);
+            }
+        }
+        function postRapidMessage() {
+                            if (analytics_iframe_loaded) {
+                    var is_ajax = '';
+                    var route = '/post/:id/:summary';
+                    var tumblelog_id = '87591281';
+                    var yahoo_space_id = '1197719230';
+                    var rapid_client_only = '1';
+                    var apv = '1';
+                    var rapid_ex = '';
+
+                    analytics_frame.contentWindow.postMessage(
+                        [
+                            'tick_rapid', is_ajax, route, user_logged_in, tumblelog_id,
+                            yahoo_space_id, rapid_client_only, apv, rapid_ex
+                        ].join(';'),
+                        analytics_frame.src.split('/analytics.html')[0]
+                    );
+                }
+                    }
+    })();
+</script><script type="text/javascript">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1531254420&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9wcm9ncmFtbWluZ2lzdGVycmlibGUuY29tL3Bvc3QvMTYyMzQ2NDkwODgzL2hvdy1kby15b3UtY3V0LWEtbW9ub2xpdGgtaW4taGFsZiIsInJlcXR5cGUiOjAsInJvdXRlIjoiL3Bvc3QvOmlkLzpzdW1tYXJ5IiwicG9zdHMiOlt7InBvc3RpZCI6IjE2MjM0NjQ5MDg4MyIsImJsb2dpZCI6Ijg3NTkxMjgxIiwic291cmNlIjozM31dfQ==&U=DIKJBGLBNM&K=dc3946c97d7693c1b0de122d94abd78d3a7501d02cd313900ff6c76892a8e2e5&R=https%3A%2F%2Ft.co%2FvZmVLkpifk'.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1531254420&J=eyJ0eXBlIjoicG9zdCIsInVybCI6Imh0dHA6Ly9wcm9ncmFtbWluZ2lzdGVycmlibGUuY29tL3Bvc3QvMTYyMzQ2NDkwODgzL2hvdy1kby15b3UtY3V0LWEtbW9ub2xpdGgtaW4taGFsZiIsInJlcXR5cGUiOjAsInJvdXRlIjoiL3Bvc3QvOmlkLzpzdW1tYXJ5IiwicG9zdHMiOlt7InBvc3RpZCI6IjE2MjM0NjQ5MDg4MyIsImJsb2dpZCI6Ijg3NTkxMjgxIiwic291cmNlIjozM31dLCJub3NjcmlwdCI6MX0=&U=DIKJBGLBNM&K=67953f7782475c5ab2f5b1989472c66a79213f70d29fecc8ae102755c79731e1&R=https%3A%2F%2Ft.co%2FvZmVLkpifk"></noscript><script src="./index_files/index.build.js"></script>
+</body></html>
