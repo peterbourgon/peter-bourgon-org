@@ -19,3 +19,6 @@ http://archagon.net/blog/2018/03/24/data-laced-with-history/
 
 [How do you cut a monolith in half?](https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half/)
 &mdash; [mirror](how-do-you-cut-a-monolith-in-half/)
+
+[Modern software engineering mistakes](https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8)
+&mdash; [mirror](overengineering-mistakes/)
