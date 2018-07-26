@@ -22,3 +22,6 @@ http://archagon.net/blog/2018/03/24/data-laced-with-history/
 
 [Modern software engineering mistakes](https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8)
 &mdash; [mirror](overengineering-mistakes/)
+
+[Keybase + GPG + GitHub](https://github.com/andrzejsliwa/keybase-gpg-github/blob/master/README.md)
+&mdash; [mirror](keybase-gpg-github/)
