@@ -44,7 +44,7 @@ understand a domain he had to work through the problems and build something
 himself, and that he was either just starting that or in the middle of it, and
 that he hoped to have some kind of output from that process soon.
 
-The clear impression was that Russ wasn't going to engaging with the committee,
+The clear impression was that Russ wasn't going to engage with the committee,
 the research we had prepared for him, or the prototype product of that research,
 `dep` &mdash; at least, not yet. The clear impression was that Russ had his own
 hypothesis about what a solution would look like, and that he was interested in
