@@ -279,5 +279,13 @@ I hope this story serves as a warning to others: if you're interested in making
 substantial contributions to the Go project, no amount of independent due
 diligence can compensate for a design that doesn't originate from the core team.
 
+_edit_: Upon reflection, I think this may be too strongly stated. There are
+good examples of large contributions that originated outside of the core team,
+including support for different architectures, like WASM.
+[Epolevne on Reddit](https://www.reddit.com/r/golang/comments/92f3q1/peter_bourgon_a_response_about_dep_and_vgo/e35dtps/?st=jk4f938l&sh=7a30dfcd)
+wrote "I think the lesson isn’t that the core team must design everything, but
+rather, they can’t disagree with the design." This feels more true to me. The
+core problem is, I think, how the Go project resolves design conflicts.
+
 Maybe some of you are reading this and thinking to yourself, "well, _no duh_,
 Peter, that should be obvious." Maybe so. My mistake.
