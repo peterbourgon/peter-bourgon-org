@@ -268,16 +268,15 @@ essentially greenfield project.
 
 I think the outcome of the dep/vgo/modules story pretty clearly demonstrates
 that, while Go leadership will happily accept contributions to issues and
-non-controversial proposals, it isn't interested in, or capable of, fostering a
-true community of autonomous contributors. That power sits exclusively in the
-core team at Google.
+non-controversial proposals, it's still struggling with larger, autonomous
+contributors. That power sits exclusively in the core team at Google.
 
 Once I gave a talk about a project I'd worked on, which ultimately failed. I had
 a slide at the end, with a picture of a ship wrecked on an island, and the
 caption read "The purpose of your life may be to serve as a warning to others."
-I hope this story serves as a warning to others: if you're interested in making
+I hope this story serves as a warning to others: ~~if you're interested in making
 substantial contributions to the Go project, no amount of independent due
-diligence can compensate for a design that doesn't originate from the core team.
+diligence can compensate for a design that doesn't originate from the core team.~~
 
 _edit_: Upon reflection, I think this may be too strongly stated. There are
 good examples of large contributions that originated outside of the core team,
