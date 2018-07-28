@@ -288,3 +288,22 @@ core problem is, I think, how the Go project resolves design conflicts.
 
 Maybe some of you are reading this and thinking to yourself, "well, _no duh_,
 Peter, that should be obvious." Maybe so. My mistake.
+
+&mdash;&mdash;&mdash;
+
+_Addendum_: The discussion that's come out of this has been enlightening. I
+think I have a much better, full-picture view of what happened. I think the dep
+team and the core team were having two completely different conversations,
+talking past each other, and it took the vgo papers to collapse the quantum
+state.
+
+The dep team believed dep was different in kind to the tools that came before,
+and represented the researched, considered, community-driven, and (what could be
+the) final form of dependency management in Go. The core team believed dep was
+essentially identical in kind to the tools that came before, another data point
+that would inform the ultimate solution, designed by them.
+
+I believe the dep team was very transparent about their position, and it's
+possible to look at statements from the core team and find evidence for their
+position, too. But it's clear these positions weren't mutually understood until
+very late in the game, too late. Alas, only hindsight is 20/20.
