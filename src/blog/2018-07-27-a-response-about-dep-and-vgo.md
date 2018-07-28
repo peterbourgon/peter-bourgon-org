@@ -1,6 +1,8 @@
 { "title": "A response about dep and vgo" }
 ---
 
+_edit: Discussions from this article have been enlightening. [I've made an addendum](#addendum) at the bottom._
+
 [Russ Cox did a tweetstorm](https://twitter.com/_rsc/status/1022588240501661696)
 about his perspective on the dep/vgo/modules story. It's not a lot of fun to
 re-litigate histories, but there are some subtle and important problems in this
@@ -290,6 +292,8 @@ Maybe some of you are reading this and thinking to yourself, "well, _no duh_,
 Peter, that should be obvious." Maybe so. My mistake.
 
 &mdash;&mdash;&mdash;
+
+<a name="addendum"></a>
 
 _Addendum_: The discussion that's come out of this has been enlightening. I
 think I have a much better, full-picture view of what happened. I think the dep
