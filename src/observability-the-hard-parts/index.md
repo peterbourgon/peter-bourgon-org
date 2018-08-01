@@ -4,7 +4,8 @@
 }
 ---
 
-_This was originally a talk at <a href="https://monitorama.com">Monitorama PDX 2018</a>._
+_This was originally a talk at [Monitorama PDX 2018](https://monitorama.com).
+ [Watch the video here](https://vimeo.com/274820991)._
 
 <a name="context-setting" />
 
