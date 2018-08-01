@@ -16,8 +16,12 @@ div#c {
 	margin-bottom: 7%;
 }
 
-a {
+a:link {
 	text-decoration: underline;
+	color: #000;
+}
+
+a:visited {
 	color: #000;
 }
 
@@ -60,7 +64,7 @@ h2 {
 	font-style: italic;
 }
 
-h2 a, h3 a {
+h2 a:link, h3 a:link {
 	text-decoration: none;
 }
 

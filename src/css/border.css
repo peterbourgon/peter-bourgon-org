@@ -1,23 +1,7 @@
-body {
-	background-color: #fee;
+p, img, h1, h2, h3, h4, h5, h6, strong, blockquote, pre, code, ul, ol, td {
+	border: solid 1px #000;
 }
 
-div#cc {
-	border: solid 2px #555;
-	background-color: #efe;
-}
-
-div#main {
-	border: solid 2px #999;
-	background-color: #eef;
-}
-
-div#sidebar {
-	border: solid 2px #999;
-	background-color: #ffe;
-}
-
-div#right {
-	border: solid 2px #999;
-	background-color: #fef;
+p, img, h1, h2, h3, h4, h5, h6, strong, blockquote, pre, code, td {
+	padding: 2px;
 }

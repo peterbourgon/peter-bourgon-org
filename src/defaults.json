@@ -1,9 +1,8 @@
 {
-	"showsidebar": true,
-	"sidebartitle": true,
 	"showtitle": true,
 	"rotate": false,
 	"border": false,
+	"colorblock": false,
 	"prefixtitle": true,
 	"metadescription": "Peter Bourgon has a web site, and this is that web site."
 }

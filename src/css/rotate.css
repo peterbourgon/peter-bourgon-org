@@ -1,10 +1,11 @@
-div#cc {
+/*
+div#c {
 	-ms-transform: rotate(-0.5deg);
 	-webkit-transform: rotate(-0.5deg);
 	transform: rotate(-0.5deg);
 }
 
-div#main {
+div#c {
 	-ms-transform: rotate(1deg);
 	-webkit-transform: rotate(1deg);
 	transform: rotate(1deg);
@@ -22,32 +23,45 @@ div#right {
 	-webkit-transform: rotate(-1deg);
 	transform: rotate(-1deg);
 }
+*/
 
-div#main h1, h2, h3, h4, h5, h6 {
+div#c div#header {
+	-ms-transform: rotate(0.7deg);
+	-webkit-transform: rotate(0.7deg);
+	transform: rotate(0.7deg);
+}
+
+div#c h1, h2, h3, h4, h5, h6 {
 	-ms-transform: rotate(1deg);
 	-webkit-transform: rotate(1deg);
 	transform: rotate(1deg);
 }
 
-div#main :nth-child(2n):not(li) {
-	-ms-transform: rotate(-0.6deg);
-	-webkit-transform: rotate(-0.6deg);
-	transform: rotate(-0.6deg);
-}
-
-div#main :nth-child(3n):not(li) {
-	-ms-transform: rotate(0.5deg);
-	-webkit-transform: rotate(0.5deg);
-	transform: rotate(0.5deg);
-}
-
-div#main img {
+div#c h2, h4, h6 {
 	-ms-transform: rotate(-0.3deg);
 	-webkit-transform: rotate(-0.3deg);
 	transform: rotate(-0.3deg);
 }
 
-div#main img.dance {
+div#c :nth-child(2n):not(li) {
+	-ms-transform: rotate(-0.6deg);
+	-webkit-transform: rotate(-0.6deg);
+	transform: rotate(-0.6deg);
+}
+
+div#c :nth-child(3n):not(li) {
+	-ms-transform: rotate(0.5deg);
+	-webkit-transform: rotate(0.5deg);
+	transform: rotate(0.5deg);
+}
+
+div#c img {
+	-ms-transform: rotate(-0.3deg);
+	-webkit-transform: rotate(-0.3deg);
+	transform: rotate(-0.3deg);
+}
+
+div#c img.dance {
 	-ms-transform: none;
 	-webkit-transform: none;
 	transform: none;

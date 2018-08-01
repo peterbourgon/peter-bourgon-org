@@ -293,13 +293,11 @@ Peter, that should be obvious." Maybe so. My mistake.
 
 &mdash;&mdash;&mdash;
 
-<a name="addendum"></a>
-
-_Addendum_: The discussion that's come out of this has been enlightening. I
-think I have a much better, full-picture view of what happened. I think the dep
-team and the core team were having two completely different conversations,
-talking past each other, and it took the vgo papers to collapse the quantum
-state.
+<a name="addendum">_Addendum_</a>: The discussion that's come out of this has
+been enlightening. I think I have a much better, full-picture view of what
+happened. I think the dep team and the core team were having two completely
+different conversations, talking past each other, and it took the vgo papers to
+collapse the quantum state.
 
 The dep team believed dep was different in kind to the tools that came before,
 and represented the researched, considered, community-driven, and (what could be
