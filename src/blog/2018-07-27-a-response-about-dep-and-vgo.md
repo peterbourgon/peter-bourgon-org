@@ -144,7 +144,7 @@ this response.)
 > lot of people, because we'd only shared concerns with the package management
 > group.
 
-This is somewhat disingenous. The course correction also surprised the package
+This is somewhat disingenuous. The course correction also surprised the package
 management group collectively, because until the `vgo` papers appeared, we had
 every hope and expectation that the core team would continue to work _with_ us
 and `dep` to get it to an acceptable place, rather than propose something
@@ -165,7 +165,7 @@ altogether new.
 > decision to the other usual proposal reviewers, and they considered the issues
 > and the objections and formally accepted it.
 
-This is somewhat disingenous. We deliberately avoided making a proposal for
+This is somewhat disingenuous. We deliberately avoided making a proposal for
 `dep` until we had established a more formal communication channel with the core
 team. Much of `dep`'s development occurred without any communication at all. We
 were, or at least I was, still hopeful that Russ and Sam's technical conflicts
