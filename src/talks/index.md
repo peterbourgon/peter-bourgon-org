@@ -9,6 +9,9 @@
 
 ## 2018
 
+**Architecture and Domain Modeling workshop** <br/>
+September 2018, [GopherCon](https://gophercon.com), Denver <br/>
+
 **[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
 June 2018, [Monitorama](http://monitorama.com/), Portland — [video](https://vimeo.com/274820991) <br/>
 
