@@ -16,7 +16,7 @@ September 2018, [GopherCon](https://gophercon.com), Denver <br/>
 June 2018, [Monitorama](http://monitorama.com/), Portland — [video](https://vimeo.com/274820991) <br/>
 
 **[Go: Best Practices for Industrial Programming](/go-for-industrial-programming/)** <br/>
-June 2018, [GopherCon EU](https://gophercon.is/), Reykjavík <br/>
+June 2018, [GopherCon EU](https://gophercon.is/), Reykjavík — [video](https://www.youtube.com/watch?v=PTE4VJIdHPg) <br/>
 
 **Observability workshop** <br/>
 April 2018, [Fastly Altitude](https://fastly.com/altitude-nyc), New York City — [video](https://vimeo.com/267641392) <br/>
