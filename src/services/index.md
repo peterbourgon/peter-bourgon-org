@@ -7,8 +7,8 @@
 I offer a few consulting services, as time allows.
 If any of these topics are interesting to you, please get in touch:
  [peter@bourgon.org](mailto:peter@bourgon.org), or
- [@peterbourgon](https://twitter.com/peterbourgon) on Twitter, or
- [@peterbourgon](https://keybase.io/peterbourgon) on Keybase.
+ [peterbourgon on Twitter](https://twitter.com/peterbourgon), or
+ [peterbourgon on Keybase](https://keybase.io/peterbourgon).
 
 <br/>
 
