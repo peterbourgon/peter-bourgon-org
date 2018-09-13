@@ -20,14 +20,16 @@ I've written
  deployment and orchestration platforms, 
  [end-to-end logging systems](/ok-log), and
  [toolkits for microservices](https://github.com/go-kit/kit).
-If your organization wants to level up your Go knowledge, I can probably help. I
-have half- and full-day courses on pretty much any Go-related topic you can
-imagine, with an emphasis on software engineering best practices. I also do a 3-
+If your organization wants to level up your Go knowledge, I can probably help. 
+
+I have half- and full-day courses on pretty much any Go-related topic you can
+imagine, with an emphasis on high-quality software engineering. I also do a 3-
 to 4-day intensive course, teaching Go from first principles to groups of any
-skill level.
-My training style is thorough, didactic, and interactive. I highlight best
-practices, idioms, and antipatterns: stuff you can't easily get from books and
-literature.
+skill level. My training style is thorough, didactic, and interactive. I
+highlight best practices, idioms, and antipatterns: stuff you can't easily get
+from books and literature.
+
+Selected articles and talks on these areas of expertise:
 
 - **[Go: Best Practices for Industrial Programming](/go-for-industrial-programming/)** <br/>
     June 2018, [GopherCon EU](https://gophercon.is/), Reykjavík — [video](https://www.youtube.com/watch?v=PTE4VJIdHPg)
