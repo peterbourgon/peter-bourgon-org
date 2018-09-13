@@ -10,9 +10,7 @@ If any of these topics are interesting to you, please get in touch:
  [peterbourgon on Twitter](https://twitter.com/peterbourgon), or
  [peterbourgon on Keybase](https://keybase.io/peterbourgon).
 
-<br/>
-
-### Go language training
+## Go language training
 
 I've been programming Go since its release in 2009, and I've been doing it full-time and professionally since 2011.
 I've written
@@ -38,9 +36,7 @@ literature.
     August 2017, [GoSF Meetup](https://www.meetup.com/golangsf/), San Francisco — 
      [slides](https://speakerdeck.com/peterbourgon/ways-to-do-things), [video](https://www.youtube.com/watch?v=LHe1Cb_Ud_M)
 
-<br/>
-
-### Microservices and architecture consulting
+## Microservices and architecture consulting
 
 I'm the author of [Go kit](https://gokit.io), a toolkit for microservices in Go.
 I built it to address many of the common problems that I've seen trip up
@@ -66,14 +62,13 @@ implementations.
     October 2017, [Velocity](https://conferences.oreilly.com/velocity/vl-eu), London —
     [video](https://www.youtube.com/watch?v=5itZckAt-2A)
 
-<br/>
-
-### Observability consulting
+## Observability consulting
 
 I grew up with [Prometheus](https://prometheus.io) at SoundCloud,
- and I've now built out observability infrastructures at several large organizations.
+ I've worked in the observability-related developer tooling market,
+ and I've built out an observability infrastructure at a global-scale organization.
 I have a good and intuitive understanding of what makes an observable distributed system,
- and I can help your organization level-up your logging, monitoring, and tracing story.
+ and I can help your organization level-up your logging, monitoring, and tracing.
 I've also developed strategies to justify observability spend to upper management.
 
 - **[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
