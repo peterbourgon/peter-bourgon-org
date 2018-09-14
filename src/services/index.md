@@ -22,12 +22,12 @@ I've written
  [toolkits for microservices](https://github.com/go-kit/kit).
 If your organization wants to level up your Go knowledge, I can probably help. 
 
-I have half- and full-day courses on pretty much any Go-related topic you can
-imagine, with an emphasis on high-quality software engineering. I also do a 3-
-to 4-day intensive course, teaching Go from first principles to groups of any
-skill level. My training style is thorough, didactic, and interactive. I
-highlight best practices, idioms, and antipatterns: stuff you can't easily get
-from books and literature.
+I can given half- or full-day courses on pretty much any Go-related topic you
+can imagine, always with an emphasis on practical and high-quality software
+engineering. I also do a 3- to 4-day intensive course, teaching Go from first
+principles to groups of any skill level. My training style is thorough,
+didactic, and interactive. I highlight best practices, idioms, and antipatterns:
+stuff you can't easily get from books and literature.
 
 Selected articles and talks on these areas of expertise:
 
@@ -40,12 +40,11 @@ Selected articles and talks on these areas of expertise:
 
 ## Microservices and architecture consulting
 
-I'm the author of [Go kit](https://gokit.io), a toolkit for microservices in Go.
-I built it to address many of the common problems that I've seen trip up
-organizations as they attempt to balkanize their monoliths and improve their
-product velocity. If your organization is thinking about adopting microservices,
-or just needs some pointers from someone who's seen all the ways it can go wrong,
-I can probably help.
+I wrote [Go kit](https://gokit.io) to address many of the problems that I've
+seen confound organizations as they attempt to balkanize their monoliths and
+improve their product velocity. If your organization is thinking about adopting
+microservices, or just needs some pointers from someone who's seen all the ways
+it can go wrong, I can probably help.
 
 I'm not a microservices zealot: a more elegant monolith is often the better
 answer. I take the time to understand the history and inertia of your
@@ -66,12 +65,12 @@ implementations.
 
 ## Observability consulting
 
-I grew up with [Prometheus](https://prometheus.io) at SoundCloud,
- I've worked in the observability-related developer tooling market,
- and I've built out an observability infrastructure at a global-scale organization.
-I have a good and intuitive understanding of what makes an observable distributed system,
- and I can help your organization level-up your logging, monitoring, and tracing.
-I've also developed strategies to justify observability spend to upper management.
+I grew up with [Prometheus](https://prometheus.io) at SoundCloud, I've worked in
+the observability-related developer tooling market, and I've built out an
+observability infrastructure at a global-scale organization. I have a good and
+intuitive understanding of what makes an observable distributed system, and I
+can help your organization level-up your logging, monitoring, and tracing. I've
+also developed strategies to justify observability spend to upper management.
 
 - **[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
     June 2018, [Monitorama](http://monitorama.com/), Portland — [video](https://vimeo.com/274820991)
