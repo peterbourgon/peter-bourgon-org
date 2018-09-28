@@ -4,7 +4,7 @@
 }
 ---
 
-_This was originally a talk at <a href="https://gophercon.is">GopherCon EU 2018</a>._
+_This was originally [a talk](https://www.youtube.com/watch?v=PTE4VJIdHPg) at [GopherCon EU 2018](https://gophercon.is)._
 
 ## Setting some context
 
