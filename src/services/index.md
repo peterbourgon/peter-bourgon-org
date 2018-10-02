@@ -5,7 +5,8 @@
 ---
 
 I offer a few consulting services, as time allows.
-If any of these topics are interesting to you, please get in touch:
+I'm also available for longer-term technical advisor roles.
+If any of these topics are interesting to your organization, please get in touch:
  [peter@bourgon.org](mailto:peter@bourgon.org), or
  [peterbourgon on Twitter](https://twitter.com/peterbourgon), or
  [peterbourgon on Keybase](https://keybase.io/peterbourgon).
