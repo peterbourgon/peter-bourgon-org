@@ -5,8 +5,8 @@
 }
 ---
 
-_tl;dr_ — [OK Log](https://github.com/oklog/oklog) is a distributed and coördination-free log management system for big ol' clusters.<br/>
-I built it from first principles, to teach myself the gory details of shuffling logs around.<br/>
+_tl;dr_ — [OK Log](https://github.com/oklog/oklog) is a distributed and coördination-free log management system for big ol' clusters.
+I built it from first principles, to teach myself the gory details of shuffling logs around.
 This is the story of the prototype.
 
 — – -
