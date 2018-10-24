@@ -10,6 +10,6 @@ Not only _can_ we do that, but we're ethically _obliged_ to do it, because it's
 the ethical responsibility of humans to reduce suffering. Not conceptually, not
 theoretically, but actually, in effect and consequence, on the lives of our
 fellow humans. We're not slaves to an arbitrary and inhumane objectivity.
-Systems of all types -- software, legal, civil -- have humanity as a foundation,
-not the other way around.
+Systems of all types&mdash;software, legal, civil&mdash;have humanity as a
+foundation, not the other way around.
 
