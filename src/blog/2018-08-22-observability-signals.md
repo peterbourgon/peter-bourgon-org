@@ -20,8 +20,8 @@ optimizations, to enable specific observability workflows.
 
 Metrics, tracing, and logging are actually emergent _patterns of consumption_
 of observability data, which inform the way we produce, ship, and store the
-corresponding observations. They’re the product of an optimization function,
-between how operators want to be able to introspect over their systems, and the
+corresponding signals. They’re the product of an optimization function, between
+how operators want to be able to introspect over their systems, and the
 capability of technology to meet those demands at scale. There may be other,
 yet-undiscovered patterns of consumption, likely driven by advances in
 technology, which will usher in a new era and taxonomy of observability. But
