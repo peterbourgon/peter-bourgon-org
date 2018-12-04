@@ -7,6 +7,25 @@ body {
 	color: #000;
 }
 
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #222;
+		color: #eee;
+	}
+	a:link {
+		color: #eee;
+	}
+	a:visited {
+		color: #eee;
+	}
+	code {
+		background-color: #333;
+	}
+	.lite { color: #444; }
+	.lite:visited { color: #444; }
+	div.toptip { background-color: #464 }
+}
+
 div#c {
 	min-width: 20em;
 	max-width: 40em;
