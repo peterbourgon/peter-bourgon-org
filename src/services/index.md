@@ -66,12 +66,15 @@ implementations.
 
 ## Observability consulting
 
-I grew up with [Prometheus](https://prometheus.io) at SoundCloud, I've worked in
-the observability-related developer tooling market, and I've built out an
+I grew up with [Prometheus](https://prometheus.io) at SoundCloud, I've worked
+in the observability-related developer tooling market, and I've built out an
 observability infrastructure at a global-scale organization. I have a good and
 intuitive understanding of what makes an observable distributed system, and I
-can help your organization level-up your logging, monitoring, and tracing. I've
-also developed strategies to justify observability spend to upper management.
+can help your organization level-up your logging, monitoring, and tracing. I'm
+recognized as a domain expert by industry groups like
+[Gartner](https://www.gartner.com/doc/3868219/monitoring-modern-services-infrastructure),
+and I've developed strategies to justify observability spend to upper
+management.
 
 - **[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
     June 2018, [Monitorama](http://monitorama.com/), Portland — [video](https://vimeo.com/274820991)
@@ -80,3 +83,4 @@ also developed strategies to justify observability spend to upper management.
     April 2018, [Fastly Altitude](https://fastly.com/altitude-nyc), New York City — [video](https://vimeo.com/267641392) <br/>
 
 - **[Metrics, tracing, and logging](/blog/2017/02/21/metrics-tracing-and-logging.html)** disambiguated
+
