@@ -23,6 +23,8 @@ recognized as a domain expert by industry groups like
 and I've developed strategies to justify observability spend to upper
 management.
 
+Selected articles and talks on this area of expertise:
+
 - **[Observability: the hard parts](/observability-the-hard-parts/)** <br/>
     June 2018, [Monitorama](http://monitorama.com/), Portland — [video](https://vimeo.com/274820991)
 
@@ -74,8 +76,6 @@ engineering. I also do a 3- to 4-day intensive course, teaching Go from first
 principles to groups of any skill level. My training style is thorough,
 didactic, and interactive. I highlight best practices, idioms, and antipatterns:
 stuff you can't easily get from books and literature.
-
-Selected articles and talks on these areas of expertise:
 
 - **[Go: Best Practices for Industrial Programming](/go-for-industrial-programming/)** <br/>
     June 2018, [GopherCon EU](https://gophercon.is/), Reykjavík — [video](https://www.youtube.com/watch?v=PTE4VJIdHPg)
