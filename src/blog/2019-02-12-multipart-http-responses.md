@@ -32,11 +32,11 @@ Here's one way to set things up in the handler.
 func handle(w http.ResponseWriter, r *http.Request) {
 	mediatype, _, err := mime.ParseMediaType(r.Header.Get("Accept"))
 	if err != nil {
-		http.Error(w, fmt.Sprintf("error parsing Accept headers: %v", err), http.StatusNotAcceptable)
+		http.Error(w, err.Error(), http.StatusNotAcceptable)
 		return
 	}
 	if mediatype != "multipart/form-data" {
-		http.Error(w, "multiple values; set Accept: multipart/form-data and prepare for a multipart response", http.StatusMultipleChoices)
+		http.Error(w, "set Accept: multipart/form-data", http.StatusMultipleChoices)
 		return
 	}
 	mw := multipart.NewWriter(w)
@@ -44,16 +44,16 @@ func handle(w http.ResponseWriter, r *http.Request) {
 	for _, value := range getValues() {
 		fw, err := mw.CreateFormField("value")
 		if err != nil {
-			http.Error(w, fmt.Sprintf("error creating multipart response: %v", err), http.StatusInternalServerError)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 		if _, err := fw.Write(value); err != nil {
-			http.Error(w, fmt.Sprintf("error writing multipart response: %v", err), http.StatusInternalServerError)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	}
 	if err := mw.Close(); err != nil {
-		http.Error(w, fmt.Sprintf("error closing multipart response: %v", err), http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
