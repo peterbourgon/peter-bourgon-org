@@ -78,3 +78,10 @@ func main() {
 
 Hopefully that helps someone. Is there a better way to do it? 
 [Tweet at me](https://twitter.com/peterbourgon) and I'll update the code.
+
+**Related work**: if you're interested in streaming potentially unlimited data
+from an HTTP server to a client, and don't want to deal with Websockets (I
+don't blame you) consider using [eventsourcing][es], also known as server-sent
+events.
+
+[es]: https://godoc.org/github.com/bernerdschaefer/eventsource
