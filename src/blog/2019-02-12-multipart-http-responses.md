@@ -3,7 +3,7 @@
 
 Sometimes I write HTTP servers that need to serve multiple values in response
 to a single request. If the values are small, one common way is to define an
-e.g. JSON object to wrap the values.
+e.g. JSON object to wrap them.
 
 ```go
 type myResponse struct {
@@ -19,9 +19,10 @@ func handle(w http.ResponseWriter, r *http.Request) {
 ```
 
 But sometimes that's not a great solution; for example, if the values are raw
-binary data (in Go, `[]byte`) and you don't want to go through a base64
+binary data (in Go, []byte) and you don't want to go through a base64
 conversion. In those cases, it may make sense to use a [multipart][1] response.
-For the record, this approach is adapted from the [Riak KV][2] API.
+For the record, this approach is adapted (reverse engineered, I guess) from the
+[Riak KV][2] API.
 
 [1]: https://golang.org/pkg/mime/multipart
 [2]: http://docs.basho.com/riak/kv/2.2.3/developing/usage/conflict-resolution/#siblings-in-action
@@ -75,5 +76,5 @@ func main() {
 }
 ```
 
-Hopefully that helps someone. Is there a better way to do it? Tweet and me and
-I'll update the code.
+Hopefully that helps someone. Is there a better way to do it? 
+[Tweet at me](https://twitter.com/peterbourgon) and I'll update the code.
