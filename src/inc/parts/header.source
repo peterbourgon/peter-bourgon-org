@@ -1,7 +1,6 @@
 <div id="header">
 <p>
-  <strong>Peter Bourgon</strong>
-  <a href="/" title="Home">Home</a>
+  <strong><a href="/">Peter Bourgon</a></strong>
   <a href="/about" title="About">About</a>
   <a href="/consulting" title="Consulting">Consulting</a>
   <a href="/talks" title="Talks">Talks</a>
