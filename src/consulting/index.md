@@ -7,7 +7,7 @@
 I'm available for short-term high-impact consulting, typically in the form
 of workshops or deep-dives with your engineering teams or leaders.
 I'm also available for longer-term technical advisor roles.
-If any of these topics are interesting to your organization, please get in touch:
+If any of the following topics are interesting to your organization, please get in touch:
  [peter@bourgon.org](mailto:peter@bourgon.org), or
  [peterbourgon on Twitter](https://twitter.com/peterbourgon), or
  [peterbourgon on Keybase](https://keybase.io/peterbourgon).
