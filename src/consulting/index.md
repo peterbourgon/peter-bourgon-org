@@ -4,7 +4,8 @@
 }
 ---
 
-I offer a few consulting services, as time allows.
+I'm available for short-term high-impact consulting, typically in the form
+of workshops or deep-dives with your engineering teams or leaders.
 I'm also available for longer-term technical advisor roles.
 If any of these topics are interesting to your organization, please get in touch:
  [peter@bourgon.org](mailto:peter@bourgon.org), or
