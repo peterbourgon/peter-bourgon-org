@@ -17,9 +17,10 @@ There are classes of speech that are, to abuse the metaphor, a lot more like
 ruined landscapes than moldy plates. The rise of ethno-nationalism and race
 supremacy in western democracies is certainly among them. Relying on the
 disinfecting power of exposure to society is naïve to the point of being
-immoral. We know now that blind application of free speech as a doctrine merely
-cedes the public square to the extremists, and results in a shittier society. 
+immoral. Society doesn't disinfect the disease, the disease infects society. 
 
+We know now that blind application of free speech as a doctrine merely
+cedes the public square to the extremists, and results in a shittier society. 
 Those with the power to do so have both the right and ethical obligation to
 stop these infections at the source, by organizing, by protesting, by
 de-platforming, and by recognizing that free speech isn't an end in itself, but
