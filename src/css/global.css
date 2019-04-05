@@ -7,25 +7,6 @@ body {
 	color: #000;
 }
 
-@media (prefers-color-scheme: dark) {
-	body {
-		background-color: #222;
-		color: #eee;
-	}
-	a:link {
-		color: #eee;
-	}
-	a:visited {
-		color: #eee;
-	}
-	code {
-		background-color: #333;
-	}
-	.lite { color: #444; }
-	.lite:visited { color: #444; }
-	div.toptip { background-color: #464 }
-}
-
 div#c {
 	min-width: 20em;
 	max-width: 40em;
@@ -96,3 +77,25 @@ h2 a:link, h3 a:link {
 .lite:visited { color: #ddd; }
 div.toptip { background-color: #ded; padding: 1em; margin: 1em; }
 div.toptip a { text-decoration: none; }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #222;
+		color: #eee;
+	}
+	div#header a {
+		border-bottom: solid 1px #ddd;
+	}
+	a:link, a:active, a:visited {
+		color: #eee;
+	}
+	a:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+	pre, code {
+		background-color: #333;
+	}
+	.lite { color: #444; }
+	.lite:visited { color: #444; }
+	div.toptip { background-color: rgba(0, 255, 0, 0.1); }
+}
