@@ -8,16 +8,16 @@ grow in darkness.
 
 But this presupposes an open system, where sunlight is always capable of
 overpowering infection. Or, said another way, it discounts the externalities of
-exposed contagions. That is, it's one thing to imagine a moldy plate in the
-middle of your sunny backyard, and another thing entirely to imagine a
+exposed contagions. It's one thing to imagine there's a moldy plate in the
+middle of your sunny backyard, but another thing entirely to imagine a
 completely polluted ecosystem. Those ruined landscapes require more than
 sunlight. You can't just treat the result, you have to stop the causes.
 
 There are classes of speech that are, to abuse the metaphor, a lot more like
 ruined landscapes than moldy plates. The rise of ethno-nationalism and race
 supremacy in western democracies is certainly among them. Relying on the
-disinfecting power of exposure to society is naïve to the point of being
-immoral. Society doesn't disinfect the disease, the disease infects society. 
+disinfecting power of exposure is naïve to the point of being immoral. Society
+doesn't disinfect the disease, the disease infects society. 
 
 We know now that blind application of free speech as a doctrine merely
 cedes the public square to the extremists, and results in a shittier society. 
