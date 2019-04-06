@@ -1,4 +1,4 @@
-{"title":"Sunlight is not (always) the best disinfectant"}
+{"title":"Sunlight is not always the best disinfectant"}
 ---
 Defenses of free speech, up to and including free speech absolutism, are
 sometimes centered on axioms like "sunlight is the best disinfectant". The
