@@ -2,6 +2,8 @@
 
 ---
 
+(_This post adapted from [a Twitter thread](https://twitter.com/peterbourgon/status/1121013346784948224)_)
+
 In my experience, the best way to name types in Go is as follows:
 
 - Structs are plain nouns: API, Replica, Object
