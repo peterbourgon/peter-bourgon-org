@@ -30,7 +30,7 @@ objectNoun := Verb(subjectNoun, subjectNoun, ...)
 ```
 
 Through this lens, each function is like a coherent paragraph of prose.
-I think this is a great metaphor, as it naturally reinfoces other virtues, like
+I think this is a great metaphor, as it naturally reinforces other virtues, like
 appropriate length, single responsibility, and independent testability.
 
 
