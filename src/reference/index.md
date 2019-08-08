@@ -25,3 +25,6 @@ http://archagon.net/blog/2018/03/24/data-laced-with-history/
 
 [Keybase + GPG + GitHub](https://github.com/andrzejsliwa/keybase-gpg-github/blob/master/README.md)
 &mdash; [mirror](keybase-gpg-github/)
+
+[Designing Interfaces](https://orbifold.xyz/designing-interfaces.html)
+&hdash; [mirror](designing-interfaces/)

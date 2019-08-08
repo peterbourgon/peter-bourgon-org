@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://orbifold.xyz/designing-interfaces.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Orbifolds and Other Games - Designing Interfaces</title>
+    <meta name="description" content="">
+    <meta name="author" content="Moshe Zadka">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="./theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="./index_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./index_files/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="./index_files/local.css" rel="stylesheet">
+    <link href="./index_files/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="https://orbifold.xyz/feeds/all.atom.xml" rel="alternate" title="Orbifolds and Other Games" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="https://orbifold.xyz/">Orbifolds and Other Games</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+            <li><a href="https://orbifold.xyz/pages/about.html">About</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class="article">
+        <div class="content-title">
+            <h1>Designing Interfaces</h1>
+Wed 07 August 2019
+
+by <a class="url fn" href="https://orbifold.xyz/author/moshe-zadka.html">Moshe Zadka</a>
+ 
+
+
+        </div>
+	
+        <div><p>One of the items of feedback I got from the article about
+<a class="reference external" href="https://orbifold.xyz/interfaces-are-forever.html">interface immutability</a>
+is that it did not give any
+<em>concrete</em>
+feedback for how to design interfaces.
+Given that they are forever,
+it would be good to have some sort of guidance.</p>
+<p>The first item is that you want
+<em>something that uses the implementation</em>,
+as well as
+<em>several distinct</em>
+implementations.
+However,
+this item is
+<em>too</em>
+obvious:
+in almost all cases I have seen in the wild of a
+<em>bad</em>
+interface,
+this guideline was followed.</p>
+<p>It was also followed in all cases of a
+<em>good</em>
+interface.</p>
+<p>I think this guideline is covered well enough that by the time
+anyone designs a real interface,
+they understand that.
+Why am I mentioning this guideline at all,
+then?</p>
+<p>Because I think it is important for the
+<em>context</em>
+of the guideline that I
+<em>do</em>
+think actually distinguishes good interfaces from bad interfaces.
+It is almost identical to the non-criterion above!</p>
+<p>The real guideline is:
+<em>something that uses the implementation</em>,
+as well as
+<em>several distinct</em>
+implementations
+that
+<em>do not share a superclass</em>
+(other than <cite>object</cite> or whatever is in the top of the hierarchy).</p>
+<p>This simple addition,
+preventing the implementations from sharing a superclass,
+is surprisingly powerful.
+It means each implementation has to implement the
+"boring"
+parts by hand.
+This will immediately cause pressure to avoid
+"boring"
+parts,
+and instead put them in a wrapper,
+or in the interface
+<em>user</em>.</p>
+<p>Otherwise,
+the most common failure mode is that
+the implementations are all basic variants
+on what is mostly the
+"big superclass".</p>
+<p>In my experience,
+just the constraint on not having a
+"helper superclass"
+puts appropriate pressure on interfaces to be good.</p>
+<p>(Thanks to Tom Most for his encouragement to write this,
+and the feedback on an earlier draft.
+Any mistakes that remain are my responsibility.)</p>
+</div>
+	
+        <hr>
+
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="https://orbifold.xyz/archives.html">Archives</a>
+                </li><li><a href="https://orbifold.xyz/tags.html">Tags</a>
+
+
+
+                </li><li><a href="https://orbifold.xyz/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="https://orbifold.xyz/category/misc.html">misc</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://python.org/">Python.org</a></li>
+                <li><a href="http://cobordism.com/">Moshe'z</a></li>
+            </ul>
+            </div>
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br>
+<p><a href="https://orbifold.xyz/">Orbifolds and Other Games</a> © Moshe Zadka 2019</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="./index_files/jquery.min.js"></script>
+<script src="./index_files/bootstrap-collapse.js"></script>
+ 
+
+</body></html>
