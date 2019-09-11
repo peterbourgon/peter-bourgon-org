@@ -37,6 +37,9 @@ type BazError struct {
 }
 
 func (e BazError) Error() string {
+	if e.Inner != nil {
+		return fmt.Sprintf("baz error: %s: %v", e.Reason, e.Inner)
+	}
 	return fmt.Sprintf("baz error: %s", e.Reason)
 }
 
