@@ -109,9 +109,9 @@ func a() (int, error) {
 ```
 
 xerrors.Is and xerrors.As will both try to unwrap the error, recursively, in
-order to find a match. [This code](https://play.golang.org/p/3LSIO1DAjLg)
-demonstrates basic error wrapping and checking techniques. Look at the order of
-the checks in `func a()`, and then try changing the error that's returned by
+order to find a match. **[This code](https://play.golang.org/p/ptOwbJ-fMTT)
+demonstrates basic error wrapping and checking techniques.** Look at the order
+of the checks in `func a()`, and then try changing the error that's returned by
 `func c()`, to get an intuition about how everything works.
 
 Avoid testing errors with plain equality, e.g. `if err == ErrFoo`. This only
