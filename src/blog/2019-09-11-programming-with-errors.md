@@ -1,6 +1,5 @@
 { "title": "Programming with errors" }
 ---
-
 Go 1.13 introduces an enhanced [package errors](https://golang.org/pkg/errors)
 (née [xerrors](https://godoc.org/golang.org/x/xerrors)) which roughly
 standardizes programming with errors. Personally, I find the API needlessly
