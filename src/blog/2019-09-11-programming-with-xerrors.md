@@ -6,7 +6,7 @@ of errors in Go. Personally, I find the API needlessly confusing. This is a
 quick reference for how to use it effectively.
 
 
-## Creating errors
+### Creating errors
 
 Sentinel errors work the same as before. Name them as ErrXxx, and create them
 with xerrors.New.
@@ -51,7 +51,7 @@ Review [xerrors.Formatter](https://godoc.org/golang.org/x/xerrors#Formatter) and
 sophisticated use cases.
 
 
-## Wrapping and returning errors
+### Wrapping and returning errors
 
 By default, when you encounter an error in a function and need to return it to
 the caller, wrap it with some context about what went wrong, using
@@ -76,12 +76,12 @@ for more sophisticated use cases.
 	p := getPriority()
 	widget, err := manufacture(p, result)
 	if err != nil {
-    	return ManufacturingError{Priority: p, Error: err}
+		return ManufacturingError{Priority: p, Error: err}
 	}
 ```
 
 
-## Checking errors
+### Checking errors
 
 Most of the time, when you receive an error, you don't care about the details.
 Whatever you were trying to do failed, so you either need to report the error
@@ -102,7 +102,7 @@ func a() (int, error) {
 
 	var bar BarError
 	if xerrors.As(err, &bar) {
-        // you know you got a BarError
+		// you know you got a BarError
 		// bar's fields are populated
 		// respond appropriately
 	}
