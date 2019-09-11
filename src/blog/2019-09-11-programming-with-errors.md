@@ -111,8 +111,9 @@ demonstrates basic error wrapping and checking techniques.** Look at the order
 of the checks in `func a()`, and then try changing the error that's returned by
 `func c()`, to get an intuition about how everything works.
 
-Avoid testing errors with plain equality, e.g. `if err == ErrFoo`. This only
-works for sentinel errors, not error values, and it doesn't perform any
-unwrapping. If you explicitly don't want to allow callers to unwrap errors,
-provide a different formatting verb, like `%v`, to `fmt.Errorf`, or don't
-provide an `Unwrap` method on your error type. But this should be rare.
+Avoid testing errors with plain equality, e.g. `if err == ErrFoo`, or e.g.
+`switch err { case ErrFoo: `. This only works for sentinel errors, not error
+values, and it doesn't perform any unwrapping. If you explicitly don't want to
+allow callers to unwrap errors, provide a different formatting verb, like `%v`,
+to `fmt.Errorf`, or don't provide an `Unwrap` method on your error type. But
+this should be rare.
