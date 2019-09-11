@@ -1,18 +1,19 @@
-{ "title": "Programming with xerrors" }
+{ "title": "Programming with errors" }
 ---
 
-The new [package xerrors](https://godoc.org/golang.org/x/xerrors) is the future
-of errors in Go. Personally, I find the API needlessly confusing. This is a
-quick reference for how to use it effectively.
+Go 1.13 introduces an enhanced [package errors](https://golang.org/pkg/errors)
+(née [xerrors](https://godoc.org/golang.org/x/xerrors)) which roughly
+standardizes programming with errors. Personally, I find the API needlessly
+confusing. This is a quick reference for how to use it effectively.
 
 
 ### Creating errors
 
 Sentinel errors work the same as before. Name them as ErrXxx, and create them
-with xerrors.New.
+with errors.New.
 
 ```go
-var ErrFoo = xerrors.New("foo error")
+var ErrFoo = errors.New("foo error")
 ```
 
 Error types basically work the same as before. Name them as XxxError, and make
@@ -28,8 +29,7 @@ func (e BarError) Error() string {
 }
 ```
 
-If your error type wraps another error, provide an Unwrap method, to satisfy the
-[xerrors.Wrapper](https://godoc.org/golang.org/x/xerrors#Wrapper) interface.
+If your error type wraps another error, provide an Unwrap method.
 
 ```go
 type BazError struct {
@@ -46,23 +46,19 @@ func (e BazError) Unwrap() error {
 }
 ```
 
-Review [xerrors.Formatter](https://godoc.org/golang.org/x/xerrors#Formatter) and
-[xerrors.Printer](https://godoc.org/golang.org/x/xerrors#Printer) for more
-sophisticated use cases.
-
 
 ### Wrapping and returning errors
 
 By default, when you encounter an error in a function and need to return it to
 the caller, wrap it with some context about what went wrong, using
-[xerrors.Errorf](https://godoc.org/golang.org/x/xerrors#Errorf) and the `%w`
+[fmt.Errorf](https://golang.org/pkg/fmt#Errorf) and the new `%w`
 verb.
 
 ```go
 func process(j Job) error {
 	result, err := preprocess(j)
 	if err != nil {
-		return xerrors.Errorf("error preprocessing job: %w", err)
+		return fmt.Errorf("error preprocessing job: %w", err)
 	}
 ```
 
@@ -89,27 +85,27 @@ Whatever you were trying to do failed, so you either need to report the error
 error with context, and return it to the caller.
 
 If you care about which error you received, you can check for sentinel errors
-with [xerrors.Is](https://godoc.org/golang.org/x/xerrors#Is), and for error
-values with [xerrors.As](https://godoc.org/golang.org/x/xerrors#As).
+with [errors.Is](https://golang.org/pkg/errors#Is), and for error
+values with [errors.As](https://golang.org/pkg/errors#As).
 
 ```go
 func a() (int, error) {
 	i, err := b()
-	if xerrors.Is(err, ErrFoo) {
+	if errors.Is(err, ErrFoo) {
 		// you know you got an ErrFoo
 		// respond appropriately
 	}
 
 	var bar BarError
-	if xerrors.As(err, &bar) {
+	if errors.As(err, &bar) {
 		// you know you got a BarError
 		// bar's fields are populated
 		// respond appropriately
 	}
 ```
 
-xerrors.Is and xerrors.As will both try to unwrap the error, recursively, in
-order to find a match. **[This code](https://play.golang.org/p/ptOwbJ-fMTT)
+errors.Is and errors.As will both try to unwrap the error, recursively, in
+order to find a match. **[This code](https://play.golang.org/p/GorSR6HTWzf)
 demonstrates basic error wrapping and checking techniques.** Look at the order
 of the checks in `func a()`, and then try changing the error that's returned by
 `func c()`, to get an intuition about how everything works.
@@ -117,5 +113,5 @@ of the checks in `func a()`, and then try changing the error that's returned by
 Avoid testing errors with plain equality, e.g. `if err == ErrFoo`. This only
 works for sentinel errors, not error values, and it doesn't perform any
 unwrapping. If you explicitly don't want to allow callers to unwrap errors,
-provide a different formatting verb, like `%v`, to `xerrors.Errorf`, or don't
+provide a different formatting verb, like `%v`, to `fmt.Errorf`, or don't
 provide an `Unwrap` method on your error type. But this should be rare.
