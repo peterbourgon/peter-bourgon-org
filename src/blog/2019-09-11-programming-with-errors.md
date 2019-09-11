@@ -91,19 +91,18 @@ with [errors.Is](https://golang.org/pkg/errors#Is), and for error
 values with [errors.As](https://golang.org/pkg/errors#As).
 
 ```go
-func a() (int, error) {
-	i, err := b()
-	if errors.Is(err, ErrFoo) {
-		// you know you got an ErrFoo
-		// respond appropriately
-	}
+i, err := b()
+if errors.Is(err, ErrFoo) {
+	// you know you got an ErrFoo
+	// respond appropriately
+}
 
-	var bar BarError
-	if errors.As(err, &bar) {
-		// you know you got a BarError
-		// bar's fields are populated
-		// respond appropriately
-	}
+var bar BarError
+if errors.As(err, &bar) {
+	// you know you got a BarError
+	// bar's fields are populated
+	// respond appropriately
+}
 ```
 
 errors.Is and errors.As will both try to unwrap the error, recursively, in
