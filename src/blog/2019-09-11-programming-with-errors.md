@@ -91,7 +91,7 @@ with [errors.Is](https://golang.org/pkg/errors#Is), and for error
 values with [errors.As](https://golang.org/pkg/errors#As).
 
 ```go
-i, err := b()
+err := f()
 if errors.Is(err, ErrFoo) {
 	// you know you got an ErrFoo
 	// respond appropriately
