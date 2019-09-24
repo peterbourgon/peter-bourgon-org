@@ -201,7 +201,7 @@ source of authority, making people more able to help themselves in the future.
 ### <a href="#wire-up">2. Wire-up</a>
 
 Once the code was instrumented and deployed, the next step was to get it plumbed
-into the Prometheus. Often, this required deploying Prometheus info a new corner
+into the Prometheus. Often, this required deploying Prometheus into a new corner
 of our infrastructure. This was easily the most time-consuming and trickiest
 technical part of the project, especially at the beginning, when we were still
 discovering and defining best practices. Our heterogeneous services had
