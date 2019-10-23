@@ -5,13 +5,13 @@
 
 ---
 
-http://basho.com/posts/technical/why-vector-clocks-are-easy/
+[Why Vector Clocks are Easy](http://basho.com/posts/technical/why-vector-clocks-are-easy/)
 &mdash; [PDF](vector-clocks-are-easy.pdf)
 
-http://basho.com/posts/technical/why-vector-clocks-are-hard/
+[Why Vector Clocks are Hard](http://basho.com/posts/technical/why-vector-clocks-are-hard/)
 &mdash; [PDF](vector-clocks-are-hard.pdf)
 
-http://archagon.net/blog/2018/03/24/data-laced-with-history/
+[Data Laced with History](http://archagon.net/blog/2018/03/24/data-laced-with-history/)
 &mdash; [mirror](data-laced-with-history/)
 
 [Distributed systems and the end of the API](https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/)
@@ -28,3 +28,7 @@ http://archagon.net/blog/2018/03/24/data-laced-with-history/
 
 [Designing Interfaces](https://orbifold.xyz/designing-interfaces.html)
 &mdash; [mirror](designing-interfaces/)
+
+[An Introduction to Quantum Computation and Quantum Communication](http://www.herpolhode.com/rob/qcintro.pdf)
+&mdash; [mirror](qcintro.pdf)
+
