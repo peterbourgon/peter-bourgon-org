@@ -30,5 +30,5 @@
 &mdash; [mirror](designing-interfaces/)
 
 [An Introduction to Quantum Computation and Quantum Communication](http://www.herpolhode.com/rob/qcintro.pdf)
-&mdash; [mirror](qcintro.pdf)
+&mdash; [PDF](qcintro.pdf)
 
