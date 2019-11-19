@@ -7,6 +7,14 @@
 
 <img src="face.jpg" width="430" height="150" alt="My face, when I talk (I kind of look like a techbro here and I regret that)" />
 
+## 2019
+
+**Infinite parallel universes: modeling state at the edge** <br/>
+November 2019, [Velocity EU](https://conferences.oreilly.com/velocity/vl-eu), Berlin <br/>
+
+**Coördination-free systems** <br/>
+January 2019, Fastly internal tech talk, San Francisco <br/>
+
 ## 2018
 
 **Architecture and Domain Modeling workshop** <br/>
