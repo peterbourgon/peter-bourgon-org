@@ -97,7 +97,7 @@ if errors.Is(err, ErrFoo) {
 	// respond appropriately
 }
 
-var bar BarError
+var bar *BarError
 if errors.As(err, &bar) {
 	// you know you got a BarError
 	// bar's fields are populated
