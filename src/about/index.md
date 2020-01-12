@@ -8,7 +8,7 @@
 <img src="cave.jpg" width="320" height="240" alt="Picture of me in a cave in Africa, but you can't really tell it's in a cave" />
 <span style="position:relative; top:-115px; left:-260px; font-size:100px; color:#fff;" class="blink">&rarr;</span>
 
-I'm Peter, a software engineer living between Berlin, Germany and San Francisco, California, USA.
+I'm Peter, a software engineer living in Berlin, Germany.
 I focus on distributed systems in the [Go](https://golang.org) programming language.
 
 I prefer to write code that solves a specific, tightly-defined problem, rather
