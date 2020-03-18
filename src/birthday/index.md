@@ -1,5 +1,6 @@
 {
     "template": "../inc/arbitrary-page.template.source",
+    "prefixtitle": false,
     "title": "Peter's Birthday Conference Call",
     "metadescription": "Life is hard, but we have the internet"
 }
@@ -10,6 +11,21 @@ might actually be legally obliged to stay at home under threat of law. Still, it
 is my birthday soon, and we have the internet. Let's have a shared, on-line,
 quarantine toast to making it another year on this dying planet. Maybe our
 last??
+
+&nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+&nbsp; &nbsp; &nbsp; &nbsp;
+<img src="dino.gif" width=62 height=78 alt="We gon' die" />
 
 We're going to pour ourselves a drink, sit down in front of our computers, turn
 on our webcams, and have a toast to... something. We can laugh at the absurdity
