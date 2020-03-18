@@ -72,6 +72,11 @@ h2 a:link, h3 a:link {
 	display: none;
 }
 
+/* Markdown tables */
+th, td {
+	padding: 0 1em;
+}
+
 /* Go best practices */
 .lite { color: #ddd; text-decoration: none; font-size: 14pt; font-family: sans-serif; font-variant: small-caps; font-style: italic; }
 .lite:visited { color: #ddd; }
