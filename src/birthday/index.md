@@ -12,20 +12,15 @@ is my birthday soon, and we have the internet. Let's have a shared, on-line,
 quarantine toast to making it another year on this dying planet. Maybe our
 last??
 
-&nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
-&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
-&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
-&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
-&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
-&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
-&nbsp; &nbsp; &nbsp; &nbsp;
-<img src="dino.gif" width=62 height=78 alt="We gon' die" />
+<table style="width: 100%;">
+<tr>
+ <td><img src="dino.gif" width=62 height=78 alt="We gon' die" /></td>
+ <td><img src="dino.gif" width=62 height=78 alt="We gon' die" /></td>
+ <td><img src="dino.gif" width=62 height=78 alt="We gon' die" /></td>
+ <td><img src="dino.gif" width=62 height=78 alt="We gon' die" /></td>
+ <td><img src="dino.gif" width=62 height=78 alt="We gon' die" /></td>
+</tr>
+</table>
 
 We're going to pour ourselves a drink, sit down in front of our computers, turn
 on our webcams, and have a toast to... something. We can laugh at the absurdity
@@ -35,12 +30,12 @@ until it gets awkward. Whatever you want.
 There are a lot of you so it's difficult to coördinate a time that's really good
 for everyone but here's my best effort.
 
-| City          | Time Zone     | Date                   | Time   |
-|:--------------|:--------------|:-----------------------|:-------|
-| San Francisco | PDT (UTC-7)   | Friday 20 March 2020   | 15:00h |
-| New York      | EDT (UTC-4)   | Friday 20 March 2020   | 18:00h |
-| Berlin        | CET (UTC+1)   | Friday 20 March 2020   | 23:00h |
-| Sydney        | AEDT (UTC+11) | Saturday 21 March 2020 | 09:00h |
+| City          | Time Zone     | Date       | Time   |
+|:--------------|:--------------|:-----------|:-------|
+| San Francisco | UTC-7         | Fri 20 Mar | 15:00h |
+| New York      | UTC-4         | Fri 20 Mar | 18:00h |
+| Berlin        | UTC+1         | Fri 20 Mar | 23:00h |
+| Sydney        | UTC+11        | Sat 21 Mar | 09:00h |
 
 _**Countdown: <span id="countdown">&nbsp;</span>**_
 
