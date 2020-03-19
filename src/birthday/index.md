@@ -7,8 +7,8 @@
 ---
 
 Bars are closed and nobody is allowed with 2 meters of anybody else and you
-might actually be legally obliged to stay at home under threat of law. Still, it
-is my birthday soon, and we have the internet. Let's have a shared, on-line,
+might actually be obliged to stay at home under threat of law. Still, it is my
+birthday soon, and we have the internet. Let's have a shared, on-line,
 quarantine toast to making it another year on this dying planet. Maybe our
 last??
 
