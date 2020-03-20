@@ -39,9 +39,10 @@ for everyone but here's my best effort.
 
 _**Countdown: <span id="countdown">&nbsp;</span>**_
 
-When that timer right there hits zero, refresh this page, and you'll get a link
-to a Zoom conference call you can join. It should prompt you to install
-everything you need, it's pretty seamless.
+When that timer right zero, refresh this page, and you'll get a link to a Zoom
+conference call you can join. It works in the browser, but they have an app
+which is a bit better, [download it here](https://zoom.us/support/download) if
+you want.
 
 Thank you for indulging me on this stupid thing, I love you.
 
