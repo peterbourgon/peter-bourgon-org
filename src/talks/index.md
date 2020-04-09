@@ -7,6 +7,11 @@
 
 <img src="face.jpg" width="430" height="150" alt="My face, when I talk (I kind of look like a techbro here and I regret that)" />
 
+## 2020
+
+**Infinite Parallel Universes: State at the Edge** <br/>
+March 2020, [QCon](https://qconlondon.com/london2020/presentation/modern-cs), London — [video](https://www.infoq.com/presentations/architecture-global-scale/) <br/>
+
 ## 2019
 
 **Infinite parallel universes: modeling state at the edge** <br/>
@@ -126,4 +131,3 @@ December 2012, Tech Mesh, London <br/>
 
 **[Postmodernism](/postmodernism)** <br/>
 May 2012, SoundCloud lunch presentation, Berlin <br/>
-
