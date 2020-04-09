@@ -11,11 +11,9 @@
 
 **Infinite Parallel Universes: State at the Edge** <br/>
 March 2020, [QCon](https://qconlondon.com/london2020/presentation/modern-cs), London — [video](https://www.infoq.com/presentations/architecture-global-scale/) <br/>
+November 2019, [Velocity EU](https://conferences.oreilly.com/velocity/vl-eu), Berlin <br/>
 
 ## 2019
-
-**Infinite parallel universes: modeling state at the edge** <br/>
-November 2019, [Velocity EU](https://conferences.oreilly.com/velocity/vl-eu), Berlin <br/>
 
 **Coördination-free systems** <br/>
 January 2019, Fastly internal tech talk, San Francisco <br/>
