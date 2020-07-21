@@ -32,3 +32,6 @@
 [An Introduction to Quantum Computation and Quantum Communication](http://www.herpolhode.com/rob/qcintro.pdf)
 &mdash; [PDF](qcintro.pdf)
 
+[Notes on Distributed Systems for Young Bloods](https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/)
+&mdash; [mirror](notes-on-distributed-systems/)
+

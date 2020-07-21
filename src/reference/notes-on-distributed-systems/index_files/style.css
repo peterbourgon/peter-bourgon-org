@@ -1,0 +1,47 @@
+#footer {
+  margin-bottom: 300px;
+}
+
+code {
+  color: #333;
+}
+
+a code {
+  /* Drop the annoying bootstrap border on code inside a link */
+  border: none;
+  /* And make it the same color test as a */
+  color: #08C;
+}
+
+.entry-title h3 {
+  font-size: 22px;
+  line-height: 35px;
+}
+
+.entry-date {
+  font-size: 13px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.entry-content {
+  margin-top: 20px;
+}
+
+.entry-content blockquote {
+    font-size: 15px;
+    margin-left: 1em;
+}
+
+/* this is style14 at https://codepen.io/ibrahimjabbari/pen/ozinB with
+adjustments to the margin */
+hr.fancy {
+  border: 0;
+  height: 1px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
