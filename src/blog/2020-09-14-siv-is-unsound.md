@@ -125,11 +125,11 @@ Modules' extraordinary bias toward consumer stability may be ideal for the softw
 ecosystem within Google, but it's inapproriate for software ecosystems in
 general.
 
-Primarily, the costs and benefits of a major version bump aren't the same for
-all projects. For widely-imported modules with large API surface areas, new
-major versions create a lot of toil for a lot of people, and so might carry a
-high cost. But for modules with tiny APIs and/or few consumers, a major version
-bump is, objectively, less costly. Further, for software that models
+Primarily, that's because the costs and benefits of a major version bump aren't
+the same for all projects. For widely-imported modules with large API surface
+areas, new major versions create a lot of toil for a lot of people, and so might
+carry a high cost. But for modules with tiny APIs and/or few consumers, a major
+version bump is, objectively, less costly. Further, for software that models
 well-defined domains with stable and productive APIs, breaking changes might
 represent more churn than innovation, and so might not carry many benefits. But
 for software that's still exploring its domain, or modeling something that has a
