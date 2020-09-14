@@ -75,14 +75,14 @@ or time. I am fundamentally the same human being at age 35 as I was at age 12,
 even though practically all of my substantive characteristics have changed.
 Similarly, my flags package peterbourgon/ff is still fundamentally the same
 logical thing at v3.x.x as it was at v1.x.x, even though its API has changed in
-non-backwards-compatible ways.
+non-backwards-compatible ways. Modules asserts that this is not the case.
 
-This is also a subtle distinction, but it causes a lot of serious issues,
-especially as it interacts with another design decision. In modules, major
-versions 0 and 1 are unique in that they're expressed not with an explicit
-version suffix but as the bare, unversioned module name. So when a user writes
-`github.com/user/repo`, modules believes they are explicitly specifying major
-version 0 or 1, which is essentially never the case.
+This is a subtle point, but it causes a lot of serious issues, especially as it
+interacts with another design decision. In modules, major versions 0 and 1 are
+unique in that they're expressed not with an explicit version suffix but as the
+bare, unversioned module name. So when a user writes `github.com/user/repo`,
+modules believes they are explicitly specifying major version 0 or 1, which is
+essentially never the case.
 
 Consequently, it's very easy for users to select an old or unsupported major
 version of a dependency unintentionally. And there's no good way for them to
