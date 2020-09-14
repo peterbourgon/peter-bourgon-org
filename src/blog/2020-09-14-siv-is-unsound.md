@@ -90,8 +90,9 @@ find out: because SIV understands major versions as completely distinct, modules
 explicitly doesn't understand or suggest any connection between e.g. module/v2
 and module/v3. (The small affordance on pkg.go.dev that lists the major versions
 of a given module is derived from additional non-modules metadata.) Even more,
-modules authors appear to be actively resistant to the notion that this ancestry
-actually exists.
+modules authors appear to be
+[actively resistant](http://github.com/golang/go/issues/40323)
+to the notion that this ancestry actually exists.
 
 ## An extraordinary bias towards consumers
 
