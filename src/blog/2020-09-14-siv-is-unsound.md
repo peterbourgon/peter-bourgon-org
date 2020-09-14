@@ -1,7 +1,5 @@
 { "title": "Semantic Import Versioning is unsound" }
 ---
-# Semantic Import Versioning is unsound
-
 Earlier there was an article titled
 [Go Modules have a v2+ Problem](https://donatstudios.com/Go-v2-Modules)
 making the rounds, which critiqued some aspects of Go modules' design.
