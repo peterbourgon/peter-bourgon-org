@@ -119,15 +119,6 @@ motivates a culture of automatic upgrades: even if extremely infrequent, a major
 version bump might also be expected to come with a tool that automatically fixes
 users code.
 
-This point is actually closely related to my previous point. Modules so deeply
-biases for consumers that, under SIV, module identifiers actually don't capture
-the name or identity of a software artifact, as _expressed by the author_ of
-that artifact. Instead, module identifers try to capture a specific API
-compatibility as _experienced by the consumers_ of the artifact.
-
-(I write "try" because, ultimately, it's unenforceable: authors can still
-publish breaking changes without changing the major version or the module name.)
-
 ## Impact on the ecosystem
 
 Modules' extraordinary bias toward consumer stability may be ideal for the software
