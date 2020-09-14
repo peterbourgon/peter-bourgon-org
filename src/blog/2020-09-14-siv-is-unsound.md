@@ -122,7 +122,7 @@ users code.
 ## Impact on the ecosystem
 
 Modules' extraordinary bias toward consumer stability may be ideal for the software
-ecosystem within Google, but it's not approriate for software ecosystems in
+ecosystem within Google, but it's inapproriate for software ecosystems in
 general.
 
 Primarily, the costs and benefits of a major version bump aren't the same for
