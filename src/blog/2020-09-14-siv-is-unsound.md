@@ -199,6 +199,8 @@ not valuable. But it seems clear to me that the benefits of making it mandatory
 for everyone in an ecosystem don't come anywhere close to justifying the costs
 it incurs.
 
+## And so
+
 SIV should be removed from modules' design.
 
 ## lol u thought
