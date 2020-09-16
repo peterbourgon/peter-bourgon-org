@@ -8,6 +8,15 @@ surface of a much more fundamental and serious problem. I've been
 talking about this problem for long enough, and with enough other people,
 that I think it's worth a more formal description. So, here we go.
 
+## tl;dr
+
+- SIV asserts a specific definition of "identity"
+- It's rational, consistent, and useful, especially for tools
+- But software ecosystems already define "identity" — and the two are incompatible
+- The costs of this redefinition are much higher than claimed
+- The benefits of this redefinition are much lower than claimed
+- SIV is ultimately harmful, artificially limiting participation in the ecosystem
+
 ## What is SIV?
 
 Go modules have a requirement called Semantic Import Versioning (SIV) which
