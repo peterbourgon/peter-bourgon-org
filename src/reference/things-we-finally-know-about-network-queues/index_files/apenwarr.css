@@ -1,0 +1,47 @@
+body {
+	max-width: 6in;
+	margin-left: auto;
+	margin-right: auto;
+	hyphens: auto;
+}
+
+img {
+	max-width: 95%;
+}
+
+.tagline {
+	color: #0000cc;
+	font-family: "comic sans ms", fantasy;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.footer {
+	padding-top: 20px;
+	text-align: center;
+	font: italic;
+}
+
+.whizbar {
+	margin-right: 20px;
+	white-space: nowrap;
+}
+
+.whizbar .current {
+	color: green;
+	font-weight: bold;
+}
+
+.disclaimer {
+	text-align: center;
+	padding: 2em;
+}
+
+.mainbox {
+	max-width: 6in;
+}
+
+.maintab {
+	margin-left: auto;
+	margin-right: auto;
+}

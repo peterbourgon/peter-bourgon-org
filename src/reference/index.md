@@ -35,3 +35,5 @@
 [Notes on Distributed Systems for Young Bloods](https://www.somethingsimilar.com/2013/01/14/notes-on-distributed-systems-for-young-bloods/)
 &mdash; [mirror](notes-on-distributed-systems/)
 
+[Things we (finally) know about network queues](https://apenwarr.ca/log/20170814)
+&mdash; [mirror](things-we-finally-know-about-network-queues/)
