@@ -12,7 +12,7 @@ that I think it's worth a more formal description. So, here we go.
 
 - SIV asserts a specific definition of "identity"
 - It's rational, consistent, and useful, especially for tools
-- But software ecosystems already define "identity" — and the two are incompatible
+- But software ecosystems already define "identity" — and the definitions are incompatible
 - The costs of this redefinition are much higher than claimed
 - The benefits of this redefinition are much lower than claimed
 - SIV is ultimately harmful, artificially limiting participation in the ecosystem
@@ -191,22 +191,22 @@ where they are, rather than guiding users where it might want them to be.
 ## What are we actually getting?
 
 SIV gives the tooling the benefit of unambiguous identifiers, which help it
-resolve the dependency graph. But that's an internal benefit, invisible to users
-except by its ramfiications. The only explicit benefit to users is that they can
-have different versions of the "same" module in their compilation unit. Of
-course, this was always the case: the difference is that, previously, it was
-opt-in by the author, by e.g. creating a new repo a new major version, and now
-it's mandatory for all artifacts in the ecosystem.
+resolve the dependency graph. But that's an internal benefit, invisible to
+users except by its ramfiications. The only explicit benefit to users is that
+they can have different versions of the "same" module in their compilation
+unit. Of course, this was always the case: the difference is that, previously,
+it was opt-in by the author, by e.g. creating a new repo for a new major
+version, and now it's mandatory for all artifacts in the ecosystem.
 
 Is that mandate justified? How frequently does the need for this feature arise,
 in practice? I understand it is relatively common in ecosystems like Google's,
 where coördinating a major version upgrade frequently requires a "phased"
-approach where multiple versions are used concurrently for a period of time. But
-I personally have never experienced this need, and an informal poll of my peers
-also doesn't suggest it's anything near common. To be clear, I'm not saying it's
-not valuable. But it seems clear to me that the benefits of making it mandatory
-for everyone in an ecosystem don't come anywhere close to justifying the costs
-it incurs.
+approach where multiple versions are used concurrently for a period of time.
+But I personally have never experienced this need, and an informal poll of my
+peers also doesn't suggest it's anything near common. To be clear, I'm not
+saying it's not valuable. But it seems obvious to me that the benefits of
+making it mandatory for everyone in an ecosystem don't come anywhere close to
+justifying the costs it incurs.
 
 ## And so
 
@@ -236,3 +236,4 @@ to me to be unavoidably part of the UX and also would unavoidably need to keep
 their more-restrictive SIV semantics to consumable by tooling. One solution I
 can see there is to introduce the concept of a mapping from human-identity
 import statement to SIV-identity module name. Are there others?
+
