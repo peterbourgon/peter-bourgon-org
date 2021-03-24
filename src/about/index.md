@@ -17,7 +17,7 @@ I believe
 
 - in [stripped and liberated](https://news.ycombinator.com/item?id=8013616) software;
 - in [the Unix philosophy](http://en.wikipedia.org/wiki/Unix_philosophy), especially its rule of composition;
-- that "[programs must be written for people to read, and only incidentally for machines to execute](http://mitpress.mit.edu/sicp/full-text/sicp/book/node3.html)";
+- that "[programs must be written for people to read, and only incidentally for machines to execute](https://mitpress.mit.edu/sites/default/files/sicp/full-text/sicp/book/node3.html)";
 - that [premature abstraction](https://twitter.com/JefClaes/status/479938803038420992/photo/1) ([viz.](http://www.jstor.org/discover/10.2307/3606739?uid=3737864&uid=2&uid=4&sid=21104341026637)) is just as bad as, or worse than, premature optimization;
 - that my mind is always open to persuasive arguments otherwise!
 
