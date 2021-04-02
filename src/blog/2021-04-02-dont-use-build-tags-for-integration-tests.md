@@ -16,7 +16,7 @@ func TestIntegration(t *testing.T) {
 }
 ```
 
-Mostly, it's about usability.
+Why is this better? Mostly, it's about usability.
 
 Build tags are somewhat esoteric and non-discoverable, meaning you have to read
 the source to know there's some tests that only get built conditionally, and
