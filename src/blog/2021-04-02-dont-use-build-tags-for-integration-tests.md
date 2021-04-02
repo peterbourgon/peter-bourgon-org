@@ -29,13 +29,13 @@ about it until you explicitly run the integration tests with the build tag. You
 probably aren't doing that yourself, you're probably letting CI do it, which
 means you're getting delayed feedback, too, which is even more frustrating.
 
-Integration tests typically need some config from the environment, to know stuff
-like the address of the MySQL server they should interact with. One way to
-provide that information is with test flags, but test flags are also kind of
+Integration tests typically need some config from the environment, to know
+stuff like the address of the MySQL server they should interact with. One way
+to provide that information is with test flags, but test flags are also kind of
 esoteric, and are only discoverable if you remember to look for them, and run
-`go test` both with with `-tags integration` and the nonstandard `-test.h`
-flags. And test flags basically have to be package globals in order to be
-usable, but [package globals should be strictly avoided](http://peter.bourgon.org/blog/2017/06/09/theory-of-modern-go.html),
+`go test` both with with `-tags integration` and the nonstandard `-test.h`.
+And test flags basically have to be package globals in order to be usable, but
+[package globals should be strictly avoided](http://peter.bourgon.org/blog/2017/06/09/theory-of-modern-go.html),
 even in test code.
 
 The other way to provide that config is with env vars, which have none of the
@@ -45,3 +45,4 @@ solve all your problems at once. You get runtime config to the test, you
 eliminate the need for build tags as an opt-in mechanism, and you make the
 opting-in mechanism discoverable -- the test output tells you exactly what to
 do.
+
