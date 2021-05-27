@@ -294,7 +294,7 @@ Targets set.
 The forwarder is little more than netcat.
 It's basically
 
-```
+```go
 conn, _ := net.Dial("tcp", ingesterAddress) // make a connection
 s := bufio.NewScanner(os.Stdin)             // tokenize by line
 for s.Scan() {                              // read a line 
@@ -309,7 +309,7 @@ Profiling revealed two problems.
 First, I was using a time.Ticker in a hot loop, one tick per log line.
 Effectively
 
-```
+```go
 hz := time.Second / recordsPerSecond
 for range time.Tick(hz) {
     // emit 1 record
@@ -319,7 +319,7 @@ for range time.Tick(hz) {
 When you want to emit 1000 records per second, blocking on the ticker for 1ms is pointlessly wasteful.
 I amended that slightly to print records in batches.
 
-```
+```go
 var (
 	recordsPerCycle = 1
 	timePerCycle    = time.Second / recordsPerSecond
@@ -335,7 +335,7 @@ for range time.Tick(timePerCycle) {
 
 Also, I was building each log line, of random data, within the hot loop, and burning lots of CPU in math.Rand to do it.
 Precomputing a large, fixed set of random log lines at program start solved that one.
-With those changes, I could easily push plenty of MBps second from each process with negligible load.
+With those changes, I could easily push plenty of MBps from each process with negligible load.
 
 I set up between 1–8 forwarders per forward node, times 8 ingest nodes, for 8–64 forwarder processes in total.
 Each process would do 100–1000 records per second, times 100–8000 bytes per record, for up to half a gigabit per second of production capacity.
@@ -347,7 +347,7 @@ In the beginning I was quite concerned about assigning a ULID per record.
 But thanks to [Tomás Senart's](https://twitter.com/tsenart) excellent work with the [ULID library](https://github.com/oklog/ulid),
  these costs were actually quite low, on the order of 50ns per ULID, as we don't need crypto-grade entropy.
 
-```
+```go
 BenchmarkNew/WithoutEntropy-8    30.0 ns/op  534.06 MB/s  1 alloc/op
 BenchmarkNew/WithEntropy-8       65.8 ns/op  243.01 MB/s  1 alloc/op
 BenchmarkNew/WithCryptoEntropy-8  771 ns/op   20.73 MB/s  1 alloc/op
