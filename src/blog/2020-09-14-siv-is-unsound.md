@@ -237,3 +237,6 @@ their more-restrictive SIV semantics to consumable by tooling. One solution I
 can see there is to introduce the concept of a mapping from human-identity
 import statement to SIV-identity module name. Are there others?
 
+**Update**: [The maintainers have made clear](https://github.com/golang/go/issues/44550#issuecomment-885689186)
+that optional SIV is not an option. So much for that.
+
