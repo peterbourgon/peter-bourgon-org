@@ -56,7 +56,7 @@ code {
 	background-color: #eee;
 }
 
-pre > code {
+pre>code {
 	background-color: inherit;
 }
 
@@ -64,7 +64,8 @@ h2 {
 	font-style: italic;
 }
 
-h2 a:link, h3 a:link {
+h2 a:link,
+h3 a:link {
 	text-decoration: none;
 }
 
@@ -73,18 +74,60 @@ h2 a:link, h3 a:link {
 }
 
 /* Markdown tables */
-th, td {
+th,
+td {
 	padding: 0 1em;
 }
 
 /* Go best practices */
-.lite { color: #ddd; text-decoration: none; font-size: 14pt; font-family: sans-serif; font-variant: small-caps; font-style: italic; }
-.lite:visited { color: #ddd; }
-div.toptip { background-color: #ded; padding: 1em; margin: 1em; }
-div.toptip a { text-decoration: none; }
+.lite {
+	color: #ddd;
+	text-decoration: none;
+	font-size: 14pt;
+	font-family: sans-serif;
+	font-variant: small-caps;
+	font-style: italic;
+}
 
-table.plan { border-collapse: collapse; }
-table.plan td { padding: 0.5em; }
-table.plan tr { border-top: solid 1px #000; }
-table.plan td.year { text-align: right; vertical-align: top; }
-table.plan td.plan { min-width: 340px; }
+.lite:visited {
+	color: #ddd;
+}
+
+div.toptip {
+	background-color: #ded;
+	padding: 1em;
+	margin: 1em;
+}
+
+div.toptip a {
+	text-decoration: none;
+}
+
+table.plan {
+	border-collapse: collapse;
+}
+
+table.plan td {
+	padding: 0.5em;
+}
+
+table.plan tr {
+	border-top: solid 1px #000;
+}
+
+table.plan td.year {
+	text-align: right;
+	vertical-align: top;
+}
+
+table.plan td.plan {
+	min-width: 340px;
+}
+
+table.cv td.when {
+	width: 20%;
+}
+
+table.cv td.where {
+	width: 80%;
+}
