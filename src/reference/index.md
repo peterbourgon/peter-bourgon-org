@@ -37,3 +37,6 @@
 
 [Things we (finally) know about network queues](https://apenwarr.ca/log/20170814)
 &mdash; [mirror](things-we-finally-know-about-network-queues/)
+
+[Infinite Parallel Universes: State at the Edge](https://www.infoq.com/presentations/architecture-global-scale/)
+&mdash; [mirror](infinite-parallel-universes/)
